@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lontra | Transformando Datos en Decisiones Óptimas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1132d4",
+                        "navy-brand": "#001a3d",
+                        "accent-teal": "#14b8a6",
+                        "bright-blue": "#3b82f6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(16, 19, 34, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
+<!-- Standardized Spanish Navigation -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center">
+<a class="flex items-center" href="/index.html">
+<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        Solicitar Consulta
+                    </a>
+</div>
+</div>
+<div class="md:hidden flex items-center gap-4">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-white">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 text-center">
+                    Solicitar Consulta
+                </a>
+</div>
+</nav>
+<main class="pt-20">
+<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 bg-background-dark">
+<div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 2px 2px, rgba(17, 50, 212, 0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/50 to-background-dark"></div>
+<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-teal/10 blur-[100px] rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-8">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-accent-teal"></span>
+</span>
+<span class="text-xs font-bold tracking-widest uppercase text-accent-teal">Investigación de Operaciones & IA</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
+                    Transformando Datos en <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-accent-teal">Decisiones Óptimas</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    Investigación de Operaciones e inteligencia artificial aplicada a problemas reales de negocio.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<a href="/contacto.html" class="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-all text-lg shadow-xl shadow-primary/30 text-center">
+                        Solicitar Consulta
+                    </a>
+<a href="/soluciones.html" class="w-full sm:w-auto px-8 py-4 border border-white/10 hover:bg-white/5 text-white font-bold rounded-lg transition-all text-lg text-center">
+                        Ver Soluciones
+                    </a>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark border-y border-white/5">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col gap-8">
+<div>
+<h2 class="text-accent-teal font-bold uppercase tracking-[0.2em] text-sm mb-4">Filosofía Central</h2>
+<h3 class="text-4xl md:text-5xl font-bold text-white leading-tight">Matemáticas aplicadas a problemas reales.</h3>
+</div>
+<p class="text-slate-400 text-lg leading-relaxed">
+                            Conectamos la teoría matemática con resultados de negocio. Nuestro equipo traduce datos en decisiones concretas usando modelos de optimización, simulación e inteligencia artificial.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 rounded-xl border border-white/5 bg-white/5 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl">architecture</span>
+<h4 class="text-white font-bold mb-2">Rigor Matemático</h4>
+<p class="text-sm text-slate-400 leading-normal">Cada solución está respaldada por modelos matemáticos sólidos y probados.</p>
+</div>
+<div class="p-6 rounded-xl border border-white/5 bg-white/5 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl">ads_click</span>
+<h4 class="text-white font-bold mb-2">Precisión Estratégica</h4>
+<p class="text-sm text-slate-400 leading-normal">Convertimos la teoría en herramientas prácticas que mejoran la operación de tu empresa.</p>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/50 to-accent-teal/50 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative aspect-square rounded-2xl bg-slate-900 border border-white/10 overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, rgba(17,50,212,0.4) 1px, transparent 0); background-size: 30px 30px;"></div>
+<div class="p-12 text-center">
+<div class="text-8xl font-display font-light text-primary/40 mb-4 tracking-tighter">Σ(xᵢ) → ∞</div>
+<div class="text-slate-500 font-mono text-sm uppercase tracking-widest">Modelamiento y Optimización</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div class="max-w-2xl">
+<h2 class="text-white text-3xl md:text-4xl font-bold mb-4">Nuestra Experiencia</h2>
+<p class="text-slate-400">Combinamos Investigación de Operaciones, IA y Matemáticas Avanzadas para resolver problemas complejos.</p>
+</div>
+<a class="text-primary hover:text-white font-bold flex items-center gap-2 group transition-colors" href="/servicios.html">
+                        Ver Todos los Servicios <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group p-8 rounded-xl bg-slate-900/50 border border-white/5 hover:border-primary/30 transition-all hover:-translate-y-1">
+<div class="size-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">query_stats</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">Investigación de Operaciones</h3>
+<p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                            Optimización dinámica, programación lineal y simulaciones de alta fidelidad para sistemas complejos de cadena de suministro y logística.
+                        </p>
+<ul class="space-y-2 text-xs font-medium text-slate-500">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>Diseño de Redes de Suministro</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>Optimización de Inventarios</li>
+</ul>
+</div>
+<div class="group p-8 rounded-xl bg-slate-900/50 border border-white/5 hover:border-primary/30 transition-all hover:-translate-y-1">
+<div class="size-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">psychology</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">Inteligencia Artificial</h3>
+<p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                            Flujos de trabajo de aprendizaje automático y analítica predictiva que evolucionan con tus datos para anticipar cambios en el mercado.
+                        </p>
+<ul class="space-y-2 text-xs font-medium text-slate-500">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>Mantenimiento Predictivo</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>Procesamiento de Lenguaje Natural</li>
+</ul>
+</div>
+<div class="group p-8 rounded-xl bg-slate-900/50 border border-white/5 hover:border-primary/30 transition-all hover:-translate-y-1">
+<div class="size-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">calculate</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">Matemáticas Avanzadas</h3>
+<p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                            Modelado estocástico, teoría de juegos y análisis basado en grafos para la evaluación de riesgos y optimización estructural.
+                        </p>
+<ul class="space-y-2 text-xs font-medium text-slate-500">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>Cálculo Estocástico</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary/50"></span>Simulaciones Multi-Agente</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-gradient-to-b from-background-dark to-slate-900 border-t border-white/5 overflow-hidden relative">
+<div class="absolute -right-20 top-0 opacity-10">
+<span class="material-symbols-outlined text-[400px]">hub</span>
+</div>
+<div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-12">Resolviendo desafíos en <br/> diversas industrias.</h2>
+<div class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<a href="/soluciones.html" class="flex flex-col items-center gap-2 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl">local_shipping</span>
+<span class="text-xs font-bold uppercase tracking-widest">Logística</span>
+</a>
+<a href="/soluciones.html" class="flex flex-col items-center gap-2 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl">smart_toy</span>
+<span class="text-xs font-bold uppercase tracking-widest">IA y Digital</span>
+</a>
+<a href="/soluciones.html" class="flex flex-col items-center gap-2 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl">factory</span>
+<span class="text-xs font-bold uppercase tracking-widest">Manufactura</span>
+</a>
+</div>
+<div class="mt-20 p-12 rounded-2xl bg-primary relative overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(135deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%); background-size: 20px 20px;"></div>
+<div class="relative z-10">
+<h3 class="text-3xl font-bold text-white mb-6">¿Listo para optimizar tus operaciones?</h3>
+<a href="/contacto.html" class="inline-block bg-white text-primary px-10 py-4 rounded-lg font-bold hover:bg-slate-100 transition-colors shadow-2xl">
+                            Solicita tu Consulta Gratuita
+                        </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-background-dark pt-20 pb-10 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center mb-6">
+<a href="/index.html" class="text-xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></a>
+</div>
+<p class="text-slate-500 max-w-sm leading-relaxed text-sm">
+                        Consultoría en matemáticas aplicadas e inteligencia artificial. Ayudamos a organizaciones a resolver problemas complejos con modelos de optimización.
+                    </p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Enlaces Rápidos</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="/servicios.html">Descripción de Servicios</a></li>
+<li><a class="hover:text-primary transition-colors" href="/soluciones.html">Soluciones</a></li>
+<li><a class="hover:text-primary transition-colors" href="/sobre-nosotros.html">Nuestra Metodología</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Contacto</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span> contacto@lontra.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> Chile</li>
+<li><a href="https://www.linkedin.com/in/jpmorande/" target="_blank" class="flex items-center gap-2 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xs">open_in_new</span> LinkedIn</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
+<p>© 2026 Lontra. Todos los derechos reservados.</p>
+<div class="flex gap-8">
+<a class="hover:text-white" href="#">Política de Privacidad</a>
+<a class="hover:text-white" href="#">Términos de Servicio</a>
+</div>
+</div>
+</div>
+</footer>
+
+<style>
+html { scroll-behavior: smooth; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+/* Enhanced button hover */
+a[class*="bg-primary"]:hover, button[class*="bg-primary"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px -5px rgba(17, 50, 212, 0.4);
+}
+/* Card lift effect */
+[class*="rounded-xl"][class*="border"]:hover, [class*="rounded-2xl"][class*="border"]:hover {
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+}
+/* Gradient accent line under nav */
+nav::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(17, 50, 212, 0.5), transparent);
+}
+/* Form focus glow */
+input:focus, textarea:focus, select:focus {
+    box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15);
+}
+/* Smooth image/bg transitions */
+[class*="bg-cover"] { transition: transform 0.5s ease; }
+[class*="bg-cover"]:hover { transform: scale(1.02); }
+/* Footer link underline animation */
+footer a { position: relative; }
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+footer a:hover::after { width: 100%; }
+</style>
+<script>
+(() => {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('main > section, main section .grid > div, main section .flex > div').forEach(s => {
+        s.classList.add('fade-in');
+        io.observe(s);
+    });
+    // Active nav link
+    const path = location.pathname;
+    document.querySelectorAll('nav a[href]').forEach(a => {
+        if (a.getAttribute('href') === path || (path === '/' && a.getAttribute('href') === '/index.html')) {
+            a.classList.remove('text-white/70');
+            a.classList.add('text-white', 'font-bold');
+        }
+    });
+})();
+</script>
+</body></html>

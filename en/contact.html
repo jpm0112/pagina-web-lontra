@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lontra Contact | Mathematical Consulting & AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1132d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .math-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display transition-colors duration-300">
+
+<!-- Standardized Glass Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b" style="backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="/en/index.html" class="flex items-center">
+            <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-sm text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
+            <a class="text-sm text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
+            <a class="text-sm text-white/70 hover:text-white transition-colors" href="/en/about.html">About Us</a>
+            <a class="text-sm text-white font-bold transition-colors" href="/en/contact.html">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center gap-4">
+            <div class="flex items-center gap-1 text-sm">
+                <span class="text-white font-bold">EN</span>
+                <span class="text-white/40">/</span>
+                <a href="/contacto.html" class="text-white/50 hover:text-white transition-colors">ES</a>
+            </div>
+            <a href="/en/contact.html" class="bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all">
+                Request Consultation
+            </a>
+        </div>
+        <!-- Mobile hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 space-y-4" style="background-color: rgba(16, 19, 34, 0.95);">
+        <a class="block text-sm text-white/70 hover:text-white transition-colors py-2" href="/en/services.html">Services</a>
+        <a class="block text-sm text-white/70 hover:text-white transition-colors py-2" href="/en/solutions.html">Solutions</a>
+        <a class="block text-sm text-white/70 hover:text-white transition-colors py-2" href="/en/about.html">About Us</a>
+        <a class="block text-sm text-white font-bold py-2" href="/en/contact.html">Contact</a>
+        <div class="flex items-center gap-2 py-2 text-sm">
+            <span class="text-white font-bold">EN</span>
+            <span class="text-white/40">/</span>
+            <a href="/contacto.html" class="text-white/50 hover:text-white transition-colors">ES</a>
+        </div>
+        <a href="/en/contact.html" class="block bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-bold text-center hover:bg-blue-700 transition-all">
+            Request Consultation
+        </a>
+    </div>
+</nav>
+
+<main class="relative min-h-screen math-pattern pt-20">
+<section class="max-w-7xl mx-auto px-6 pt-20 pb-16">
+<div class="flex flex-col items-center text-center space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-bold uppercase tracking-wider">
+                OPERATIONS RESEARCH & AI
+            </div>
+<h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight max-w-5xl">
+                Contact & <span class="text-primary">Consultation</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-4xl leading-relaxed">
+                We transform complex problems into mathematical solutions. Tell us about your next project and let's optimize your results together. Our team of experts is ready to address your most rigorous technical challenges.
+            </p>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-6 pb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-7 bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-8 md:p-12 rounded-2xl shadow-sm">
+<h2 class="text-2xl font-bold mb-8">Send us a message</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Name</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 dark:text-white" placeholder="E.g.: John Smith" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Organization</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 dark:text-white" placeholder="E.g.: Acme Corp." type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email <span class="text-red-500">*</span></label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 dark:text-white" placeholder="john.smith@company.com" type="email" required/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">WhatsApp <span class="text-slate-400 font-normal">(optional)</span></label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 dark:text-white" placeholder="+569 66699427" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Industry</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 dark:text-white appearance-none">
+<option value="">Select an industry</option>
+<option value="logistica">Logistics & Transportation</option>
+<option value="digital">Digital Solutions & AI</option>
+<option value="manufactura">Smart Manufacturing</option>
+<option value="retail">Retail & Ecommerce</option>
+<option value="otro">Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Describe your business challenge</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 dark:text-white resize-none" placeholder="E.g.: We need to optimize our supply chain to reduce logistics costs..." rows="5"></textarea>
+</div>
+<button class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all group" type="submit">
+                        Send Request
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</form>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-8">
+<div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl text-white">
+<h3 class="text-xl font-bold mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-400">Email</p>
+<p class="text-lg font-semibold">contact@lontra.com</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined">distance</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-400">Location</p>
+<p class="text-lg font-semibold">Global Operations</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-400">LinkedIn</p>
+<p class="text-lg font-semibold">linkedin.com/company/lontra</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-slate-200 dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 relative min-h-[250px]">
+<div class="absolute inset-0 bg-cover bg-center grayscale contrast-125 opacity-50" data-alt="Abstract map of Europe showing network connectivity" data-location="Madrid" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkOOsGlUqptrf_iIy-ib8z1b1m8kvuwyR9FIQBndZvR2dUsaIL44dJKwGFmDl6TqhQOFY8F00D2NykfCfSxdNCt9gdYy11ayskJftb4hpGgbYL_8JWxAoCtEY_hc6DBGhOx3R402eioi25-RZSwzRHDrfhWac5bDNigQNlSnXUuaxP6PpuPdVbktJgsh5OYZl-2GTD-ttmoDKY_0F4EP62t1rl5e8gPh7Qsk0A3_jrXg_smkWfJL3QkkQpstnvoP7eET2xnIZkvh8_')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 flex items-center gap-2">
+<span class="size-3 bg-primary rounded-full animate-pulse"></span>
+<span class="text-white text-sm font-bold">Our headquarters</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Standardized Footer -->
+<footer class="bg-background-dark border-t border-slate-800 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+            <div class="max-w-xs">
+                <a href="/en/index.html" class="flex items-center gap-2 mb-6">
+                    <span class="text-xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+                </a>
+                <p class="text-sm text-slate-400 leading-relaxed">
+                    Bridging the gap between advanced mathematics and practical industrial application.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-white mb-6">Company</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-sm text-slate-400 hover:text-primary transition-colors" href="/en/about.html">About Us</a></li>
+                        <li><a class="text-sm text-slate-400 hover:text-primary transition-colors" href="/en/solutions.html">Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-white mb-6">Services</h5>
+                    <ul class="space-y-4">
+                        <li><a class="text-sm text-slate-400 hover:text-primary transition-colors" href="/en/services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-white mb-6">Contact</h5>
+                    <ul class="space-y-4">
+                        <li><span class="text-sm text-slate-400">contact@lontra.com</span></li>
+                        <li><span class="text-sm text-slate-400">Global Operations</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-slate-500">&copy; 2025 Lontra Mathematical Solutions. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+html { scroll-behavior: smooth; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+/* Enhanced button hover */
+a[class*="bg-primary"]:hover, button[class*="bg-primary"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px -5px rgba(17, 50, 212, 0.4);
+}
+/* Card lift effect */
+[class*="rounded-xl"][class*="border"]:hover, [class*="rounded-2xl"][class*="border"]:hover {
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+}
+/* Gradient accent line under nav */
+nav::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(17, 50, 212, 0.5), transparent);
+}
+/* Form focus glow */
+input:focus, textarea:focus, select:focus {
+    box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15);
+}
+/* Smooth image/bg transitions */
+[class*="bg-cover"] { transition: transform 0.5s ease; }
+[class*="bg-cover"]:hover { transform: scale(1.02); }
+/* Footer link underline animation */
+footer a { position: relative; }
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+footer a:hover::after { width: 100%; }
+</style>
+<script>
+(() => {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('main > section, main section .grid > div, main section .flex > div').forEach(s => {
+        s.classList.add('fade-in');
+        io.observe(s);
+    });
+    // Active nav link
+    const path = location.pathname;
+    document.querySelectorAll('nav a[href]').forEach(a => {
+        if (a.getAttribute('href') === path || (path === '/' && a.getAttribute('href') === '/index.html')) {
+            a.classList.remove('text-white/70');
+            a.classList.add('text-white', 'font-bold');
+        }
+    });
+})();
+</script>
+</body></html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services Overview | Lontra.</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1132d4",
+                        "navy-brand": "#001a41",
+                        "vibrant-dot": "#2563eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300">
+<div class="relative flex min-h-screen flex-col">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+<div class="flex items-center gap-10">
+<div class="flex items-center">
+<h1 class="text-2xl font-bold tracking-tight flex items-baseline">
+<span class="text-[#001a41] dark:text-white">Lontra</span><span class="text-vibrant-dot text-3xl leading-none">.</span>
+</h1>
+</div>
+<nav class="hidden items-center gap-8 md:flex">
+<a class="text-sm font-medium hover:text-primary text-primary" href="#">Services</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Case Studies</a>
+<a class="text-sm font-medium hover:text-primary" href="#">About Us</a>
+<a class="text-sm font-medium hover:text-primary" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center border-r border-slate-200 dark:border-slate-800 pr-6 mr-0">
+<div class="flex items-center gap-2 bg-slate-200/50 dark:bg-slate-800/50 p-1 rounded-lg">
+<button class="px-3 py-1 text-xs font-bold rounded-md bg-primary text-white shadow-sm">EN</button>
+<button class="px-3 py-1 text-xs font-bold rounded-md transition-all hover:bg-white dark:hover:bg-slate-700">ES</button>
+</div>
+</div>
+<div class="hidden lg:flex">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="h-10 w-48 rounded-lg border-none bg-slate-200/50 pl-10 text-sm focus:ring-2 focus:ring-primary dark:bg-slate-800/50" placeholder="Search services..." type="text"/>
+</div>
+</div>
+<button class="rounded-lg bg-primary px-5 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
+                    Request Quote
+                </button>
+</div>
+</div>
+</header>
+<main class="mx-auto flex w-full max-w-7xl flex-1 px-6 py-8 lg:px-10">
+<aside class="hidden w-64 flex-col lg:flex">
+<div class="sticky top-28 flex flex-col gap-8">
+<div>
+<h3 class="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Specialties</h3>
+<nav class="flex flex-col gap-1">
+<a class="group flex items-center gap-3 rounded-lg bg-primary/10 px-4 py-2.5 text-primary" href="#math-modeling">
+<span class="material-symbols-outlined text-[20px]">function</span>
+<span class="text-sm font-semibold">Mathematical Modeling</span>
+</a>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#stochastic">
+<span class="material-symbols-outlined text-[20px]">bubble_chart</span>
+<span class="text-sm font-medium">Stochastic Simulation</span>
+</a>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#optimization">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+<span class="text-sm font-medium">Process Optimization</span>
+</a>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#ml-ai">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-sm font-medium">Machine Learning &amp; AI</span>
+</a>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#bi">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span class="text-sm font-medium">Business Intelligence</span>
+</a>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#digital">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="text-sm font-medium">Tailored Digital Solutions</span>
+</a>
+</nav>
+</div>
+<div class="rounded-xl bg-primary p-6 text-white shadow-lg shadow-primary/20">
+<p class="mb-2 text-xs font-bold uppercase opacity-80">Ready to optimize?</p>
+<h4 class="mb-4 text-lg font-bold">Schedule a strategy call today.</h4>
+<button class="w-full rounded bg-white py-2 text-sm font-bold text-primary hover:bg-slate-50">
+                        Book a Call
+                    </button>
+</div>
+</div>
+</aside>
+<div class="flex-1 lg:pl-16">
+<nav class="mb-8 flex flex-wrap items-center gap-2 text-sm">
+<a class="text-slate-500 hover:text-primary dark:text-slate-400" href="#">Home</a>
+<span class="material-symbols-outlined text-sm text-slate-300">chevron_right</span>
+<span class="font-medium text-primary">Services</span>
+</nav>
+<div class="mb-16">
+<h1 class="mb-4 text-5xl font-black tracking-tight lg:text-6xl">Services Overview</h1>
+<p class="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                    We implement rigorous mathematical frameworks and cutting-edge AI to solve your most complex operational challenges. Transform uncertainty into competitive advantage.
+                </p>
+</div>
+<div class="flex flex-col gap-24">
+<section class="group scroll-mt-32" id="math-modeling">
+<div class="mb-6 flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">function</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Mathematical Modeling</h2>
+</div>
+<div class="grid gap-10 lg:grid-cols-2">
+<div class="space-y-6">
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                                Our core expertise lies in translating intricate real-world business dynamics into robust mathematical formulations. Whether it's supply chain constraints, market equilibrium, or structural dynamics, we build models that provide a definitive source of truth for decision-making.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Deterministic and non-linear programming</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Dynamic systems and control theory</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Economic modeling and game theory</span>
+</li>
+</ul>
+<button class="flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+                                Get Started <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+<img class="h-full w-full object-cover mix-blend-overlay" data-alt="Abstract mathematical equations and geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkMHKVhi36ZlrDb99b3ouuiqUS920EL5HNaGT8GOiygfigTpy-NAcrgQd1E4ghswu5QSPuGp7Zq0pLJPjXbYmJHWZe4_OHQZGswTe3rTiChazaHlOWZKu2EhWGjuMYaM1Ifg8e1hlJyVZk9iA-taoXi68uq1KUizTq7z5dCBhbBrDyyWG2RZjXjeAmRgpTr0RhtbeJLRd7YNCfYWQM05WbyEIZggyrOjEZFI5ezeOvnYt_tsT94y2JW6uG6yn6UgDH4OaMvGw0xQvM"/>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<section class="group scroll-mt-32" id="stochastic">
+<div class="mb-6 flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">bubble_chart</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Stochastic Simulation</h2>
+</div>
+<div class="grid gap-10 lg:grid-cols-2">
+<div class="space-y-6 lg:order-2">
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                                Predicting the future isn't about guessing; it's about probability. We utilize Monte Carlo methods and Discrete Event Simulations (DES) to stress-test your operations against thousands of "what-if" scenarios.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Monte Carlo Simulations and Markov Chains</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Risk quantification and sensitivity analysis</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Capacity planning under uncertainty</span>
+</li>
+</ul>
+<button class="flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+                                Explore Simulation <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 lg:order-1">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent"></div>
+<img class="h-full w-full object-cover mix-blend-multiply opacity-60" data-alt="Data distribution charts and probabilistic graphs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm70hNqPKSF6Wf1c8577gWRFiIRXdEgYYN_V4If6T4-Ug6VUasl6X-DSK9JjRUnzCh5AZV7tobWe_SeHTe0lUVqPBl8lY5lOlemZdecS0JY8LlZRgY0r9S4CwDfVR3TD66XxIJZsVwYD21k52L0yMXieltHFwPE8AlXeDqb0CnakJPl50meYCGTgnqkvnnL5XMHOk47brLeo5SxJ-_Uo0xp9l75eCMoOiO2yDu0itHIGz_0J_04nvooxvpa42WBqC3yWnlGYGncYzx"/>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<section class="group scroll-mt-32" id="optimization">
+<div class="mb-6 flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">account_tree</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Process Optimization</h2>
+</div>
+<div class="grid gap-10 lg:grid-cols-2">
+<div class="space-y-6">
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                                Find the optimal path. We apply advanced heuristics and exact algorithms to solve routing, scheduling, and resource allocation problems that are too complex for traditional logic.
+                            </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="rounded-lg bg-slate-100 p-4 dark:bg-slate-800/50">
+<h5 class="mb-1 text-sm font-bold text-primary">Linear Prog.</h5>
+<p class="text-xs text-slate-500">Resource efficiency and cost minimization.</p>
+</div>
+<div class="rounded-lg bg-slate-100 p-4 dark:bg-slate-800/50">
+<h5 class="mb-1 text-sm font-bold text-primary">Combinatorics</h5>
+<p class="text-xs text-slate-500">Complex logic for scheduling and routes.</p>
+</div>
+</div>
+<button class="flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+                                Optimize Today <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+<img class="h-full w-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" data-alt="Complex circuit board pattern and network nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcdvO7jpYIMYQ9_ztQS3KrkKlTgdX6B0EPKzmc6mTAPzulX2z0YmutyZkYFesRGfmuM3wsc7sxvm5MbTR3yxWhqcMSKItzM-2EK9_g5HVgBOfn9diYWZuc5kna6m7BQpRVgpBeQbZY1sllgVXPn_xU-U1HMcPpmNBMugLI6MQMtSMzg7T9RIds1vCquF5LK3co13t58gSEZVognfgKP6Sz1aB9RsWn_N1Aa47RHyiPWx_vT-dtjbUlTWZJqb0BjUEc31IrK0pqBQvb"/>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<section class="group scroll-mt-32" id="ml-ai">
+<div class="mb-6 flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Machine Learning &amp; AI</h2>
+</div>
+<div class="grid gap-10 lg:grid-cols-2">
+<div class="space-y-6 lg:order-2">
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                                Beyond descriptive analytics. We design custom neural networks and predictive engines that learn from your historical data to automate decision-making and forecast demand with high accuracy.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Deep Learning and Transformer Architectures</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Predictive Maintenance and Fraud Detection</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Reinforcement Learning for autonomous systems</span>
+</li>
+</ul>
+<button class="flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+                                Build AI <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 lg:order-1">
+<img class="h-full w-full object-cover" data-alt="Artificial intelligence neural network visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgoVdZ3_oiQEjrjhTNV3WhqpfVs37Z3pzfJ-AdFy5dbDrY-iktBaM4xtGp8niHT0QjY8qnEOQD2AbDz2cIA4UlHVY2L8aBWuw0yJVvIcYs_JYWhkD_yZSce82QCRd9FimPMYXEtSrR99z1conHd67R-xdcQvjPi0zx_uO2Qhe3fUdYQzJm9TduuHR8i3JpqqIKf7w2VLAD4GAs5gm07RiMvMmrGoyc9t8dvqYfUCxvYF1nwbBwrTfMfM7I5PnVER9cSR7TDh_aOnZ9"/>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<section class="group scroll-mt-32" id="bi">
+<div class="mb-6 flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">insights</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Business Intelligence &amp; Analytics</h2>
+</div>
+<div class="grid gap-10 lg:grid-cols-2">
+<div class="space-y-6">
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                                Data is only valuable if it drives action. We develop sophisticated BI dashboards that aggregate data from multiple sources into real-time mathematical insights for executive leadership.
+                            </p>
+<div class="flex flex-wrap gap-2">
+<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">Data Engineering</span>
+<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">Custom Dashboards</span>
+<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">ETL Pipelines</span>
+<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">Real-time Reporting</span>
+</div>
+<button class="flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+                                View BI Demo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+<img class="h-full w-full object-cover" data-alt="Professional business intelligence dashboard with charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBxbjoE_rPQ1fCMQannV8ikMbpcJaoAYnJRKufLXHPH-w9D3M4gzzLlaMBMzETx03rpa3xNY8JLM4HiirUd4bmX8gdNBPt595509vABYhG7uI0KtoHymjH55Np98ae8I1dzOSPcPrb7ohYucKAdMBI1guGzLxMNwqtWQQmdv9Fci6kpgZGnA0FSEHUPQcMrN0pqjc68_qAJ46Qu01NsIqPTUIAwE9PuEZ-oQ2fOaOT4l9zufo4UuY4RPkRpzQzrezSDfKK5An7Qeqr"/>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<section class="group mb-20 scroll-mt-32" id="digital">
+<div class="mb-6 flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight">Tailored Digital Solutions</h2>
+</div>
+<div class="grid gap-10 lg:grid-cols-2">
+<div class="space-y-6 lg:order-2">
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                                Off-the-shelf software often fails against unique scientific or operational requirements. We build custom software tools, from desktop optimizers to cloud-native AI platforms.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Custom API and Microservices development</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>High-Performance Computing (HPC) solutions</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Secure data architecture for proprietary models</span>
+</li>
+</ul>
+<button class="flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+                                Start Building <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 lg:order-1">
+<img class="h-full w-full object-cover opacity-60" data-alt="Developer screen showing lines of code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Czle7cGWqcNuZGT1ZpeRm6sAEtlwAPM7_QajyvcY2OLQnnjImCpGNeitiZC7DRx978pEkX4KtdsQVdnFsXmaCdfJlW7puF0WF_eOIA6z0Q2I1Bjlj2Sbl36c0GZC9FK_L_9ORfcKEOfnNUYDRZA940VZ3h93gsb5F3m95OZBkweJrOuYYxtLvaX5vgjQUirEM5pLAGt3-KtERjAnTm5Ih29bSX4wdTHwEbx2vQY-Su7uejer5X53SV1d4Dg5zn8MY8v1DHmGtOPA"/>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="border-t border-slate-200 bg-white px-6 py-12 dark:border-slate-800 dark:bg-background-dark lg:px-10">
+<div class="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 lg:grid-cols-4">
+<div class="space-y-4">
+<div class="flex items-center text-xl font-bold tracking-tight">
+<span class="text-[#001a41] dark:text-white">Lontra</span><span class="text-vibrant-dot text-2xl leading-none">.</span>
+</div>
+<p class="text-sm text-slate-500">Where mathematical rigor meets artificial intelligence. Pioneers in operations research for the modern enterprise.</p>
+</div>
+<div>
+<h5 class="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Services</h5>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#math-modeling">Mathematical Modeling</a></li>
+<li><a class="hover:text-primary" href="#optimization">Process Optimization</a></li>
+<li><a class="hover:text-primary" href="#ml-ai">Machine Learning</a></li>
+</ul>
+</div>
+<div>
+<h5 class="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Company</h5>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Our Team</a></li>
+<li><a class="hover:text-primary" href="#">Case Studies</a></li>
+</ul>
+</div>
+<div>
+<h5 class="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Contact</h5>
+<ul class="space-y-2 text-sm">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> contact@lontra.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">location_on</span> Global Operations</li>
+</ul>
+</div>
+</div>
+<div class="mx-auto mt-12 max-w-7xl border-t border-slate-100 pt-8 text-center text-xs text-slate-400 dark:border-slate-800">
+            © 2024 Lontra. All rights reserved. Precise solutions for complex problems.
+        </div>
+</footer>
+</div>
+
+</body></html>
