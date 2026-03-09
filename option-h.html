@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lontra | Opci&oacute;n H &mdash; Matrix Rain + Neon Marquee</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#1132d4",
+        "navy-brand": "#001a3d",
+        "accent-teal": "#14b8a6",
+        "bright-blue": "#3b82f6",
+        "neon-cyan": "#06B6D4",
+        "neon-purple": "#8B5CF6",
+        "background-light": "#f6f6f8",
+        "background-dark": "#0a0e1a",
+      },
+      fontFamily: { "display": ["Inter", "sans-serif"] },
+    },
+  },
+}
+</script>
+<style type="text/tailwindcss">
+body { font-family: 'Inter', sans-serif; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(10, 14, 26, 0.85); }
+</style>
+<style>
+/* ── Matrix Rain Canvas ── */
+#matrixCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Neon Glow Text ── */
+.neon-glow-cyan {
+  text-shadow:
+    0 0 7px rgba(6, 182, 212, 0.6),
+    0 0 20px rgba(6, 182, 212, 0.4),
+    0 0 42px rgba(6, 182, 212, 0.2);
+}
+.neon-glow-purple {
+  text-shadow:
+    0 0 7px rgba(139, 92, 246, 0.6),
+    0 0 20px rgba(139, 92, 246, 0.4),
+    0 0 42px rgba(139, 92, 246, 0.2);
+}
+.neon-glow-blue {
+  text-shadow:
+    0 0 7px rgba(59, 130, 246, 0.6),
+    0 0 20px rgba(59, 130, 246, 0.4),
+    0 0 42px rgba(59, 130, 246, 0.2);
+}
+
+/* ── Neon Marquee ── */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track-left {
+  animation: marquee-left 35s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.marquee-track-right {
+  animation: marquee-right 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.marquee-track-left:hover,
+.marquee-track-right:hover {
+  animation-play-state: paused;
+}
+.neon-marquee-text {
+  text-shadow:
+    0 0 5px rgba(6, 182, 212, 0.5),
+    0 0 15px rgba(6, 182, 212, 0.3),
+    0 0 30px rgba(6, 182, 212, 0.15);
+  color: rgba(6, 182, 212, 0.7);
+}
+.neon-marquee-text-alt {
+  text-shadow:
+    0 0 5px rgba(139, 92, 246, 0.5),
+    0 0 15px rgba(139, 92, 246, 0.3),
+    0 0 30px rgba(139, 92, 246, 0.15);
+  color: rgba(139, 92, 246, 0.7);
+}
+
+/* ── Neon Border Pulse ── */
+@keyframes neon-border-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(6,182,212,0.3), 0 0 15px rgba(6,182,212,0.1), inset 0 0 5px rgba(6,182,212,0.05); }
+  50%      { box-shadow: 0 0 10px rgba(6,182,212,0.5), 0 0 30px rgba(6,182,212,0.2), inset 0 0 10px rgba(6,182,212,0.1); }
+}
+.neon-border-pulse {
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  animation: neon-border-pulse 3s ease-in-out infinite;
+}
+.neon-border-pulse-purple {
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  animation: neon-border-pulse-purple 3s ease-in-out infinite;
+}
+@keyframes neon-border-pulse-purple {
+  0%, 100% { box-shadow: 0 0 5px rgba(139,92,246,0.3), 0 0 15px rgba(139,92,246,0.1), inset 0 0 5px rgba(139,92,246,0.05); }
+  50%      { box-shadow: 0 0 10px rgba(139,92,246,0.5), 0 0 30px rgba(139,92,246,0.2), inset 0 0 10px rgba(139,92,246,0.1); }
+}
+
+/* ── Neon Flicker ── */
+@keyframes neon-flicker {
+  0%   { border-color: rgba(6,182,212,0.1); box-shadow: none; }
+  10%  { border-color: rgba(6,182,212,0.7); box-shadow: 0 0 15px rgba(6,182,212,0.4), 0 0 30px rgba(6,182,212,0.2); }
+  15%  { border-color: rgba(6,182,212,0.1); box-shadow: none; }
+  25%  { border-color: rgba(6,182,212,0.6); box-shadow: 0 0 12px rgba(6,182,212,0.3), 0 0 25px rgba(6,182,212,0.15); }
+  30%  { border-color: rgba(6,182,212,0.1); box-shadow: none; }
+  45%  { border-color: rgba(6,182,212,0.8); box-shadow: 0 0 20px rgba(6,182,212,0.5), 0 0 40px rgba(6,182,212,0.25); }
+  100% { border-color: rgba(6,182,212,0.8); box-shadow: 0 0 20px rgba(6,182,212,0.5), 0 0 40px rgba(6,182,212,0.25); }
+}
+.neon-card {
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.4s ease;
+}
+.neon-card:hover {
+  animation: neon-flicker 0.8s ease forwards;
+  transform: translateY(-6px);
+}
+
+/* ── Neon Underline on Hover ── */
+.neon-underline {
+  position: relative;
+}
+.neon-underline::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: -4px;
+  width: 0; height: 2px;
+  background: #06B6D4;
+  box-shadow: 0 0 8px rgba(6,182,212,0.6), 0 0 16px rgba(6,182,212,0.3);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+.neon-underline:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ── Reveal Animations ── */
+@keyframes reveal-up {
+  0%   { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: none;
+}
+.reveal.visible {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Counter glow ── */
+.counter-glow {
+  text-shadow:
+    0 0 10px rgba(6, 182, 212, 0.6),
+    0 0 30px rgba(6, 182, 212, 0.3);
+}
+
+/* ── CTA neon outline text ── */
+.neon-outline-text {
+  -webkit-text-stroke: 1px rgba(6, 182, 212, 0.4);
+  color: transparent;
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+}
+
+/* ── CTA glow button ── */
+.neon-btn {
+  box-shadow:
+    0 0 10px rgba(6,182,212,0.4),
+    0 0 30px rgba(6,182,212,0.2),
+    0 0 60px rgba(6,182,212,0.1);
+  transition: all 0.3s ease;
+}
+.neon-btn:hover {
+  box-shadow:
+    0 0 15px rgba(6,182,212,0.6),
+    0 0 40px rgba(6,182,212,0.3),
+    0 0 80px rgba(6,182,212,0.15);
+  transform: scale(1.05);
+}
+
+/* ── Industry card hover ── */
+.industry-neon-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.industry-neon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1);
+}
+
+/* ── Smooth scroll ── */
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body class="bg-background-dark text-white overflow-x-hidden">
+
+<!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center">
+<a class="flex items-center" href="/index.html">
+<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center overflow-hidden" id="hero">
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrixCanvas"></canvas>
+
+  <!-- Gradient overlay at bottom for transition -->
+  <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background-dark to-transparent z-[1] pointer-events-none"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
+    <!-- Badge -->
+    <div class="reveal mb-8">
+      <span class="inline-flex items-center gap-2 bg-neon-cyan/5 border border-neon-cyan/20 rounded-full px-5 py-2 text-sm">
+        <span class="w-2 h-2 rounded-full bg-neon-cyan inline-block" style="box-shadow: 0 0 6px #06B6D4, 0 0 12px rgba(6,182,212,0.4);"></span>
+        <span class="text-neon-cyan/90 font-medium">Investigaci&oacute;n de Operaciones &amp; IA</span>
+      </span>
+    </div>
+
+    <!-- Title with neon glow -->
+    <h1 class="mb-8 max-w-4xl">
+      <span class="reveal block text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-white/90">
+        Transformando
+      </span>
+      <span class="reveal block text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-white/40" style="animation-delay: 0.1s;">
+        datos en
+      </span>
+      <span class="reveal block text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight neon-glow-cyan text-neon-cyan" style="animation-delay: 0.2s;">
+        decisiones
+      </span>
+      <span class="reveal block text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight neon-glow-purple text-neon-purple" style="animation-delay: 0.3s;">
+        &oacute;ptimas
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="reveal text-lg md:text-xl text-white/40 max-w-xl mb-10 leading-relaxed" style="animation-delay: 0.4s;">
+      Combinamos investigaci&oacute;n de operaciones, matem&aacute;ticas avanzadas e inteligencia artificial para que tu empresa tome las mejores decisiones posibles.
+    </p>
+
+    <!-- CTAs -->
+    <div class="reveal flex flex-wrap gap-4" style="animation-delay: 0.5s;">
+      <a href="/contacto.html" class="neon-btn bg-neon-cyan/90 hover:bg-neon-cyan text-background-dark px-8 py-3.5 rounded-lg text-sm font-bold inline-flex items-center gap-2">
+        Solicitar Consulta
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+      <a href="/servicios.html" class="border border-neon-cyan/30 hover:border-neon-cyan/60 text-neon-cyan/80 hover:text-neon-cyan px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+        Ver Servicios
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ NEON MARQUEE STRIP ══════════════════════════════════════════════════ -->
+<section class="relative z-20 border-t border-neon-cyan/10 border-b border-b-neon-purple/10 py-5 overflow-hidden bg-background-dark">
+  <!-- Row 1: Left to Right -->
+  <div class="marquee-track-left mb-3">
+    <span class="neon-marquee-text text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp;
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp;
+    </span>
+    <span class="neon-marquee-text text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp;
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp;
+    </span>
+  </div>
+  <!-- Row 2: Right to Left -->
+  <div class="marquee-track-right">
+    <span class="neon-marquee-text-alt text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
+      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
+      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
+    </span>
+    <span class="neon-marquee-text-alt text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
+      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
+      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
+    </span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ STATS BAR ══════════════════════════════════════════════════ -->
+<section class="relative z-20 border-b border-white/5 py-16" id="stats-section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <!-- Stat 1 -->
+      <div class="reveal text-center" style="animation-delay: 0s;">
+        <div class="text-4xl md:text-5xl font-black counter-glow text-neon-cyan mb-2">
+          +<span class="counter-value" data-target="50">0</span>
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest font-medium">Proyectos</p>
+      </div>
+      <!-- Stat 2 -->
+      <div class="reveal text-center" style="animation-delay: 0.1s;">
+        <div class="text-4xl md:text-5xl font-black counter-glow text-neon-cyan mb-2">
+          <span class="counter-value" data-target="3">0</span>
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest font-medium">Industrias</p>
+      </div>
+      <!-- Stat 3 -->
+      <div class="reveal text-center" style="animation-delay: 0.2s;">
+        <div class="text-4xl md:text-5xl font-black counter-glow text-neon-cyan mb-2">
+          <span class="counter-value" data-target="7">0</span>+
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest font-medium">A&ntilde;os</p>
+      </div>
+      <!-- Stat 4 -->
+      <div class="reveal text-center" style="animation-delay: 0.3s;">
+        <div class="text-4xl md:text-5xl font-black counter-glow text-neon-cyan mb-2">
+          <span class="counter-value" data-target="98">0</span>%
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest font-medium">Satisfacci&oacute;n</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ PHILOSOPHY ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24 md:py-32" id="philosophy">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Left: Text -->
+      <div>
+        <div class="reveal">
+          <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-neon-cyan mb-4 neon-glow-cyan">Filosof&iacute;a Central</span>
+          <h2 class="text-4xl md:text-5xl font-black leading-tight mb-6">
+            Matem&aacute;ticas aplicadas<br/>a problemas <span class="text-neon-cyan neon-glow-cyan">reales</span>.
+          </h2>
+          <p class="text-white/45 text-lg leading-relaxed">
+            Conectamos la teor&iacute;a matem&aacute;tica con resultados de negocio. Nuestro equipo traduce datos en decisiones concretas usando modelos de optimizaci&oacute;n, simulaci&oacute;n e inteligencia artificial.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Cards with neon pulse -->
+      <div class="space-y-6">
+        <!-- Card 1 -->
+        <div class="reveal neon-border-pulse bg-white/[0.02] rounded-2xl p-8" style="animation-delay: 0.15s;">
+          <div class="flex items-start gap-5">
+            <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-neon-cyan/10 border border-neon-cyan/20 flex items-center justify-center">
+              <span class="text-2xl font-black text-neon-cyan neon-glow-cyan">&Sigma;</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Rigor Matem&aacute;tico</h3>
+              <p class="text-white/40 text-sm leading-relaxed">
+                Cada soluci&oacute;n est&aacute; respaldada por modelos matem&aacute;ticos s&oacute;lidos y probados en revistas cient&iacute;ficas de primer nivel.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reveal neon-border-pulse-purple bg-white/[0.02] rounded-2xl p-8" style="animation-delay: 0.3s;">
+          <div class="flex items-start gap-5">
+            <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-neon-purple/10 border border-neon-purple/20 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl text-neon-purple neon-glow-purple">trending_flat</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Precisi&oacute;n Estrat&eacute;gica</h3>
+              <p class="text-white/40 text-sm leading-relaxed">
+                Convertimos la teor&iacute;a en herramientas pr&aacute;cticas que mejoran la operaci&oacute;n de tu empresa desde el d&iacute;a uno.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ EXPERTISE ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24 md:py-32" id="expertise">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
+      <div class="reveal">
+        <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-neon-cyan mb-4 neon-glow-cyan">Capacidades</span>
+        <h2 class="text-4xl md:text-5xl font-black">Nuestra Experiencia</h2>
+      </div>
+      <a href="/servicios.html" class="reveal hidden md:inline-flex items-center gap-2 text-sm font-bold text-white/50 hover:text-neon-cyan transition-colors" style="animation-delay: 0.1s;">
+        Ver Todos los Servicios
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- 3 Cards -->
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Card 1: IO -->
+      <div class="reveal neon-card bg-white/[0.02] rounded-2xl p-8 group" style="animation-delay: 0s;">
+        <div class="w-12 h-12 rounded-lg bg-neon-cyan/10 border border-neon-cyan/20 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-neon-cyan text-2xl">hub</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 group-hover:text-neon-cyan transition-colors">Investigaci&oacute;n de Operaciones</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">
+          Optimizaci&oacute;n din&aacute;mica, programaci&oacute;n lineal y simulaciones para cadena de suministro y log&iacute;stica.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[11px] px-3 py-1.5 rounded-full bg-neon-cyan/10 text-neon-cyan/80 font-medium">Redes de Suministro</span>
+          <span class="text-[11px] px-3 py-1.5 rounded-full bg-neon-cyan/10 text-neon-cyan/80 font-medium">Inventarios</span>
+        </div>
+      </div>
+
+      <!-- Card 2: IA -->
+      <div class="reveal neon-card bg-white/[0.02] rounded-2xl p-8 group" style="animation-delay: 0.15s;">
+        <div class="w-12 h-12 rounded-lg bg-bright-blue/10 border border-bright-blue/20 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-bright-blue text-2xl">psychology</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 group-hover:text-bright-blue transition-colors">Inteligencia Artificial</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">
+          Machine learning y anal&iacute;tica predictiva que evolucionan con tus datos para anticipar cambios en el mercado.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[11px] px-3 py-1.5 rounded-full bg-bright-blue/10 text-bright-blue/80 font-medium">Mantenimiento Predictivo</span>
+          <span class="text-[11px] px-3 py-1.5 rounded-full bg-bright-blue/10 text-bright-blue/80 font-medium">NLP</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Math -->
+      <div class="reveal neon-card bg-white/[0.02] rounded-2xl p-8 group" style="animation-delay: 0.3s;">
+        <div class="w-12 h-12 rounded-lg bg-neon-purple/10 border border-neon-purple/20 flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-neon-purple text-2xl">functions</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 group-hover:text-neon-purple transition-colors">Matem&aacute;ticas Avanzadas</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">
+          Modelado estoc&aacute;stico, teor&iacute;a de juegos y an&aacute;lisis basado en grafos para evaluaci&oacute;n de riesgos.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[11px] px-3 py-1.5 rounded-full bg-neon-purple/10 text-neon-purple/80 font-medium">C&aacute;lculo Estoc&aacute;stico</span>
+          <span class="text-[11px] px-3 py-1.5 rounded-full bg-neon-purple/10 text-neon-purple/80 font-medium">Multi-Agente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 md:hidden text-center">
+      <a href="/servicios.html" class="inline-flex items-center gap-2 text-sm font-bold text-white/50 hover:text-neon-cyan transition-colors">
+        Ver Todos los Servicios
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ INDUSTRIES ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24 md:py-32 border-t border-white/5" id="industries">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="reveal">
+        <span class="inline-block text-xs font-bold tracking-[0.3em] uppercase text-neon-cyan mb-4 neon-glow-cyan">Sectores</span>
+        <h2 class="text-4xl md:text-5xl font-black">Industrias que Servimos</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <!-- Logistics -->
+      <a href="/soluciones.html" class="reveal industry-neon-card bg-white/[0.02] border border-white/[0.06] rounded-2xl p-10 text-center group block" style="animation-delay: 0s;">
+        <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">&#x1F69A;</div>
+        <h3 class="text-xl font-bold mb-2 neon-underline inline-block">Log&iacute;stica</h3>
+        <p class="text-white/40 text-sm mt-3">Optimizaci&oacute;n de rutas, inventarios y cadenas de suministro</p>
+      </a>
+
+      <!-- AI & Digital -->
+      <a href="/soluciones.html" class="reveal industry-neon-card bg-white/[0.02] border border-white/[0.06] rounded-2xl p-10 text-center group block" style="animation-delay: 0.15s;">
+        <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">&#x1F916;</div>
+        <h3 class="text-xl font-bold mb-2 neon-underline inline-block">IA y Digital</h3>
+        <p class="text-white/40 text-sm mt-3">Soluciones inteligentes para la transformaci&oacute;n digital</p>
+      </a>
+
+      <!-- Manufacturing -->
+      <a href="/soluciones.html" class="reveal industry-neon-card bg-white/[0.02] border border-white/[0.06] rounded-2xl p-10 text-center group block" style="animation-delay: 0.3s;">
+        <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">&#x1F3ED;</div>
+        <h3 class="text-xl font-bold mb-2 neon-underline inline-block">Manufactura</h3>
+        <p class="text-white/40 text-sm mt-3">Eficiencia operativa y control de procesos productivos</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24 md:py-32" id="cta">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="reveal relative rounded-3xl overflow-hidden bg-background-dark border border-neon-cyan/15 p-12 md:p-20 text-center" style="box-shadow: inset 0 0 60px rgba(6,182,212,0.03), 0 0 40px rgba(6,182,212,0.05);">
+      <!-- Scanline effect -->
+      <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6,182,212,0.3) 2px, rgba(6,182,212,0.3) 4px);"></div>
+
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          <span class="text-white">&iquest;Listo para optimizar</span>
+        </h2>
+        <h2 class="text-3xl md:text-5xl font-black mb-8 neon-outline-text">
+          tus operaciones?
+        </h2>
+        <p class="text-white/50 text-lg mb-10 max-w-xl mx-auto">
+          Agenda una consulta gratuita y descubre c&oacute;mo nuestras soluciones pueden transformar tu empresa.
+        </p>
+        <a href="/contacto.html" class="neon-btn inline-flex items-center gap-2 bg-neon-cyan text-background-dark px-8 py-4 rounded-lg text-sm font-bold">
+          Solicita tu Consulta Gratuita
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
+<footer class="relative z-20 border-t border-white/10 pt-20 pb-10 bg-background-dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <!-- Brand -->
+      <div>
+        <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        <p class="text-white/40 text-sm mt-4 leading-relaxed">
+          Consultor&iacute;a de Investigaci&oacute;n de Operaciones e Inteligencia Artificial basada en Chile.
+        </p>
+      </div>
+      <!-- Enlaces -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Enlaces</h4>
+        <ul class="space-y-3">
+          <li><a href="/servicios.html" class="text-sm text-white/40 hover:text-neon-cyan transition-colors">Servicios</a></li>
+          <li><a href="/soluciones.html" class="text-sm text-white/40 hover:text-neon-cyan transition-colors">Soluciones</a></li>
+          <li><a href="/sobre-nosotros.html" class="text-sm text-white/40 hover:text-neon-cyan transition-colors">Sobre Nosotros</a></li>
+        </ul>
+      </div>
+      <!-- Empresa -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Empresa</h4>
+        <ul class="space-y-3">
+          <li><a href="/contacto.html" class="text-sm text-white/40 hover:text-neon-cyan transition-colors">Contacto</a></li>
+          <li><a href="/sobre-nosotros.html" class="text-sm text-white/40 hover:text-neon-cyan transition-colors">Equipo</a></li>
+        </ul>
+      </div>
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Contacto</h4>
+        <ul class="space-y-3">
+          <li class="text-sm text-white/40">contacto@lontra.cl</li>
+          <li class="text-sm text-white/40">Santiago, Chile</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Pol&iacute;tica de Privacidad</a>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">T&eacute;rminos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════ JAVASCRIPT ══════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ══════════════ 1. MATRIX RAIN CANVAS ══════════════
+  const canvas = document.getElementById('matrixCanvas');
+  const ctx = canvas.getContext('2d');
+  const heroSection = document.getElementById('hero');
+
+  // Characters to rain
+  const chars = '\u2211\u222B\u2207\u2202\u03BB\u03C0\u03A3\u03A9\u03B8\u03BC\u03C3\u03B1\u03B2\u03B4\u03B5\u03B3\u03C6\u03C8\u03C9\u2206\u220F01';
+  const charArray = chars.split('');
+
+  let columns = [];
+  let colCount = 0;
+  const fontSize = 16;
+  let mouseX = -1;
+  let mouseY = -1;
+
+  function resizeCanvas() {
+    canvas.width = heroSection.offsetWidth;
+    canvas.height = heroSection.offsetHeight;
+    initColumns();
+  }
+
+  function initColumns() {
+    // Fewer columns on mobile
+    const gap = window.innerWidth < 768 ? 35 : 22;
+    colCount = Math.floor(canvas.width / gap);
+    columns = [];
+    for (let i = 0; i < colCount; i++) {
+      columns.push({
+        x: i * gap + gap / 2,
+        y: Math.random() * canvas.height * -1, // start off-screen
+        speed: 1 + Math.random() * 3,
+        baseSpeed: 1 + Math.random() * 3,
+        chars: [],
+        trailLength: 8 + Math.floor(Math.random() * 18),
+        hue: 186, // cyan base
+      });
+      // Pre-fill with random chars
+      for (let j = 0; j < columns[i].trailLength; j++) {
+        columns[i].chars.push(charArray[Math.floor(Math.random() * charArray.length)]);
+      }
+    }
+  }
+
+  // Track mouse in hero section
+  heroSection.addEventListener('mousemove', function(e) {
+    const rect = heroSection.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+  });
+  heroSection.addEventListener('mouseleave', function() {
+    mouseX = -1;
+    mouseY = -1;
+  });
+
+  function drawMatrix() {
+    // Semi-transparent clear for trail effect
+    ctx.fillStyle = 'rgba(10, 14, 26, 0.12)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < columns.length; i++) {
+      const col = columns[i];
+
+      // Mouse influence: speed up and shift color near cursor
+      let speedMult = 1;
+      let hueShift = 0;
+      if (mouseX > 0 && mouseY > 0) {
+        const dx = col.x - mouseX;
+        const dy = col.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 200) {
+          const influence = 1 - (dist / 200);
+          speedMult = 1 + influence * 3;
+          hueShift = influence * 80; // shift toward purple/magenta
+        }
+      }
+
+      col.speed = col.baseSpeed * speedMult;
+
+      // Draw each character in the trail
+      for (let j = 0; j < col.trailLength; j++) {
+        const charY = col.y - j * fontSize;
+        if (charY < -fontSize || charY > canvas.height + fontSize) continue;
+
+        // Fade: head is brightest, tail fades out
+        const fadeRatio = 1 - (j / col.trailLength);
+        const alpha = fadeRatio * 0.15; // low opacity as requested
+
+        const hue = 186 + hueShift;
+        ctx.fillStyle = `hsla(${hue}, 80%, 60%, ${alpha})`;
+        ctx.font = `${fontSize}px monospace`;
+
+        // Occasionally mutate a character
+        if (Math.random() < 0.02) {
+          col.chars[j] = charArray[Math.floor(Math.random() * charArray.length)];
+        }
+
+        ctx.fillText(col.chars[j], col.x, charY);
+
+        // Head character gets extra brightness
+        if (j === 0) {
+          ctx.fillStyle = `hsla(${hue}, 90%, 80%, ${0.35})`;
+          ctx.fillText(col.chars[j], col.x, charY);
+        }
+      }
+
+      // Move column down
+      col.y += col.speed;
+
+      // Reset when fully off-screen at bottom
+      if (col.y - col.trailLength * fontSize > canvas.height) {
+        col.y = Math.random() * -200 - 50;
+        col.baseSpeed = 1 + Math.random() * 3;
+        col.trailLength = 8 + Math.floor(Math.random() * 18);
+        // Regenerate chars
+        col.chars = [];
+        for (let j = 0; j < col.trailLength; j++) {
+          col.chars.push(charArray[Math.floor(Math.random() * charArray.length)]);
+        }
+      }
+    }
+
+    requestAnimationFrame(drawMatrix);
+  }
+
+  // Initialize
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  requestAnimationFrame(drawMatrix);
+
+
+  // ══════════════ 2. SCROLL REVEAL (IntersectionObserver) ══════════════
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var delay = el.style.animationDelay || '0s';
+        var delayMs = parseFloat(delay) * 1000;
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, delayMs);
+        revealObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+
+  // ══════════════ 3. COUNTER ANIMATION ══════════════
+  var countersAnimated = false;
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !countersAnimated) {
+        countersAnimated = true;
+        animateCounters();
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  var statsSection = document.getElementById('stats-section');
+  if (statsSection) {
+    counterObserver.observe(statsSection);
+  }
+
+  function animateCounters() {
+    document.querySelectorAll('.counter-value').forEach(function(counter) {
+      var target = parseInt(counter.getAttribute('data-target'), 10);
+      var duration = 2000;
+      var startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        var elapsed = currentTime - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.floor(eased * target);
+        counter.textContent = current;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  }
+
+
+  // ══════════════ 4. NEON FLICKER ON EXPERTISE CARDS (re-trigger on each hover) ══════════════
+  document.querySelectorAll('.neon-card').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      // Reset animation by removing and re-adding
+      card.style.animation = 'none';
+      // Force reflow
+      void card.offsetWidth;
+      card.style.animation = '';
+    });
+  });
+
+
+  // ══════════════ 5. MATRIX CANVAS POINTER EVENTS ══════════════
+  // Allow mouse events to pass through to hero content but track on canvas area
+  canvas.style.pointerEvents = 'none';
+
+})();
+</script>
+
+</body>
+</html>

@@ -4,168 +4,213 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Solutions | Lontra Mathematical Solutions</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1132d4",
-                        "accent-teal": "#2dd4bf",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101322",
-                        "card-dark": "#191e33",
-                        "border-dark": "#323b67",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#1132d4",
+        "navy-brand": "#001a3d",
+        "accent-teal": "#14b8a6",
+        "accent-cyan": "#06B6D4",
+        "bright-blue": "#3b82f6",
+        "purple": "#8B5CF6",
+        "warm-amber": "#F59E0B",
+        "background-light": "#f6f6f8",
+        "background-dark": "#101322",
+      },
+      fontFamily: { "display": ["Inter", "sans-serif"] },
+    },
+  },
+}
+</script>
+<style type="text/tailwindcss">
+body { font-family: 'Inter', sans-serif; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+</style>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+  /* ── Grid Background ── */
+  .grid-bg {
+    --grid-size: 60px;
+    background-image:
+      linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+  }
+
+  /* ── Fade-up generic ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Industry card hover ── */
+  .industry-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .industry-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 60px rgba(17,50,212,0.15);
+    border-color: rgba(59,130,246,0.3);
+  }
+
+  /* ── CTA shimmer ── */
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .cta-shimmer {
+    background-size: 200% auto;
+    background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%);
+    animation: shimmer 12s linear infinite;
+  }
+
+  /* ── Smooth scroll ── */
+  html { scroll-behavior: smooth; }
+</style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white transition-colors duration-300">
-<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-<!-- Navigation -->
-<header class="fixed top-0 z-50 w-full px-4 md:px-20 lg:px-40 py-3" style="backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); border-bottom: 1px solid rgba(255,255,255,0.1);">
-<div class="flex items-center justify-between max-w-[1200px] mx-auto">
-<a href="/en/index.html" class="flex items-center gap-2">
-<h2 class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></h2>
+<body class="bg-background-dark text-white">
+
+<!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center">
+<a class="flex items-center" href="/en/index.html">
+<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
 </a>
-<div class="flex flex-1 justify-end gap-6 items-center">
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/services.html">Services</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/solutions.html">Solutions</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/about.html">About Us</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/contact.html">Contact</a>
-</nav>
-<div class="h-6 w-[1px] bg-white/10 hidden md:block"></div>
-<div class="flex items-center gap-3">
-<div class="flex items-center gap-2">
-<span class="text-white text-xs font-bold tracking-wider">EN</span>
-<span class="text-white/20 text-xs">|</span>
-<a href="/soluciones.html" class="text-white/40 hover:text-white/80 text-xs font-bold tracking-wider transition-colors">ES</a>
 </div>
-<a href="/en/contact.html" class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-primary/80 text-white text-xs font-bold leading-normal tracking-wider transition-all">
-<span class="truncate">Request Consultation</span>
-</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/about.html">About Us</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/contact.html">Contact</a>
+<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-white/40">
+<span class="text-white">EN</span>
+<span class="text-white/20">|</span>
+<a class="hover:text-white transition-colors" href="/soluciones.html">ES</a>
+</div>
+<a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Request Consultation</a>
+</div>
 </div>
 <!-- Mobile hamburger -->
-<button class="md:hidden flex items-center text-white" onclick="document.getElementById('mobile-menu-solutions').classList.toggle('hidden')">
+<button class="md:hidden flex items-center text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
-</div>
 <!-- Mobile menu -->
-<div id="mobile-menu-solutions" class="hidden md:hidden mt-4 flex flex-col gap-4 pb-4">
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/services.html">Services</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/solutions.html">Solutions</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/about.html">About Us</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/contact.html">Contact</a>
-<div class="flex items-center gap-2 mt-2">
-<span class="text-white text-xs font-bold tracking-wider">EN</span>
-<span class="text-white/20 text-xs">|</span>
-<a href="/soluciones.html" class="text-white/40 hover:text-white/80 text-xs font-bold tracking-wider transition-colors">ES</a>
+<div id="mobile-menu" class="hidden md:hidden px-6 pb-6 flex flex-col gap-4">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/about.html">About Us</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/contact.html">Contact</a>
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-white/40 pt-2 border-t border-white/10">
+<span class="text-white">EN</span>
+<span class="text-white/20">|</span>
+<a class="hover:text-white transition-colors" href="/soluciones.html">ES</a>
 </div>
 </div>
-</header>
-<!-- Spacer for fixed nav -->
-<div class="h-[60px]"></div>
+</nav>
 
-<main class="flex-1">
+<!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
+<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden grid-bg">
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32 pb-20">
+    <!-- Badge -->
+    <div class="mb-8 fade-up" style="transition-delay:0.1s">
+      <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-sm text-white/80">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan inline-block"></span>
+        Operations Research &amp; AI
+      </span>
+    </div>
 
-<!-- Hero -->
-<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0 bg-background-dark">
-<div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 2px 2px, rgba(17, 50, 212, 0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
-<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/50 to-background-dark"></div>
-<div class="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full"></div>
-<div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-teal/10 blur-[100px] rounded-full"></div>
-</div>
-<div class="relative z-10 max-w-4xl mx-auto px-6 text-center py-24">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-bold uppercase tracking-wider mb-8">
-    Operations Research & AI
-</div>
-<h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tight text-white mb-6">
-    Solutions that Transform <br class="hidden md:block"/>Your Business
-</h1>
-<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-    We use advanced mathematics and artificial intelligence to help you make better decisions, reduce costs, and grow your business.
-</p>
-</div>
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6 fade-up" style="transition-delay:0.3s">
+      Solutions that Transform<br class="hidden md:block"/>
+      <span class="bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent">Your Business</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed mb-10 fade-up" style="transition-delay:0.5s">
+      We use advanced mathematics and artificial intelligence to help you make better decisions, reduce costs, and grow your business.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 fade-up" style="transition-delay:0.7s">
+      <a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+        Request Consultation
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+      <a href="/en/services.html" class="border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+        View Services
+      </a>
+    </div>
+  </div>
+
+  <!-- Gradient fade at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
 </section>
 
-<!-- Industry Sectors -->
-<section class="py-24 bg-background-dark">
+<!-- ══════════════════════════════════════════════════ INDUSTRIES ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24" id="industries">
 <div class="max-w-7xl mx-auto px-6">
-<div class="text-center mb-16">
-<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Industries We Impact</h2>
-<p class="text-slate-400 max-w-2xl mx-auto">We work with companies across different sectors, tailoring our solutions to the specific challenges of each industry.</p>
+<div class="text-center mb-14">
+<span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">INDUSTRIES</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-4">Industries We Impact</h2>
+<p class="text-white/50 max-w-2xl mx-auto">We work with companies across different sectors, tailoring our solutions to the specific challenges of each industry.</p>
 </div>
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-<!-- Logistics -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all group">
-<div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+<!-- Logistics — primary (blue) accent -->
+<div class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group">
+<div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-500">
 <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
 </div>
-<h3 class="text-xl font-bold text-white mb-4">Logistics & Supply Chain</h3>
-<p class="text-slate-400 leading-relaxed mb-6">
-    Are your trucks driving more miles than they need to? Could your warehouse run more efficiently? We help you find the fastest and cheapest delivery routes for your fleet <span class="text-slate-300">(vehicle routing optimization)</span>, organize your inventory intelligently <span class="text-slate-300">(dynamic inventory management)</span>, and forecast demand so you never run short or overstock.
+<h3 class="text-xl font-bold mb-4">Logistics &amp; Supply Chain</h3>
+<p class="text-white/50 leading-relaxed mb-6">
+    Are your trucks driving more miles than they need to? Could your warehouse run more efficiently? We help you find the fastest and cheapest delivery routes for your fleet <span class="text-white/30">(vehicle routing optimization)</span>, organize your inventory intelligently <span class="text-white/30">(dynamic inventory management)</span>, and forecast demand so you never run short or overstock.
 </p>
-<ul class="space-y-2 text-sm text-slate-500">
+<ul class="space-y-2 text-sm text-white/40">
 <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Optimal distribution routes</li>
 <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Inventory planning</li>
 <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Demand forecasting</li>
 </ul>
 </div>
 
-<!-- Digital Solutions & AI -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all group">
-<div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">smart_toy</span>
+<!-- Digital Solutions & AI — accent-cyan -->
+<div class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group" style="transition-delay:0.15s">
+<div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-all duration-500">
+<span class="material-symbols-outlined text-accent-cyan text-3xl">smart_toy</span>
 </div>
-<h3 class="text-xl font-bold text-white mb-4">Digital Solutions & AI</h3>
-<p class="text-slate-400 leading-relaxed mb-6">
-    Is your team wasting time searching through scattered documents? Are there repetitive tasks that could be automated? We build intelligent assistants that answer questions about your internal data <span class="text-slate-300">(RAG — Retrieval-Augmented Generation)</span>, automate processes with language models <span class="text-slate-300">(LLMs)</span>, and develop custom tools that integrate AI directly into your daily operations.
+<h3 class="text-xl font-bold mb-4">Digital Solutions &amp; AI</h3>
+<p class="text-white/50 leading-relaxed mb-6">
+    Is your team wasting time searching through scattered documents? Are there repetitive tasks that could be automated? We build intelligent assistants that answer questions about your internal data <span class="text-white/30">(RAG &mdash; Retrieval-Augmented Generation)</span>, automate processes with language models <span class="text-white/30">(LLMs)</span>, and develop custom tools that integrate AI directly into your daily operations.
 </p>
-<ul class="space-y-2 text-sm text-slate-500">
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> AI assistants (LLMs & RAG)</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Process automation</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Decision support systems</li>
+<ul class="space-y-2 text-sm text-white/40">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> AI assistants (LLMs &amp; RAG)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Process automation</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Decision support systems</li>
 </ul>
 </div>
 
-<!-- Manufacturing -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all group">
-<div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-<span class="material-symbols-outlined text-primary text-3xl">factory</span>
+<!-- Manufacturing — purple -->
+<div class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group" style="transition-delay:0.3s">
+<div class="w-14 h-14 rounded-xl bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple/20 transition-all duration-500">
+<span class="material-symbols-outlined text-purple text-3xl">factory</span>
 </div>
-<h3 class="text-xl font-bold text-white mb-4">Manufacturing</h3>
-<p class="text-slate-400 leading-relaxed mb-6">
-    Does your production line have bottlenecks? Do machines break down when you least expect it? We help you plan production efficiently <span class="text-slate-300">(production scheduling)</span>, predict when your equipment will fail before it happens <span class="text-slate-300">(predictive maintenance)</span>, and reduce waste at every stage of the process.
+<h3 class="text-xl font-bold mb-4">Manufacturing</h3>
+<p class="text-white/50 leading-relaxed mb-6">
+    Does your production line have bottlenecks? Do machines break down when you least expect it? We help you plan production efficiently <span class="text-white/30">(production scheduling)</span>, predict when your equipment will fail before it happens <span class="text-white/30">(predictive maintenance)</span>, and reduce waste at every stage of the process.
 </p>
-<ul class="space-y-2 text-sm text-slate-500">
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Production planning</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Predictive maintenance</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Waste reduction</li>
+<ul class="space-y-2 text-sm text-white/40">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Production planning</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Predictive maintenance</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Waste reduction</li>
 </ul>
 </div>
 
@@ -173,90 +218,92 @@
 </div>
 </section>
 
-<!-- How We Help -->
-<section class="py-24 bg-background-dark border-t border-white/5">
+<!-- ══════════════════════════════════════════════════ HOW WE HELP ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24" id="how-we-help">
 <div class="max-w-7xl mx-auto px-6">
-<div class="text-center mb-16">
-<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How We Help</h2>
-<p class="text-slate-400 max-w-2xl mx-auto">Every business has unique challenges. Here's how we turn complex problems into competitive advantages.</p>
+<div class="text-center mb-14">
+<span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">CAPABILITIES</span>
+<h2 class="text-4xl md:text-5xl font-bold mb-4">How We Help</h2>
+<p class="text-white/50 max-w-2xl mx-auto">Every business has unique challenges. Here's how we turn complex problems into competitive advantages.</p>
 </div>
+
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
 <!-- Supply Chain Optimization -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all">
+<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500">
 <div class="flex items-center gap-4 mb-4">
-<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-2xl">route</span>
 </div>
-<h3 class="text-lg font-bold text-white">Supply Chain Optimization</h3>
+<h3 class="text-lg font-bold">Supply Chain Optimization</h3>
 </div>
-<p class="text-slate-400 leading-relaxed">
-    Imagine every product arriving at the right place, at the right time, at the lowest possible cost. We analyze your entire chain — from suppliers to the end customer — and find the best way to move your products, using mathematical models that evaluate millions of combinations in seconds.
+<p class="text-white/50 leading-relaxed">
+    Imagine every product arriving at the right place, at the right time, at the lowest possible cost. We analyze your entire chain &mdash; from suppliers to the end customer &mdash; and find the best way to move your products, using mathematical models that evaluate millions of combinations in seconds.
 </p>
 </div>
 
 <!-- Business Intelligence & Analytics -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all">
+<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.1s">
 <div class="flex items-center gap-4 mb-4">
-<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-2xl">dashboard</span>
+<div class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-cyan text-2xl">dashboard</span>
 </div>
-<h3 class="text-lg font-bold text-white">Business Intelligence & Analytics</h3>
+<h3 class="text-lg font-bold">Business Intelligence &amp; Analytics</h3>
 </div>
-<p class="text-slate-400 leading-relaxed">
+<p class="text-white/50 leading-relaxed">
     Your data has answers you're not seeing yet. We build dashboards and analytics systems that consolidate information from different sources, so you can see the real state of your operation and make decisions based on data, not intuition.
 </p>
 </div>
 
 <!-- Predictive Maintenance -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all">
+<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-purple/40 transition-all duration-500" style="transition-delay:0.2s">
 <div class="flex items-center gap-4 mb-4">
-<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-2xl">build</span>
+<div class="w-12 h-12 rounded-xl bg-purple/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-purple text-2xl">build</span>
 </div>
-<h3 class="text-lg font-bold text-white">Predictive Maintenance</h3>
+<h3 class="text-lg font-bold">Predictive Maintenance</h3>
 </div>
-<p class="text-slate-400 leading-relaxed">
+<p class="text-white/50 leading-relaxed">
     It's much cheaper to fix something before it breaks. We analyze your equipment and machine data to predict when maintenance will be needed, avoiding unexpected downtime that costs time and money. Your operation runs without interruptions.
 </p>
 </div>
 
 <!-- Intelligent Automation -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all">
+<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-bright-blue/40 transition-all duration-500" style="transition-delay:0.3s">
 <div class="flex items-center gap-4 mb-4">
-<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-2xl">settings_suggest</span>
+<div class="w-12 h-12 rounded-xl bg-bright-blue/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-bright-blue text-2xl">settings_suggest</span>
 </div>
-<h3 class="text-lg font-bold text-white">Intelligent Automation</h3>
+<h3 class="text-lg font-bold">Intelligent Automation</h3>
 </div>
-<p class="text-slate-400 leading-relaxed">
+<p class="text-white/50 leading-relaxed">
     There are tasks your team does every day manually: classifying documents, extracting data from spreadsheets, generating reports. We build systems that automate these processes using AI, so your team can focus on what really matters.
 </p>
 </div>
 
 <!-- Demand Forecasting -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all">
+<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-warm-amber/40 transition-all duration-500" style="transition-delay:0.4s">
 <div class="flex items-center gap-4 mb-4">
-<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-2xl">trending_up</span>
+<div class="w-12 h-12 rounded-xl bg-warm-amber/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-warm-amber text-2xl">trending_up</span>
 </div>
-<h3 class="text-lg font-bold text-white">Demand Forecasting</h3>
+<h3 class="text-lg font-bold">Demand Forecasting</h3>
 </div>
-<p class="text-slate-400 leading-relaxed">
+<p class="text-white/50 leading-relaxed">
     How much will you sell next month? How much should you produce? Our models analyze historical patterns, seasonality, and market trends to give you accurate forecasts. Plan with confidence and avoid running out of stock or carrying excess inventory.
 </p>
 </div>
 
 <!-- Generative AI & Intelligent Assistants -->
-<div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-primary/30 transition-all">
+<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-teal/40 transition-all duration-500" style="transition-delay:0.5s">
 <div class="flex items-center gap-4 mb-4">
-<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-2xl">smart_toy</span>
+<div class="w-12 h-12 rounded-xl bg-accent-teal/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-teal text-2xl">smart_toy</span>
 </div>
-<h3 class="text-lg font-bold text-white">Generative AI & Intelligent Assistants</h3>
+<h3 class="text-lg font-bold">Generative AI &amp; Intelligent Assistants</h3>
 </div>
-<p class="text-slate-400 leading-relaxed">
-    We build AI assistants that understand and answer questions about your documents, manuals, and internal databases <span class="text-slate-300">(RAG — Retrieval-Augmented Generation)</span>. Using advanced language models <span class="text-slate-300">(LLMs)</span>, we automate tasks like classifying emails, generating reports, summarizing documents, and extracting key information from unstructured text.
+<p class="text-white/50 leading-relaxed">
+    We build AI assistants that understand and answer questions about your documents, manuals, and internal databases <span class="text-white/30">(RAG &mdash; Retrieval-Augmented Generation)</span>. Using advanced language models <span class="text-white/30">(LLMs)</span>, we automate tasks like classifying emails, generating reports, summarizing documents, and extracting key information from unstructured text.
 </p>
 </div>
 
@@ -264,152 +311,142 @@
 </div>
 </section>
 
-<!-- Technical Capabilities Strip -->
-<section class="py-16 bg-slate-900/80 border-t border-b border-white/5">
+<!-- ══════════════════════════════════════════════════ TOOLKIT STRIP ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 bg-white/[0.02] border-y border-white/10">
 <div class="max-w-7xl mx-auto px-6">
 <div class="text-center mb-12">
-<h2 class="text-2xl font-bold text-white mb-2">Our Toolkit</h2>
-<p class="text-slate-500 text-sm">The disciplines we apply to solve your problems</p>
+<span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">TOOLKIT</span>
+<h2 class="text-2xl md:text-3xl font-bold mb-2">Our Toolkit</h2>
+<p class="text-white/40 text-sm">The disciplines we apply to solve your problems</p>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-<div class="text-center p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary text-3xl mb-3">hub</span>
-<h4 class="text-white font-bold text-sm mb-1">Operations Research</h4>
-<p class="text-slate-500 text-xs">We find the best possible solution among millions of options</p>
+
+<div class="fade-up text-center p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-primary/30 transition-all duration-500">
+<span class="material-symbols-outlined text-primary text-3xl mb-3 block">hub</span>
+<h4 class="font-bold text-sm mb-1">Operations Research</h4>
+<p class="text-white/40 text-xs">We find the best possible solution among millions of options</p>
 </div>
-<div class="text-center p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary text-3xl mb-3">psychology</span>
-<h4 class="text-white font-bold text-sm mb-1">Artificial Intelligence</h4>
-<p class="text-slate-500 text-xs">Systems that learn from your data and improve over time</p>
+
+<div class="fade-up text-center p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accent-cyan/30 transition-all duration-500" style="transition-delay:0.1s">
+<span class="material-symbols-outlined text-accent-cyan text-3xl mb-3 block">psychology</span>
+<h4 class="font-bold text-sm mb-1">Artificial Intelligence</h4>
+<p class="text-white/40 text-xs">Systems that learn from your data and improve over time</p>
 </div>
-<div class="text-center p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary text-3xl mb-3">function</span>
-<h4 class="text-white font-bold text-sm mb-1">Mathematical Modeling</h4>
-<p class="text-slate-500 text-xs">We translate your business into equations we can optimize</p>
+
+<div class="fade-up text-center p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-purple/30 transition-all duration-500" style="transition-delay:0.2s">
+<span class="material-symbols-outlined text-purple text-3xl mb-3 block">function</span>
+<h4 class="font-bold text-sm mb-1">Mathematical Modeling</h4>
+<p class="text-white/40 text-xs">We translate your business into equations we can optimize</p>
 </div>
-<div class="text-center p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary text-3xl mb-3">science</span>
-<h4 class="text-white font-bold text-sm mb-1">Simulation</h4>
-<p class="text-slate-500 text-xs">We test scenarios virtually before implementing real changes</p>
+
+<div class="fade-up text-center p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-warm-amber/30 transition-all duration-500" style="transition-delay:0.3s">
+<span class="material-symbols-outlined text-warm-amber text-3xl mb-3 block">science</span>
+<h4 class="font-bold text-sm mb-1">Simulation</h4>
+<p class="text-white/40 text-xs">We test scenarios virtually before implementing real changes</p>
 </div>
+
 </div>
 </div>
 </section>
 
-<!-- CTA -->
-<section class="py-24 bg-background-dark">
-<div class="max-w-4xl mx-auto px-6 text-center">
-<div class="p-12 rounded-2xl bg-primary relative overflow-hidden">
-<div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(135deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%); background-size: 20px 20px;"></div>
-<div class="relative z-10">
-<h3 class="text-3xl font-bold text-white mb-4">Ready to Solve Your Next Challenge?</h3>
-<p class="text-white/80 mb-8 max-w-lg mx-auto">Tell us about your business problem and we'll show you how mathematics can help.</p>
-<a href="/en/contact.html" class="inline-block bg-white text-primary px-10 py-4 rounded-lg font-bold hover:bg-slate-100 transition-colors shadow-2xl">
-    Request a Free Consultation
-</a>
-</div>
-</div>
-</div>
+<!-- ══════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-24" id="cta">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+      <!-- Dark overlay for readability -->
+      <div class="absolute inset-0 bg-background-dark/40 rounded-3xl"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Solve Your<br/>Next Challenge?</h2>
+        <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
+          Tell us about your business problem and we'll show you how mathematics can help.
+        </p>
+        <a href="/en/contact.html" class="inline-flex items-center gap-2 bg-white text-background-dark px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
+          Request a Free Consultation
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
-</main>
+<!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
+<footer class="relative z-20 border-t border-white/10 pt-20 pb-10 bg-background-dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <!-- Brand -->
+      <div>
+        <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        <p class="text-white/40 text-sm mt-4 leading-relaxed">
+          Operations Research and Artificial Intelligence consulting based in Chile.
+        </p>
+      </div>
+      <!-- Links -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Links</h4>
+        <ul class="space-y-3">
+          <li><a href="/en/services.html" class="text-sm text-white/40 hover:text-white transition-colors">Services</a></li>
+          <li><a href="/en/solutions.html" class="text-sm text-white/40 hover:text-white transition-colors">Solutions</a></li>
+          <li><a href="/en/about.html" class="text-sm text-white/40 hover:text-white transition-colors">About Us</a></li>
+        </ul>
+      </div>
+      <!-- Company -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Company</h4>
+        <ul class="space-y-3">
+          <li><a href="/en/contact.html" class="text-sm text-white/40 hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/en/about.html" class="text-sm text-white/40 hover:text-white transition-colors">Team</a></li>
+        </ul>
+      </div>
+      <!-- Contact -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Contact</h4>
+        <ul class="space-y-3">
+          <li class="text-sm text-white/40">contacto@lontra.cl</li>
+          <li class="text-sm text-white/40">Santiago, Chile</li>
+        </ul>
+      </div>
+    </div>
 
-<!-- Footer -->
-<footer class="bg-background-dark pt-20 pb-10 border-t border-white/5">
-<div class="max-w-7xl mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-<div class="col-span-1 md:col-span-2">
-<div class="flex items-center mb-6">
-<a href="/en/index.html" class="text-xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></a>
-</div>
-<p class="text-slate-500 max-w-sm leading-relaxed text-sm">
-    Mathematical strategy and AI consulting. We help organizations solve their toughest problems through precision modeling.
-</p>
-</div>
-<div>
-<h4 class="text-white font-bold mb-6">Quick Links</h4>
-<ul class="space-y-4 text-sm text-slate-500">
-<li><a class="hover:text-primary transition-colors" href="/en/services.html">Services</a></li>
-<li><a class="hover:text-primary transition-colors" href="/en/solutions.html">Solutions</a></li>
-<li><a class="hover:text-primary transition-colors" href="/en/about.html">About Us</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-white font-bold mb-6">Contact</h4>
-<ul class="space-y-4 text-sm text-slate-500">
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span> contact@lontra.com</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> Global Operations</li>
-</ul>
-</div>
-</div>
-<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
-<p>&copy; 2025 Lontra Mathematical Solutions. All rights reserved.</p>
-<div class="flex gap-8">
-<a class="hover:text-white" href="#">Privacy Policy</a>
-<a class="hover:text-white" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/30">&copy; 2026 Lontra. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
 </footer>
-</div>
 
-<style>
-html { scroll-behavior: smooth; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-a[class*="bg-primary"]:hover, button[class*="bg-primary"]:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 25px -5px rgba(17, 50, 212, 0.4);
-}
-[class*="rounded-xl"][class*="border"]:hover, [class*="rounded-2xl"][class*="border"]:hover {
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
-}
-nav::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(17, 50, 212, 0.5), transparent);
-}
-input:focus, textarea:focus, select:focus {
-    box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15);
-}
-[class*="bg-cover"] { transition: transform 0.5s ease; }
-[class*="bg-cover"]:hover { transform: scale(1.02); }
-footer a { position: relative; }
-footer a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: currentColor;
-    transition: width 0.3s ease;
-}
-footer a:hover::after { width: 100%; }
-</style>
+<!-- ══════════════════════════════════════════════════ JAVASCRIPT ══════════════════════════════════════════════════ -->
 <script>
-(() => {
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('main > section, main section .grid > div, main section .flex > div').forEach(s => {
-        s.classList.add('fade-in');
-        io.observe(s);
+(function() {
+  'use strict';
+
+  // ── IntersectionObserver for fade-up ──
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      if (entry.target.classList.contains('fade-up')) {
+        entry.target.classList.add('in-view');
+      }
+      observer.unobserve(entry.target);
     });
-    const path = location.pathname;
-    document.querySelectorAll('nav a[href]').forEach(a => {
-        if (a.getAttribute('href') === path || (path === '/' && a.getAttribute('href') === '/en/index.html')) {
-            a.classList.remove('text-white/70');
-            a.classList.add('text-white', 'font-bold');
-        }
-    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // ── Highlight active nav link ──
+  var path = location.pathname;
+  document.querySelectorAll('nav a[href]').forEach(function(a) {
+    if (a.getAttribute('href') === path) {
+      a.classList.remove('text-white/70');
+      a.classList.add('text-white', 'font-bold');
+    }
+  });
 })();
 </script>
-</body></html>
+
+</body>
+</html>

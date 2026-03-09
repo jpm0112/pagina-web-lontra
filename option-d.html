@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lontra | Opción D — Particle Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#1132d4",
+        "navy-brand": "#001a3d",
+        "accent-teal": "#14b8a6",
+        "bright-blue": "#3b82f6",
+        "background-light": "#f6f6f8",
+        "background-dark": "#101322",
+      },
+      fontFamily: { "display": ["Inter", "sans-serif"] },
+    },
+  },
+}
+</script>
+<style type="text/tailwindcss">
+body { font-family: 'Inter', sans-serif; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+</style>
+<style>
+  /* ── Floating math symbols ── */
+  @keyframes floatSym1 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(30px,-40px) rotate(15deg); } }
+  @keyframes floatSym2 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(-25px,35px) rotate(-12deg); } }
+  @keyframes floatSym3 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(20px,30px) rotate(10deg); } }
+  @keyframes floatSym4 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(-35px,-20px) rotate(-18deg); } }
+  @keyframes floatSym5 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(15px,-50px) rotate(22deg); } }
+  @keyframes floatSym6 { 0%,100%{ transform: translate(0,0) rotate(0deg); } 50%{ transform: translate(-40px,25px) rotate(-8deg); } }
+
+  .math-sym-1 { animation: floatSym1 12s ease-in-out infinite; }
+  .math-sym-2 { animation: floatSym2 15s ease-in-out infinite; }
+  .math-sym-3 { animation: floatSym3 18s ease-in-out infinite; }
+  .math-sym-4 { animation: floatSym4 14s ease-in-out infinite; }
+  .math-sym-5 { animation: floatSym5 20s ease-in-out infinite; }
+  .math-sym-6 { animation: floatSym6 16s ease-in-out infinite; }
+
+  /* ── Pulsing dot ── */
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.6); }
+  }
+  .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+  /* ── Typing cursor ── */
+  @keyframes blinkCaret {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #14b8a6; }
+  }
+  .typing-cursor {
+    border-right: 2px solid #14b8a6;
+    animation: blinkCaret 0.8s step-end infinite;
+  }
+
+  /* ── Scroll-triggered slide animations ── */
+  .slide-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-100 { transition-delay: 0.1s; }
+  .delay-200 { transition-delay: 0.2s; }
+  .delay-300 { transition-delay: 0.3s; }
+  .delay-400 { transition-delay: 0.4s; }
+
+  /* ── Animated gradient border cards ── */
+  .gradient-border-card {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .gradient-border-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 1rem;
+    background: conic-gradient(from var(--border-angle, 0deg), transparent 40%, rgba(17,50,212,0.4), rgba(20,184,166,0.4), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: --border-angle 0.6s ease;
+  }
+  .gradient-border-card:hover::before {
+    animation: rotateBorder 2.5s linear infinite;
+  }
+  @keyframes rotateBorder {
+    to { --border-angle: 360deg; }
+  }
+  /* Fallback for browsers without @property */
+  @supports not (background: conic-gradient(from 0deg, red, blue)) {
+    .gradient-border-card::before {
+      background: linear-gradient(135deg, rgba(17,50,212,0.3), rgba(20,184,166,0.3));
+    }
+  }
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  /* ── Pulse rings on industry icons ── */
+  @keyframes pulseRing {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+  .pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .industry-icon:hover .pulse-ring-1 { animation: pulseRing 1.2s ease-out 0s infinite; }
+  .industry-icon:hover .pulse-ring-2 { animation: pulseRing 1.2s ease-out 0.3s infinite; }
+  .industry-icon:hover .pulse-ring-3 { animation: pulseRing 1.2s ease-out 0.6s infinite; }
+
+  /* ── Parallax subtle ── */
+  .parallax-slow { will-change: transform; }
+
+  /* ── CTA dot pattern ── */
+  .dot-pattern {
+    background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* ── Hero gradient overlay ── */
+  .hero-gradient {
+    background: radial-gradient(ellipse at 30% 50%, rgba(17,50,212,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(20,184,166,0.08) 0%, transparent 50%);
+  }
+
+  /* ── Smooth scroll ── */
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body class="bg-background-dark text-white overflow-x-hidden">
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center">
+<a class="flex items-center" href="/index.html">
+<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Canvas particle background -->
+  <canvas id="particleCanvas" class="absolute inset-0 w-full h-full"></canvas>
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent pointer-events-none"></div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-20">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] mb-8">
+      <span class="w-2 h-2 rounded-full bg-accent-teal pulse-dot"></span>
+      <span class="text-sm font-medium text-white/70">Investigaci&oacute;n de Operaciones &amp; IA</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.95] mb-8">
+      Transformando datos<br/>
+      en <span class="bg-gradient-to-r from-primary via-bright-blue to-accent-teal bg-clip-text text-transparent">decisiones &oacute;ptimas</span>
+    </h1>
+
+    <!-- Subtitle with typing effect -->
+    <p class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-12 h-8">
+      <span id="typingText" class="typing-cursor"></span>
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl text-base font-bold transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5">
+        Solicita tu Consulta Gratuita
+      </a>
+      <a href="/soluciones.html" class="border border-white/15 hover:border-white/30 text-white/80 hover:text-white px-8 py-4 rounded-xl text-base font-medium transition-all hover:-translate-y-0.5 bg-white/[0.03] hover:bg-white/[0.06]">
+        Ver Soluciones &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 z-10">
+    <span class="text-xs tracking-widest uppercase">Scroll</span>
+    <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
+      <div class="w-1 h-2 rounded-full bg-white/40 animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS BAR ═══════════ -->
+<section class="border-y border-white/5 bg-white/[0.02]" id="statsSection">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-black text-primary mb-2">
+          +<span class="counter" data-target="50">0</span>
+        </div>
+        <div class="text-sm text-white/50 font-medium">Proyectos Completados</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-black text-accent-teal mb-2">
+          <span class="counter" data-target="3">0</span>
+        </div>
+        <div class="text-sm text-white/50 font-medium">Industrias Atendidas</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-black text-primary mb-2">
+          <span class="counter" data-target="7">0</span>+
+        </div>
+        <div class="text-sm text-white/50 font-medium">A&ntilde;os de Experiencia</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl md:text-5xl font-black text-accent-teal mb-2">
+          <span class="counter" data-target="98">0</span>%
+        </div>
+        <div class="text-sm text-white/50 font-medium">Satisfacci&oacute;n del Cliente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PHILOSOPHY ═══════════ -->
+<section class="relative py-32 overflow-hidden">
+  <!-- Floating math symbols -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+    <span class="absolute top-[10%] left-[8%] text-7xl text-white/[0.03] font-light math-sym-1">&sum;</span>
+    <span class="absolute top-[25%] right-[12%] text-8xl text-white/[0.03] font-light math-sym-2">&int;</span>
+    <span class="absolute top-[60%] left-[15%] text-6xl text-white/[0.03] font-light math-sym-3">&nabla;</span>
+    <span class="absolute top-[45%] right-[5%] text-9xl text-white/[0.03] font-light math-sym-4">&part;</span>
+    <span class="absolute bottom-[15%] left-[40%] text-7xl text-white/[0.03] font-light math-sym-5">&lambda;</span>
+    <span class="absolute top-[5%] left-[55%] text-8xl text-white/[0.03] font-light math-sym-6">&pi;</span>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Left: text -->
+      <div class="slide-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent-teal/20 bg-accent-teal/5 mb-6">
+          <span class="text-xs font-bold tracking-widest uppercase text-accent-teal">Filosof&iacute;a Central</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
+          Matem&aacute;ticas aplicadas a<br/>
+          <span class="text-accent-teal">problemas reales.</span>
+        </h2>
+        <p class="text-lg text-white/50 leading-relaxed">
+          Combinamos modelos matem&aacute;ticos avanzados con conocimiento profundo de industria para entregar soluciones que funcionan en el mundo real, no solo en la teor&iacute;a.
+        </p>
+      </div>
+
+      <!-- Right: stacked cards -->
+      <div class="space-y-6">
+        <!-- Card 1 -->
+        <div class="slide-right delay-100 bg-white/[0.03] border border-white/5 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-1">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-2xl text-primary shrink-0 font-light">&Sigma;</div>
+            <div>
+              <h3 class="text-lg font-bold mb-2">Rigor Matem&aacute;tico</h3>
+              <p class="text-sm text-white/50 leading-relaxed">Cada soluci&oacute;n est&aacute; respaldada por modelos matem&aacute;ticos s&oacute;lidos y probados en revistas cient&iacute;ficas de primer nivel.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="slide-right delay-300 bg-white/[0.03] border border-white/5 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-1">
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 rounded-xl bg-accent-teal/10 border border-accent-teal/20 flex items-center justify-center text-xl text-accent-teal shrink-0 font-bold">&rarr;</div>
+            <div>
+              <h3 class="text-lg font-bold mb-2">Precisi&oacute;n Estrat&eacute;gica</h3>
+              <p class="text-sm text-white/50 leading-relaxed">Convertimos la teor&iacute;a en herramientas pr&aacute;cticas que mejoran la operaci&oacute;n de tu empresa desde el d&iacute;a uno.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERTISE ═══════════ -->
+<section class="py-32 relative">
+  <!-- Subtle bg glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
+      <div class="slide-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-4">
+          <span class="text-xs font-bold tracking-widest uppercase text-primary">Especialidades</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Nuestra Experiencia</h2>
+      </div>
+      <a href="/servicios.html" class="slide-right text-sm font-semibold text-accent-teal hover:text-accent-teal/80 transition-colors shrink-0">
+        Ver Todos los Servicios &rarr;
+      </a>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="slide-up delay-100 gradient-border-card p-8 group cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+        <div class="relative z-10">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 300;">hub</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Investigaci&oacute;n de Operaciones</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-6">Optimizaci&oacute;n din&aacute;mica, programaci&oacute;n lineal y simulaciones para cadena de suministro y log&iacute;stica.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full border border-white/10 text-white/40 bg-white/[0.02]">Redes de Suministro</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-white/10 text-white/40 bg-white/[0.02]">Inventarios</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="slide-up delay-200 gradient-border-card p-8 group cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+        <div class="relative z-10">
+          <div class="w-14 h-14 rounded-2xl bg-accent-teal/10 border border-accent-teal/20 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-accent-teal text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 300;">psychology</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 group-hover:text-accent-teal transition-colors">Inteligencia Artificial</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-6">Machine learning y anal&iacute;tica predictiva que evolucionan con tus datos para anticipar cambios en el mercado.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full border border-white/10 text-white/40 bg-white/[0.02]">Mantenimiento Predictivo</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-white/10 text-white/40 bg-white/[0.02]">NLP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="slide-up delay-300 gradient-border-card p-8 group cursor-pointer hover:-translate-y-2 transition-transform duration-500">
+        <div class="relative z-10">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 300;">function</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Matem&aacute;ticas Avanzadas</h3>
+          <p class="text-sm text-white/50 leading-relaxed mb-6">Modelado estoc&aacute;stico, teor&iacute;a de juegos y an&aacute;lisis basado en grafos para evaluaci&oacute;n de riesgos.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full border border-white/10 text-white/40 bg-white/[0.02]">C&aacute;lculo Estoc&aacute;stico</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-white/10 text-white/40 bg-white/[0.02]">Multi-Agente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INDUSTRIES ═══════════ -->
+<section class="py-32 border-y border-white/5">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="slide-up mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Resolviendo desaf&iacute;os en diversas industrias</h2>
+      <p class="text-white/40 max-w-xl mx-auto">Aplicamos rigor matem&aacute;tico en los sectores donde m&aacute;s impacto genera.</p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-12 md:gap-20">
+      <!-- Logistica -->
+      <a href="/soluciones.html" class="slide-up delay-100 group flex flex-col items-center gap-4">
+        <div class="industry-icon relative w-24 h-24 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-4xl group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-500 text-primary">
+          <span class="pulse-ring pulse-ring-1 text-primary"></span>
+          <span class="pulse-ring pulse-ring-2 text-primary"></span>
+          <span class="pulse-ring pulse-ring-3 text-primary"></span>
+          &#x1F69A;
+        </div>
+        <span class="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">Log&iacute;stica</span>
+      </a>
+
+      <!-- IA y Digital -->
+      <a href="/soluciones.html" class="slide-up delay-200 group flex flex-col items-center gap-4">
+        <div class="industry-icon relative w-24 h-24 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-4xl group-hover:border-accent-teal/30 group-hover:bg-accent-teal/5 transition-all duration-500 text-accent-teal">
+          <span class="pulse-ring pulse-ring-1 text-accent-teal"></span>
+          <span class="pulse-ring pulse-ring-2 text-accent-teal"></span>
+          <span class="pulse-ring pulse-ring-3 text-accent-teal"></span>
+          &#x1F916;
+        </div>
+        <span class="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">IA y Digital</span>
+      </a>
+
+      <!-- Manufactura -->
+      <a href="/soluciones.html" class="slide-up delay-300 group flex flex-col items-center gap-4">
+        <div class="industry-icon relative w-24 h-24 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-4xl group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-500 text-primary">
+          <span class="pulse-ring pulse-ring-1 text-primary"></span>
+          <span class="pulse-ring pulse-ring-2 text-primary"></span>
+          <span class="pulse-ring pulse-ring-3 text-primary"></span>
+          &#x1F3ED;
+        </div>
+        <span class="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">Manufactura</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="py-32">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary/90 to-primary/70 p-12 md:p-20">
+      <!-- Dot pattern overlay -->
+      <div class="absolute inset-0 dot-pattern opacity-30"></div>
+      <!-- Glow -->
+      <div class="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-accent-teal/20 blur-[80px]"></div>
+      <div class="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-white/10 blur-[80px]"></div>
+
+      <div class="relative z-10 text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
+          &iquest;Listo para optimizar tus operaciones?
+        </h2>
+        <p class="text-lg text-white/70 mb-10 leading-relaxed">
+          Cu&eacute;ntanos sobre tu desaf&iacute;o de negocio y te mostraremos c&oacute;mo las matem&aacute;ticas pueden ayudarte.
+        </p>
+        <a href="/contacto.html" class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl text-base font-bold transition-all hover:bg-white/90 hover:-translate-y-0.5 shadow-xl shadow-black/20">
+          Solicita tu Consulta Gratuita &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="border-t border-white/5 bg-white/[0.01]">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        <p class="text-sm text-white/40 mt-4 leading-relaxed">
+          Consultor&iacute;a de investigaci&oacute;n de operaciones e inteligencia artificial con base en Chile.
+        </p>
+      </div>
+
+      <!-- Enlaces -->
+      <div>
+        <h4 class="text-xs font-bold tracking-widest uppercase text-white/30 mb-4">Enlaces</h4>
+        <ul class="space-y-3">
+          <li><a href="/servicios.html" class="text-sm text-white/50 hover:text-white transition-colors">Servicios</a></li>
+          <li><a href="/soluciones.html" class="text-sm text-white/50 hover:text-white transition-colors">Soluciones</a></li>
+          <li><a href="/sobre-nosotros.html" class="text-sm text-white/50 hover:text-white transition-colors">Sobre Nosotros</a></li>
+        </ul>
+      </div>
+
+      <!-- Empresa -->
+      <div>
+        <h4 class="text-xs font-bold tracking-widest uppercase text-white/30 mb-4">Empresa</h4>
+        <ul class="space-y-3">
+          <li><a href="/sobre-nosotros.html" class="text-sm text-white/50 hover:text-white transition-colors">Equipo</a></li>
+          <li><a href="/contacto.html" class="text-sm text-white/50 hover:text-white transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-xs font-bold tracking-widest uppercase text-white/30 mb-4">Contacto</h4>
+        <ul class="space-y-3">
+          <li><span class="text-sm text-white/50">Santiago, Chile</span></li>
+          <li><a href="mailto:info@lontra.cl" class="text-sm text-white/50 hover:text-white transition-colors">info@lontra.cl</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Privacidad</a>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">T&eacute;rminos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ═══════════════════════════════════════
+  // 1. CANVAS PARTICLE SYSTEM
+  // ═══════════════════════════════════════
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouseX = -9999;
+  let mouseY = -9999;
+  let animFrameId;
+  const isMobile = window.innerWidth < 768;
+  const PARTICLE_COUNT = isMobile ? 30 : 70;
+  const CONNECTION_DIST = isMobile ? 80 : 120;
+  const MOUSE_RADIUS = 150;
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function createParticle() {
+    const colorChoice = Math.random();
+    let color;
+    if (colorChoice < 0.5) {
+      color = 'rgba(17,50,212,0.5)';
+    } else {
+      color = 'rgba(20,184,166,0.3)';
+    }
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      radius: Math.random() * 2 + 1,
+      color: color
+    };
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(createParticle());
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update and draw particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      // Mouse interaction — push particles away
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < MOUSE_RADIUS && dist > 0) {
+        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+        p.vx += (dx / dist) * force * 0.8;
+        p.vy += (dy / dist) * force * 0.8;
+      }
+
+      // Apply velocity with damping
+      p.vx *= 0.98;
+      p.vy *= 0.98;
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap around edges
+      if (p.x < -10) p.x = canvas.width + 10;
+      if (p.x > canvas.width + 10) p.x = -10;
+      if (p.y < -10) p.y = canvas.height + 10;
+      if (p.y > canvas.height + 10) p.y = -10;
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    }
+
+    // Draw connections
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECTION_DIST) {
+          const opacity = 0.05 * (1 - dist / CONNECTION_DIST);
+          ctx.strokeStyle = `rgba(255,255,255,${opacity})`;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    animFrameId = requestAnimationFrame(drawParticles);
+  }
+
+  // Init canvas
+  resizeCanvas();
+  initParticles();
+  drawParticles();
+
+  window.addEventListener('resize', function() {
+    resizeCanvas();
+    // Reinit particles on significant resize
+    if (Math.abs(particles.length - (window.innerWidth < 768 ? 30 : 70)) > 10) {
+      initParticles();
+    }
+  });
+
+  // Mouse tracking for particles
+  canvas.parentElement.addEventListener('mousemove', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+  });
+
+  canvas.parentElement.addEventListener('mouseleave', function() {
+    mouseX = -9999;
+    mouseY = -9999;
+  });
+
+
+  // ═══════════════════════════════════════
+  // 2. TYPING EFFECT
+  // ═══════════════════════════════════════
+  const typingEl = document.getElementById('typingText');
+  const typingString = 'Optimización matemática e inteligencia artificial para empresas en Chile y Latinoamérica.';
+  let charIndex = 0;
+
+  function typeNextChar() {
+    if (charIndex < typingString.length) {
+      typingEl.textContent += typingString[charIndex];
+      charIndex++;
+      const delay = 20 + Math.random() * 15;
+      setTimeout(typeNextChar, delay);
+    } else {
+      // Stop blinking cursor after typing
+      setTimeout(function() {
+        typingEl.classList.remove('typing-cursor');
+      }, 2000);
+    }
+  }
+
+  // Start typing after a short delay
+  setTimeout(typeNextChar, 800);
+
+
+  // ═══════════════════════════════════════
+  // 3. INTERSECTION OBSERVER — Scroll animations
+  // ═══════════════════════════════════════
+  const animatedElements = document.querySelectorAll('.slide-left, .slide-right, .slide-up');
+
+  const scrollObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  animatedElements.forEach(function(el) {
+    scrollObserver.observe(el);
+  });
+
+
+  // ═══════════════════════════════════════
+  // 4. COUNTER ANIMATION
+  // ═══════════════════════════════════════
+  const counters = document.querySelectorAll('.counter');
+  let countersAnimated = false;
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCounters() {
+    if (countersAnimated) return;
+    countersAnimated = true;
+
+    counters.forEach(function(counter) {
+      const target = parseInt(counter.getAttribute('data-target'), 10);
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutCubic(progress);
+        const currentValue = Math.round(easedProgress * target);
+        counter.textContent = currentValue;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
+  }
+
+  const statsSection = document.getElementById('statsSection');
+  const statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounters();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  statsObserver.observe(statsSection);
+
+
+  // ═══════════════════════════════════════
+  // 5. PARALLAX EFFECT ON SCROLL
+  // ═══════════════════════════════════════
+  const parallaxElements = document.querySelectorAll('.parallax-slow');
+
+  function updateParallax() {
+    const scrollY = window.pageYOffset;
+    parallaxElements.forEach(function(el) {
+      const speed = parseFloat(el.getAttribute('data-speed')) || 0.3;
+      el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updateParallax();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+
+  // ═══════════════════════════════════════
+  // 6. MOBILE NAV TOGGLE (hamburger)
+  // ═══════════════════════════════════════
+  // Note: hamburger not in nav design — rely on hidden md:flex for mobile collapse
+
+})();
+</script>
+
+</body>
+</html>

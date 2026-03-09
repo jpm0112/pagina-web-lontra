@@ -2,7 +2,7 @@
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lontra | Consultor&iacute;a en Optimizaci&oacute;n e IA</title>
+<title>Lontra | Opci&oacute;n G &mdash; Grid Pulse + Marquee</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -41,9 +41,18 @@ body { font-family: 'Inter', sans-serif; }
     background-size: var(--grid-size) var(--grid-size);
   }
 
-  /* ── Mouse spotlight (disabled) ── */
+  /* ── Mouse spotlight ── */
   #spotlight {
-    display: none;
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 1;
+    background: radial-gradient(600px circle at var(--mx, -999px) var(--my, -999px),
+      rgba(17,50,212,0.12) 0%,
+      rgba(6,182,212,0.06) 30%,
+      transparent 70%);
+    transition: background 0.08s ease;
   }
 
   /* ── Glowing grid cells ── */
@@ -78,7 +87,7 @@ body { font-family: 'Inter', sans-serif; }
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    animation: scanSweep 16s ease-in-out infinite;
+    animation: scanSweep 8s ease-in-out infinite;
   }
   #scanLine::after {
     content: '';
@@ -116,18 +125,42 @@ body { font-family: 'Inter', sans-serif; }
   /* ── Glitch text effect ── */
   @keyframes glitchIn {
     0% {
-      transform: translateX(-2px);
-      opacity: 0;
+      clip-path: inset(40% 0 60% 0);
+      transform: translateX(-8px) skewX(-4deg);
+      opacity: 0.3;
+    }
+    10% {
+      clip-path: inset(10% 0 85% 0);
+      transform: translateX(6px) skewX(2deg);
+    }
+    20% {
+      clip-path: inset(60% 0 5% 0);
+      transform: translateX(-4px) skewX(-1deg);
+      opacity: 0.7;
     }
     30% {
+      clip-path: inset(25% 0 40% 0);
+      transform: translateX(3px) skewX(1deg);
+    }
+    40% {
+      clip-path: inset(0% 0 70% 0);
+      transform: translateX(-2px);
+    }
+    50% {
+      clip-path: inset(50% 0 10% 0);
       transform: translateX(1px);
-      opacity: 0.6;
+      opacity: 0.9;
     }
     60% {
-      transform: translateX(-0.5px);
-      opacity: 0.85;
+      clip-path: inset(0 0 0 0);
+      transform: translateX(-1px);
+    }
+    70% {
+      clip-path: inset(0 0 0 0);
+      transform: translateX(0);
     }
     100% {
+      clip-path: inset(0 0 0 0);
       transform: translateX(0);
       opacity: 1;
     }
@@ -137,7 +170,7 @@ body { font-family: 'Inter', sans-serif; }
     position: relative;
   }
   .glitch-word.glitching {
-    animation: glitchIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: glitchIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   /* Glitch pseudo-layers */
   .glitch-word::before,
@@ -153,23 +186,25 @@ body { font-family: 'Inter', sans-serif; }
   }
   .glitch-word.glitching::before {
     color: #06B6D4;
-    animation: glitchLayer1 0.6s ease-out forwards;
+    animation: glitchLayer1 0.5s ease-out forwards;
     z-index: -1;
   }
   .glitch-word.glitching::after {
     color: #8B5CF6;
-    animation: glitchLayer2 0.6s ease-out forwards;
+    animation: glitchLayer2 0.5s ease-out forwards;
     z-index: -1;
   }
   @keyframes glitchLayer1 {
-    0% { transform: translateX(-1.5px); opacity: 0.3; }
-    40% { transform: translateX(0.5px); opacity: 0.15; }
-    100% { transform: translateX(0); opacity: 0; }
+    0% { transform: translateX(-3px) translateY(1px); clip-path: inset(20% 0 60% 0); opacity: 0.6; }
+    30% { transform: translateX(2px) translateY(-1px); clip-path: inset(50% 0 20% 0); opacity: 0.4; }
+    60% { transform: translateX(-1px); clip-path: inset(10% 0 80% 0); opacity: 0.2; }
+    100% { transform: translateX(0); clip-path: inset(0 0 0 0); opacity: 0; }
   }
   @keyframes glitchLayer2 {
-    0% { transform: translateX(1.5px); opacity: 0.25; }
-    40% { transform: translateX(-0.5px); opacity: 0.1; }
-    100% { transform: translateX(0); opacity: 0; }
+    0% { transform: translateX(3px) translateY(-2px); clip-path: inset(60% 0 10% 0); opacity: 0.5; }
+    25% { transform: translateX(-2px) translateY(1px); clip-path: inset(30% 0 40% 0); opacity: 0.3; }
+    50% { transform: translateX(1px); clip-path: inset(70% 0 5% 0); opacity: 0.15; }
+    100% { transform: translateX(0); clip-path: inset(0 0 0 0); opacity: 0; }
   }
 
   /* ── Clip-path circle reveal ── */
@@ -232,34 +267,18 @@ body { font-family: 'Inter', sans-serif; }
     transition: stroke-dashoffset 0s;
   }
 
-  /* ── Dual Neon Marquee strip ── */
-  @keyframes marquee-left {
-    0%   { transform: translateX(0); }
+  /* ── Marquee strip ── */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-  @keyframes marquee-right {
-    0%   { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-  .marquee-track-left {
-    animation: marquee-left 35s linear infinite;
+  .marquee-track {
+    animation: marquee 35s linear infinite;
     display: flex;
     width: max-content;
   }
-  .marquee-track-right {
-    animation: marquee-right 40s linear infinite;
-    display: flex;
-    width: max-content;
-  }
-  .marquee-track-left:hover,
-  .marquee-track-right:hover {
+  .marquee-track:hover {
     animation-play-state: paused;
-  }
-  .neon-marquee-text {
-    color: rgba(255, 255, 255, 0.25);
-  }
-  .neon-marquee-text-alt {
-    color: rgba(255, 255, 255, 0.15);
   }
 
   /* ── Pulsing connection dots between stats ── */
@@ -368,23 +387,7 @@ body { font-family: 'Inter', sans-serif; }
   .cta-shimmer {
     background-size: 200% auto;
     background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%);
-    animation: shimmer 12s linear infinite;
-  }
-
-  /* ── Mouse trail dots ── */
-  .trail-dot {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: rgba(6, 182, 212, 0.6);
-    pointer-events: none;
-    z-index: 9999;
-    animation: trailFade 1s ease-out forwards;
-  }
-  @keyframes trailFade {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(0.2); }
+    animation: shimmer 4s linear infinite;
   }
 
   /* ── Smooth scroll ── */
@@ -479,32 +482,110 @@ body { font-family: 'Inter', sans-serif; }
   <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
 </section>
 
-<!-- ══════════════════════════════════════════════════ DUAL NEON MARQUEE STRIP ══════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════ MARQUEE STRIP ══════════════════════════════════════════════════ -->
 <section class="relative z-20 border-y border-white/5 py-5 overflow-hidden">
-  <!-- Row 1: Left to Right — Cyan neon glow -->
-  <div class="marquee-track-left mb-3">
-    <span class="neon-marquee-text text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
-      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp;
-      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp;
+  <div class="marquee-track">
+    <span class="text-xs tracking-[0.3em] uppercase text-white/10 font-semibold whitespace-nowrap px-2">
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp;
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp;
     </span>
-    <span class="neon-marquee-text text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
-      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp;
-      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; PROGRAMACI&Oacute;N LINEAL &nbsp;&bull;&nbsp; TEOR&Iacute;A DE JUEGOS &nbsp;&bull;&nbsp; ANAL&Iacute;TICA PREDICTIVA &nbsp;&bull;&nbsp; REDES NEURONALES &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp;
-    </span>
-  </div>
-  <!-- Row 2: Right to Left — Purple neon glow -->
-  <div class="marquee-track-right">
-    <span class="neon-marquee-text-alt text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
-      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
-      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
-    </span>
-    <span class="neon-marquee-text-alt text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
-      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
-      C&Aacute;LCULO ESTOC&Aacute;STICO &nbsp;&bull;&nbsp; CADENA DE SUMINISTRO &nbsp;&bull;&nbsp; DEEP LEARNING &nbsp;&bull;&nbsp; MODELOS MULTI-AGENTE &nbsp;&bull;&nbsp; GRAFOS &nbsp;&bull;&nbsp; HEUR&Iacute;STICAS &nbsp;&bull;&nbsp; METAHEUR&Iacute;STICAS &nbsp;&bull;&nbsp; OPTIMIZACI&Oacute;N COMBINATORIA &nbsp;&bull;&nbsp;
+    <span class="text-xs tracking-[0.3em] uppercase text-white/10 font-semibold whitespace-nowrap px-2">
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp;
+      OPTIMIZACI&Oacute;N &nbsp;&bull;&nbsp; MACHINE LEARNING &nbsp;&bull;&nbsp; SIMULACI&Oacute;N &nbsp;&bull;&nbsp; INVESTIGACI&Oacute;N DE OPERACIONES &nbsp;&bull;&nbsp; MATEM&Aacute;TICAS APLICADAS &nbsp;&bull;&nbsp; INTELIGENCIA ARTIFICIAL &nbsp;&bull;&nbsp;
     </span>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════════ SVG CONNECTOR ══════════════════════════════════════════════════ -->
+<div class="relative h-40 z-20 flex items-center justify-center pointer-events-none">
+  <svg class="w-full h-full" viewBox="0 0 800 160" preserveAspectRatio="xMidYMid meet" fill="none">
+    <path id="connectorLine1" class="draw-line" d="M400 0 C400 40, 300 60, 400 80 C500 100, 400 120, 400 160" stroke="#1132d4" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <circle id="connectorDot1" cx="400" cy="0" r="3" fill="#06B6D4" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STATS ══════════════════════════════════════════════════ -->
+<section class="relative z-20 border-y border-white/5 py-16" id="stats">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 items-center">
+      <!-- Stat 1 -->
+      <div class="text-center" data-counter>
+        <div class="text-4xl md:text-5xl font-bold text-warm-amber mb-2">
+          <span class="digit-flip" data-value="+50"></span>
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest">Proyectos</p>
+      </div>
+
+      <!-- Connector dots (hidden on mobile) -->
+      <div class="hidden md:flex items-center justify-center col-span-1 -mx-8" style="grid-column: auto; position: absolute; left: 25%; transform: translateX(-50%);">
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="text-center relative" data-counter>
+        <!-- Pulsing dots before -->
+        <div class="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 flex-col gap-1 items-center">
+          <span class="stat-connector-dot w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+          <span class="stat-connector-dot w-1 h-1 rounded-full bg-accent-cyan/60"></span>
+          <span class="stat-connector-dot w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+        </div>
+        <div class="text-4xl md:text-5xl font-bold text-warm-amber mb-2">
+          <span class="digit-flip" data-value="3"></span>
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest">Industrias</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="text-center relative" data-counter>
+        <div class="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 flex-col gap-1 items-center">
+          <span class="stat-connector-dot w-1.5 h-1.5 rounded-full bg-purple"></span>
+          <span class="stat-connector-dot w-1 h-1 rounded-full bg-purple/60"></span>
+          <span class="stat-connector-dot w-1.5 h-1.5 rounded-full bg-purple"></span>
+        </div>
+        <div class="text-4xl md:text-5xl font-bold text-warm-amber mb-2">
+          <span class="digit-flip" data-value="7+"></span>
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest">A&ntilde;os Experiencia</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="text-center relative" data-counter>
+        <div class="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 flex-col gap-1 items-center">
+          <span class="stat-connector-dot w-1.5 h-1.5 rounded-full bg-primary"></span>
+          <span class="stat-connector-dot w-1 h-1 rounded-full bg-primary/60"></span>
+          <span class="stat-connector-dot w-1.5 h-1.5 rounded-full bg-primary"></span>
+        </div>
+        <div class="text-4xl md:text-5xl font-bold text-warm-amber mb-2">
+          <span class="digit-flip" data-value="98%"></span>
+        </div>
+        <p class="text-sm text-white/40 uppercase tracking-widest">Satisfacci&oacute;n</p>
+      </div>
+    </div>
+
+    <!-- Data flow line beneath stats -->
+    <div class="hidden md:flex items-center justify-center gap-1 mt-8 opacity-30">
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-accent-cyan" style="animation-delay:0s"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-accent-cyan" style="animation-delay:0.15s"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-accent-cyan" style="animation-delay:0.3s"></span>
+      <span class="w-32 h-px bg-gradient-to-r from-transparent via-accent-cyan/40 to-transparent"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-purple" style="animation-delay:0.45s"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-purple" style="animation-delay:0.6s"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-purple" style="animation-delay:0.75s"></span>
+      <span class="w-32 h-px bg-gradient-to-r from-transparent via-purple/40 to-transparent"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-primary" style="animation-delay:0.9s"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-primary" style="animation-delay:1.05s"></span>
+      <span class="data-flow-dot w-1 h-1 rounded-full bg-primary" style="animation-delay:1.2s"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ SVG CONNECTOR 2 ══════════════════════════════════════════════════ -->
+<div class="relative h-32 z-20 flex items-center justify-center pointer-events-none">
+  <svg class="w-full h-full" viewBox="0 0 800 128" preserveAspectRatio="xMidYMid meet" fill="none">
+    <path id="connectorLine2" class="draw-line" d="M400 0 Q350 64 400 128" stroke="#06B6D4" stroke-width="1" stroke-dasharray="6 4" stroke-linecap="round" fill="none" />
+  </svg>
+</div>
 
 <!-- ══════════════════════════════════════════════════ PHILOSOPHY ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-24" id="philosophy">
@@ -562,18 +643,12 @@ body { font-family: 'Inter', sans-serif; }
             <span class="material-symbols-outlined text-primary text-2xl">hub</span>
           </div>
           <h3 class="text-xl font-bold mb-3">Investigaci&oacute;n de Operaciones</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-4">
-            &iquest;Tus camiones recorren m&aacute;s kil&oacute;metros de los necesarios? &iquest;Tu inventario podr&iacute;a funcionar mejor? Aplicamos programaci&oacute;n lineal, heur&iacute;sticas avanzadas y simulaci&oacute;n para encontrar las mejores decisiones posibles en cadena de suministro, log&iacute;stica y asignaci&oacute;n de recursos.
+          <p class="text-white/50 text-sm leading-relaxed mb-6">
+            Optimizaci&oacute;n din&aacute;mica, programaci&oacute;n lineal y simulaciones para cadena de suministro y log&iacute;stica.
           </p>
-          <ul class="space-y-2 text-sm text-white/40 mb-6">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Rutas &oacute;ptimas de distribuci&oacute;n</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Planificaci&oacute;n de inventario</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Predicci&oacute;n de demanda</li>
-          </ul>
           <div class="flex flex-wrap gap-2">
             <span class="text-xs bg-primary/10 text-primary/80 px-3 py-1 rounded-full">Redes de Suministro</span>
             <span class="text-xs bg-primary/10 text-primary/80 px-3 py-1 rounded-full">Inventarios</span>
-            <span class="text-xs bg-primary/10 text-primary/80 px-3 py-1 rounded-full">Ruteo</span>
           </div>
         </div>
       </div>
@@ -586,18 +661,12 @@ body { font-family: 'Inter', sans-serif; }
             <span class="material-symbols-outlined text-accent-cyan text-2xl">psychology</span>
           </div>
           <h3 class="text-xl font-bold mb-3">Inteligencia Artificial</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-4">
-            &iquest;Tu equipo pierde tiempo en tareas repetitivas? &iquest;Hay patrones en tus datos que no est&aacute;s aprovechando? Dise&ntilde;amos modelos de machine learning y asistentes con IA que aprenden de tus datos para automatizar decisiones y anticipar cambios en el mercado.
+          <p class="text-white/50 text-sm leading-relaxed mb-6">
+            Machine learning y anal&iacute;tica predictiva que evolucionan con tus datos para anticipar cambios en el mercado.
           </p>
-          <ul class="space-y-2 text-sm text-white/40 mb-6">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Asistentes con IA (LLMs y RAG)</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Mantenimiento Predictivo</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Automatizaci&oacute;n de procesos</li>
-          </ul>
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">Deep Learning</span>
+            <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">Mantenimiento Predictivo</span>
             <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">NLP</span>
-            <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">RAG</span>
           </div>
         </div>
       </div>
@@ -610,18 +679,12 @@ body { font-family: 'Inter', sans-serif; }
             <span class="material-symbols-outlined text-purple text-2xl">functions</span>
           </div>
           <h3 class="text-xl font-bold mb-3">Matem&aacute;ticas Avanzadas</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-4">
-            Traducimos las din&aacute;micas complejas de tu negocio en formulaciones matem&aacute;ticas robustas. Desde simulaciones Monte Carlo hasta teor&iacute;a de juegos, construimos modelos que sirven como base s&oacute;lida para la toma de decisiones bajo incertidumbre.
+          <p class="text-white/50 text-sm leading-relaxed mb-6">
+            Modelado estoc&aacute;stico, teor&iacute;a de juegos y an&aacute;lisis basado en grafos para evaluaci&oacute;n de riesgos.
           </p>
-          <ul class="space-y-2 text-sm text-white/40 mb-6">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Simulaci&oacute;n estoc&aacute;stica</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Modelado econ&oacute;mico y teor&iacute;a de juegos</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Cuantificaci&oacute;n de riesgo</li>
-          </ul>
           <div class="flex flex-wrap gap-2">
             <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">C&aacute;lculo Estoc&aacute;stico</span>
             <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Multi-Agente</span>
-            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Grafos</span>
           </div>
         </div>
       </div>
@@ -644,50 +707,23 @@ body { font-family: 'Inter', sans-serif; }
       <h2 class="text-4xl md:text-5xl font-bold">Industrias que Servimos</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <a href="/soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left">
-        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-500">
-          <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Log&iacute;stica y Cadena de Suministro</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-4">
-          Te ayudamos a encontrar las rutas m&aacute;s r&aacute;pidas y baratas para tu flota, organizar tu inventario de forma inteligente y anticipar la demanda para que nunca te falte ni te sobre producto.
-        </p>
-        <ul class="space-y-2 text-sm text-white/40">
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Rutas &oacute;ptimas de distribuci&oacute;n</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Planificaci&oacute;n de inventario</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Predicci&oacute;n de demanda</li>
-        </ul>
+    <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <a href="/soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 text-center group block">
+        <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">&#x1F69A;</div>
+        <h3 class="text-xl font-bold mb-2">Log&iacute;stica</h3>
+        <p class="text-white/40 text-sm">Optimizaci&oacute;n de rutas, inventarios y cadenas de suministro</p>
       </a>
 
-      <a href="/soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left" style="transition-delay:0.15s">
-        <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-all duration-500">
-          <span class="material-symbols-outlined text-accent-cyan text-3xl">smart_toy</span>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Soluciones Digitales e IA</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-4">
-          Construimos asistentes inteligentes que responden preguntas sobre tus datos internos <span class="text-white/30">(RAG)</span>, automatizamos procesos con modelos de lenguaje <span class="text-white/30">(LLMs)</span> y desarrollamos herramientas a medida que integran IA en tu operaci&oacute;n diaria.
-        </p>
-        <ul class="space-y-2 text-sm text-white/40">
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Asistentes con IA (LLMs y RAG)</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Automatizaci&oacute;n de procesos</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Sistemas de soporte a la decisi&oacute;n</li>
-        </ul>
+      <a href="/soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 text-center group block" style="transition-delay:0.15s">
+        <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">&#x1F916;</div>
+        <h3 class="text-xl font-bold mb-2">IA y Digital</h3>
+        <p class="text-white/40 text-sm">Soluciones inteligentes para la transformaci&oacute;n digital</p>
       </a>
 
-      <a href="/soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left" style="transition-delay:0.3s">
-        <div class="w-14 h-14 rounded-xl bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple/20 transition-all duration-500">
-          <span class="material-symbols-outlined text-purple text-3xl">factory</span>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Manufactura</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-4">
-          Te ayudamos a planificar tu producci&oacute;n de manera eficiente, predecir cu&aacute;ndo fallar&aacute;n tus equipos antes de que ocurra <span class="text-white/30">(mantenimiento predictivo)</span> y reducir el desperdicio en cada etapa del proceso.
-        </p>
-        <ul class="space-y-2 text-sm text-white/40">
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Planificaci&oacute;n de producci&oacute;n</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Mantenimiento predictivo</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Reducci&oacute;n de desperdicios</li>
-        </ul>
+      <a href="/soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 text-center group block" style="transition-delay:0.3s">
+        <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">&#x1F3ED;</div>
+        <h3 class="text-xl font-bold mb-2">Manufactura</h3>
+        <p class="text-white/40 text-sm">Eficiencia operativa y control de procesos productivos</p>
       </a>
     </div>
   </div>
@@ -773,20 +809,6 @@ body { font-family: 'Inter', sans-serif; }
     spotlight.style.setProperty('--my', e.clientY + 'px');
   });
 
-  // ── 1b. MOUSE TRAIL DOTS ──
-  var lastTrailTime = 0;
-  document.addEventListener('mousemove', function(e) {
-    var now = Date.now();
-    if (now - lastTrailTime < 40) return;
-    lastTrailTime = now;
-    var dot = document.createElement('div');
-    dot.className = 'trail-dot';
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-    document.body.appendChild(dot);
-    setTimeout(function() { dot.remove(); }, 1000);
-  });
-
   // ── 2. ANIMATED GRID CELLS ──
   var gridContainer = document.getElementById('gridCells');
   var cols = 22;
@@ -845,7 +867,61 @@ body { font-family: 'Inter', sans-serif; }
     }, 800);
   });
 
-  // ── 4. DATA STREAM ON EXPERTISE CARDS ──
+  // ── 4. DIGIT FLIP COUNTERS ──
+  function buildDigitFlip(container) {
+    var value = container.getAttribute('data-value');
+    container.innerHTML = '';
+
+    for (var i = 0; i < value.length; i++) {
+      var ch = value[i];
+      if (/\d/.test(ch)) {
+        var targetDigit = parseInt(ch, 10);
+        var win = document.createElement('span');
+        win.className = 'digit-window';
+
+        var col = document.createElement('span');
+        col.className = 'digit-col';
+        for (var d = 0; d <= 9; d++) {
+          var span = document.createElement('span');
+          span.className = 'digit-char';
+          span.textContent = d;
+          col.appendChild(span);
+        }
+        col.style.transform = 'translateY(0)';
+        col._target = targetDigit;
+        col._charIndex = i;
+        win.appendChild(col);
+        container.appendChild(win);
+      } else {
+        var sSpan = document.createElement('span');
+        sSpan.textContent = ch;
+        sSpan.style.opacity = '0';
+        sSpan.style.transition = 'opacity 0.5s ease';
+        sSpan.className = 'static-char';
+        container.appendChild(sSpan);
+      }
+    }
+  }
+
+  function animateDigitFlip(container) {
+    var flipCols = container.querySelectorAll('.digit-col');
+    flipCols.forEach(function(col) {
+      var target = col._target;
+      var charIdx = col._charIndex;
+      setTimeout(function() {
+        col.style.transform = 'translateY(-' + (target * 1.15) + 'em)';
+      }, 120 * charIdx);
+    });
+    var statics = container.querySelectorAll('.static-char');
+    statics.forEach(function(s) {
+      setTimeout(function() { s.style.opacity = '1'; }, 200);
+    });
+  }
+
+  // Initialize all digit flips
+  document.querySelectorAll('.digit-flip').forEach(buildDigitFlip);
+
+  // ── 5. DATA STREAM ON EXPERTISE CARDS ──
   document.querySelectorAll('[data-stream]').forEach(function(streamBg) {
     var numCols = 12;
     for (var c = 0; c < numCols; c++) {
@@ -893,16 +969,55 @@ body { font-family: 'Inter', sans-serif; }
         el.classList.add('in-view');
       }
 
+      // Digit flip
+      if (el.hasAttribute('data-counter')) {
+        var flipEl = el.querySelector('.digit-flip');
+        if (flipEl && !flipEl._animated) {
+          flipEl._animated = true;
+          animateDigitFlip(flipEl);
+        }
+      }
+
       // Unobserve after triggering (one-shot)
       observer.unobserve(el);
     });
   }, { threshold: 0.2 });
 
   // Observe all animated elements
-  document.querySelectorAll('.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up').forEach(function(el) {
+  document.querySelectorAll('.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up, [data-counter]').forEach(function(el) {
     observer.observe(el);
   });
 
+  // ── 7. SVG LINE DRAW ON SCROLL ──
+  function setupDrawLine(pathId) {
+    var path = document.getElementById(pathId);
+    if (!path) return null;
+    var length = path.getTotalLength();
+    path.style.setProperty('--len', length);
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+    return { path: path, length: length };
+  }
+
+  var line1 = setupDrawLine('connectorLine1');
+  var line2 = setupDrawLine('connectorLine2');
+
+  function onScroll() {
+    var scrollY = window.scrollY;
+    var winH = window.innerHeight;
+
+    [line1, line2].forEach(function(line) {
+      if (!line) return;
+      var rect = line.path.closest('svg').getBoundingClientRect();
+      var start = rect.top + scrollY - winH;
+      var end = rect.bottom + scrollY;
+      var progress = Math.min(1, Math.max(0, (scrollY - start) / (end - start)));
+      line.path.style.strokeDashoffset = line.length * (1 - progress);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
 })();
 </script>

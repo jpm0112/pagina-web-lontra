@@ -2,328 +2,467 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lontra Homepage | Optimal Decisions</title>
+<title>Lontra | Operations Research & AI Consultancy</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1132d4",
-                        "accent-teal": "#2dd4bf",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101322",
-                        "card-dark": "#191e33",
-                        "border-dark": "#323b67",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#1132d4",
+        "navy-brand": "#001a3d",
+        "accent-teal": "#14b8a6",
+        "accent-cyan": "#06B6D4",
+        "bright-blue": "#3b82f6",
+        "purple": "#8B5CF6",
+        "warm-amber": "#F59E0B",
+        "background-light": "#f6f6f8",
+        "background-dark": "#101322",
+      },
+      fontFamily: { "display": ["Inter", "sans-serif"] },
+    },
+  },
+}
+</script>
+<style type="text/tailwindcss">
+body { font-family: 'Inter', sans-serif; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+</style>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+  /* -- Fade-up generic -- */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* -- Industry card hover -- */
+  .industry-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .industry-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 60px rgba(17,50,212,0.15);
+    border-color: rgba(59,130,246,0.3);
+  }
+
+  /* -- CTA shimmer -- */
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .cta-shimmer {
+    background-size: 200% auto;
+    background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%);
+    animation: shimmer 12s linear infinite;
+  }
+
+  /* -- Pulsing dot -- */
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(1.6); }
+  }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+  /* -- Expertise card hover glow -- */
+  .expertise-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .expertise-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; right: -100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent);
+    transition: left 0.6s ease, right 0.6s ease;
+  }
+  .expertise-card:hover::before {
+    left: 0; right: 0;
+    animation: glowSweep 1.6s ease infinite;
+  }
+  @keyframes glowSweep {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* -- Smooth scroll -- */
+  html { scroll-behavior: smooth; }
+</style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white transition-colors duration-300">
-<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-<!-- Standardized Glass Nav -->
-<header class="fixed top-0 z-50 w-full px-4 md:px-20 lg:px-40 py-3" style="backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); border-bottom: 1px solid rgba(255,255,255,0.1);">
-<div class="flex items-center justify-between max-w-[1200px] mx-auto">
-<a href="/en/index.html" class="flex items-center gap-2">
-<h2 class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></h2>
+<body class="bg-background-dark text-white">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center">
+<a class="flex items-center" href="/en/index.html">
+<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
 </a>
-<div class="flex flex-1 justify-end gap-6 items-center">
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/services.html">Services</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/solutions.html">Solutions</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/about.html">About Us</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/contact.html">Contact</a>
-</nav>
-<div class="h-6 w-[1px] bg-white/10 hidden md:block"></div>
-<div class="flex items-center gap-3">
-<div class="flex items-center gap-2">
-<span class="text-white text-xs font-bold tracking-wider">EN</span>
-<span class="text-white/20 text-xs">|</span>
-<a href="/index.html" class="text-white/40 hover:text-white/80 text-xs font-bold tracking-wider transition-colors">ES</a>
 </div>
-<a href="/en/contact.html" class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-primary/80 text-white text-xs font-bold leading-normal tracking-wider transition-all">
-<span class="truncate">Request Consultation</span>
-</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/about.html">About Us</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/contact.html">Contact</a>
+<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+<span class="text-white">EN</span>
+<span class="text-white/20">|</span>
+<a class="hover:text-white transition-colors" href="/index.html">ES</a>
+</div>
+<a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Request Consultation</a>
+</div>
 </div>
 <!-- Mobile hamburger -->
 <button class="md:hidden flex items-center text-white" onclick="document.getElementById('mobile-menu-home').classList.toggle('hidden')">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </div>
-</div>
 <!-- Mobile menu -->
-<div id="mobile-menu-home" class="hidden md:hidden mt-4 flex flex-col gap-4 pb-4">
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/services.html">Services</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/solutions.html">Solutions</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/about.html">About Us</a>
-<a class="text-white/70 hover:text-white transition-colors text-sm font-medium" href="/en/contact.html">Contact</a>
-<div class="flex items-center gap-2 mt-2">
-<span class="text-white text-xs font-bold tracking-wider">EN</span>
-<span class="text-white/20 text-xs">|</span>
-<a href="/index.html" class="text-white/40 hover:text-white/80 text-xs font-bold tracking-wider transition-colors">ES</a>
+<div id="mobile-menu-home" class="hidden md:hidden px-6 pb-4 flex flex-col gap-4">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/about.html">About Us</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/contact.html">Contact</a>
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400 mt-2">
+<span class="text-white">EN</span>
+<span class="text-white/20">|</span>
+<a class="hover:text-white transition-colors" href="/index.html">ES</a>
 </div>
 </div>
-</header>
-<!-- Spacer for fixed nav -->
-<div class="h-[60px]"></div>
-<main class="flex-1 flex flex-col items-center">
-<div class="w-full max-w-[1200px] px-4 md:px-10 lg:px-20 py-10">
-<div class="@container">
-<div class="@[480px]:p-2">
-<div class="flex min-h-[560px] flex-col gap-6 bg-card-dark @[480px]:gap-10 rounded-xl items-start justify-center px-8 pb-20 pt-20 @[480px]:px-16 border border-border-dark relative overflow-hidden group">
-<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none"></div>
-<div class="flex flex-col gap-4 text-left max-w-2xl relative z-10">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-accent-teal text-xs font-bold tracking-widest uppercase">
-                                    Industrial Optimization
-                                </div>
-<h1 class="text-white text-4xl font-black leading-tight tracking-tight @[480px]:text-6xl @[480px]:font-black @[480px]:leading-[1.1]">
-                                    Transforming Data into <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-teal">Optimal Decisions</span>
-</h1>
-<h2 class="text-white/70 text-base font-normal leading-relaxed @[480px]:text-xl max-w-lg">
-                                    Specializing in Operations Research, AI, and Advanced Mathematics to solve complex industrial challenges through algorithmic precision.
-                                </h2>
-</div>
-<div class="flex flex-wrap gap-4 relative z-10">
-<a href="/en/contact.html" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary hover:shadow-[0_0_20px_rgba(17,50,212,0.4)] text-white text-base font-bold leading-normal transition-all">
-<span class="truncate">Get Started</span>
-</a>
-<a href="/en/about.html" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-base font-bold leading-normal transition-all">
-<span class="truncate">Our Approach</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<section class="w-full max-w-[1200px] px-4 md:px-10 lg:px-20 py-16">
-<div class="flex flex-col gap-12 @container">
-<div class="flex flex-col md:flex-row gap-8 items-end justify-between border-l-4 border-primary pl-8">
-<div class="flex flex-col gap-4">
-<h3 class="text-accent-teal font-bold uppercase tracking-[0.2em] text-sm">Strategic Intelligence</h3>
-<h2 class="text-white tracking-tight text-3xl font-black leading-tight @[480px]:text-5xl max-w-[720px]">
-                                Who We Are
-                            </h2>
-<p class="text-white/60 text-lg font-normal leading-relaxed max-w-[680px]">
-                                Lontra is a premier consultancy focused on the intersection of business and science. We bridge the gap between complex industrial data and actionable mathematical certainty.
-                            </p>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="group flex flex-col gap-5 rounded-xl border border-border-dark bg-card-dark p-8 hover:border-primary/50 transition-all duration-300">
-<div class="text-primary group-hover:text-accent-teal transition-colors" style="font-size: 32px;">
-<span class="material-symbols-outlined !text-[40px]">psychology</span>
-</div>
-<div class="flex flex-col gap-2">
-<h4 class="text-white text-xl font-bold leading-tight tracking-tight">Expertise</h4>
-<p class="text-white/50 text-sm leading-relaxed">Profound depth in Operations Research and system-wide optimization algorithms.</p>
-</div>
-</div>
-<div class="group flex flex-col gap-5 rounded-xl border border-border-dark bg-card-dark p-8 hover:border-primary/50 transition-all duration-300">
-<div class="text-primary group-hover:text-accent-teal transition-colors" style="font-size: 32px;">
-<span class="material-symbols-outlined !text-[40px]">target</span>
-</div>
-<div class="flex flex-col gap-2">
-<h4 class="text-white text-xl font-bold leading-tight tracking-tight">Precision</h4>
-<p class="text-white/50 text-sm leading-relaxed">Mathematical accuracy in every model, ensuring zero-margin errors in industrial planning.</p>
-</div>
-</div>
-<div class="group flex flex-col gap-5 rounded-xl border border-border-dark bg-card-dark p-8 hover:border-primary/50 transition-all duration-300">
-<div class="text-primary group-hover:text-accent-teal transition-colors" style="font-size: 32px;">
-<span class="material-symbols-outlined !text-[40px]">lightbulb</span>
-</div>
-<div class="flex flex-col gap-2">
-<h4 class="text-white text-xl font-bold leading-tight tracking-tight">Innovation</h4>
-<p class="text-white/50 text-sm leading-relaxed">Harnessing cutting-edge AI implementations to automate complex decision paths.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<div class="w-full max-w-[1200px] px-4 md:px-10 lg:px-20 pt-10">
-<div class="flex items-center gap-4 mb-2">
-<div class="h-[2px] w-12 bg-primary"></div>
-<span class="text-primary font-bold uppercase tracking-widest text-xs">Full Spectrum Services</span>
-</div>
-<h2 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-8">Service Portfolio</h2>
-</div>
-<div class="w-full max-w-[1200px] px-4 md:px-10 lg:px-20 pb-24">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-<a href="/en/services.html" class="flex flex-1 gap-4 rounded-xl border border-border-dark bg-card-dark p-6 flex-col hover:bg-card-dark/50 transition-colors">
-<div class="text-accent-teal" style="font-size: 24px;">
-<span class="material-symbols-outlined">functions</span>
-</div>
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-lg font-bold leading-tight">Mathematical Modeling</h2>
-<p class="text-white/50 text-sm leading-relaxed">Building formulaic and structural frameworks to simulate and optimize real-world systems.</p>
-</div>
-</a>
-<a href="/en/services.html" class="flex flex-1 gap-4 rounded-xl border border-border-dark bg-card-dark p-6 flex-col hover:bg-card-dark/50 transition-colors">
-<div class="text-accent-teal" style="font-size: 24px;">
-<span class="material-symbols-outlined">analytics</span>
-</div>
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-lg font-bold leading-tight">Stochastic Simulation</h2>
-<p class="text-white/50 text-sm leading-relaxed">Advanced risk assessment and probabilistic forecasting for volatile market conditions.</p>
-</div>
-</a>
-<a href="/en/services.html" class="flex flex-1 gap-4 rounded-xl border border-border-dark bg-card-dark p-6 flex-col hover:bg-card-dark/50 transition-colors">
-<div class="text-accent-teal" style="font-size: 24px;">
-<span class="material-symbols-outlined">settings_suggest</span>
-</div>
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-lg font-bold leading-tight">Process Optimization</h2>
-<p class="text-white/50 text-sm leading-relaxed">Substantial efficiency gains through algorithmic logic applied to workflow bottlenecks.</p>
-</div>
-</a>
-<a href="/en/services.html" class="flex flex-1 gap-4 rounded-xl border border-border-dark bg-card-dark p-6 flex-col hover:bg-card-dark/50 transition-colors">
-<div class="text-accent-teal" style="font-size: 24px;">
-<span class="material-symbols-outlined">hub</span>
-</div>
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-lg font-bold leading-tight">Supply Chain AI</h2>
-<p class="text-white/50 text-sm leading-relaxed">Intelligent logistics management using neural networks and heuristic solvers.</p>
-</div>
-</a>
-<a href="/en/services.html" class="flex flex-1 gap-4 rounded-xl border border-border-dark bg-card-dark p-6 flex-col hover:bg-card-dark/50 transition-colors">
-<div class="text-accent-teal" style="font-size: 24px;">
-<span class="material-symbols-outlined">query_stats</span>
-</div>
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-lg font-bold leading-tight">Predictive Analytics</h2>
-<p class="text-white/50 text-sm leading-relaxed">Data-driven foresight into future performance metrics and industry trends.</p>
-</div>
-</a>
-<a href="/en/services.html" class="flex flex-1 gap-4 rounded-xl border border-border-dark bg-card-dark p-6 flex-col hover:bg-card-dark/50 transition-colors">
-<div class="text-accent-teal" style="font-size: 24px;">
-<span class="material-symbols-outlined">architecture</span>
-</div>
-<div class="flex flex-col gap-2">
-<h2 class="text-white text-lg font-bold leading-tight">Structural Design</h2>
-<p class="text-white/50 text-sm leading-relaxed">Optimizing physical and organizational structures for maximum throughput.</p>
-</div>
-</a>
-</div>
-</div>
-</main>
-<!-- Standardized Footer -->
-<footer class="w-full bg-background-dark border-t border-border-dark py-12 px-4 md:px-20 lg:px-40">
-<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
-<div class="flex flex-col gap-4">
-<a href="/en/index.html" class="flex items-center gap-2 text-white">
-<h2 class="text-white text-xl font-bold leading-tight">Lontra<span class="text-primary font-black">.</span></h2>
-</a>
-<p class="text-white/40 text-sm max-w-[300px]">Advanced Operational Research &amp; AI Consultancy. Solving the world's toughest industrial puzzles.</p>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
-<div class="flex flex-col gap-4">
-<h5 class="text-white font-bold text-sm uppercase tracking-widest">Company</h5>
-<a class="text-white/50 text-sm hover:text-primary transition-colors" href="/en/about.html">About Us</a>
-<a class="text-white/50 text-sm hover:text-primary transition-colors" href="/en/solutions.html">Solutions</a>
-</div>
-<div class="flex flex-col gap-4">
-<h5 class="text-white font-bold text-sm uppercase tracking-widest">Services</h5>
-<a class="text-white/50 text-sm hover:text-primary transition-colors" href="/en/services.html">Services</a>
-</div>
-<div class="flex flex-col gap-4">
-<h5 class="text-white font-bold text-sm uppercase tracking-widest">Contact</h5>
-<p class="text-white/50 text-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> contact@lontra.com</p>
-<p class="text-white/50 text-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">location_on</span> Global Operations</p>
-</div>
-</div>
-</div>
-<div class="max-w-[1200px] mx-auto mt-12 pt-8 border-t border-border-dark/30 flex justify-between text-xs text-white/30">
-<p>&copy; 2025 Lontra Mathematical Solutions. All rights reserved.</p>
-<div class="flex gap-6">
-<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
-<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
-</div>
-</div>
-</footer>
-</div>
+</nav>
 
-<style>
-html { scroll-behavior: smooth; }
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-/* Enhanced button hover */
-a[class*="bg-primary"]:hover, button[class*="bg-primary"]:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 25px -5px rgba(17, 50, 212, 0.4);
-}
-/* Card lift effect */
-[class*="rounded-xl"][class*="border"]:hover, [class*="rounded-2xl"][class*="border"]:hover {
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
-}
-/* Gradient accent line under nav */
-nav::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(17, 50, 212, 0.5), transparent);
-}
-/* Form focus glow */
-input:focus, textarea:focus, select:focus {
-    box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15);
-}
-/* Smooth image/bg transitions */
-[class*="bg-cover"] { transition: transform 0.5s ease; }
-[class*="bg-cover"]:hover { transform: scale(1.02); }
-/* Footer link underline animation */
-footer a { position: relative; }
-footer a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: currentColor;
-    transition: width 0.3s ease;
-}
-footer a:hover::after { width: 100%; }
-</style>
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="hero">
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
+    <!-- Badge -->
+    <div class="mb-10 fade-up" style="transition-delay:0.1s">
+      <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-sm text-white/80">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan pulse-dot inline-block"></span>
+        Operations Research & AI
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="mb-8">
+      <span class="block text-6xl md:text-8xl font-bold fade-up" style="transition-delay:0.2s">Transforming</span>
+      <span class="block text-6xl md:text-8xl font-bold text-white/60 fade-up" style="transition-delay:0.4s">data into</span>
+      <span class="block text-6xl md:text-8xl font-bold fade-up" style="transition-delay:0.6s">optimal</span>
+      <span class="block text-6xl md:text-8xl font-bold bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent fade-up" style="transition-delay:0.8s">decisions</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-white/50 max-w-xl mb-10 fade-up" style="transition-delay:1s">
+      We combine operations research, advanced mathematics, and artificial intelligence so your company can make the best possible decisions.
+    </p>
+
+    <div class="flex flex-wrap gap-4 fade-up" style="transition-delay:1.2s">
+      <a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+        Request Consultation
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+      <a href="/en/services.html" class="border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+        View Services
+      </a>
+    </div>
+  </div>
+
+  <!-- Gradient fade at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="relative z-20 py-24" id="philosophy">
+  <div class="bg-gradient-to-b from-white/[0.02] to-transparent rounded-3xl max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center mb-16">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">Core Philosophy</span>
+      <h2 class="text-4xl md:text-6xl font-bold mb-6">Mathematical Rigor +<br/>Strategic Precision</h2>
+      <p class="text-white/50 text-lg max-w-2xl mx-auto">
+        Our approach combines academic rigor with business pragmatism, ensuring that every mathematical model translates into measurable impact for your organization.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Card 1 -->
+      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500 group">
+        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-3xl font-bold text-primary mb-6 group-hover:bg-primary/20 transition-colors">&Sigma;</div>
+        <h3 class="text-xl font-bold mb-3">Mathematical Rigor</h3>
+        <p class="text-white/50 text-sm leading-relaxed">
+          Every solution is backed by solid mathematical models proven in top-tier scientific journals.
+        </p>
+      </div>
+      <!-- Card 2 -->
+      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500 group" style="transition-delay:0.15s">
+        <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-3xl font-bold text-accent-cyan mb-6 group-hover:bg-accent-cyan/20 transition-colors">&rarr;</div>
+        <h3 class="text-xl font-bold mb-3">Strategic Precision</h3>
+        <p class="text-white/50 text-sm leading-relaxed">
+          We turn theory into practical tools that improve your company's operations from day one.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="relative z-20 py-24" id="expertise">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-14">
+      <div>
+        <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">Capabilities</span>
+        <h2 class="text-4xl md:text-5xl font-bold">Our Expertise</h2>
+      </div>
+      <a href="/en/services.html" class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-white/60 hover:text-white transition-colors">
+        View All Services
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Card 1: Operations Research -->
+      <div class="fade-up expertise-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500">
+        <div class="relative z-10">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-2xl">hub</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Operations Research</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">
+            Are your trucks traveling more miles than necessary? Could your inventory perform better? We apply linear programming, advanced heuristics, and simulation to find the best possible decisions in supply chain, logistics, and resource allocation.
+          </p>
+          <ul class="space-y-2 text-sm text-white/40 mb-6">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Optimal distribution routes</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Inventory planning</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Demand forecasting</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-primary/10 text-primary/80 px-3 py-1 rounded-full">Supply Networks</span>
+            <span class="text-xs bg-primary/10 text-primary/80 px-3 py-1 rounded-full">Inventory</span>
+            <span class="text-xs bg-primary/10 text-primary/80 px-3 py-1 rounded-full">Routing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Artificial Intelligence -->
+      <div class="fade-up expertise-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500" style="transition-delay:0.15s">
+        <div class="relative z-10">
+          <div class="w-12 h-12 rounded-lg bg-accent-cyan/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-accent-cyan text-2xl">psychology</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Artificial Intelligence</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">
+            Is your team wasting time on repetitive tasks? Are there patterns in your data you're not leveraging? We design machine learning models and AI assistants that learn from your data to automate decisions and anticipate market changes.
+          </p>
+          <ul class="space-y-2 text-sm text-white/40 mb-6">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> AI Assistants (LLMs & RAG)</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Predictive Maintenance</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Process Automation</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">Deep Learning</span>
+            <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">NLP</span>
+            <span class="text-xs bg-accent-cyan/10 text-accent-cyan/80 px-3 py-1 rounded-full">RAG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Advanced Mathematics -->
+      <div class="fade-up expertise-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500" style="transition-delay:0.3s">
+        <div class="relative z-10">
+          <div class="w-12 h-12 rounded-lg bg-purple/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-purple text-2xl">functions</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Advanced Mathematics</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">
+            We translate the complex dynamics of your business into robust mathematical formulations. From Monte Carlo simulations to game theory, we build models that serve as a solid foundation for decision-making under uncertainty.
+          </p>
+          <ul class="space-y-2 text-sm text-white/40 mb-6">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Stochastic simulation</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Economic modeling & game theory</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Risk quantification</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Stochastic Calculus</span>
+            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Multi-Agent</span>
+            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Graphs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 md:hidden text-center">
+      <a href="/en/services.html" class="inline-flex items-center gap-2 text-sm font-bold text-white/60 hover:text-white transition-colors">
+        View All Services
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="relative z-20 py-24" id="industries">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">Sectors</span>
+      <h2 class="text-4xl md:text-5xl font-bold">Industries We Serve</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <a href="/en/solutions.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left">
+        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-500">
+          <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Logistics & Supply Chain</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-4">
+          We help you find the fastest and most cost-effective routes for your fleet, organize your inventory intelligently, and anticipate demand so you never have too much or too little product.
+        </p>
+        <ul class="space-y-2 text-sm text-white/40">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Optimal distribution routes</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Inventory planning</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Demand forecasting</li>
+        </ul>
+      </a>
+
+      <a href="/en/solutions.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left" style="transition-delay:0.15s">
+        <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-all duration-500">
+          <span class="material-symbols-outlined text-accent-cyan text-3xl">smart_toy</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Digital Solutions & AI</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-4">
+          We build intelligent assistants that answer questions about your internal data <span class="text-white/30">(RAG)</span>, automate processes with language models <span class="text-white/30">(LLMs)</span>, and develop custom tools that integrate AI into your daily operations.
+        </p>
+        <ul class="space-y-2 text-sm text-white/40">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> AI Assistants (LLMs & RAG)</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Process Automation</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Decision Support Systems</li>
+        </ul>
+      </a>
+
+      <a href="/en/solutions.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left" style="transition-delay:0.3s">
+        <div class="w-14 h-14 rounded-xl bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple/20 transition-all duration-500">
+          <span class="material-symbols-outlined text-purple text-3xl">factory</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Manufacturing</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-4">
+          We help you plan your production efficiently, predict when your equipment will fail before it happens <span class="text-white/30">(predictive maintenance)</span>, and reduce waste at every stage of the process.
+        </p>
+        <ul class="space-y-2 text-sm text-white/40">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Production planning</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Predictive maintenance</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Waste reduction</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative z-20 py-24" id="cta">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+      <!-- Dark overlay for readability -->
+      <div class="absolute inset-0 bg-background-dark/40 rounded-3xl"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to optimize<br/>your operations?</h2>
+        <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
+          Schedule a free consultation and discover how our solutions can transform your business.
+        </p>
+        <a href="/en/contact.html" class="inline-flex items-center gap-2 bg-white text-background-dark px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
+          Request Your Free Consultation
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative z-20 border-t border-white/10 pt-20 pb-10 bg-background-dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <!-- Brand -->
+      <div>
+        <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        <p class="text-white/40 text-sm mt-4 leading-relaxed">
+          Operations Research and Artificial Intelligence Consultancy. Global Operations.
+        </p>
+      </div>
+      <!-- Links -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Links</h4>
+        <ul class="space-y-3">
+          <li><a href="/en/services.html" class="text-sm text-white/40 hover:text-white transition-colors">Services</a></li>
+          <li><a href="/en/solutions.html" class="text-sm text-white/40 hover:text-white transition-colors">Solutions</a></li>
+          <li><a href="/en/about.html" class="text-sm text-white/40 hover:text-white transition-colors">About Us</a></li>
+        </ul>
+      </div>
+      <!-- Company -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Company</h4>
+        <ul class="space-y-3">
+          <li><a href="/en/contact.html" class="text-sm text-white/40 hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/en/about.html" class="text-sm text-white/40 hover:text-white transition-colors">Team</a></li>
+        </ul>
+      </div>
+      <!-- Contact -->
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Contact</h4>
+        <ul class="space-y-3">
+          <li class="text-sm text-white/40">contact@lontra.com</li>
+          <li class="text-sm text-white/40">Global Operations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/30">&copy; 2026 Lontra. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
 <script>
-(() => {
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('main > section, main section .grid > div, main section .flex > div').forEach(s => {
-        s.classList.add('fade-in');
-        io.observe(s);
+(function() {
+  'use strict';
+
+  // IntersectionObserver for fade-up animations
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      if (el.classList.contains('fade-up')) {
+        el.classList.add('in-view');
+      }
+      observer.unobserve(el);
     });
-    // Active nav link
-    const path = location.pathname;
-    document.querySelectorAll('nav a[href]').forEach(a => {
-        if (a.getAttribute('href') === path || (path === '/' && a.getAttribute('href') === '/index.html')) {
-            a.classList.remove('text-white/70');
-            a.classList.add('text-white', 'font-bold');
-        }
-    });
+  }, { threshold: 0.2 });
+
+  // Observe all fade-up elements
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // Trigger hero fade-ups on load
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.querySelectorAll('#hero .fade-up').forEach(function(el) {
+        el.classList.add('in-view');
+      });
+    }, 100);
+  });
 })();
 </script>
-</body></html>
+
+</body>
+</html>

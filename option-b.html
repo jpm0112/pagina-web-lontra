@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lontra | Opci&oacute;n B &mdash; Bento Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#1132d4",
+        "navy-brand": "#001a3d",
+        "accent-teal": "#14b8a6",
+        "bright-blue": "#3b82f6",
+        "background-light": "#f6f6f8",
+        "background-dark": "#101322",
+      },
+      fontFamily: {
+        "display": ["Inter", "sans-serif"]
+      },
+    },
+  },
+}
+</script>
+<style type="text/tailwindcss">
+body { font-family: 'Inter', sans-serif; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+.dot-pattern {
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.mesh-gradient {
+  background: radial-gradient(ellipse at 20% 80%, rgba(17,50,212,0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(20,184,166,0.08) 0%, transparent 50%);
+}
+</style>
+</head>
+<body class="bg-background-dark text-white">
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center">
+<a class="flex items-center" href="/index.html">
+<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- ========== 1. HERO — BENTO GRID ========== -->
+<section class="pt-28 pb-6 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[1fr_1fr] gap-3 md:gap-4">
+
+      <!-- Large tile: spans 2 cols, 2 rows -->
+      <div class="md:col-span-2 md:row-span-2 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 md:p-12 flex flex-col justify-center relative overflow-hidden mesh-gradient dot-pattern fade-in">
+        <div class="relative z-10">
+          <p class="text-xs font-bold tracking-[0.2em] uppercase text-accent-teal mb-4">Consultor&iacute;a en Operaciones &amp; IA</p>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08] mb-6">
+            Transformando datos<br/>en decisiones<br/>&oacute;ptimas
+          </h1>
+          <p class="text-base md:text-lg text-white/50 max-w-lg mb-8 leading-relaxed">
+            Combinamos investigaci&oacute;n de operaciones, inteligencia artificial y matem&aacute;ticas avanzadas para resolver los desaf&iacute;os m&aacute;s complejos de tu negocio.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-7 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/25">
+              Solicitar Consulta
+            </a>
+            <a href="/soluciones.html" class="bg-white/5 hover:bg-white/10 text-white px-7 py-3 rounded-lg text-sm font-bold transition-all border border-white/10">
+              Ver Soluciones
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top-right tile: Status card -->
+      <div class="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 flex flex-col justify-center fade-in">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 pulse-dot"></span>
+          <span class="text-[11px] font-bold tracking-widest uppercase text-emerald-400">Activo</span>
+        </div>
+        <p class="text-lg font-bold leading-snug mb-2">Investigaci&oacute;n de Operaciones &amp; IA</p>
+        <p class="text-sm text-white/40 leading-relaxed">Soluciones matem&aacute;ticas de vanguardia para la industria chilena y latinoamericana.</p>
+      </div>
+
+      <!-- Middle-right tile: Stat card with sparkline -->
+      <div class="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 flex flex-col justify-between fade-in">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase text-slate-500 mb-1">Proyectos completados</p>
+          <div class="flex items-end gap-3">
+            <span class="text-5xl font-bold tracking-tight text-white">+50</span>
+            <!-- Sparkline SVG -->
+            <svg class="w-24 h-10 mb-2" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,35 12,30 24,32 36,22 48,18 60,24 72,12 84,8 96,5" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="0,35 12,30 24,32 36,22 48,18 60,24 72,12 84,8 96,5" stroke="url(#sparkGrad)" stroke-width="0" fill="url(#sparkFill)" opacity="0.15"/>
+              <defs>
+                <linearGradient id="sparkGrad" x1="0" y1="0" x2="96" y2="0">
+                  <stop offset="0%" stop-color="#3b82f6"/>
+                  <stop offset="100%" stop-color="#14b8a6"/>
+                </linearGradient>
+                <linearGradient id="sparkFill" x1="48" y1="0" x2="48" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#3b82f6"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <p class="text-sm text-white/30 mt-2">En m&uacute;ltiples industrias y pa&iacute;ses</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom small tile row (outside main grid for better mobile) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-4">
+      <div class="md:col-start-3 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-8 flex items-center gap-6 fade-in">
+        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+          <span class="text-2xl font-bold text-primary">7+</span>
+        </div>
+        <div>
+          <p class="text-lg font-bold">A&ntilde;os de Experiencia</p>
+          <p class="text-sm text-white/40">Resolviendo problemas complejos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 2. METRICS STRIP ========== -->
+<section class="py-6 px-4 sm:px-6 fade-in">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+    <div class="rounded-xl border border-white/5 bg-white/[0.02] p-6 border-t-2 border-t-primary">
+      <p class="text-3xl font-bold text-bright-blue mb-1">+50</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Proyectos</p>
+    </div>
+    <div class="rounded-xl border border-white/5 bg-white/[0.02] p-6 border-t-2 border-t-accent-teal">
+      <p class="text-3xl font-bold text-accent-teal mb-1">3</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Industrias</p>
+    </div>
+    <div class="rounded-xl border border-white/5 bg-white/[0.02] p-6 border-t-2 border-t-primary">
+      <p class="text-3xl font-bold text-bright-blue mb-1">7+</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-slate-500">A&ntilde;os</p>
+    </div>
+    <div class="rounded-xl border border-white/5 bg-white/[0.02] p-6 border-t-2 border-t-accent-teal">
+      <p class="text-3xl font-bold text-accent-teal mb-1">98%</p>
+      <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Satisfacci&oacute;n</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. PHILOSOPHY ========== -->
+<section class="py-16 md:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 fade-in">
+      <p class="text-xs font-bold tracking-[0.2em] uppercase text-accent-teal mb-4">Filosof&iacute;a Central</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Matem&aacute;ticas aplicadas a problemas reales.</h2>
+      <p class="text-base text-white/50 max-w-2xl leading-relaxed">
+        Creemos que detr&aacute;s de cada decisi&oacute;n empresarial hay un modelo matem&aacute;tico esperando ser descubierto. Nuestro enfoque combina rigor acad&eacute;mico con pragmatismo industrial para entregar soluciones que funcionan en el mundo real.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 fade-in">
+      <!-- Card 1: Rigor Matem&aacute;tico -->
+      <div class="rounded-xl bg-white/5 border border-white/5 p-6 hover:border-primary/30 transition-colors group">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+          <span class="text-xl font-bold text-primary">&Sigma;</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2">Rigor Matem&aacute;tico</h3>
+        <p class="text-sm text-white/40 leading-relaxed">
+          Cada soluci&oacute;n est&aacute; respaldada por fundamentos matem&aacute;ticos s&oacute;lidos. Utilizamos optimizaci&oacute;n, estad&iacute;stica y modelado computacional para garantizar resultados demostrables y reproducibles.
+        </p>
+      </div>
+
+      <!-- Card 2: Precisi&oacute;n Estrat&eacute;gica -->
+      <div class="rounded-xl bg-white/5 border border-white/5 p-6 hover:border-primary/30 transition-colors group">
+        <div class="w-12 h-12 rounded-lg bg-accent-teal/10 flex items-center justify-center mb-5">
+          <span class="text-xl font-bold text-accent-teal">&rarr;</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2">Precisi&oacute;n Estrat&eacute;gica</h3>
+        <p class="text-sm text-white/40 leading-relaxed">
+          Traducimos la complejidad matem&aacute;tica en estrategias de negocio claras y accionables. Cada recomendaci&oacute;n est&aacute; dise&ntilde;ada para generar impacto medible en tus operaciones.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 4. EXPERTISE — BENTO GRID ========== -->
+<section class="py-16 md:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section header -->
+    <div class="flex items-end justify-between mb-10 fade-in">
+      <div>
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-accent-teal mb-3">Experiencia</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Nuestra Experiencia</h2>
+      </div>
+      <a href="/servicios.html" class="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-white/50 hover:text-white transition-colors">
+        Ver Todos los Servicios <span class="text-lg">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Asymmetric bento grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 fade-in">
+
+      <!-- Card 1: Tall, spans 2 rows -->
+      <div class="md:row-span-2 rounded-xl bg-white/[0.03] border border-white/[0.06] p-8 flex flex-col justify-between hover:border-primary/20 transition-colors">
+        <div>
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary" style="font-size:24px;">hub</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Investigaci&oacute;n de Operaciones</h3>
+          <p class="text-sm text-white/40 leading-relaxed mb-6">
+            Optimizaci&oacute;n din&aacute;mica, programaci&oacute;n lineal y simulaciones para cadena de suministro y log&iacute;stica. Dise&ntilde;amos modelos que reducen costos y maximizan la eficiencia operativa en entornos complejos con m&uacute;ltiples restricciones.
+          </p>
+          <p class="text-sm text-white/40 leading-relaxed mb-8">
+            Nuestros modelos han sido implementados en operaciones log&iacute;sticas a lo largo de Latinoam&eacute;rica, entregando ahorros significativos y mejoras medibles en tiempos de entrega.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-2.5 py-0.5 text-white/50">Redes de Suministro</span>
+          <span class="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-2.5 py-0.5 text-white/50">Inventarios</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Normal -->
+      <div class="rounded-xl bg-white/[0.03] border border-white/[0.06] p-8 hover:border-accent-teal/20 transition-colors">
+        <div class="w-12 h-12 rounded-lg bg-accent-teal/10 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined text-accent-teal" style="font-size:24px;">psychology</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Inteligencia Artificial</h3>
+        <p class="text-sm text-white/40 leading-relaxed mb-5">
+          Machine learning y anal&iacute;tica predictiva que evolucionan con tus datos para anticipar cambios en el mercado.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-2.5 py-0.5 text-white/50">Mantenimiento Predictivo</span>
+          <span class="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-2.5 py-0.5 text-white/50">NLP</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Normal, below Card 2 -->
+      <div class="rounded-xl bg-white/[0.03] border border-white/[0.06] p-8 hover:border-bright-blue/20 transition-colors">
+        <div class="w-12 h-12 rounded-lg bg-bright-blue/10 flex items-center justify-center mb-5">
+          <span class="material-symbols-outlined text-bright-blue" style="font-size:24px;">function</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Matem&aacute;ticas Avanzadas</h3>
+        <p class="text-sm text-white/40 leading-relaxed mb-5">
+          Modelado estoc&aacute;stico, teor&iacute;a de juegos y an&aacute;lisis basado en grafos para evaluaci&oacute;n de riesgos.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-2.5 py-0.5 text-white/50">C&aacute;lculo Estoc&aacute;stico</span>
+          <span class="text-[10px] uppercase tracking-wider border border-white/10 rounded-full px-2.5 py-0.5 text-white/50">Multi-Agente</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile link -->
+    <div class="mt-6 sm:hidden fade-in">
+      <a href="/servicios.html" class="inline-flex items-center gap-1 text-sm font-semibold text-white/50 hover:text-white transition-colors">
+        Ver Todos los Servicios <span class="text-lg">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. INDUSTRIES ========== -->
+<section class="py-16 md:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <div class="fade-in">
+      <h2 class="text-3xl font-bold tracking-tight mb-4">Resolviendo desaf&iacute;os en diversas industrias</h2>
+      <p class="text-base text-white/50 max-w-xl mx-auto mb-12 leading-relaxed">
+        Adaptamos nuestras soluciones matem&aacute;ticas a los desaf&iacute;os espec&iacute;ficos de cada sector.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-12 md:gap-20 fade-in">
+      <!-- Log&iacute;stica -->
+      <a href="/soluciones.html" class="flex flex-col items-center gap-4 group">
+        <div class="w-16 h-16 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:border-primary/30 group-hover:bg-white/10 transition-all">
+          <span class="text-2xl">&#x1F69A;</span>
+        </div>
+        <span class="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">Log&iacute;stica</span>
+      </a>
+
+      <!-- IA y Digital -->
+      <a href="/soluciones.html" class="flex flex-col items-center gap-4 group">
+        <div class="w-16 h-16 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:border-accent-teal/30 group-hover:bg-white/10 transition-all">
+          <span class="text-2xl">&#x1F916;</span>
+        </div>
+        <span class="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">IA y Digital</span>
+      </a>
+
+      <!-- Manufactura -->
+      <a href="/soluciones.html" class="flex flex-col items-center gap-4 group">
+        <div class="w-16 h-16 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:border-bright-blue/30 group-hover:bg-white/10 transition-all">
+          <span class="text-2xl">&#x1F3ED;</span>
+        </div>
+        <span class="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">Manufactura</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. CTA BANNER ========== -->
+<section class="py-16 md:py-24 px-4 sm:px-6 fade-in">
+  <div class="max-w-7xl mx-auto">
+    <div class="relative rounded-2xl bg-primary overflow-hidden px-8 md:px-16 py-16 md:py-20 text-center dot-pattern">
+      <!-- Subtle overlay gradients -->
+      <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/10 pointer-events-none"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+          &iquest;Listo para optimizar tus operaciones?
+        </h2>
+        <p class="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-8 leading-relaxed">
+          Cu&eacute;ntanos sobre tu desaf&iacute;o de negocio y te mostraremos c&oacute;mo las matem&aacute;ticas pueden ayudarte.
+        </p>
+        <a href="/contacto.html" class="inline-flex items-center gap-2 bg-white/15 backdrop-blur text-white border border-white/20 rounded-lg px-8 py-3.5 text-sm font-bold hover:bg-white/25 transition-all">
+          Solicita tu Consulta Gratuita <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7. FOOTER ========== -->
+<footer class="border-t border-white/[0.06] pt-16 pb-8 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="/index.html" class="inline-block mb-4">
+          <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        </a>
+        <p class="text-sm text-white/40 leading-relaxed">
+          Consultor&iacute;a en Investigaci&oacute;n de Operaciones e Inteligencia Artificial para la industria latinoamericana.
+        </p>
+      </div>
+
+      <!-- Enlaces -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Enlaces</h4>
+        <ul class="space-y-3">
+          <li><a href="/servicios.html" class="text-sm text-white/50 hover:text-white transition-colors">Servicios</a></li>
+          <li><a href="/soluciones.html" class="text-sm text-white/50 hover:text-white transition-colors">Soluciones</a></li>
+          <li><a href="/servicios.html" class="text-sm text-white/50 hover:text-white transition-colors">Metodolog&iacute;a</a></li>
+        </ul>
+      </div>
+
+      <!-- Empresa -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Empresa</h4>
+        <ul class="space-y-3">
+          <li><a href="/sobre-nosotros.html" class="text-sm text-white/50 hover:text-white transition-colors">Sobre Nosotros</a></li>
+          <li><a href="/contacto.html" class="text-sm text-white/50 hover:text-white transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Contacto</h4>
+        <ul class="space-y-3">
+          <li><a href="mailto:contacto@lontra.com" class="text-sm text-white/50 hover:text-white transition-colors">contacto@lontra.com</a></li>
+          <li><span class="text-sm text-white/50">Chile</span></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-sm text-white/50 hover:text-white transition-colors inline-flex items-center gap-1">LinkedIn <span class="text-xs">&nearr;</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Pol&iacute;tica de Privacidad</a>
+        <span class="text-white/10">|</span>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">T&eacute;rminos de Servicio</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== JS: IntersectionObserver for fade-in ========== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+</body>
+</html>
