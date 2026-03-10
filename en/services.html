@@ -84,7 +84,7 @@ body { font-family: 'Inter', sans-serif; }
   .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
   .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
   .data-stream-card {
-    position: relative; overflow: hidden;
+    position: relative; overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -223,7 +223,7 @@ We implement rigorous mathematical frameworks and cutting-edge AI to solve your 
 </div>
 
 <!-- Sections -->
-<div class="flex flex-col gap-24">
+<div class="flex flex-col gap-24 overflow-hidden">
 
 <!-- ── Mathematical Modeling ── -->
 <section class="group scroll-mt-32 slide-left data-stream-card" id="math-modeling">

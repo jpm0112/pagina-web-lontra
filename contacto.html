@@ -83,7 +83,7 @@ body { font-family: 'Inter', sans-serif; }
   .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.in-view { opacity: 1; transform: translateY(0); }
   /* Data stream card */
-  .data-stream-card { position: relative; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+  .data-stream-card { position: relative; overflow: clip; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
   .data-stream-card::before { content: ''; position: absolute; top: 0; left: -100%; right: -100%; height: 2px; background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent); transition: left 0.6s ease, right 0.6s ease; }
   .data-stream-card:hover::before { left: 0; right: 0; animation: glowSweep 1.6s ease infinite; }
   @keyframes glowSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
@@ -192,7 +192,7 @@ body { font-family: 'Inter', sans-serif; }
 <!-- ══════════════════════════════════════════════════ FORM + SIDEBAR ══════════════════════════════════════════════════ -->
 <section class="relative pb-24">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 overflow-hidden">
 
       <!-- Form Container -->
       <div class="lg:col-span-7 bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 slide-left data-stream-card" style="transition-delay:0.1s">
@@ -270,7 +270,7 @@ body { font-family: 'Inter', sans-serif; }
               </div>
               <div>
                 <p class="text-sm font-medium text-white/40">LinkedIn</p>
-                <a href="https://www.linkedin.com/in/jpmorande/" target="_blank" class="text-lg font-semibold hover:text-primary transition-colors">linkedin.com/in/jpmorande</a>
+                <a href="https://www.linkedin.com/in/jpmorande/" target="_blank" class="text-lg font-semibold hover:text-primary transition-colors break-all">linkedin.com/in/jpmorande</a>
               </div>
             </div>
           </div>

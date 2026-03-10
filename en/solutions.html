@@ -84,7 +84,7 @@ body { font-family: 'Inter', sans-serif; }
   .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
   .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
   .data-stream-card {
-    position: relative; overflow: hidden;
+    position: relative; overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -205,7 +205,7 @@ body { font-family: 'Inter', sans-serif; }
 <p class="text-white/50 max-w-2xl mx-auto">We work with companies across different sectors, tailoring our solutions to the specific challenges of each industry.</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden">
 
 <!-- Logistics — primary (blue) accent -->
 <div class="industry-card slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 group">
@@ -268,7 +268,7 @@ body { font-family: 'Inter', sans-serif; }
 <p class="text-white/50 max-w-2xl mx-auto">Every business has unique challenges. Here's how we turn complex problems into competitive advantages.</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden">
 
 <!-- Supply Chain Optimization -->
 <div class="slide-left data-stream-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500">

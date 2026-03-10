@@ -285,7 +285,7 @@ body { font-family: 'Inter', sans-serif; }
   /* ── Expertise card data stream ── */
   .data-stream-card {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -573,7 +573,7 @@ body { font-family: 'Inter', sans-serif; }
       </a>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8 overflow-hidden">
       <!-- Card 1 -- slides from LEFT -->
       <div class="slide-left data-stream-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500">
         <!-- Data stream background -->

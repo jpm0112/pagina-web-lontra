@@ -84,7 +84,7 @@ body { font-family: 'Inter', sans-serif; }
   .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
   .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
   .data-stream-card {
-    position: relative; overflow: hidden;
+    position: relative; overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -221,7 +221,7 @@ Lontra was founded by a collective of researchers who recognized that enterprise
 </div>
 <div class="relative">
 <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/10 -translate-y-1/2"></div>
-<div class="grid md:grid-cols-3 gap-8 relative z-10">
+<div class="grid md:grid-cols-3 gap-8 relative z-10 overflow-hidden">
 <div class="slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-accent-cyan/40 transition-all duration-500">
 <div class="size-20 rounded-2xl bg-accent-cyan/10 text-accent-cyan flex items-center justify-center mb-8 group-hover:bg-accent-cyan group-hover:text-white transition-all duration-500">
 <span class="material-symbols-outlined text-4xl">database</span>
@@ -260,7 +260,7 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Expertise Behind the Intelligence</h2>
 <p class="text-white/40 mt-4 text-lg max-w-2xl mx-auto">Our team comprises veterans of global logistics and elite academic institutions.</p>
 </div>
-<div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 overflow-hidden">
 <!-- Team Member 1 -->
 <div class="slide-left bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-primary/40 transition-all duration-500">
 <div class="aspect-square bg-background-dark rounded-xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-primary/30 transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmIAC-mlWNDXIXkrix03PlGxl5kdlGEdtgkJtGq4HL2mZPSysNxutryWD7reOcueSn6TXV0NGe-QSJIF11sc-PJCNF2SHTJg4z0Lx-Maf7I01aqQWcl9Sy7jp91YxEiOH6AuuWvy44QjGEqzItJvhi8QJ0eRbohM_8XyszSYnY6fzID4Ng2jX0XL1XShSLHysWkYRM6wmaUOjBgFLLRLXA0msMwgljtXt-CbTAznuM8fYB-YGoE9BMUa6TmR8t1sYsOBZDBTUYlFxN"); background-size: cover;'>

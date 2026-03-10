@@ -83,7 +83,7 @@ body { font-family: 'Inter', sans-serif; }
   @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.6); } }
   .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
   .data-stream-card {
-    position: relative; overflow: hidden;
+    position: relative; overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -202,7 +202,7 @@ body { font-family: 'Inter', sans-serif; }
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8 overflow-hidden">
       <!-- Card 1 -->
       <div class="slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500 group">
         <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
@@ -307,7 +307,7 @@ body { font-family: 'Inter', sans-serif; }
       <h2 class="text-4xl md:text-5xl font-bold">El Fundador</h2>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start overflow-hidden">
       <!-- Profile Card -->
       <div class="lg:col-span-1 slide-left">
         <div class="bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden hover:border-primary/40 transition-all duration-500">

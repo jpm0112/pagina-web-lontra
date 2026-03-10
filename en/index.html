@@ -84,7 +84,7 @@ body { font-family: 'Inter', sans-serif; }
   .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
   .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
   .data-stream-card {
-    position: relative; overflow: hidden;
+    position: relative; overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -246,7 +246,7 @@ body { font-family: 'Inter', sans-serif; }
       </a>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8 overflow-hidden">
       <!-- Card 1: Operations Research -->
       <div class="slide-left data-stream-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500">
         <div class="relative z-10">
@@ -334,7 +334,7 @@ body { font-family: 'Inter', sans-serif; }
       <h2 class="text-4xl md:text-5xl font-bold">Industries We Serve</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto overflow-hidden">
       <a href="solutions.html" class="industry-card slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left">
         <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-500">
           <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>

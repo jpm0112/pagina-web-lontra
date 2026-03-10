@@ -46,7 +46,7 @@ body { font-family: 'Inter', sans-serif; }
   .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.in-view { opacity: 1; transform: translateY(0); }
   .data-stream-card {
-    position: relative; overflow: hidden;
+    position: relative; overflow: clip;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
   .data-stream-card::before {
@@ -179,7 +179,7 @@ body { font-family: 'Inter', sans-serif; }
 </div>
 
 <!-- ── Service Sections ── -->
-<div class="flex flex-col gap-24">
+<div class="flex flex-col gap-24 overflow-hidden">
 
 <!-- Modelado Matematico -->
 <section class="group scroll-mt-32 slide-left data-stream-card" id="math-modeling">
