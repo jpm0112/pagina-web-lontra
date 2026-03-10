@@ -2,8 +2,12 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="About Lontra: operations research and artificial intelligence consulting. Our methodology and founding team.">
+<meta name="theme-color" content="#101322">
 <title>About Us | Lontra - Operations Research &amp; AI</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
@@ -30,6 +34,9 @@ tailwind.config = {
 <style type="text/tailwindcss">
 body { font-family: 'Inter', sans-serif; }
 .glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+* { overflow-wrap: break-word; }
+html { scroll-behavior: smooth; }
+a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offset: 2px; border-radius: 4px; }
 </style>
 <style>
   .grid-bg {
@@ -128,15 +135,15 @@ body { font-family: 'Inter', sans-serif; }
 <a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="contact.html">Contact</a>
 <div class="flex items-center border-l border-white/10 pl-8 gap-6">
 <div class="flex items-center gap-2 text-xs font-bold tracking-widest">
-<span class="text-white">EN</span>
+<span class="text-white px-2 py-1">EN</span>
 <span class="text-white/20">|</span>
-<a class="text-white/40 hover:text-white transition-colors" href="../sobre-nosotros.html">ES</a>
+<a class="text-white/40 hover:text-white transition-colors px-2 py-1" href="../sobre-nosotros.html">ES</a>
 </div>
 <a href="contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Request Consultation</a>
 </div>
 </div>
 <!-- Mobile hamburger button -->
-<button class="md:hidden flex items-center justify-center w-10 h-10" id="menuToggle" aria-label="Open menu">
+<button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="Open menu">
 <span class="material-symbols-outlined text-white text-2xl">menu</span>
 </button>
 </div>
@@ -144,13 +151,13 @@ body { font-family: 'Inter', sans-serif; }
 
 <!-- Mobile menu overlay -->
 <div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
-<button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center" id="menuClose" aria-label="Close menu">
+<button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="Close menu">
 <span class="material-symbols-outlined text-white text-2xl">close</span>
 </button>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="services.html">Services</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="solutions.html">Solutions</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="about.html">About Us</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="contact.html">Contact</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="services.html">Services</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="solutions.html">Solutions</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="about.html">About Us</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="contact.html">Contact</a>
 <div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
 <span class="text-white">EN</span>
 <span class="text-white/20">|</span>
@@ -163,11 +170,11 @@ body { font-family: 'Inter', sans-serif; }
 <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 grid-bg">
 <div class="grid-cells" id="gridCells"></div>
 <div id="scanLine"></div>
-<div class="relative z-10 max-w-7xl mx-auto px-6 text-center py-24">
+<div class="relative z-10 max-w-7xl mx-auto px-8 text-center py-24">
 <div class="flex flex-col items-center gap-8">
 <div class="flex flex-col gap-6 max-w-4xl mx-auto">
 <span class="text-accent-cyan font-bold tracking-[0.3em] text-xs uppercase inline-block mb-2 fade-up">Est. 2014</span>
-<h1 class="text-6xl md:text-8xl font-black leading-tight tracking-tighter text-white fade-up" style="transition-delay:0.1s">
+<h1 class="text-4xl md:text-8xl font-black leading-tight tracking-tighter text-white fade-up" style="transition-delay:0.1s">
 Where Mathematics <br/>
 <span class="relative">
 Meets <span class="bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent">Momentum.</span>
@@ -178,11 +185,11 @@ Bridging the gap between academic rigor and practical operational impact through
 </p>
 </div>
 <div class="flex flex-col sm:flex-row gap-4 mt-4 fade-up" style="transition-delay:0.3s">
-<a href="solutions.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+<a href="solutions.html" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
 Explore Our Work
 <span class="material-symbols-outlined text-base">arrow_forward</span>
 </a>
-<a href="#mission" class="border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+<a href="#mission" class="w-full sm:w-auto text-center justify-center border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
 Learn More
 </a>
 </div>
@@ -193,8 +200,8 @@ Learn More
 </section>
 
 <!-- ====== MISSION ====== -->
-<section id="mission" class="bg-white/[0.02] py-24 border-y border-white/10 relative z-10 scroll-mt-20">
-<div class="max-w-7xl mx-auto px-6">
+<section id="mission" class="bg-white/[0.02] py-16 md:py-24 border-y border-white/10 relative z-10 scroll-mt-20">
+<div class="max-w-7xl mx-auto px-8">
 <div class="grid md:grid-cols-3 gap-12 items-start slide-up">
 <div class="md:col-span-1">
 <h2 class="text-3xl font-bold text-white mb-6">Our Mission</h2>
@@ -213,10 +220,10 @@ Lontra was founded by a collective of researchers who recognized that enterprise
 </section>
 
 <!-- ====== METHODOLOGY ====== -->
-<section class="py-24 max-w-7xl mx-auto px-6">
+<section class="py-16 md:py-24 max-w-7xl mx-auto px-8">
 <div class="text-center mb-16 fade-up">
 <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">Methodology</span>
-<h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Our Methodology</h2>
+<h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Our Methodology</h2>
 <p class="text-white/40 mt-4 text-lg">The path from abstract data to competitive advantage</p>
 </div>
 <div class="relative">
@@ -254,13 +261,13 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 </section>
 
 <!-- ====== TEAM ====== -->
-<section class="bg-white/[0.02] py-24 border-t border-white/10">
-<div class="max-w-7xl mx-auto px-6 text-center mb-16 fade-up">
+<section class="bg-white/[0.02] py-16 md:py-24 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-8 text-center mb-16 fade-up">
 <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">Our Team</span>
-<h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Expertise Behind the Intelligence</h2>
+<h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight">Expertise Behind the Intelligence</h2>
 <p class="text-white/40 mt-4 text-lg max-w-2xl mx-auto">Our team comprises veterans of global logistics and elite academic institutions.</p>
 </div>
-<div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 overflow-hidden">
 <!-- Team Member 1 -->
 <div class="slide-left bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-primary/40 transition-all duration-500">
 <div class="aspect-square bg-background-dark rounded-xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-primary/30 transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmIAC-mlWNDXIXkrix03PlGxl5kdlGEdtgkJtGq4HL2mZPSysNxutryWD7reOcueSn6TXV0NGe-QSJIF11sc-PJCNF2SHTJg4z0Lx-Maf7I01aqQWcl9Sy7jp91YxEiOH6AuuWvy44QjGEqzItJvhi8QJ0eRbohM_8XyszSYnY6fzID4Ng2jX0XL1XShSLHysWkYRM6wmaUOjBgFLLRLXA0msMwgljtXt-CbTAznuM8fYB-YGoE9BMUa6TmR8t1sYsOBZDBTUYlFxN"); background-size: cover;'>
@@ -321,8 +328,8 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 </section>
 
 <!-- ====== CTA ====== -->
-<section class="relative z-20 py-24" id="cta">
-<div class="max-w-5xl mx-auto px-6">
+<section class="relative z-20 py-16 md:py-24" id="cta">
+<div class="max-w-5xl mx-auto px-8">
 <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
 <!-- Dark overlay for readability -->
 <div class="absolute inset-0 bg-background-dark/40 rounded-3xl"></div>
@@ -341,9 +348,9 @@ Schedule a Consultation
 </section>
 
 <!-- ====== FOOTER ====== -->
-<footer class="relative z-20 border-t border-white/10 pt-20 pb-10 bg-background-dark">
-<div class="max-w-7xl mx-auto px-6">
-<div class="grid md:grid-cols-4 gap-12 mb-16">
+<footer class="relative z-20 border-t border-white/10 pt-12 md:pt-20 pb-10 bg-background-dark">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
 <!-- Brand -->
 <div>
 <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
@@ -353,24 +360,24 @@ Advanced Operations Research &amp; AI Consultancy based in Chile.
 </div>
 <!-- Links -->
 <div>
-<h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Links</h4>
+<h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Links</h4>
 <ul class="space-y-3">
-<li><a href="services.html" class="text-sm text-white/40 hover:text-white transition-colors">Services</a></li>
-<li><a href="solutions.html" class="text-sm text-white/40 hover:text-white transition-colors">Solutions</a></li>
-<li><a href="about.html" class="text-sm text-white/40 hover:text-white transition-colors">About Us</a></li>
+<li><a href="services.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Services</a></li>
+<li><a href="solutions.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Solutions</a></li>
+<li><a href="about.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">About Us</a></li>
 </ul>
 </div>
 <!-- Company -->
 <div>
-<h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Company</h4>
+<h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Company</h4>
 <ul class="space-y-3">
-<li><a href="contact.html" class="text-sm text-white/40 hover:text-white transition-colors">Contact</a></li>
-<li><a href="about.html" class="text-sm text-white/40 hover:text-white transition-colors">Team</a></li>
+<li><a href="contact.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Contact</a></li>
+<li><a href="about.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Team</a></li>
 </ul>
 </div>
 <!-- Contact -->
 <div>
-<h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Contact</h4>
+<h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Contact</h4>
 <ul class="space-y-3">
 <li class="text-sm text-white/40">contact@lontra.cl</li>
 <li class="text-sm text-white/40">Santiago, Chile</li>
@@ -380,8 +387,8 @@ Advanced Operations Research &amp; AI Consultancy based in Chile.
 <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
 <p class="text-xs text-white/30">&copy; 2026 Lontra. All rights reserved.</p>
 <div class="flex items-center gap-6">
-<a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
-<a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Terms of Service</a>
+<a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">Privacy Policy</a>
+<a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">Terms of Service</a>
 </div>
 </div>
 </div>

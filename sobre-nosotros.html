@@ -2,8 +2,12 @@
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Conoce a Lontra: consultoría de investigación de operaciones e inteligencia artificial. Nuestra metodología y equipo fundador.">
+<meta name="theme-color" content="#101322">
 <title>Lontra - Sobre Nosotros</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
@@ -30,6 +34,9 @@ tailwind.config = {
 <style type="text/tailwindcss">
 body { font-family: 'Inter', sans-serif; }
 .glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+* { overflow-wrap: break-word; }
+html { scroll-behavior: smooth; }
+a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offset: 2px; border-radius: 4px; }
 </style>
 <style>
   /* Grid Background */
@@ -126,15 +133,15 @@ body { font-family: 'Inter', sans-serif; }
 <a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="contacto.html">Contacto</a>
 <div class="flex items-center border-l border-white/10 pl-8 gap-6">
 <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors" href="en/about.html">EN</a>
+<a class="hover:text-white transition-colors px-2 py-1" href="en/about.html">EN</a>
 <span class="text-white/20">|</span>
-<span class="text-white">ES</span>
+<span class="text-white px-2 py-1">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
 <!-- Mobile hamburger button -->
-<button class="md:hidden flex items-center justify-center w-10 h-10" id="menuToggle" aria-label="Abrir menú">
+<button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="Abrir menú">
 <span class="material-symbols-outlined text-white text-2xl">menu</span>
 </button>
 </div>
@@ -142,13 +149,13 @@ body { font-family: 'Inter', sans-serif; }
 
 <!-- Mobile menu overlay -->
 <div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
-<button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
+<button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
 <span class="material-symbols-outlined text-white text-2xl">close</span>
 </button>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="servicios.html">Servicios</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="soluciones.html">Soluciones</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="contacto.html">Contacto</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="servicios.html">Servicios</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="contacto.html">Contacto</a>
 <div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
 <a class="hover:text-white transition-colors" href="en/index.html">EN</a>
 <span class="text-white/20">|</span>
@@ -162,25 +169,25 @@ body { font-family: 'Inter', sans-serif; }
   <div class="grid-cells" id="gridCells"></div>
   <div id="scanLine"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-background-dark to-background-dark"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full text-center">
+  <div class="relative z-10 max-w-7xl mx-auto px-8 py-24 w-full text-center">
     <div class="mb-6 fade-up" style="transition-delay:0.1s">
       <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-sm text-white/80">
         <span class="w-2 h-2 rounded-full bg-accent-cyan inline-block pulse-dot"></span>
         Sobre Nosotros
       </span>
     </div>
-    <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-up" style="transition-delay:0.2s">
+    <h1 class="text-4xl md:text-7xl font-bold mb-6 fade-up" style="transition-delay:0.2s">
       Sobre <span class="bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent">Lontra</span>
     </h1>
     <p class="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 fade-up" style="transition-delay:0.4s">
       Dime tu problema. Yo te muestro la matematica.
     </p>
-    <div class="flex flex-wrap gap-4 justify-center fade-up" style="transition-delay:0.6s">
-      <a href="#fundador" class="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up" style="transition-delay:0.6s">
+      <a href="#fundador" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
         Conoce al Fundador
         <span class="material-symbols-outlined text-base">arrow_forward</span>
       </a>
-      <a href="#metodologia" class="border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+      <a href="#metodologia" class="w-full sm:w-auto text-center justify-center border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
         Metodologia
       </a>
     </div>
@@ -189,14 +196,14 @@ body { font-family: 'Inter', sans-serif; }
 </section>
 
 <!-- ══════════════════════════════════════════════════ MISSION ══════════════════════════════════════════════════ -->
-<section class="relative z-20 py-24" id="mission">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="relative z-20 py-16 md:py-24" id="mission">
+  <div class="max-w-7xl mx-auto px-8">
     <div class="mb-14">
       <div class="flex items-center gap-3 mb-4">
         <span class="w-8 h-[2px] bg-accent-cyan"></span>
         <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">Nuestro Enfoque</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 max-w-[720px]">Resolvemos problemas concretos con matematicas reales.</h2>
+      <h2 class="text-3xl md:text-5xl font-bold mb-6 max-w-[720px]">Resolvemos problemas concretos con matematicas reales.</h2>
       <p class="text-white/50 text-lg max-w-[800px] leading-relaxed">
         No vendemos dashboards bonitos ni informes genericos. Analizamos tu operacion, construimos modelos matematicos a medida, y te entregamos decisiones que puedes implementar al dia siguiente.
       </p>
@@ -232,18 +239,18 @@ body { font-family: 'Inter', sans-serif; }
 </section>
 
 <!-- ══════════════════════════════════════════════════ METHODOLOGY ══════════════════════════════════════════════════ -->
-<section class="relative z-20 py-24" id="metodologia">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="relative z-20 py-16 md:py-24" id="metodologia">
+  <div class="max-w-7xl mx-auto px-8">
     <div class="mb-14">
       <div class="flex items-center gap-3 mb-4">
         <span class="w-8 h-[2px] bg-accent-cyan"></span>
         <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">El Proceso</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold">Como Trabajamos: <span class="bg-gradient-to-r from-primary to-accent-cyan bg-clip-text text-transparent">Del problema a la solucion</span></h2>
+      <h2 class="text-3xl md:text-5xl font-bold">Como Trabajamos: <span class="bg-gradient-to-r from-primary to-accent-cyan bg-clip-text text-transparent">Del problema a la solucion</span></h2>
     </div>
 
-    <div class="clip-reveal bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-10" id="metodologiaInner">
-      <div class="grid grid-cols-[60px_1fr] gap-x-4">
+    <div class="clip-reveal bg-white/[0.03] border border-white/10 rounded-2xl p-4 md:p-8 lg:p-10" id="metodologiaInner">
+      <div class="grid grid-cols-[40px_1fr] md:grid-cols-[60px_1fr] gap-x-4">
         <!-- Step 1 -->
         <div class="flex flex-col items-center gap-1 pt-3">
           <div class="bg-primary/20 p-2 rounded-full border border-primary/30">
@@ -296,15 +303,15 @@ body { font-family: 'Inter', sans-serif; }
 </section>
 
 <!-- ══════════════════════════════════════════════════ FOUNDER ══════════════════════════════════════════════════ -->
-<section class="relative z-20 py-24" id="fundador">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="relative z-20 py-16 md:py-24" id="fundador">
+  <div class="max-w-7xl mx-auto px-8">
     <div class="text-center mb-16">
       <div class="flex items-center gap-3 mb-4 justify-center">
         <span class="w-8 h-[2px] bg-accent-cyan"></span>
         <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">Quien esta detras</span>
         <span class="w-8 h-[2px] bg-accent-cyan"></span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold">El Fundador</h2>
+      <h2 class="text-3xl md:text-5xl font-bold">El Fundador</h2>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start overflow-hidden">
@@ -437,8 +444,8 @@ body { font-family: 'Inter', sans-serif; }
 </section>
 
 <!-- ══════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════ -->
-<section class="relative z-20 py-24" id="cta">
-  <div class="max-w-5xl mx-auto px-6">
+<section class="relative z-20 py-16 md:py-24" id="cta">
+  <div class="max-w-5xl mx-auto px-8">
     <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
       <!-- Dark overlay for readability -->
       <div class="absolute inset-0 bg-background-dark/40 rounded-3xl"></div>
@@ -457,9 +464,9 @@ body { font-family: 'Inter', sans-serif; }
 </section>
 
 <!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
-<footer class="relative z-20 border-t border-white/10 pt-20 pb-10 bg-background-dark">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-4 gap-12 mb-16">
+<footer class="relative z-20 border-t border-white/10 pt-12 md:pt-20 pb-10 bg-background-dark">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
       <!-- Brand -->
       <div>
         <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
@@ -467,24 +474,24 @@ body { font-family: 'Inter', sans-serif; }
       </div>
       <!-- Enlaces -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Enlaces</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Enlaces</h4>
         <ul class="space-y-3">
-          <li><a href="servicios.html" class="text-sm text-white/40 hover:text-white transition-colors">Servicios</a></li>
-          <li><a href="soluciones.html" class="text-sm text-white/40 hover:text-white transition-colors">Soluciones</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors">Sobre Nosotros</a></li>
+          <li><a href="servicios.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
+          <li><a href="soluciones.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
         </ul>
       </div>
       <!-- Empresa -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Empresa</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Empresa</h4>
         <ul class="space-y-3">
-          <li><a href="contacto.html" class="text-sm text-white/40 hover:text-white transition-colors">Contacto</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors">Equipo</a></li>
+          <li><a href="contacto.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
         </ul>
       </div>
       <!-- Contacto -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-6">Contacto</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Contacto</h4>
         <ul class="space-y-3">
           <li class="text-sm text-white/40">contacto@lontra.cl</li>
           <li class="text-sm text-white/40">Santiago, Chile</li>
@@ -494,8 +501,8 @@ body { font-family: 'Inter', sans-serif; }
     <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
       <div class="flex items-center gap-6">
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">Pol&iacute;tica de Privacidad</a>
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors">T&eacute;rminos</a>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">Pol&iacute;tica de Privacidad</a>
+        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">T&eacute;rminos</a>
       </div>
     </div>
   </div>
