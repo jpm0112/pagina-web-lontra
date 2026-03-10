@@ -32,32 +32,86 @@ body { font-family: 'Inter', sans-serif; }
 .glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
 </style>
 <style>
-  html { scroll-behavior: smooth; }
-
-  /* Fade-up animation */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .grid-bg {
+    --grid-size: 60px;
+    background-image:
+      linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
   }
-  .fade-up.in-view {
-    opacity: 1;
-    transform: translateY(0);
+  .grid-cells {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 20), 1fr);
+    grid-template-rows: repeat(var(--rows, 14), 1fr);
+    pointer-events: none; z-index: 0;
   }
-
-  /* CTA shimmer */
-  @keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
+  .grid-cell {
+    border: 1px solid transparent;
+    transition: background 1.2s ease, box-shadow 1.2s ease;
+    border-radius: 2px;
   }
+  .grid-cell.lit {
+    background: rgba(17,50,212,0.08);
+    box-shadow: inset 0 0 12px rgba(6,182,212,0.12), 0 0 8px rgba(17,50,212,0.06);
+  }
+  #scanLine {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #06B6D4 20%, #1132d4 50%, #06B6D4 80%, transparent 100%);
+    box-shadow: 0 0 20px 4px rgba(6,182,212,0.4), 0 0 60px 8px rgba(17,50,212,0.2);
+    z-index: 2; pointer-events: none; opacity: 0;
+    animation: scanSweep 16s ease-in-out infinite;
+  }
+  #scanLine::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 2px; height: 80px;
+    background: linear-gradient(to bottom, rgba(6,182,212,0.08), transparent);
+    pointer-events: none;
+  }
+  @keyframes scanSweep {
+    0% { top: -2px; opacity: 0; } 5% { opacity: 0.9; }
+    90% { opacity: 0.9; } 95% { opacity: 0; } 100% { top: 100%; opacity: 0; }
+  }
+  .slide-left { opacity: 0; transform: translateX(-120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-right { opacity: 0; transform: translateX(120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-up { opacity: 0; transform: translateY(100px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-left.in-view, .slide-right.in-view, .slide-up.in-view { opacity: 1; transform: translate(0); }
+  .clip-reveal { clip-path: circle(0% at 50% 50%); transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .clip-reveal.revealed { clip-path: circle(150% at 50% 50%); }
+  .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.in-view { opacity: 1; transform: translateY(0); }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.6); } }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+  .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+  .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
+  .data-stream-card {
+    position: relative; overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .data-stream-card::before {
+    content: ''; position: absolute; top: 0; left: -100%; right: -100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent);
+    transition: left 0.6s ease, right 0.6s ease;
+  }
+  .data-stream-card:hover::before { left: 0; right: 0; animation: glowSweep 1.6s ease infinite; }
+  @keyframes glowSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
   .cta-shimmer {
     background-size: 200% auto;
     background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%);
     animation: shimmer 12s linear infinite;
   }
+  input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15); }
+  .trail-dot {
+    position: fixed; width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(6, 182, 212, 0.6); pointer-events: none; z-index: 9999;
+    animation: trailFade 1s ease-out forwards;
+  }
+  @keyframes trailFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2); } }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  @media (max-width: 768px) { #scanLine { display: none; } .grid-cells { opacity: 0.5; } }
 </style>
 </head>
-<body class="bg-background-dark text-white">
+<body class="bg-background-dark text-white overflow-x-hidden">
 
 <!-- ====== NAV ====== -->
 <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
@@ -81,29 +135,34 @@ body { font-family: 'Inter', sans-serif; }
 <a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Request Consultation</a>
 </div>
 </div>
-<div class="md:hidden flex items-center gap-4">
-<div class="flex items-center gap-2 text-xs font-bold tracking-widest">
-<span class="text-white">EN</span>
-<span class="text-white/20">|</span>
-<a class="text-white/40 hover:text-white transition-colors" href="/sobre-nosotros.html">ES</a>
-</div>
-<button onclick="document.getElementById('mobile-menu-about').classList.toggle('hidden')">
-<span class="material-symbols-outlined text-white">menu</span>
+<!-- Mobile hamburger button -->
+<button class="md:hidden flex items-center justify-center w-10 h-10" id="menuToggle" aria-label="Open menu">
+<span class="material-symbols-outlined text-white text-2xl">menu</span>
 </button>
-</div>
-</div>
-<!-- Mobile Menu -->
-<div id="mobile-menu-about" class="hidden md:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4">
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
-<a class="text-sm font-bold text-white" href="/en/about.html">About Us</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/en/contact.html">Contact</a>
-<a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 text-center">Request Consultation</a>
 </div>
 </nav>
 
+<!-- Mobile menu overlay -->
+<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center" id="menuClose" aria-label="Close menu">
+<span class="material-symbols-outlined text-white text-2xl">close</span>
+</button>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/en/services.html">Services</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/en/solutions.html">Solutions</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/en/about.html">About Us</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/en/contact.html">Contact</a>
+<div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
+<span class="text-white">EN</span>
+<span class="text-white/20">|</span>
+<a class="hover:text-white transition-colors" href="/index.html">ES</a>
+</div>
+<a href="/en/contact.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Request Consultation</a>
+</div>
+
 <!-- ====== HERO ====== -->
-<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
+<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 grid-bg">
+<div class="grid-cells" id="gridCells"></div>
+<div id="scanLine"></div>
 <div class="relative z-10 max-w-7xl mx-auto px-6 text-center py-24">
 <div class="flex flex-col items-center gap-8">
 <div class="flex flex-col gap-6 max-w-4xl mx-auto">
@@ -136,7 +195,7 @@ Learn More
 <!-- ====== MISSION ====== -->
 <section id="mission" class="bg-white/[0.02] py-24 border-y border-white/10 relative z-10 scroll-mt-20">
 <div class="max-w-7xl mx-auto px-6">
-<div class="grid md:grid-cols-3 gap-12 items-start fade-up">
+<div class="grid md:grid-cols-3 gap-12 items-start slide-up">
 <div class="md:col-span-1">
 <h2 class="text-3xl font-bold text-white mb-6">Our Mission</h2>
 <div class="h-1.5 w-12 bg-primary rounded-full"></div>
@@ -163,7 +222,7 @@ Lontra was founded by a collective of researchers who recognized that enterprise
 <div class="relative">
 <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/10 -translate-y-1/2"></div>
 <div class="grid md:grid-cols-3 gap-8 relative z-10">
-<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-accent-cyan/40 transition-all duration-500">
+<div class="slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-accent-cyan/40 transition-all duration-500">
 <div class="size-20 rounded-2xl bg-accent-cyan/10 text-accent-cyan flex items-center justify-center mb-8 group-hover:bg-accent-cyan group-hover:text-white transition-all duration-500">
 <span class="material-symbols-outlined text-4xl">database</span>
 </div>
@@ -172,7 +231,7 @@ Lontra was founded by a collective of researchers who recognized that enterprise
 Aggregating and cleaning disparate data sources into a high-fidelity digital twin of your operational environment.
 </p>
 </div>
-<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-primary/40 transition-all duration-500" style="transition-delay:0.15s">
+<div class="slide-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-primary/40 transition-all duration-500" style="transition-delay:0.15s">
 <div class="size-20 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
 <span class="material-symbols-outlined text-4xl">functions</span>
 </div>
@@ -181,7 +240,7 @@ Aggregating and cleaning disparate data sources into a high-fidelity digital twi
 Developing custom heuristics and mixed-integer programming models designed specifically for your unique constraints.
 </p>
 </div>
-<div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-purple/40 transition-all duration-500" style="transition-delay:0.3s">
+<div class="slide-right bg-white/[0.03] border border-white/10 rounded-2xl p-10 flex flex-col items-center text-center group hover:border-purple/40 transition-all duration-500" style="transition-delay:0.3s">
 <div class="size-20 rounded-2xl bg-purple/10 text-purple flex items-center justify-center mb-8 group-hover:bg-purple group-hover:text-white transition-all duration-500">
 <span class="material-symbols-outlined text-4xl">insights</span>
 </div>
@@ -203,7 +262,7 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 </div>
 <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
 <!-- Team Member 1 -->
-<div class="fade-up bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-primary/40 transition-all duration-500">
+<div class="slide-left bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-primary/40 transition-all duration-500">
 <div class="aspect-square bg-background-dark rounded-xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-primary/30 transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmIAC-mlWNDXIXkrix03PlGxl5kdlGEdtgkJtGq4HL2mZPSysNxutryWD7reOcueSn6TXV0NGe-QSJIF11sc-PJCNF2SHTJg4z0Lx-Maf7I01aqQWcl9Sy7jp91YxEiOH6AuuWvy44QjGEqzItJvhi8QJ0eRbohM_8XyszSYnY6fzID4Ng2jX0XL1XShSLHysWkYRM6wmaUOjBgFLLRLXA0msMwgljtXt-CbTAznuM8fYB-YGoE9BMUa6TmR8t1sYsOBZDBTUYlFxN"); background-size: cover;'>
 <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
@@ -217,7 +276,7 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 </div>
 </div>
 <!-- Team Member 2 -->
-<div class="fade-up bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.1s">
+<div class="slide-right bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.1s">
 <div class="aspect-square bg-background-dark rounded-xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-accent-cyan/30 transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtO4fv5kQW9GFYu9JNXcRYr_QZUFXFBRNMDcdHCTcxy5W6VXMYQ1m0y-bKQDizxVZrXUjLE72RnZdCg6tPQXfkZ8Ma1x9Mpy6oIMSsVwvJNuQOuL0MtXx1P7akNbq6qmFgQptMsMGl-XfmgWbFx8tPq1eXQWgJNnAeDdInRHM_VDCf1AkPsG4kgKkBcIWK9sNayW02Rv4RtPUo9rQhcgIh4uUEWUm0WB5peqfLBtTrXqp_KMv0A41DJSTR0cs2CgavAvIjmcCRUkfn"); background-size: cover;'>
 <div class="absolute inset-0 bg-accent-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
@@ -231,7 +290,7 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 </div>
 </div>
 <!-- Team Member 3 -->
-<div class="fade-up bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-purple/40 transition-all duration-500" style="transition-delay:0.2s">
+<div class="slide-left bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-purple/40 transition-all duration-500" style="transition-delay:0.2s">
 <div class="aspect-square bg-background-dark rounded-xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-purple/30 transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMzsoOF1hGa3XLXAanx5gvjA4Q9L1Rz80XeQ3jygRZ9F4AtGBlFKezHzsqRwKviB_ZylP30GoyYTtAqDQGSW3zN-cz51JMFefy01d0wyMZw2mZY_Iuk5z_uPP_wTXDc0soc20pU9PaYZhvAElqIOQWDtCQFlb5TY-sz7qzSyzyVuarrTGa-kWj2IYFuvJphQxfx2JsIGR937EqvSUlt09jwW4o1b7-3qRD06eJDGEYr__59WjTyR5oonOvo2-YPMhJEgi_vMH-pefb"); background-size: cover;'>
 <div class="absolute inset-0 bg-purple/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
@@ -245,7 +304,7 @@ Translating mathematical outputs into actionable, real-time strategies that maxi
 </div>
 </div>
 <!-- Team Member 4 -->
-<div class="fade-up bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-primary/40 transition-all duration-500" style="transition-delay:0.3s">
+<div class="slide-right bg-white/[0.03] border border-white/10 p-6 rounded-2xl group overflow-hidden hover:border-primary/40 transition-all duration-500" style="transition-delay:0.3s">
 <div class="aspect-square bg-background-dark rounded-xl mb-6 overflow-hidden relative border border-white/10 group-hover:border-primary/30 transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxavKhECCcEuf8OwyVmj1ImY6NZL1QLqjrJTlAA0sOTZGiBm0F9uDIGDJm-BiB2DlYalfom1Hpwio37GRDdwyHqjw9xZ0WbT84H-O8SvyhA7PS6-LHZ_d5N2IVDJmNn9oeUlgxUrdD8Qjf9i-qBbDernWgCQ5yEWdiiwG6lcgWTXwY3dZQ1JfpFURDNrmapEn0BeZwE5xYgyeBu55vlRqk4LEoySFW9BRMjis2ups9Y0r9aZ7xH8CO8607WffXWi8lWJe2YemXPGau"); background-size: cover;'>
 <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
@@ -333,19 +392,74 @@ Advanced Operations Research &amp; AI Consultancy based in Chile.
 (function() {
   'use strict';
 
-  // IntersectionObserver for fade-up animations
+  // ── 0. MOBILE MENU TOGGLE ──
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.style.opacity = '1';
+    mobileMenu.style.pointerEvents = 'auto';
+  });
+  menuClose.addEventListener('click', function() {
+    mobileMenu.style.opacity = '0';
+    mobileMenu.style.pointerEvents = 'none';
+  });
+
+  var lastTrailTime = 0;
+  document.addEventListener('mousemove', function(e) {
+    var now = Date.now();
+    if (now - lastTrailTime < 40) return;
+    lastTrailTime = now;
+    var dot = document.createElement('div');
+    dot.className = 'trail-dot';
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    document.body.appendChild(dot);
+    setTimeout(function() { dot.remove(); }, 1000);
+  });
+
+  var gridContainer = document.getElementById('gridCells');
+  if (gridContainer) {
+    var cols = 22, rows = 14;
+    gridContainer.style.setProperty('--cols', cols);
+    gridContainer.style.setProperty('--rows', rows);
+    var cells = [];
+    for (var i = 0; i < cols * rows; i++) {
+      var cell = document.createElement('div');
+      cell.className = 'grid-cell';
+      gridContainer.appendChild(cell);
+      cells.push(cell);
+    }
+    function tickGrid() {
+      cells.filter(function(c) { return c.classList.contains('lit'); }).forEach(function(c) {
+        if (Math.random() < 0.3) c.classList.remove('lit');
+      });
+      var n = 3 + Math.floor(Math.random() * 5);
+      for (var j = 0; j < n; j++) cells[Math.floor(Math.random() * cells.length)].classList.add('lit');
+    }
+    setInterval(tickGrid, 400);
+    for (var k = 0; k < 12; k++) cells[Math.floor(Math.random() * cells.length)].classList.add('lit');
+  }
+
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (!entry.isIntersecting) return;
-      if (entry.target.classList.contains('fade-up')) {
-        entry.target.classList.add('in-view');
-      }
-      observer.unobserve(entry.target);
+      var el = entry.target;
+      if (el.classList.contains('clip-reveal')) el.classList.add('revealed');
+      if (el.classList.contains('slide-left') || el.classList.contains('slide-right') || el.classList.contains('slide-up')) el.classList.add('in-view');
+      if (el.classList.contains('fade-up')) el.classList.add('in-view');
+      observer.unobserve(el);
     });
   }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(function(el) {
+  document.querySelectorAll('.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up').forEach(function(el) {
     observer.observe(el);
+  });
+
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var hero = document.querySelector('section');
+      if (hero) hero.querySelectorAll('.fade-up').forEach(function(el) { el.classList.add('in-view'); });
+    }, 100);
   });
 })();
 </script>

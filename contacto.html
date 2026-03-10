@@ -33,23 +33,76 @@ body { font-family: 'Inter', sans-serif; }
 .glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
 </style>
 <style>
-  html { scroll-behavior: smooth; }
-
-  /* Fade-up animation */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .grid-bg {
+    --grid-size: 60px;
+    background-image:
+      linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
   }
-  .fade-up.in-view {
-    opacity: 1;
-    transform: translateY(0);
+  .grid-cells {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 20), 1fr);
+    grid-template-rows: repeat(var(--rows, 14), 1fr);
+    pointer-events: none; z-index: 0;
   }
-
+  .grid-cell {
+    border: 1px solid transparent;
+    transition: background 1.2s ease, box-shadow 1.2s ease;
+    border-radius: 2px;
+  }
+  .grid-cell.lit {
+    background: rgba(17,50,212,0.08);
+    box-shadow: inset 0 0 12px rgba(6,182,212,0.12), 0 0 8px rgba(17,50,212,0.06);
+  }
+  #scanLine {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #06B6D4 20%, #1132d4 50%, #06B6D4 80%, transparent 100%);
+    box-shadow: 0 0 20px 4px rgba(6,182,212,0.4), 0 0 60px 8px rgba(17,50,212,0.2);
+    z-index: 2; pointer-events: none; opacity: 0;
+    animation: scanSweep 16s ease-in-out infinite;
+  }
+  #scanLine::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 2px; height: 80px;
+    background: linear-gradient(to bottom, rgba(6,182,212,0.08), transparent);
+    pointer-events: none;
+  }
+  @keyframes scanSweep {
+    0% { top: -2px; opacity: 0; } 5% { opacity: 0.9; }
+    90% { opacity: 0.9; } 95% { opacity: 0; } 100% { top: 100%; opacity: 0; }
+  }
+  .slide-left { opacity: 0; transform: translateX(-120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-right { opacity: 0; transform: translateX(120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-up { opacity: 0; transform: translateY(100px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-left.in-view, .slide-right.in-view, .slide-up.in-view { opacity: 1; transform: translate(0); }
+  /* Clip reveal */
+  .clip-reveal { clip-path: circle(0% at 50% 50%); transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .clip-reveal.revealed { clip-path: circle(150% at 50% 50%); }
+  /* Fade-up */
+  .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.in-view { opacity: 1; transform: translateY(0); }
+  /* Data stream card */
+  .data-stream-card { position: relative; overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+  .data-stream-card::before { content: ''; position: absolute; top: 0; left: -100%; right: -100%; height: 2px; background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent); transition: left 0.6s ease, right 0.6s ease; }
+  .data-stream-card:hover::before { left: 0; right: 0; animation: glowSweep 1.6s ease infinite; }
+  @keyframes glowSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  /* CTA shimmer */
+  @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+  .cta-shimmer { background-size: 200% auto; background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%); animation: shimmer 12s linear infinite; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.6); } }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
   /* Form focus glow */
-  input:focus, textarea:focus, select:focus {
-    box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15);
+  input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15); }
+  /* Trail dots */
+  .trail-dot {
+    position: fixed; width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(6, 182, 212, 0.6); pointer-events: none; z-index: 9999;
+    animation: trailFade 1s ease-out forwards;
   }
+  @keyframes trailFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2); } }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  @media (max-width: 768px) { #scanLine { display: none; } .grid-cells { opacity: 0.5; } }
 
   /* Footer link underline animation */
   footer a { position: relative; }
@@ -66,7 +119,7 @@ body { font-family: 'Inter', sans-serif; }
   footer a:hover::after { width: 100%; }
 </style>
 </head>
-<body class="bg-background-dark text-white">
+<body class="bg-background-dark text-white overflow-x-hidden">
 
 <!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
 <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
@@ -90,26 +143,36 @@ body { font-family: 'Inter', sans-serif; }
 <a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
-<!-- Mobile menu button -->
-<button id="mobile-menu-btn" class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-<span class="material-symbols-outlined">menu</span>
+<!-- Mobile hamburger button -->
+<button class="md:hidden flex items-center justify-center w-10 h-10" id="menuToggle" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-white text-2xl">menu</span>
 </button>
-</div>
-<!-- Mobile menu -->
-<div id="mobile-menu" class="hidden md:hidden px-6 pb-6 border-t border-white/10" style="background-color: rgba(16, 19, 34, 0.95);">
-<div class="flex flex-col gap-4 pt-4">
-<a class="text-sm text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
-<a class="text-sm text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
-<a class="text-sm text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-sm text-white font-bold transition-colors" href="/contacto.html">Contacto</a>
-<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-center mt-2">Solicitar Consulta</a>
-</div>
 </div>
 </nav>
 
+<!-- Mobile menu overlay -->
+<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-white text-2xl">close</span>
+</button>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Solicitar Consulta</a>
+</div>
+
 <!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
-<section class="relative pt-32 pb-16">
-  <div class="max-w-7xl mx-auto px-6 w-full">
+<section class="relative pt-32 pb-16 grid-bg overflow-hidden">
+  <div class="grid-cells" id="gridCells"></div>
+  <div id="scanLine"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     <!-- Badge -->
     <div class="mb-10 fade-up" style="transition-delay:0.1s">
       <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">Contacto</span>
@@ -132,7 +195,7 @@ body { font-family: 'Inter', sans-serif; }
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
       <!-- Form Container -->
-      <div class="lg:col-span-7 bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 fade-up" style="transition-delay:0.1s">
+      <div class="lg:col-span-7 bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 slide-left data-stream-card" style="transition-delay:0.1s">
         <h2 class="text-2xl font-bold mb-8">Env&iacute;anos un mensaje</h2>
         <form class="space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -180,7 +243,7 @@ body { font-family: 'Inter', sans-serif; }
       <!-- Sidebar -->
       <div class="lg:col-span-5 flex flex-col gap-8">
         <!-- Contact Info -->
-        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 fade-up" style="transition-delay:0.2s">
+        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 slide-right" style="transition-delay:0.2s">
           <h3 class="text-xl font-bold mb-6">Informaci&oacute;n de Contacto</h3>
           <div class="space-y-6">
             <div class="flex items-start gap-4">
@@ -214,7 +277,7 @@ body { font-family: 'Inter', sans-serif; }
         </div>
 
         <!-- Map Placeholder -->
-        <div class="flex-1 bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden relative min-h-[250px] fade-up" style="transition-delay:0.3s">
+        <div class="flex-1 bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden relative min-h-[250px] slide-right" style="transition-delay:0.3s">
           <div class="absolute inset-0 bg-cover bg-center grayscale contrast-125 opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkOOsGlUqptrf_iIy-ib8z1b1m8kvuwyR9FIQBndZvR2dUsaIL44dJKwGFmDl6TqhQOFY8F00D2NykfCfSxdNCt9gdYy11ayskJftb4hpGgbYL_8JWxAoCtEY_hc6DBGhOx3R402eioi25-RZSwzRHDrfhWac5bDNigQNlSnXUuaxP6PpuPdVbktJgsh5OYZl-2GTD-ttmoDKY_0F4EP62t1rl5e8gPh7Qsk0A3_jrXg_smkWfJL3QkkQpstnvoP7eET2xnIZkvh8_')"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
           <div class="absolute bottom-6 left-6 flex items-center gap-2">
@@ -281,19 +344,73 @@ body { font-family: 'Inter', sans-serif; }
 (function() {
   'use strict';
 
-  // IntersectionObserver for fade-up elements
+  // ── 0. MOBILE MENU TOGGLE ──
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.style.opacity = '1';
+    mobileMenu.style.pointerEvents = 'auto';
+  });
+  menuClose.addEventListener('click', function() {
+    mobileMenu.style.opacity = '0';
+    mobileMenu.style.pointerEvents = 'none';
+  });
+
+  var lastTrailTime = 0;
+  document.addEventListener('mousemove', function(e) {
+    var now = Date.now();
+    if (now - lastTrailTime < 40) return;
+    lastTrailTime = now;
+    var dot = document.createElement('div');
+    dot.className = 'trail-dot';
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    document.body.appendChild(dot);
+    setTimeout(function() { dot.remove(); }, 1000);
+  });
+  var gridContainer = document.getElementById('gridCells');
+  if (gridContainer) {
+    var cols = 22, rows = 14;
+    gridContainer.style.setProperty('--cols', cols);
+    gridContainer.style.setProperty('--rows', rows);
+    var cells = [];
+    for (var i = 0; i < cols * rows; i++) {
+      var cell = document.createElement('div');
+      cell.className = 'grid-cell';
+      gridContainer.appendChild(cell);
+      cells.push(cell);
+    }
+    function tickGrid() {
+      cells.filter(function(c) { return c.classList.contains('lit'); }).forEach(function(c) {
+        if (Math.random() < 0.3) c.classList.remove('lit');
+      });
+      var num = 3 + Math.floor(Math.random() * 5);
+      for (var j = 0; j < num; j++) { cells[Math.floor(Math.random() * cells.length)].classList.add('lit'); }
+    }
+    setInterval(tickGrid, 400);
+    for (var k = 0; k < 12; k++) { cells[Math.floor(Math.random() * cells.length)].classList.add('lit'); }
+  }
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (!entry.isIntersecting) return;
-      if (entry.target.classList.contains('fade-up')) {
-        entry.target.classList.add('in-view');
-      }
-      observer.unobserve(entry.target);
+      var el = entry.target;
+      if (el.classList.contains('clip-reveal')) el.classList.add('revealed');
+      if (el.classList.contains('slide-left') || el.classList.contains('slide-right') || el.classList.contains('slide-up')) el.classList.add('in-view');
+      if (el.classList.contains('fade-up')) el.classList.add('in-view');
+      observer.unobserve(el);
     });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.fade-up').forEach(function(el) {
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up').forEach(function(el) {
     observer.observe(el);
+  });
+
+  // Hero fade-ups on load
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var hero = document.querySelector('section');
+      if (hero) hero.querySelectorAll('.fade-up').forEach(function(el) { el.classList.add('in-view'); });
+    }, 100);
   });
 })();
 </script>

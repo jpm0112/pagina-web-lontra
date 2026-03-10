@@ -101,6 +101,7 @@ body { font-family: 'Inter', sans-serif; }
   /* ── Hero line reveal ── */
   .hero-line {
     overflow: hidden;
+    padding-bottom: 4px;
   }
   .hero-line-inner {
     transform: translateY(110%);
@@ -388,7 +389,7 @@ body { font-family: 'Inter', sans-serif; }
   }
 
   /* ── Smooth scroll ── */
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   /* ── Mobile: simplify scan line ── */
   @media (max-width: 768px) {
@@ -404,7 +405,7 @@ body { font-family: 'Inter', sans-serif; }
   }
 </style>
 </head>
-<body class="bg-background-dark text-white">
+<body class="bg-background-dark text-white overflow-x-hidden">
 
 <!-- Spotlight overlay -->
 <div id="spotlight"></div>
@@ -431,8 +432,29 @@ body { font-family: 'Inter', sans-serif; }
 <a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
+<!-- Mobile hamburger button -->
+<button class="md:hidden flex items-center justify-center w-10 h-10" id="menuToggle" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-white text-2xl">menu</span>
+</button>
 </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-white text-2xl">close</span>
+</button>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Solicitar Consulta</a>
+</div>
 
 <!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg" id="hero">
@@ -454,10 +476,10 @@ body { font-family: 'Inter', sans-serif; }
 
     <!-- Line-by-line reveal title with glitch effect -->
     <h1 class="mb-8">
-      <span class="hero-line block"><span class="hero-line-inner text-6xl md:text-8xl font-bold" data-delay="0"><span class="glitch-word" data-text="Transformando">Transformando</span></span></span>
-      <span class="hero-line block"><span class="hero-line-inner text-6xl md:text-8xl font-bold text-white/60" data-delay="200"><span class="glitch-word" data-text="datos">datos</span> <span class="glitch-word" data-text="en">en</span></span></span>
-      <span class="hero-line block"><span class="hero-line-inner text-6xl md:text-8xl font-bold" data-delay="400"><span class="glitch-word" data-text="decisiones">decisiones</span></span></span>
-      <span class="hero-line block"><span class="hero-line-inner text-6xl md:text-8xl font-bold bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent" data-delay="600"><span class="glitch-word" data-text="&oacute;ptimas">&oacute;ptimas</span></span></span>
+      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold" data-delay="0"><span class="glitch-word" data-text="Transformando">Transformando</span></span></span>
+      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold text-white/60" data-delay="200"><span class="glitch-word" data-text="datos">datos</span> <span class="glitch-word" data-text="en">en</span></span></span>
+      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold" data-delay="400"><span class="glitch-word" data-text="decisiones">decisiones</span></span></span>
+      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent" data-delay="600"><span class="glitch-word" data-text="&oacute;ptimas">&oacute;ptimas</span></span></span>
     </h1>
 
     <p class="text-lg md:text-xl text-white/50 max-w-xl mb-10 fade-up" style="transition-delay:1s">
@@ -764,6 +786,19 @@ body { font-family: 'Inter', sans-serif; }
 <script>
 (function() {
   'use strict';
+
+  // ── 0. MOBILE MENU TOGGLE ──
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.style.opacity = '1';
+    mobileMenu.style.pointerEvents = 'auto';
+  });
+  menuClose.addEventListener('click', function() {
+    mobileMenu.style.opacity = '0';
+    mobileMenu.style.pointerEvents = 'none';
+  });
 
   // ── 1. MOUSE SPOTLIGHT ──
   var spotlight = document.getElementById('spotlight');

@@ -32,7 +32,6 @@ body { font-family: 'Inter', sans-serif; }
 .glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
 </style>
 <style>
-  /* ── Grid Background ── */
   .grid-bg {
     --grid-size: 60px;
     background-image:
@@ -40,44 +39,67 @@ body { font-family: 'Inter', sans-serif; }
       linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
   }
-
-  /* ── Fade-up generic ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  .grid-cells {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 20), 1fr);
+    grid-template-rows: repeat(var(--rows, 14), 1fr);
+    pointer-events: none; z-index: 0;
   }
-  .fade-up.in-view {
-    opacity: 1;
-    transform: translateY(0);
+  .grid-cell {
+    border: 1px solid transparent;
+    transition: background 1.2s ease, box-shadow 1.2s ease;
+    border-radius: 2px;
   }
-
-  /* ── Industry card hover ── */
-  .industry-card {
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  .grid-cell.lit {
+    background: rgba(17,50,212,0.08);
+    box-shadow: inset 0 0 12px rgba(6,182,212,0.12), 0 0 8px rgba(17,50,212,0.06);
   }
-  .industry-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 20px 60px rgba(17,50,212,0.15);
-    border-color: rgba(59,130,246,0.3);
+  #scanLine {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #06B6D4 20%, #1132d4 50%, #06B6D4 80%, transparent 100%);
+    box-shadow: 0 0 20px 4px rgba(6,182,212,0.4), 0 0 60px 8px rgba(17,50,212,0.2);
+    z-index: 2; pointer-events: none; opacity: 0;
+    animation: scanSweep 16s ease-in-out infinite;
   }
-
-  /* ── CTA shimmer ── */
-  @keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
+  #scanLine::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 2px; height: 80px;
+    background: linear-gradient(to bottom, rgba(6,182,212,0.08), transparent);
+    pointer-events: none;
   }
+  @keyframes scanSweep {
+    0% { top: -2px; opacity: 0; } 5% { opacity: 0.9; }
+    90% { opacity: 0.9; } 95% { opacity: 0; } 100% { top: 100%; opacity: 0; }
+  }
+  .slide-left { opacity: 0; transform: translateX(-120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-right { opacity: 0; transform: translateX(120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-up { opacity: 0; transform: translateY(100px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .slide-left.in-view, .slide-right.in-view, .slide-up.in-view { opacity: 1; transform: translate(0); }
+  .clip-reveal { clip-path: circle(0% at 50% 50%); transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .clip-reveal.revealed { clip-path: circle(150% at 50% 50%); }
+  .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.in-view { opacity: 1; transform: translateY(0); }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.6); } }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+  .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+  .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
+  @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
   .cta-shimmer {
     background-size: 200% auto;
     background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%);
     animation: shimmer 12s linear infinite;
   }
-
-  /* ── Smooth scroll ── */
-  html { scroll-behavior: smooth; }
+  .trail-dot {
+    position: fixed; width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(6, 182, 212, 0.6); pointer-events: none; z-index: 9999;
+    animation: trailFade 1s ease-out forwards;
+  }
+  @keyframes trailFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2); } }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  @media (max-width: 768px) { #scanLine { display: none; } .grid-cells { opacity: 0.5; } }
 </style>
 </head>
-<body class="bg-background-dark text-white">
+<body class="bg-background-dark text-white overflow-x-hidden">
 
 <!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
 <nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
@@ -101,29 +123,34 @@ body { font-family: 'Inter', sans-serif; }
 <a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
-<div class="md:hidden flex items-center gap-4">
-<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-white/50">
-<a class="hover:text-white transition-colors" href="/en/solutions.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white">ES</span>
-</div>
-<button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-<span class="material-symbols-outlined text-white">menu</span>
+<!-- Mobile hamburger button -->
+<button class="md:hidden flex items-center justify-center w-10 h-10" id="menuToggle" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-white text-2xl">menu</span>
 </button>
-</div>
-</div>
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4">
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
-<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 text-center">Solicitar Consulta</a>
 </div>
 </nav>
 
+<!-- Mobile menu overlay -->
+<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<button class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-white text-2xl">close</span>
+</button>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/servicios.html">Servicios</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-white/70 hover:text-white transition-colors" href="/contacto.html">Contacto</a>
+<div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
+<a class="hover:text-white transition-colors" href="/en/index.html">EN</a>
+<span class="text-white/20">|</span>
+<span class="text-white">ES</span>
+</div>
+<a href="/contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Solicitar Consulta</a>
+</div>
+
 <!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
 <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden grid-bg">
+  <div class="grid-cells" id="gridCells"></div>
+  <div id="scanLine"></div>
   <!-- Gradient fade at bottom -->
   <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
 
@@ -131,7 +158,7 @@ body { font-family: 'Inter', sans-serif; }
     <!-- Badge -->
     <div class="mb-10 fade-up" style="transition-delay:0.1s">
       <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-sm text-white/80">
-        <span class="w-2 h-2 rounded-full bg-accent-cyan inline-block"></span>
+        <span class="w-2 h-2 rounded-full bg-accent-cyan inline-block pulse-dot"></span>
         Investigaci&oacute;n de Operaciones &amp; IA
       </span>
     </div>
@@ -148,7 +175,7 @@ body { font-family: 'Inter', sans-serif; }
 <!-- ══════════════════════════════════════════════════ INDUSTRY SECTORS ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-24" id="sectors">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16">
+    <div class="text-center mb-16 slide-up">
       <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">SECTORES</span>
       <h2 class="text-3xl md:text-5xl font-bold mb-4">Sectores donde Generamos Impacto</h2>
       <p class="text-white/50 max-w-2xl mx-auto">Trabajamos con empresas de distintos sectores, adaptando nuestras soluciones a los desaf&iacute;os espec&iacute;ficos de cada industria.</p>
@@ -157,7 +184,7 @@ body { font-family: 'Inter', sans-serif; }
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <!-- Logistics -->
-      <div class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group">
+      <div class="industry-card slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 group">
         <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
           <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
         </div>
@@ -173,7 +200,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Digital Solutions & AI -->
-      <div class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group" style="transition-delay:0.15s">
+      <div class="industry-card slide-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group" style="transition-delay:0.15s">
         <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-colors">
           <span class="material-symbols-outlined text-accent-cyan text-3xl">smart_toy</span>
         </div>
@@ -189,7 +216,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Manufacturing -->
-      <div class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group" style="transition-delay:0.3s">
+      <div class="industry-card slide-right bg-white/[0.03] border border-white/10 rounded-2xl p-8 group" style="transition-delay:0.3s">
         <div class="w-14 h-14 rounded-xl bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple/20 transition-colors">
           <span class="material-symbols-outlined text-purple text-3xl">factory</span>
         </div>
@@ -211,7 +238,7 @@ body { font-family: 'Inter', sans-serif; }
 <!-- ══════════════════════════════════════════════════ HOW WE HELP ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-24 border-t border-white/5" id="how-we-help">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16">
+    <div class="text-center mb-16 slide-up">
       <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">CAPACIDADES</span>
       <h2 class="text-3xl md:text-5xl font-bold mb-4">C&oacute;mo te Ayudamos</h2>
       <p class="text-white/50 max-w-2xl mx-auto">Cada negocio tiene desaf&iacute;os &uacute;nicos. Estas son algunas formas en que resolvemos problemas complejos.</p>
@@ -220,7 +247,7 @@ body { font-family: 'Inter', sans-serif; }
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
       <!-- Supply Chain Optimization -->
-      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500">
+      <div class="slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
             <span class="material-symbols-outlined text-primary text-2xl">route</span>
@@ -233,7 +260,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Business Intelligence & Analytics -->
-      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.1s">
+      <div class="slide-right bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.1s">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center">
             <span class="material-symbols-outlined text-accent-cyan text-2xl">dashboard</span>
@@ -246,7 +273,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Predictive Maintenance -->
-      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-purple/40 transition-all duration-500" style="transition-delay:0.15s">
+      <div class="slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-purple/40 transition-all duration-500" style="transition-delay:0.15s">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-12 h-12 rounded-xl bg-purple/10 flex items-center justify-center">
             <span class="material-symbols-outlined text-purple text-2xl">build</span>
@@ -259,7 +286,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Process Automation -->
-      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500" style="transition-delay:0.2s">
+      <div class="slide-right bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500" style="transition-delay:0.2s">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
             <span class="material-symbols-outlined text-primary text-2xl">settings_suggest</span>
@@ -272,7 +299,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Demand Forecasting -->
-      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.25s">
+      <div class="slide-left bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.25s">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center">
             <span class="material-symbols-outlined text-accent-cyan text-2xl">trending_up</span>
@@ -285,7 +312,7 @@ body { font-family: 'Inter', sans-serif; }
       </div>
 
       <!-- Generative AI & Intelligent Assistants -->
-      <div class="fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-purple/40 transition-all duration-500" style="transition-delay:0.3s">
+      <div class="slide-right bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-purple/40 transition-all duration-500" style="transition-delay:0.3s">
         <div class="flex items-center gap-4 mb-4">
           <div class="w-12 h-12 rounded-xl bg-purple/10 flex items-center justify-center">
             <span class="material-symbols-outlined text-purple text-2xl">smart_toy</span>
@@ -303,8 +330,8 @@ body { font-family: 'Inter', sans-serif; }
 
 <!-- ══════════════════════════════════════════════════ OUR TOOLKIT ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-16 bg-white/[0.02] border-t border-b border-white/5" id="toolkit">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-12">
+  <div class="max-w-7xl mx-auto px-6 fade-up">
+    <div class="text-center mb-12 slide-up">
       <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">HERRAMIENTAS</span>
       <h2 class="text-2xl font-bold mb-2">Nuestras Herramientas</h2>
       <p class="text-white/40 text-sm">Las disciplinas que aplicamos para resolver tus problemas</p>
@@ -337,7 +364,7 @@ body { font-family: 'Inter', sans-serif; }
 <!-- ══════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-24" id="cta">
   <div class="max-w-5xl mx-auto px-6">
-    <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+    <div class="slide-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
       <!-- Dark overlay for readability -->
       <div class="absolute inset-0 bg-background-dark/40 rounded-3xl"></div>
       <div class="relative z-10">
@@ -407,28 +434,90 @@ body { font-family: 'Inter', sans-serif; }
 (function() {
   'use strict';
 
-  // ── IntersectionObserver for fade-up animations ──
+  // ── 0. MOBILE MENU TOGGLE ──
+  var menuToggle = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', function() {
+    mobileMenu.style.opacity = '1';
+    mobileMenu.style.pointerEvents = 'auto';
+  });
+  menuClose.addEventListener('click', function() {
+    mobileMenu.style.opacity = '0';
+    mobileMenu.style.pointerEvents = 'none';
+  });
+
+  // Mouse trail dots
+  var lastTrailTime = 0;
+  document.addEventListener('mousemove', function(e) {
+    var now = Date.now();
+    if (now - lastTrailTime < 40) return;
+    lastTrailTime = now;
+    var dot = document.createElement('div');
+    dot.className = 'trail-dot';
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    document.body.appendChild(dot);
+    setTimeout(function() { dot.remove(); }, 1000);
+  });
+
+  // Animated grid cells
+  var gridContainer = document.getElementById('gridCells');
+  if (gridContainer) {
+    var cols = 22;
+    var rows = 14;
+    gridContainer.style.setProperty('--cols', cols);
+    gridContainer.style.setProperty('--rows', rows);
+    var cells = [];
+    for (var i = 0; i < cols * rows; i++) {
+      var cell = document.createElement('div');
+      cell.className = 'grid-cell';
+      gridContainer.appendChild(cell);
+      cells.push(cell);
+    }
+    function tickGrid() {
+      var litCells = cells.filter(function(c) { return c.classList.contains('lit'); });
+      litCells.forEach(function(c) {
+        if (Math.random() < 0.3) c.classList.remove('lit');
+      });
+      var numToLight = 3 + Math.floor(Math.random() * 5);
+      for (var j = 0; j < numToLight; j++) {
+        var idx = Math.floor(Math.random() * cells.length);
+        cells[idx].classList.add('lit');
+      }
+    }
+    setInterval(tickGrid, 400);
+    for (var k = 0; k < 12; k++) {
+      cells[Math.floor(Math.random() * cells.length)].classList.add('lit');
+    }
+  }
+
+  // Master IntersectionObserver
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (!entry.isIntersecting) return;
-      if (entry.target.classList.contains('fade-up')) {
-        entry.target.classList.add('in-view');
-      }
-      observer.unobserve(entry.target);
+      var el = entry.target;
+      if (el.classList.contains('clip-reveal')) el.classList.add('revealed');
+      if (el.classList.contains('slide-left') || el.classList.contains('slide-right') || el.classList.contains('slide-up')) el.classList.add('in-view');
+      if (el.classList.contains('fade-up')) el.classList.add('in-view');
+      observer.unobserve(el);
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
 
-  document.querySelectorAll('.fade-up').forEach(function(el) {
+  document.querySelectorAll('.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up').forEach(function(el) {
     observer.observe(el);
   });
 
-  // ── Active nav link highlight ──
-  var path = location.pathname;
-  document.querySelectorAll('nav a[href]').forEach(function(a) {
-    if (a.getAttribute('href') === path) {
-      a.classList.remove('text-white/70');
-      a.classList.add('text-white', 'font-bold');
-    }
+  // Hero fade-ups on load
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var heroSection = document.querySelector('section');
+      if (heroSection) {
+        heroSection.querySelectorAll('.fade-up').forEach(function(el) {
+          el.classList.add('in-view');
+        });
+      }
+    }, 100);
   });
 })();
 </script>
