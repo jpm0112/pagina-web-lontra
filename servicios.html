@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="dark" lang="es"><head>
+<html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Servicios de modelado matemático, simulación estocástica, optimización de procesos, machine learning y business intelligence para empresas.">
-<meta name="theme-color" content="#101322">
+<meta name="theme-color" content="#ffffff">
 <title>Resumen de Servicios | Lontra.</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,15 +16,17 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        "primary": "#1132d4",
-        "navy-brand": "#001a3d",
-        "accent-teal": "#14b8a6",
-        "accent-cyan": "#06B6D4",
-        "bright-blue": "#3b82f6",
-        "purple": "#8B5CF6",
-        "warm-amber": "#F59E0B",
-        "background-light": "#f6f6f8",
-        "background-dark": "#101322",
+        "primary": "#1a3fb8",
+        "navy-brand": "#0f1f3d",
+        "accent-teal": "#0d9488",
+        "accent-cyan": "#0891b2",
+        "bright-blue": "#2563eb",
+        "warm-amber": "#d97706",
+        "background-light": "#f8f9fc",
+        "background-dark": "#0f172a",
+        "surface": "#ffffff",
+        "surface-alt": "#f1f5f9",
+        "border-light": "#e2e8f0",
       },
       fontFamily: { "display": ["Inter", "sans-serif"] },
     },
@@ -33,17 +35,17 @@ tailwind.config = {
 </script>
 <style type="text/tailwindcss">
 body { font-family: 'Inter', sans-serif; }
-.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
 * { overflow-wrap: break-word; }
 html { scroll-behavior: smooth; }
-a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offset: 2px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #1a3fb8; outline-offset: 2px; border-radius: 4px; }
 </style>
 <style>
   .grid-bg {
     --grid-size: 60px;
     background-image:
-      linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      linear-gradient(to right,  rgba(17,50,184,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17,50,184,0.04) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
   }
   .slide-left { opacity: 0; transform: translateX(-120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -52,72 +54,59 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   .slide-left.in-view, .slide-right.in-view, .slide-up.in-view { opacity: 1; transform: translate(0); }
   .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.in-view { opacity: 1; transform: translateY(0); }
-  .data-stream-card {
-    position: relative; overflow: clip;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-  }
-  .data-stream-card::before {
-    content: ''; position: absolute; top: 0; left: -100%; right: -100%; height: 2px;
-    background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent);
-    transition: left 0.6s ease, right 0.6s ease;
-  }
-  .data-stream-card:hover::before { left: 0; right: 0; animation: glowSweep 1.6s ease infinite; }
-  @keyframes glowSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-  @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.6); } }
-  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
   .trail-dot {
     position: fixed; width: 4px; height: 4px; border-radius: 50%;
-    background: rgba(6, 182, 212, 0.6); pointer-events: none; z-index: 9999;
+    background: rgba(26, 63, 184, 0.3); pointer-events: none; z-index: 9999;
     animation: trailFade 1s ease-out forwards;
   }
   @keyframes trailFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2); } }
   html { scroll-behavior: smooth; overflow-x: hidden; }
 </style>
 </head>
-<body class="bg-background-dark text-white overflow-x-hidden">
+<body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
 
 <!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
-<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/80">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 <div class="flex items-center">
 <a class="flex items-center" href="index.html">
-<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+<span class="text-2xl font-bold tracking-tight text-slate-900">Lontra<span class="text-primary font-black">.</span></span>
 </a>
 </div>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-white font-bold transition-colors" href="servicios.html">Servicios</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="soluciones.html">Soluciones</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="contacto.html">Contacto</a>
-<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<a class="text-sm font-medium text-slate-900 font-bold transition-colors" href="servicios.html">Servicios</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="contacto.html">Contacto</a>
+<div class="flex items-center border-l border-slate-200 pl-8 gap-6">
 <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors px-2 py-1" href="en/services.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white px-2 py-1">ES</span>
+<a class="hover:text-slate-900 transition-colors px-2 py-1" href="en/services.html">EN</a>
+<span class="text-slate-300">|</span>
+<span class="text-slate-900 px-2 py-1">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
 <!-- Mobile hamburger button -->
 <button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="Abrir menú">
-<span class="material-symbols-outlined text-white text-2xl">menu</span>
+<span class="material-symbols-outlined text-slate-900 text-2xl">menu</span>
 </button>
 </div>
 </nav>
 
 <!-- Mobile menu overlay -->
-<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<div class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
 <button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
-<span class="material-symbols-outlined text-white text-2xl">close</span>
+<span class="material-symbols-outlined text-slate-900 text-2xl">close</span>
 </button>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="servicios.html">Servicios</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="soluciones.html">Soluciones</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="contacto.html">Contacto</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="servicios.html">Servicios</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="contacto.html">Contacto</a>
 <div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors" href="en/index.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white">ES</span>
+<a class="hover:text-slate-900 transition-colors" href="en/index.html">EN</a>
+<span class="text-slate-300">|</span>
+<span class="text-slate-900">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Solicitar Consulta</a>
 </div>
@@ -129,29 +118,29 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <aside class="hidden w-64 flex-col lg:flex">
 <div class="sticky top-28 flex flex-col gap-8">
 <div>
-<h3 class="mb-4 text-xs font-bold uppercase tracking-widest text-white/40">Especialidades</h3>
+<h3 class="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">Especialidades</h3>
 <nav class="flex flex-col gap-1">
-<a class="group flex items-center gap-3 rounded-lg bg-white/[0.03] border border-white/10 px-4 py-2.5 text-primary" href="#math-modeling">
+<a class="group flex items-center gap-3 rounded-lg bg-primary/10 px-4 py-2.5 text-primary" href="#math-modeling">
 <span class="material-symbols-outlined text-[20px]">function</span>
-<span class="text-sm font-semibold">Modelado Matem&aacute;tico</span>
+<span class="text-sm font-bold">Modelado Matem&aacute;tico</span>
 </a>
-<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-white/50 hover:bg-white/[0.05] transition-colors" href="#stochastic">
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:text-slate-900 transition-colors" href="#stochastic">
 <span class="material-symbols-outlined text-[20px]">bubble_chart</span>
 <span class="text-sm font-medium">Simulaci&oacute;n Estoc&aacute;stica</span>
 </a>
-<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-white/50 hover:bg-white/[0.05] transition-colors" href="#optimization">
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:text-slate-900 transition-colors" href="#optimization">
 <span class="material-symbols-outlined text-[20px]">account_tree</span>
 <span class="text-sm font-medium">Optimizaci&oacute;n de Procesos</span>
 </a>
-<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-white/50 hover:bg-white/[0.05] transition-colors" href="#ml-ai">
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:text-slate-900 transition-colors" href="#ml-ai">
 <span class="material-symbols-outlined text-[20px]">psychology</span>
 <span class="text-sm font-medium">Machine Learning e IA</span>
 </a>
-<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-white/50 hover:bg-white/[0.05] transition-colors" href="#bi">
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:text-slate-900 transition-colors" href="#bi">
 <span class="material-symbols-outlined text-[20px]">insights</span>
 <span class="text-sm font-medium">Business Intelligence y Anal&iacute;tica</span>
 </a>
-<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-white/50 hover:bg-white/[0.05] transition-colors" href="#digital">
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:text-slate-900 transition-colors" href="#digital">
 <span class="material-symbols-outlined text-[20px]">terminal</span>
 <span class="text-sm font-medium">Soluciones Digitales a Medida</span>
 </a>
@@ -159,7 +148,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="rounded-xl bg-primary p-6 text-white shadow-lg shadow-primary/20">
 <p class="mb-2 text-xs font-bold uppercase opacity-80 tracking-tight">&iquest;Listo para optimizar?</p>
-<h4 class="mb-4 text-lg font-bold">Agenda una llamada estrat&eacute;gica hoy.</h4>
+<h4 class="mb-4 text-lg font-bold">Agenda una llamada hoy.</h4>
 <a href="contacto.html" class="block w-full rounded bg-white py-2.5 text-sm font-bold text-primary hover:bg-white/90 transition-colors text-center">
                             Solicitar Consulta
                         </a>
@@ -172,15 +161,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 
 <!-- Breadcrumb -->
 <nav class="mb-8 flex flex-wrap items-center gap-2 text-sm">
-<a class="text-white/40 hover:text-white transition-colors" href="index.html">Inicio</a>
-<span class="material-symbols-outlined text-sm text-white/20">chevron_right</span>
+<a class="text-slate-400 hover:text-primary transition-colors" href="index.html">Inicio</a>
+<span class="material-symbols-outlined text-sm text-slate-300">chevron_right</span>
 <span class="font-medium text-primary">Servicios</span>
 </nav>
 
 <!-- Page Header -->
 <div class="mb-24 fade-up">
-<h1 class="mb-4 text-4xl font-black tracking-tight lg:text-6xl text-white">Resumen de Servicios</h1>
-<p class="max-w-2xl text-lg leading-relaxed text-white/50">
+<h1 class="mb-4 text-4xl font-bold tracking-tight lg:text-6xl text-slate-900">Resumen de Servicios</h1>
+<p class="max-w-2xl text-lg leading-relaxed text-slate-500">
                         Implementamos marcos matem&aacute;ticos rigurosos e IA de vanguardia para resolver tus desaf&iacute;os operativos m&aacute;s complejos. Reduce la incertidumbre en tus operaciones.
                     </p>
 </div>
@@ -189,7 +178,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <div class="flex flex-col gap-24 overflow-hidden">
 
 <!-- Modelado Matematico -->
-<section class="group scroll-mt-32 slide-left data-stream-card" id="math-modeling">
+<section class="group scroll-mt-32 slide-left" id="math-modeling">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">function</span>
@@ -198,7 +187,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="grid gap-10 lg:grid-cols-2">
 <div class="space-y-6">
-<p class="text-lg leading-relaxed text-white/50">
+<p class="text-lg leading-relaxed text-slate-500">
                                     Nuestra experiencia principal radica en traducir intrincadas din&aacute;micas empresariales del mundo real en formulaciones matem&aacute;ticas robustas. Ya sean restricciones de cadena de suministro, equilibrio de mercado o din&aacute;mica estructural, construimos modelos que sirven como base s&oacute;lida para la toma de decisiones.
                                 </p>
 <ul class="space-y-3">
@@ -215,21 +204,21 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <span>Modelado econ&oacute;mico y teor&iacute;a de juegos</span>
 </li>
 </ul>
-<a href="contacto.html" class="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+<!-- CTA removed --><a href="contacto.html" class="hidden">
                                     Comenzar ahora <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
-<div class="relative aspect-video overflow-hidden rounded-xl bg-white/[0.03] border border-white/10 shadow-xl">
+<div class="relative aspect-video overflow-hidden rounded-xl bg-white border border-slate-200 shadow-sm shadow-xl">
 <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10"></div>
 <img class="h-full w-full object-cover opacity-60" alt="Abstract mathematical equations and geometric shapes" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkMHKVhi36ZlrDb99b3ouuiqUS920EL5HNaGT8GOiygfigTpy-NAcrgQd1E4ghswu5QSPuGp7Zq0pLJPjXbYmJHWZe4_OHQZGswTe3rTiChazaHlOWZKu2EhWGjuMYaM1Ifg8e1hlJyVZk9iA-taoXi68uq1KUizTq7z5dCBhbBrDyyWG2RZjXjeAmRgpTr0RhtbeJLRd7YNCfYWQM05WbyEIZggyrOjEZFI5ezeOvnYt_tsT94y2JW6uG6yn6UgDH4OaMvGw0xQvM"/>
 </div>
 </div>
 </section>
 
-<hr class="border-white/10"/>
+<hr class="border-slate-200"/>
 
 <!-- Simulacion Estocastica -->
-<section class="group scroll-mt-32 slide-right data-stream-card" id="stochastic">
+<section class="group scroll-mt-32 slide-right" id="stochastic">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">bubble_chart</span>
@@ -238,7 +227,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="grid gap-10 lg:grid-cols-2">
 <div class="space-y-6 lg:order-2">
-<p class="text-lg leading-relaxed text-white/50">
+<p class="text-lg leading-relaxed text-slate-500">
                                     Predecir el futuro no se trata de adivinar; se trata de probabilidad. Utilizamos m&eacute;todos de Monte Carlo y Simulaciones de Eventos Discretos (DES) para poner a prueba tus operaciones frente a miles de escenarios hipot&eacute;ticos.
                                 </p>
 <ul class="space-y-3">
@@ -255,21 +244,21 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <span>Planificaci&oacute;n de capacidad bajo incertidumbre</span>
 </li>
 </ul>
-<a href="contacto.html" class="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+<!-- CTA removed --><a href="contacto.html" class="hidden">
                                     Explorar Simulaci&oacute;n <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
-<div class="relative aspect-video overflow-hidden rounded-xl bg-white/[0.03] border border-white/10 lg:order-1 shadow-xl">
+<div class="relative aspect-video overflow-hidden rounded-xl bg-white border border-slate-200 shadow-sm lg:order-1 shadow-xl">
 <div class="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent z-10"></div>
 <img class="h-full w-full object-cover opacity-60" alt="Data distribution charts and probabilistic graphs" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm70hNqPKSF6Wf1c8577gWRFiIRXdEgYYN_V4If6T4-Ug6VUasl6X-DSK9JjRUnzCh5AZV7tobWe_SeHTe0lUVqPBl8lY5lOlemZdecS0JY8LlZRgY0r9S4CwDfVR3TD66XxIJZsVwYD21k52L0yMXieltHFwPE8AlXeDqb0CnakJPl50meYCGTgnqkvnnL5XMHOk47brLeo5SxJ-_Uo0xp9l75eCMoOiO2yDu0itHIGz_0J_04nvooxvpa42WBqC3yWnlGYGncYzx"/>
 </div>
 </div>
 </section>
 
-<hr class="border-white/10"/>
+<hr class="border-slate-200"/>
 
 <!-- Optimizacion de Procesos -->
-<section class="group scroll-mt-32 slide-left data-stream-card" id="optimization">
+<section class="group scroll-mt-32 slide-left" id="optimization">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">account_tree</span>
@@ -278,34 +267,34 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="grid gap-10 lg:grid-cols-2">
 <div class="space-y-6">
-<p class="text-lg leading-relaxed text-white/50">
+<p class="text-lg leading-relaxed text-slate-500">
                                     Encuentra el camino &oacute;ptimo. Aplicamos heur&iacute;sticas avanzadas y algoritmos exactos para resolver problemas de rutas, programaci&oacute;n y asignaci&oacute;n de recursos que son demasiado complejos para la l&oacute;gica tradicional.
                                 </p>
 <div class="grid grid-cols-2 gap-4">
-<div class="rounded-lg bg-white/[0.03] border border-white/10 p-4">
+<div class="rounded-lg bg-white border border-slate-200 shadow-sm p-4">
 <h5 class="mb-1 text-sm font-bold text-primary">Prog. Lineal</h5>
-<p class="text-xs text-white/40">Eficiencia de recursos y minimizaci&oacute;n de costos.</p>
+<p class="text-xs text-slate-400">Eficiencia de recursos y minimizaci&oacute;n de costos.</p>
 </div>
-<div class="rounded-lg bg-white/[0.03] border border-white/10 p-4">
+<div class="rounded-lg bg-white border border-slate-200 shadow-sm p-4">
 <h5 class="mb-1 text-sm font-bold text-primary">Combinatoria</h5>
-<p class="text-xs text-white/40">L&oacute;gica compleja de programaci&oacute;n y rutas.</p>
+<p class="text-xs text-slate-400">L&oacute;gica compleja de programaci&oacute;n y rutas.</p>
 </div>
 </div>
-<a href="contacto.html" class="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+<!-- CTA removed --><a href="contacto.html" class="hidden">
                                     Optimizar Hoy <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
-<div class="relative aspect-video overflow-hidden rounded-xl bg-white/[0.03] border border-white/10 shadow-xl">
-<div class="absolute inset-0 bg-gradient-to-br from-background-dark/40 to-transparent z-10"></div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-white border border-slate-200 shadow-sm shadow-xl">
+<div class="absolute inset-0 bg-gradient-to-br from-[#f8f9fc]/40 to-transparent z-10"></div>
 <img class="h-full w-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-500" alt="Complex circuit board pattern and network nodes" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcdvO7jpYIMYQ9_ztQS3KrkKlTgdX6B0EPKzmc6mTAPzulX2z0YmutyZkYFesRGfmuM3wsc7sxvm5MbTR3yxWhqcMSKItzM-2EK9_g5HVgBOfn9diYWZuc5kna6m7BQpRVgpBeQbZY1sllgVXPn_xU-U1HMcPpmNBMugLI6MQMtSMzg7T9RIds1vCquF5LK3co13t58gSEZVognfgKP6Sz1aB9RsWn_N1Aa47RHyiPWx_vT-dtjbUlTWZJqb0BjUEc31IrK0pqBQvb"/>
 </div>
 </div>
 </section>
 
-<hr class="border-white/10"/>
+<hr class="border-slate-200"/>
 
 <!-- Machine Learning e IA -->
-<section class="group scroll-mt-32 slide-right data-stream-card" id="ml-ai">
+<section class="group scroll-mt-32 slide-right" id="ml-ai">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">psychology</span>
@@ -314,7 +303,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="grid gap-10 lg:grid-cols-2">
 <div class="space-y-6 lg:order-2">
-<p class="text-lg leading-relaxed text-white/50">
+<p class="text-lg leading-relaxed text-slate-500">
                                     M&aacute;s all&aacute; de la anal&iacute;tica descriptiva. Dise&ntilde;amos redes neuronales personalizadas y motores predictivos que aprenden de tus datos hist&oacute;ricos para automatizar la toma de decisiones y pronosticar la demanda con alta precisi&oacute;n.
                                 </p>
 <ul class="space-y-3">
@@ -331,21 +320,21 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <span>Reinforcement Learning para sistemas aut&oacute;nomos</span>
 </li>
 </ul>
-<a href="contacto.html" class="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+<!-- CTA removed --><a href="contacto.html" class="hidden">
                                     Construir IA <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
-<div class="relative aspect-video overflow-hidden rounded-xl bg-white/[0.03] border border-white/10 lg:order-1 shadow-xl">
-<div class="absolute inset-0 bg-gradient-to-br from-background-dark/30 to-transparent z-10"></div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-white border border-slate-200 shadow-sm lg:order-1 shadow-xl">
+<div class="absolute inset-0 bg-gradient-to-br from-[#f8f9fc]/30 to-transparent z-10"></div>
 <img class="h-full w-full object-cover opacity-70" alt="Artificial intelligence neural network visualization" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgoVdZ3_oiQEjrjhTNV3WhqpfVs37Z3pzfJ-AdFy5dbDrY-iktBaM4xtGp8niHT0QjY8qnEOQD2AbDz2cIA4UlHVY2L8aBWuw0yJVvIcYs_JYWhkD_yZSce82QCRd9FimPMYXEtSrR99z1conHd67R-xdcQvjPi0zx_uO2Qhe3fUdYQzJm9TduuHR8i3JpqqIKf7w2VLAD4GAs5gm07RiMvMmrGoyc9t8dvqYfUCxvYF1nwbBwrTfMfM7I5PnVER9cSR7TDh_aOnZ9"/>
 </div>
 </div>
 </section>
 
-<hr class="border-white/10"/>
+<hr class="border-slate-200"/>
 
 <!-- Business Intelligence y Analitica -->
-<section class="group scroll-mt-32 slide-left data-stream-card" id="bi">
+<section class="group scroll-mt-32 slide-left" id="bi">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">insights</span>
@@ -354,30 +343,30 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="grid gap-10 lg:grid-cols-2">
 <div class="space-y-6">
-<p class="text-lg leading-relaxed text-white/50">
+<p class="text-lg leading-relaxed text-slate-500">
                                     Los datos solo son valiosos si impulsan la acci&oacute;n. Desarrollamos tableros de BI sofisticados que agregan datos de m&uacute;ltiples fuentes en perspectivas matem&aacute;ticas en tiempo real para el liderazgo ejecutivo.
                                 </p>
 <div class="flex flex-wrap gap-2">
-<span class="rounded-full bg-white/[0.03] border border-white/10 px-3 py-1 text-xs font-semibold text-white/60">Ingenier&iacute;a de Datos</span>
-<span class="rounded-full bg-white/[0.03] border border-white/10 px-3 py-1 text-xs font-semibold text-white/60">Dashboards a Medida</span>
-<span class="rounded-full bg-white/[0.03] border border-white/10 px-3 py-1 text-xs font-semibold text-white/60">Pipelines ETL</span>
-<span class="rounded-full bg-white/[0.03] border border-white/10 px-3 py-1 text-xs font-semibold text-white/60">Reportes en Tiempo Real</span>
+<span class="rounded-full bg-white border border-slate-200 shadow-sm px-3 py-1 text-xs font-semibold text-slate-500">Ingenier&iacute;a de Datos</span>
+<span class="rounded-full bg-white border border-slate-200 shadow-sm px-3 py-1 text-xs font-semibold text-slate-500">Dashboards a Medida</span>
+<span class="rounded-full bg-white border border-slate-200 shadow-sm px-3 py-1 text-xs font-semibold text-slate-500">Pipelines ETL</span>
+<span class="rounded-full bg-white border border-slate-200 shadow-sm px-3 py-1 text-xs font-semibold text-slate-500">Reportes en Tiempo Real</span>
 </div>
-<a href="contacto.html" class="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+<!-- CTA removed --><a href="contacto.html" class="hidden">
                                     Ver Demo de BI <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
-<div class="relative aspect-video overflow-hidden rounded-xl bg-white/[0.03] border border-white/10 shadow-xl">
-<div class="absolute inset-0 bg-gradient-to-br from-background-dark/30 to-transparent z-10"></div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-white border border-slate-200 shadow-sm shadow-xl">
+<div class="absolute inset-0 bg-gradient-to-br from-[#f8f9fc]/30 to-transparent z-10"></div>
 <img class="h-full w-full object-cover opacity-70" alt="Professional business intelligence dashboard with charts" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBxbjoE_rPQ1fCMQannV8ikMbpcJaoAYnJRKufLXHPH-w9D3M4gzzLlaMBMzETx03rpa3xNY8JLM4HiirUd4bmX8gdNBPt595509vABYhG7uI0KtoHymjH55Np98ae8I1dzOSPcPrb7ohYucKAdMBI1guGzLxMNwqtWQQmdv9Fci6kpgZGnA0FSEHUPQcMrN0pqjc68_qAJ46Qu01NsIqPTUIAwE9PuEZ-oQ2fOaOT4l9zufo4UuY4RPkRpzQzrezSDfKK5An7Qeqr"/>
 </div>
 </div>
 </section>
 
-<hr class="border-white/10"/>
+<hr class="border-slate-200"/>
 
 <!-- Soluciones Digitales a Medida -->
-<section class="group mb-20 scroll-mt-32 slide-right data-stream-card" id="digital">
+<section class="group mb-20 scroll-mt-32 slide-right" id="digital">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">terminal</span>
@@ -386,7 +375,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </div>
 <div class="grid gap-10 lg:grid-cols-2">
 <div class="space-y-6 lg:order-2">
-<p class="text-lg leading-relaxed text-white/50">
+<p class="text-lg leading-relaxed text-slate-500">
                                     El software convencional a menudo falla ante requisitos cient&iacute;ficos u operativos &uacute;nicos. Construimos herramientas de software personalizadas, desde optimizadores de escritorio hasta plataformas de IA nativas de la nube.
                                 </p>
 <ul class="space-y-3">
@@ -403,12 +392,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <span>Arquitectura de datos segura para modelos propietarios</span>
 </li>
 </ul>
-<a href="contacto.html" class="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white">
+<!-- CTA removed --><a href="contacto.html" class="hidden">
                                     Empezar a Construir <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
-<div class="relative aspect-video overflow-hidden rounded-xl bg-white/[0.03] border border-white/10 lg:order-1 shadow-xl">
-<div class="absolute inset-0 bg-gradient-to-br from-background-dark/40 to-transparent z-10"></div>
+<div class="relative aspect-video overflow-hidden rounded-xl bg-white border border-slate-200 shadow-sm lg:order-1 shadow-xl">
+<div class="absolute inset-0 bg-gradient-to-br from-[#f8f9fc]/40 to-transparent z-10"></div>
 <img class="h-full w-full object-cover opacity-60" alt="Developer screen showing lines of code" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Czle7cGWqcNuZGT1ZpeRm6sAEtlwAPM7_QajyvcY2OLQnnjImCpGNeitiZC7DRx978pEkX4KtdsQVdnFsXmaCdfJlW7puF0WF_eOIA6z0Q2I1Bjlj2Sbl36c0GZC9FK_L_9ORfcKEOfnNUYDRZA940VZ3h93gsb5F3m95OZBkweJrOuYYxtLvaX5vgjQUirEM5pLAGt3-KtERjAnTm5Ih29bSX4wdTHwEbx2vQY-Su7uejer5X53SV1d4Dg5zn8MY8v1DHmGtOPA"/>
 </div>
 </div>
@@ -419,49 +408,46 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </main>
 
 <!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
-<footer class="relative z-20 border-t border-white/10 pt-12 md:pt-20 pb-10 bg-background-dark">
+<footer class="relative z-20 border-t border-slate-800 pt-12 md:pt-20 pb-10 bg-slate-900 text-white">
   <div class="max-w-7xl mx-auto px-8">
     <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
       <!-- Brand -->
       <div>
         <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
-        <p class="text-white/40 text-sm mt-4 leading-relaxed">
+        <p class="text-slate-400 text-sm mt-4 leading-relaxed">
           Consultor&iacute;a de Investigaci&oacute;n de Operaciones e Inteligencia Artificial basada en Chile.
         </p>
       </div>
       <!-- Enlaces -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Enlaces</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">Enlaces</h4>
         <ul class="space-y-3">
-          <li><a href="servicios.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
-          <li><a href="soluciones.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
+          <li><a href="servicios.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
+          <li><a href="soluciones.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
         </ul>
       </div>
       <!-- Empresa -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Empresa</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">Empresa</h4>
         <ul class="space-y-3">
-          <li><a href="contacto.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
+          <li><a href="contacto.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
         </ul>
       </div>
       <!-- Contacto -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Contacto</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">Contacto</h4>
         <ul class="space-y-3">
-          <li class="text-sm text-white/40">contacto@lontra.cl</li>
-          <li class="text-sm text-white/40">Santiago, Chile</li>
+          <li class="text-sm text-slate-400">contacto@lontra.cl</li>
+          <li class="text-sm text-slate-400">Av Vitacura 3535, Of. 1501</li>
+          <li class="text-sm text-slate-400">Santiago, Chile</li>
         </ul>
       </div>
     </div>
 
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">Pol&iacute;tica de Privacidad</a>
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">T&eacute;rminos</a>
-      </div>
+    <div class="border-t border-slate-700 pt-8 flex items-center justify-center gap-4">
+      <p class="text-xs text-slate-400">&copy; 2026 Lontra. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
@@ -521,11 +507,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
         sidebarLinks.forEach(function(link) {
           var href = link.getAttribute('href');
           if (href === '#' + id) {
-            link.classList.remove('text-white/50', 'hover:bg-white/[0.05]');
-            link.classList.add('bg-white/[0.03]', 'border', 'border-white/10', 'text-primary');
+            link.classList.remove('text-slate-500');
+            link.classList.add('bg-primary/10', 'text-primary');
+            var span = link.querySelector('.text-sm');
+            if (span) { span.classList.remove('font-medium'); span.classList.add('font-bold'); }
           } else {
-            link.classList.remove('bg-white/[0.03]', 'border', 'border-white/10', 'text-primary');
-            link.classList.add('text-white/50', 'hover:bg-white/[0.05]');
+            link.classList.remove('bg-primary/10', 'text-primary');
+            link.classList.add('text-slate-500');
+            var span = link.querySelector('.text-sm');
+            if (span) { span.classList.remove('font-bold'); span.classList.add('font-medium'); }
           }
         });
       }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
+<html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Contacta a Lontra para una consulta gratuita. Soluciones de optimización, simulación e inteligencia artificial para tu empresa.">
-<meta name="theme-color" content="#101322">
+<meta name="theme-color" content="#ffffff">
 <title>Lontra Contacto | Consultor&iacute;a Matem&aacute;tica y IA</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,15 +17,17 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        "primary": "#1132d4",
-        "navy-brand": "#001a3d",
-        "accent-teal": "#14b8a6",
-        "accent-cyan": "#06B6D4",
-        "bright-blue": "#3b82f6",
-        "purple": "#8B5CF6",
-        "warm-amber": "#F59E0B",
-        "background-light": "#f6f6f8",
-        "background-dark": "#101322",
+        "primary": "#1a3fb8",
+        "navy-brand": "#0f1f3d",
+        "accent-teal": "#0d9488",
+        "accent-cyan": "#0891b2",
+        "bright-blue": "#2563eb",
+        "warm-amber": "#d97706",
+        "background-light": "#f8f9fc",
+        "background-dark": "#0f172a",
+        "surface": "#ffffff",
+        "surface-alt": "#f1f5f9",
+        "border-light": "#e2e8f0",
       },
       fontFamily: { "display": ["Inter", "sans-serif"] },
     },
@@ -34,17 +36,17 @@ tailwind.config = {
 </script>
 <style type="text/tailwindcss">
 body { font-family: 'Inter', sans-serif; }
-.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
 * { overflow-wrap: break-word; }
 html { scroll-behavior: smooth; }
-a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offset: 2px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #1a3fb8; outline-offset: 2px; border-radius: 4px; }
 </style>
 <style>
   .grid-bg {
     --grid-size: 60px;
     background-image:
-      linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      linear-gradient(to right,  rgba(17,50,184,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17,50,184,0.04) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
   }
   .grid-cells {
@@ -61,23 +63,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   }
   .grid-cell.lit {
     background: rgba(17,50,212,0.08);
-    box-shadow: inset 0 0 12px rgba(6,182,212,0.12), 0 0 8px rgba(17,50,212,0.06);
-  }
-  #scanLine {
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #06B6D4 20%, #1132d4 50%, #06B6D4 80%, transparent 100%);
-    box-shadow: 0 0 20px 4px rgba(6,182,212,0.4), 0 0 60px 8px rgba(17,50,212,0.2);
-    z-index: 2; pointer-events: none; opacity: 0;
-    animation: scanSweep 16s ease-in-out infinite;
-  }
-  #scanLine::after {
-    content: ''; position: absolute; left: 0; right: 0; top: 2px; height: 80px;
-    background: linear-gradient(to bottom, rgba(6,182,212,0.08), transparent);
-    pointer-events: none;
-  }
-  @keyframes scanSweep {
-    0% { top: -2px; opacity: 0; } 5% { opacity: 0.9; }
-    90% { opacity: 0.9; } 95% { opacity: 0; } 100% { top: 100%; opacity: 0; }
+    box-shadow: inset 0 0 12px rgba(8,145,178,0.08), 0 0 8px rgba(26,63,184,0.04);
   }
   .slide-left { opacity: 0; transform: translateX(-120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
   .slide-right { opacity: 0; transform: translateX(120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -91,25 +77,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   .fade-up.in-view { opacity: 1; transform: translateY(0); }
   /* Data stream card */
   .data-stream-card { position: relative; overflow: clip; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
-  .data-stream-card::before { content: ''; position: absolute; top: 0; left: -100%; right: -100%; height: 2px; background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent); transition: left 0.6s ease, right 0.6s ease; }
+  .data-stream-card::before { content: ''; position: absolute; top: 0; left: -100%; right: -100%; height: 2px; background: linear-gradient(90deg, transparent, #2563eb, #0891b2, transparent); transition: left 0.6s ease, right 0.6s ease; }
   .data-stream-card:hover::before { left: 0; right: 0; animation: glowSweep 1.6s ease infinite; }
   @keyframes glowSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-  /* CTA shimmer */
-  @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-  .cta-shimmer { background-size: 200% auto; background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%); animation: shimmer 12s linear infinite; }
-  @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.6); } }
-  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+  /* CTA section */
+  @keyframes ctaGlow { 0%, 100% { box-shadow: 0 0 60px rgba(26,63,184,0.15), 0 0 120px rgba(13,148,136,0.08); } 50% { box-shadow: 0 0 80px rgba(26,63,184,0.25), 0 0 160px rgba(13,148,136,0.12); } }
+  .cta-shimmer { background: linear-gradient(135deg, #1a3fb8 0%, #1e4fc9 40%, #0d7a73 100%); animation: ctaGlow 6s ease-in-out infinite; }
   /* Form focus glow */
   input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15); }
   /* Trail dots */
   .trail-dot {
     position: fixed; width: 4px; height: 4px; border-radius: 50%;
-    background: rgba(6, 182, 212, 0.6); pointer-events: none; z-index: 9999;
+    background: rgba(26, 63, 184, 0.3); pointer-events: none; z-index: 9999;
     animation: trailFade 1s ease-out forwards;
   }
   @keyframes trailFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2); } }
   html { scroll-behavior: smooth; overflow-x: hidden; }
-  @media (max-width: 768px) { #scanLine { display: none; } .grid-cells { opacity: 0.5; } }
+  @media (max-width: 768px) { .grid-cells { opacity: 0.5; } }
 
   /* Footer link underline animation */
   footer a { position: relative; }
@@ -126,50 +110,50 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   footer a:hover::after { width: 100%; }
 </style>
 </head>
-<body class="bg-background-dark text-white overflow-x-hidden">
+<body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
 
 <!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
-<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<nav class="fixed top-0 w-full z-50 glass-nav">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 <div class="flex items-center">
 <a class="flex items-center" href="index.html">
-<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+<span class="text-2xl font-bold tracking-tight text-slate-900">Lontra<span class="text-primary font-black">.</span></span>
 </a>
 </div>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="servicios.html">Servicios</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="soluciones.html">Soluciones</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-sm font-bold text-white transition-colors" href="contacto.html">Contacto</a>
-<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="servicios.html">Servicios</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-bold text-slate-900 transition-colors" href="contacto.html">Contacto</a>
+<div class="flex items-center border-l border-slate-200 pl-8 gap-6">
 <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors px-2 py-1" href="en/contact.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white px-2 py-1">ES</span>
+<a class="hover:text-slate-900 transition-colors px-2 py-1" href="en/contact.html">EN</a>
+<span class="text-slate-300">|</span>
+<span class="text-slate-900 px-2 py-1">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
 <!-- Mobile hamburger button -->
 <button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="Abrir menú">
-<span class="material-symbols-outlined text-white text-2xl">menu</span>
+<span class="material-symbols-outlined text-slate-900 text-2xl">menu</span>
 </button>
 </div>
 </nav>
 
 <!-- Mobile menu overlay -->
-<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<div class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
 <button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
-<span class="material-symbols-outlined text-white text-2xl">close</span>
+<span class="material-symbols-outlined text-slate-900 text-2xl">close</span>
 </button>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="servicios.html">Servicios</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="soluciones.html">Soluciones</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="contacto.html">Contacto</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="servicios.html">Servicios</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="contacto.html">Contacto</a>
 <div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors" href="en/index.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white">ES</span>
+<a class="hover:text-slate-900 transition-colors" href="en/index.html">EN</a>
+<span class="text-slate-300">|</span>
+<span class="text-slate-900">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Solicitar Consulta</a>
 </div>
@@ -177,8 +161,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 <!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
 <section class="relative pt-32 pb-16 grid-bg overflow-hidden">
   <div class="grid-cells" id="gridCells"></div>
-  <div id="scanLine"></div>
-  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f8f9fc] to-transparent z-10 pointer-events-none"></div>
   <div class="max-w-7xl mx-auto px-8 w-full relative z-10">
     <!-- Badge -->
     <div class="mb-10 fade-up" style="transition-delay:0.1s">
@@ -187,10 +170,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 
     <!-- Title -->
     <h1 class="text-4xl md:text-7xl font-bold mb-6 fade-up" style="transition-delay:0.2s">
-      Contacto y <span class="bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent">Consulta</span>
+      Contacto y <span class="text-primary">Consulta</span>
     </h1>
 
-    <p class="text-lg md:text-xl text-white/50 max-w-2xl mb-6 fade-up" style="transition-delay:0.3s">
+    <p class="text-lg md:text-xl text-slate-500 max-w-2xl mb-6 fade-up" style="transition-delay:0.3s">
       Transformamos problemas complejos en soluciones matem&aacute;ticas. Cu&eacute;ntanos sobre tu pr&oacute;ximo proyecto y optimicemos juntos tus resultados. Nuestro equipo est&aacute; listo para ayudarte.
     </p>
   </div>
@@ -202,43 +185,43 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 overflow-hidden">
 
       <!-- Form Container -->
-      <div class="lg:col-span-7 bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-12 slide-left data-stream-card" style="transition-delay:0.1s">
+      <div class="lg:col-span-7 bg-white border border-slate-200 shadow-sm rounded-2xl p-8 md:p-12 slide-left data-stream-card" style="transition-delay:0.1s">
         <h2 class="text-2xl font-bold mb-8">Env&iacute;anos un mensaje</h2>
         <form class="space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">
-              <label for="nombre" class="text-sm font-semibold text-white/70">Nombre</label>
-              <input id="nombre" name="nombre" class="w-full bg-white/[0.03] border border-white/10 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-white placeholder-white/30" placeholder="Ej: Juan P&eacute;rez" type="text" required/>
+              <label for="nombre" class="text-sm font-semibold text-slate-700">Nombre</label>
+              <input id="nombre" name="nombre" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400" placeholder="Ej: Juan P&eacute;rez" type="text" required/>
             </div>
             <div class="space-y-2">
-              <label for="organizacion" class="text-sm font-semibold text-white/70">Organizaci&oacute;n</label>
-              <input id="organizacion" name="organizacion" class="w-full bg-white/[0.03] border border-white/10 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-white placeholder-white/30" placeholder="Ej: Codelco S.A." type="text"/>
+              <label for="organizacion" class="text-sm font-semibold text-slate-700">Organizaci&oacute;n</label>
+              <input id="organizacion" name="organizacion" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400" placeholder="Ej: Codelco S.A." type="text"/>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">
-              <label for="email" class="text-sm font-semibold text-white/70">Correo Electr&oacute;nico <span class="text-red-500">*</span></label>
-              <input id="email" name="email" class="w-full bg-white/[0.03] border border-white/10 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-white placeholder-white/30" placeholder="juan.perez@empresa.cl" type="email" required/>
+              <label for="email" class="text-sm font-semibold text-slate-700">Correo Electr&oacute;nico <span class="text-red-500">*</span></label>
+              <input id="email" name="email" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400" placeholder="juan.perez@empresa.cl" type="email" required/>
             </div>
             <div class="space-y-2">
-              <label for="whatsapp" class="text-sm font-semibold text-white/70">WhatsApp <span class="text-white/30 font-normal">(opcional)</span></label>
-              <input id="whatsapp" name="whatsapp" class="w-full bg-white/[0.03] border border-white/10 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-white placeholder-white/30" placeholder="+569 66699427" type="tel"/>
+              <label for="whatsapp" class="text-sm font-semibold text-slate-700">WhatsApp <span class="text-slate-300 font-normal">(opcional)</span></label>
+              <input id="whatsapp" name="whatsapp" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400" placeholder="+569 66699427" type="tel"/>
             </div>
           </div>
           <div class="space-y-2">
-            <label for="industria" class="text-sm font-semibold text-white/70">Industria</label>
-            <select id="industria" name="industria" class="w-full bg-white/[0.03] border border-white/10 rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-white appearance-none">
-              <option value="" class="bg-background-dark">Selecciona una industria</option>
-              <option value="logistica" class="bg-background-dark">Log&iacute;stica y Transporte</option>
-              <option value="digital" class="bg-background-dark">Soluciones Digitales e IA</option>
-              <option value="manufactura" class="bg-background-dark">Manufactura Inteligente</option>
-              <option value="retail" class="bg-background-dark">Retail y Ecommerce</option>
-              <option value="otro" class="bg-background-dark">Otro</option>
+            <label for="industria" class="text-sm font-semibold text-slate-700">Industria</label>
+            <select id="industria" name="industria" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 appearance-none">
+              <option value="" class="bg-white">Selecciona una industria</option>
+              <option value="logistica" class="bg-white">Log&iacute;stica y Transporte</option>
+              <option value="digital" class="bg-white">Soluciones Digitales e IA</option>
+              <option value="manufactura" class="bg-white">Manufactura Inteligente</option>
+              <option value="retail" class="bg-white">Retail y Ecommerce</option>
+              <option value="otro" class="bg-white">Otro</option>
             </select>
           </div>
           <div class="space-y-2">
-            <label for="mensaje" class="text-sm font-semibold text-white/70">Describe tu desaf&iacute;o de negocio</label>
-            <textarea id="mensaje" name="mensaje" class="w-full bg-white/[0.03] border border-white/10 rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-white placeholder-white/30 resize-none" placeholder="Ej: Necesitamos optimizar nuestra cadena de suministro para reducir costos log&iacute;sticos..." rows="5" required></textarea>
+            <label for="mensaje" class="text-sm font-semibold text-slate-700">Describe tu desaf&iacute;o de negocio</label>
+            <textarea id="mensaje" name="mensaje" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400 resize-none" placeholder="Ej: Necesitamos optimizar nuestra cadena de suministro para reducir costos log&iacute;sticos..." rows="5" required></textarea>
           </div>
           <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20 group" type="submit">
             Enviar Solicitud
@@ -250,48 +233,51 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
       <!-- Sidebar -->
       <div class="lg:col-span-5 flex flex-col gap-8">
         <!-- Contact Info -->
-        <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 slide-right" style="transition-delay:0.2s">
+        <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-8 slide-right" style="transition-delay:0.2s">
           <h3 class="text-xl font-bold mb-6">Informaci&oacute;n de Contacto</h3>
           <div class="space-y-6">
             <div class="flex items-start gap-4">
-              <div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+              <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                 <span class="material-symbols-outlined">mail</span>
               </div>
               <div>
-                <p class="text-sm font-medium text-white/40">Correo Electr&oacute;nico</p>
+                <p class="text-sm font-medium text-slate-400">Correo Electr&oacute;nico</p>
                 <p class="text-lg font-semibold">contacto@lontra.com</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+              <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                 <span class="material-symbols-outlined">distance</span>
               </div>
               <div>
-                <p class="text-sm font-medium text-white/40">Ubicaci&oacute;n</p>
-                <p class="text-lg font-semibold">Chile</p>
+                <p class="text-sm font-medium text-slate-400">Ubicaci&oacute;n</p>
+                <p class="text-lg font-semibold">Av Vitacura 3535, Of. 1501</p>
+                <p class="text-sm text-slate-400">Santiago, Chile</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+              <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                 <span class="material-symbols-outlined">hub</span>
               </div>
               <div>
-                <p class="text-sm font-medium text-white/40">LinkedIn</p>
+                <p class="text-sm font-medium text-slate-400">LinkedIn</p>
                 <a href="https://www.linkedin.com/in/jpmorande/" target="_blank" class="text-lg font-semibold hover:text-primary transition-colors break-all">linkedin.com/in/jpmorande</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Map Placeholder -->
-        <div class="flex-1 bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden relative min-h-[250px] slide-right" style="transition-delay:0.3s">
-          <div class="absolute inset-0 bg-cover bg-center grayscale contrast-125 opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDkOOsGlUqptrf_iIy-ib8z1b1m8kvuwyR9FIQBndZvR2dUsaIL44dJKwGFmDl6TqhQOFY8F00D2NykfCfSxdNCt9gdYy11ayskJftb4hpGgbYL_8JWxAoCtEY_hc6DBGhOx3R402eioi25-RZSwzRHDrfhWac5bDNigQNlSnXUuaxP6PpuPdVbktJgsh5OYZl-2GTD-ttmoDKY_0F4EP62t1rl5e8gPh7Qsk0A3_jrXg_smkWfJL3QkkQpstnvoP7eET2xnIZkvh8_')"></div>
-          <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
-          <div class="absolute bottom-6 left-6 flex items-center gap-2">
-            <span class="size-3 bg-accent-cyan rounded-full animate-pulse"></span>
-            <span class="text-white text-sm font-bold">Chile &mdash; Consultor&iacute;a remota global</span>
+        <!-- Interactive Google Map -->
+        <a href="https://maps.google.com/?q=Av+Vitacura+3535+Oficina+1501+Santiago+Chile" target="_blank" rel="noopener noreferrer" class="flex-1 bg-white border border-slate-200 shadow-sm rounded-2xl overflow-hidden relative min-h-[250px] slide-right block group hover:shadow-lg transition-shadow" style="transition-delay:0.3s">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.4!2d-70.5965!3d-33.4035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf1b0e4e6a5d%3A0x0!2sAv.%20Vitacura%203535%2C%20Vitacura%2C%20Santiago%2C%20Chile!5e0!3m2!1ses!2scl!4v1" class="absolute inset-0 w-full h-full border-0 pointer-events-none" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent p-6 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="size-3 bg-white rounded-full animate-pulse"></span>
+              <span class="text-white text-sm font-bold">Av Vitacura 3535, Of. 1501</span>
+            </div>
+            <span class="text-white/70 text-xs group-hover:text-white transition-colors flex items-center gap-1">Abrir en Maps <span class="material-symbols-outlined text-sm">open_in_new</span></span>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>
@@ -299,49 +285,46 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </section>
 
 <!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
-<footer class="relative z-20 border-t border-white/10 pt-12 md:pt-20 pb-10 bg-background-dark">
+<footer class="relative z-20 border-t border-slate-800 pt-12 md:pt-20 pb-10 bg-slate-900 text-white">
   <div class="max-w-7xl mx-auto px-8">
     <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
       <!-- Brand -->
       <div>
         <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
-        <p class="text-white/40 text-sm mt-4 leading-relaxed">
+        <p class="text-slate-400 text-sm mt-4 leading-relaxed">
           Consultor&iacute;a de Investigaci&oacute;n de Operaciones e Inteligencia Artificial basada en Chile.
         </p>
       </div>
       <!-- Enlaces -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Enlaces</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">Enlaces</h4>
         <ul class="space-y-3">
-          <li><a href="servicios.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
-          <li><a href="soluciones.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
+          <li><a href="servicios.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
+          <li><a href="soluciones.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
         </ul>
       </div>
       <!-- Empresa -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Empresa</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">Empresa</h4>
         <ul class="space-y-3">
-          <li><a href="contacto.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
+          <li><a href="contacto.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
         </ul>
       </div>
       <!-- Contacto -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Contacto</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">Contacto</h4>
         <ul class="space-y-3">
-          <li class="text-sm text-white/40">contacto@lontra.cl</li>
-          <li class="text-sm text-white/40">Santiago, Chile</li>
+          <li class="text-sm text-slate-400">contacto@lontra.cl</li>
+          <li class="text-sm text-slate-400">Av Vitacura 3535, Of. 1501</li>
+          <li class="text-sm text-slate-400">Santiago, Chile</li>
         </ul>
       </div>
     </div>
 
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">Pol&iacute;tica de Privacidad</a>
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">T&eacute;rminos</a>
-      </div>
+    <div class="border-t border-slate-700 pt-8 flex items-center justify-center gap-4">
+      <p class="text-xs text-slate-300">&copy; 2026 Lontra. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

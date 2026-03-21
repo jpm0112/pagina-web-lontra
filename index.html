@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="dark" lang="es"><head>
+<html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="description" content="Lontra: consultoría en investigación de operaciones e inteligencia artificial. Optimización, simulación y machine learning para tu empresa en Chile.">
-<meta name="theme-color" content="#101322">
+<meta name="theme-color" content="#ffffff">
 <title>Lontra | Consultor&iacute;a en Optimizaci&oacute;n e IA</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,15 +16,17 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        "primary": "#1132d4",
-        "navy-brand": "#001a3d",
-        "accent-teal": "#14b8a6",
-        "accent-cyan": "#06B6D4",
-        "bright-blue": "#3b82f6",
-        "purple": "#8B5CF6",
-        "warm-amber": "#F59E0B",
-        "background-light": "#f6f6f8",
-        "background-dark": "#101322",
+        "primary": "#1a3fb8",
+        "navy-brand": "#0f1f3d",
+        "accent-teal": "#0d9488",
+        "accent-cyan": "#0891b2",
+        "bright-blue": "#2563eb",
+        "warm-amber": "#d97706",
+        "background-light": "#f8f9fc",
+        "background-dark": "#0f172a",
+        "surface": "#ffffff",
+        "surface-alt": "#f1f5f9",
+        "border-light": "#e2e8f0",
       },
       fontFamily: { "display": ["Inter", "sans-serif"] },
     },
@@ -33,18 +35,19 @@ tailwind.config = {
 </script>
 <style type="text/tailwindcss">
 body { font-family: 'Inter', sans-serif; }
-.glass-nav { backdrop-filter: blur(12px); background-color: rgba(16, 19, 34, 0.8); }
+.hero-headline { font-size: clamp(2.25rem, 4vw + 0.5rem, 5rem); line-height: 0.95; }
+.glass-nav { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
 * { overflow-wrap: break-word; }
 html { scroll-behavior: smooth; }
-a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offset: 2px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid #1a3fb8; outline-offset: 2px; border-radius: 4px; }
 </style>
 <style>
   /* ── Grid Background ── */
   .grid-bg {
     --grid-size: 60px;
     background-image:
-      linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      linear-gradient(to right,  rgba(17,50,184,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(17,50,184,0.04) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
   }
 
@@ -69,40 +72,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     border-radius: 2px;
   }
   .grid-cell.lit {
-    background: rgba(17,50,212,0.08);
-    box-shadow: inset 0 0 12px rgba(6,182,212,0.12), 0 0 8px rgba(17,50,212,0.06);
-  }
-
-  /* ── Radar / Scan line ── */
-  #scanLine {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #06B6D4 20%, #1132d4 50%, #06B6D4 80%, transparent 100%);
-    box-shadow: 0 0 20px 4px rgba(6,182,212,0.4), 0 0 60px 8px rgba(17,50,212,0.2);
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0;
-    animation: scanSweep 16s ease-in-out infinite;
-  }
-  #scanLine::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 2px;
-    height: 80px;
-    background: linear-gradient(to bottom, rgba(6,182,212,0.08), transparent);
-    pointer-events: none;
-  }
-  @keyframes scanSweep {
-    0% { top: -2px; opacity: 0; }
-    5% { opacity: 0.9; }
-    90% { opacity: 0.9; }
-    95% { opacity: 0; }
-    100% { top: 100%; opacity: 0; }
+    background: rgba(26,63,184,0.06);
+    box-shadow: inset 0 0 12px rgba(13,148,136,0.10), 0 0 8px rgba(26,63,184,0.05);
   }
 
   /* ── Hero line reveal ── */
@@ -160,12 +131,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     pointer-events: none;
   }
   .glitch-word.glitching::before {
-    color: #06B6D4;
+    color: #2563eb;
     animation: glitchLayer1 0.6s ease-out forwards;
     z-index: -1;
   }
   .glitch-word.glitching::after {
-    color: #8B5CF6;
+    color: #0891b2;
     animation: glitchLayer2 0.6s ease-out forwards;
     z-index: -1;
   }
@@ -250,12 +221,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     100% { transform: translateX(0); }
   }
   .marquee-track-left {
-    animation: marquee-left 35s linear infinite;
+    animation: marquee-left 100s linear infinite;
     display: flex;
     width: max-content;
   }
   .marquee-track-right {
-    animation: marquee-right 40s linear infinite;
+    animation: marquee-right 110s linear infinite;
     display: flex;
     width: max-content;
   }
@@ -264,22 +235,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     animation-play-state: paused;
   }
   .neon-marquee-text {
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(15, 23, 42, 0.12);
   }
   .neon-marquee-text-alt {
-    color: rgba(255, 255, 255, 0.15);
+    color: rgba(15, 23, 42, 0.07);
   }
 
-  /* ── Pulsing connection dots between stats ── */
-  @keyframes dataPulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.4); }
-  }
-  .stat-connector-dot {
-    animation: dataPulse 2s ease-in-out infinite;
-  }
-  .stat-connector-dot:nth-child(2) { animation-delay: 0.3s; }
-  .stat-connector-dot:nth-child(3) { animation-delay: 0.6s; }
   @keyframes dataFlow {
     0% { opacity: 0; transform: translateX(-8px); }
     50% { opacity: 1; }
@@ -300,7 +261,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     position: absolute;
     top: 0; left: -100%; right: -100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #3b82f6, #06B6D4, transparent);
+    background: linear-gradient(90deg, transparent, #1a3fb8, #0d9488, transparent);
     transition: left 0.6s ease, right 0.6s ease;
   }
   .data-stream-card:hover::before {
@@ -326,7 +287,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     font-family: 'Courier New', monospace;
     font-size: 10px;
     line-height: 14px;
-    color: rgba(6,182,212,0.12);
+    color: rgba(26,63,184,0.10);
     white-space: nowrap;
     animation: streamDown var(--stream-dur, 4s) linear infinite;
     animation-delay: var(--stream-delay, 0s);
@@ -339,13 +300,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
   }
-
-  /* ── Pulsing dot ── */
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%      { opacity: 0.5; transform: scale(1.6); }
-  }
-  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 
   /* ── Fade-up generic ── */
   .fade-up {
@@ -364,19 +318,18 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   }
   .industry-card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 20px 60px rgba(17,50,212,0.15);
-    border-color: rgba(59,130,246,0.3);
+    box-shadow: 0 20px 60px rgba(26,63,184,0.08);
+    border-color: rgba(26,63,184,0.2);
   }
 
-  /* ── CTA shimmer ── */
-  @keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
+  /* ── CTA section ── */
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow: 0 0 60px rgba(26,63,184,0.15), 0 0 120px rgba(13,148,136,0.08); }
+    50% { box-shadow: 0 0 80px rgba(26,63,184,0.25), 0 0 160px rgba(13,148,136,0.12); }
   }
   .cta-shimmer {
-    background-size: 200% auto;
-    background-image: linear-gradient(90deg, #1132d4 0%, #3b82f6 25%, #06B6D4 50%, #3b82f6 75%, #1132d4 100%);
-    animation: shimmer 12s linear infinite;
+    background: linear-gradient(135deg, #1a3fb8 0%, #1e4fc9 40%, #0d7a73 100%);
+    animation: ctaGlow 6s ease-in-out infinite;
   }
 
   /* ── Mouse trail dots ── */
@@ -385,7 +338,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: rgba(6, 182, 212, 0.6);
+    background: rgba(26, 63, 184, 0.3);
     pointer-events: none;
     z-index: 9999;
     animation: trailFade 1s ease-out forwards;
@@ -395,14 +348,51 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     100% { opacity: 0; transform: scale(0.2); }
   }
 
+  /* ── SVG Network Visualization ── */
+  .viz-node {
+    fill: #f8f9fc;
+    stroke: #1a3fb8;
+    stroke-width: 1.5;
+    transition: fill 0.8s ease, stroke-width 0.8s ease;
+  }
+  .viz-node.active {
+    fill: rgba(26,63,184,0.08);
+    stroke-width: 2.5;
+  }
+  .viz-edge {
+    stroke: #e2e8f0;
+    stroke-width: 1;
+  }
+  .viz-edge.optimal {
+    stroke: #1a3fb8;
+    stroke-width: 2;
+    opacity: 0.5;
+  }
+  .viz-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    fill: #94a3b8;
+    text-anchor: middle;
+  }
+  @keyframes nodeGlow {
+    0%, 100% { r: 6; opacity: 0.7; }
+    50% { r: 8; opacity: 1; }
+  }
+  @keyframes travelDot {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .viz-traveler {
+    fill: #1a3fb8;
+    animation: travelDot 2s ease-in-out infinite;
+  }
+
   /* ── Smooth scroll ── */
   html { scroll-behavior: smooth; overflow-x: hidden; }
 
-  /* ── Mobile: simplify scan line ── */
   @media (max-width: 768px) {
-    #scanLine {
-      display: none;
-    }
     .grid-cells {
       opacity: 0.5;
     }
@@ -412,104 +402,111 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   }
 </style>
 </head>
-<body class="bg-background-dark text-white overflow-x-hidden">
+<body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
 
 <!-- Spotlight overlay -->
 <div id="spotlight"></div>
 
 <!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
-<nav class="fixed top-0 w-full z-50 glass-nav border-b border-white/10">
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/80">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 <div class="flex items-center">
 <a class="flex items-center" href="index.html">
-<span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+<span class="text-2xl font-bold tracking-tight text-slate-900">Lontra<span class="text-primary font-black">.</span></span>
 </a>
 </div>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="servicios.html">Servicios</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="soluciones.html">Soluciones</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-sm font-medium text-white/70 hover:text-white transition-colors" href="contacto.html">Contacto</a>
-<div class="flex items-center border-l border-white/10 pl-8 gap-6">
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="servicios.html">Servicios</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="soluciones.html">Soluciones</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="contacto.html">Contacto</a>
+<div class="flex items-center border-l border-slate-200 pl-8 gap-6">
 <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors px-2 py-1" href="en/index.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white px-2 py-1">ES</span>
+<a class="hover:text-slate-900 transition-colors px-2 py-1" href="en/index.html">EN</a>
+<span class="text-slate-300">|</span>
+<span class="text-slate-900 px-2 py-1">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Solicitar Consulta</a>
 </div>
 </div>
 <!-- Mobile hamburger button -->
 <button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="Abrir menú">
-<span class="material-symbols-outlined text-white text-2xl">menu</span>
+<span class="material-symbols-outlined text-slate-900 text-2xl">menu</span>
 </button>
 </div>
 </nav>
 
 <!-- Mobile menu overlay -->
-<div class="fixed inset-0 z-[60] bg-background-dark/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+<div class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
 <button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="Cerrar menú">
-<span class="material-symbols-outlined text-white text-2xl">close</span>
+<span class="material-symbols-outlined text-slate-900 text-2xl">close</span>
 </button>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="servicios.html">Servicios</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="soluciones.html">Soluciones</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
-<a class="text-xl font-medium text-white/70 hover:text-white transition-colors py-2" href="contacto.html">Contacto</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="servicios.html">Servicios</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="soluciones.html">Soluciones</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="sobre-nosotros.html">Sobre Nosotros</a>
+<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="contacto.html">Contacto</a>
 <div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
-<a class="hover:text-white transition-colors" href="en/index.html">EN</a>
-<span class="text-white/20">|</span>
-<span class="text-white">ES</span>
+<a class="hover:text-slate-900 transition-colors" href="en/index.html">EN</a>
+<span class="text-slate-300">|</span>
+<span class="text-slate-900">ES</span>
 </div>
 <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Solicitar Consulta</a>
 </div>
 
 <!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg" id="hero">
+<section class="relative overflow-hidden grid-bg" id="hero">
   <!-- Animated grid cells -->
   <div class="grid-cells" id="gridCells"></div>
 
-  <!-- Radar scan line -->
-  <div id="scanLine"></div>
 
-  <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-8 pt-28 pb-20 w-full">
-    <!-- Badge -->
-    <div class="mb-10 fade-up" style="transition-delay:0.1s">
-      <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 text-sm text-white/80">
-        <span class="w-2 h-2 rounded-full bg-accent-cyan pulse-dot inline-block"></span>
-        Investigaci&oacute;n de Operaciones &amp; IA
-      </span>
-    </div>
+  <!-- Content: Asymmetric 2-column layout -->
+  <div class="relative z-10 max-w-7xl mx-auto px-8 pt-36 pb-20 md:pt-44 md:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
 
-    <!-- Line-by-line reveal title with glitch effect -->
-    <h1 class="mb-8">
-      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold" data-delay="0"><span class="glitch-word" data-text="Transformando">Transformando</span></span></span>
-      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold text-white/60" data-delay="200"><span class="glitch-word" data-text="datos">datos</span> <span class="glitch-word" data-text="en">en</span></span></span>
-      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold" data-delay="400"><span class="glitch-word" data-text="decisiones">decisiones</span></span></span>
-      <span class="hero-line block"><span class="hero-line-inner text-3xl sm:text-6xl md:text-8xl font-bold bg-gradient-to-r from-primary via-accent-cyan to-purple bg-clip-text text-transparent" data-delay="600"><span class="glitch-word" data-text="&oacute;ptimas">&oacute;ptimas</span></span></span>
-    </h1>
+      <!-- LEFT: Editorial text content -->
+      <div class="lg:col-span-7 lg:pr-8">
+        <!-- Eyebrow label -->
+        <p class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-8 fade-up" style="transition-delay:0.1s">
+          Investigaci&oacute;n de Operaciones &amp; IA
+        </p>
 
-    <p class="text-lg md:text-xl text-white/50 max-w-xl mb-10 fade-up" style="transition-delay:1s">
-      Combinamos investigaci&oacute;n de operaciones, matem&aacute;ticas avanzadas e inteligencia artificial para que tu empresa tome las mejores decisiones posibles.
-    </p>
+        <!-- Headline: mixed serif/sans typography -->
+        <h1 class="mb-10">
+          <span class="hero-line block"><span class="hero-line-inner hero-headline font-bold text-slate-900" data-delay="0"><span class="glitch-word" data-text="Transformando">Transformando</span></span></span>
+          <span class="hero-line block mt-1"><span class="hero-line-inner hero-headline font-bold text-slate-400" data-delay="200"><span class="glitch-word" data-text="datos">datos</span> <span class="glitch-word" data-text="en">en</span></span></span>
+          <span class="hero-line block mt-1"><span class="hero-line-inner hero-headline font-bold text-slate-900" data-delay="400"><span class="glitch-word" data-text="decisiones">decisiones</span></span></span>
+          <span class="hero-line block mt-1"><span class="hero-line-inner hero-headline font-bold" data-delay="600"><span class="glitch-word text-primary" data-text="&oacute;ptimas">&oacute;ptimas</span></span></span>
+        </h1>
 
-    <div class="flex flex-col sm:flex-row gap-4 fade-up" style="transition-delay:1.2s">
-      <a href="contacto.html" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
-        Solicitar Consulta
-        <span class="material-symbols-outlined text-base">arrow_forward</span>
-      </a>
-      <a href="servicios.html" class="w-full sm:w-auto text-center justify-center border border-white/15 hover:border-white/30 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
-        Ver Servicios
-      </a>
+        <p class="text-lg md:text-xl text-slate-500 max-w-lg mb-12 leading-relaxed fade-up" style="transition-delay:1s">
+          Combinamos investigaci&oacute;n de operaciones, matem&aacute;ticas avanzadas e inteligencia artificial para que tu empresa tome las mejores decisiones posibles.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-start gap-4 fade-up" style="transition-delay:1.2s">
+          <a href="contacto.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+            Solicitar Consulta
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+          <a href="servicios.html" class="text-sm font-bold text-slate-500 hover:text-slate-900 underline underline-offset-4 decoration-slate-300 hover:decoration-primary transition-all py-4 px-2">
+            Ver Servicios
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Animated SVG network visualization -->
+      <div class="lg:col-span-5 relative flex items-center justify-center min-h-[250px] lg:min-h-[480px] fade-up" style="transition-delay:0.6s">
+        <svg id="heroViz" class="w-full h-full" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+
     </div>
   </div>
 
   <!-- Gradient fade at bottom -->
-  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background-dark to-transparent z-10 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f8f9fc] to-transparent z-10 pointer-events-none"></div>
 </section>
 
 <!-- ══════════════════════════════════════════════════ DUAL NEON MARQUEE STRIP ══════════════════════════════════════════════════ -->
-<section class="relative z-20 border-y border-white/5 py-5 overflow-hidden">
+<section class="relative z-20 border-y border-slate-200/50 py-5 overflow-hidden">
   <!-- Row 1: Left to Right — Cyan neon glow -->
   <div class="marquee-track-left mb-3">
     <span class="neon-marquee-text text-xs tracking-[0.3em] uppercase font-bold whitespace-nowrap px-2">
@@ -537,28 +534,34 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 
 <!-- ══════════════════════════════════════════════════ PHILOSOPHY ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-16 md:py-24" id="philosophy">
-  <div class="clip-reveal bg-gradient-to-b from-white/[0.02] to-transparent rounded-3xl max-w-7xl mx-auto px-8 py-20" id="philosophyInner">
+  <div class="clip-reveal bg-gradient-to-b from-white to-surface-alt rounded-3xl max-w-7xl mx-auto px-8 py-20" id="philosophyInner">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-6xl font-bold mb-6">Rigor Matem&aacute;tico +<br/>Precisi&oacute;n Estrat&eacute;gica</h2>
-      <p class="text-white/50 text-lg max-w-2xl mx-auto">
+      <p class="text-slate-500 text-lg max-w-2xl mx-auto">
         Nuestro enfoque combina rigor acad&eacute;mico con pragmatismo empresarial, asegurando que cada modelo matem&aacute;tico se traduzca en impacto medible para tu organizaci&oacute;n.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-[1fr_auto_1fr] gap-8 max-w-4xl mx-auto">
       <!-- Card 1 -->
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-primary/40 transition-all duration-500 group">
+      <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-primary/40 transition-all duration-500 group">
         <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-3xl font-bold text-primary mb-6 group-hover:bg-primary/20 transition-colors">&Sigma;</div>
         <h3 class="text-xl font-bold mb-3">Rigor Matem&aacute;tico</h3>
-        <p class="text-white/50 text-sm leading-relaxed">
+        <p class="text-slate-500 text-sm leading-relaxed">
           Cada soluci&oacute;n est&aacute; respaldada por modelos matem&aacute;ticos s&oacute;lidos y probados en revistas cient&iacute;ficas de primer nivel.
         </p>
       </div>
+      <!-- Vertical divider -->
+      <div class="hidden md:flex flex-col items-center justify-center">
+        <div class="w-px h-16 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
+        <div class="w-2 h-2 rounded-full bg-primary/30 my-2"></div>
+        <div class="w-px h-16 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
+      </div>
       <!-- Card 2 -->
-      <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500 group">
+      <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500 group">
         <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-3xl font-bold text-accent-cyan mb-6 group-hover:bg-accent-cyan/20 transition-colors">&rarr;</div>
         <h3 class="text-xl font-bold mb-3">Precisi&oacute;n Estrat&eacute;gica</h3>
-        <p class="text-white/50 text-sm leading-relaxed">
+        <p class="text-slate-500 text-sm leading-relaxed">
           Convertimos la teor&iacute;a en herramientas pr&aacute;cticas que mejoran la operaci&oacute;n de tu empresa desde el d&iacute;a uno.
         </p>
       </div>
@@ -574,7 +577,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
         <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">Capacidades</span>
         <h2 class="text-3xl md:text-5xl font-bold">Nuestra Experiencia</h2>
       </div>
-      <a href="servicios.html" class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-white/60 hover:text-white transition-colors">
+      <a href="servicios.html" class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors">
         Ver Todos los Servicios
         <span class="material-symbols-outlined text-base">arrow_forward</span>
       </a>
@@ -582,7 +585,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 
     <div class="grid md:grid-cols-3 gap-8 overflow-hidden">
       <!-- Card 1 -- slides from LEFT -->
-      <div class="slide-left data-stream-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500">
+      <div class="slide-left data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500">
         <!-- Data stream background -->
         <div class="data-stream-bg" data-stream></div>
         <div class="relative z-10">
@@ -590,10 +593,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
             <span class="material-symbols-outlined text-primary text-2xl">hub</span>
           </div>
           <h3 class="text-xl font-bold mb-3">Investigaci&oacute;n de Operaciones</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-4">
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
             &iquest;Tus camiones recorren m&aacute;s kil&oacute;metros de los necesarios? &iquest;Tu inventario podr&iacute;a funcionar mejor? Aplicamos programaci&oacute;n lineal, heur&iacute;sticas avanzadas y simulaci&oacute;n para encontrar las mejores decisiones posibles en cadena de suministro, log&iacute;stica y asignaci&oacute;n de recursos.
           </p>
-          <ul class="space-y-2 text-sm text-white/40 mb-6">
+          <ul class="space-y-2 text-sm text-slate-400 mb-6">
             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Rutas &oacute;ptimas de distribuci&oacute;n</li>
             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Planificaci&oacute;n de inventario</li>
             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Predicci&oacute;n de demanda</li>
@@ -607,17 +610,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
       </div>
 
       <!-- Card 2 -- slides from BOTTOM -->
-      <div class="slide-up data-stream-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500" style="transition-delay:0.15s">
+      <div class="slide-up data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500" style="transition-delay:0.15s">
         <div class="data-stream-bg" data-stream></div>
         <div class="relative z-10">
           <div class="w-12 h-12 rounded-lg bg-accent-cyan/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-accent-cyan text-2xl">psychology</span>
           </div>
           <h3 class="text-xl font-bold mb-3">Inteligencia Artificial</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-4">
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
             &iquest;Tu equipo pierde tiempo en tareas repetitivas? &iquest;Hay patrones en tus datos que no est&aacute;s aprovechando? Dise&ntilde;amos modelos de machine learning y asistentes con IA que aprenden de tus datos para automatizar decisiones y anticipar cambios en el mercado.
           </p>
-          <ul class="space-y-2 text-sm text-white/40 mb-6">
+          <ul class="space-y-2 text-sm text-slate-400 mb-6">
             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Asistentes con IA (LLMs y RAG)</li>
             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Mantenimiento Predictivo</li>
             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Automatizaci&oacute;n de procesos</li>
@@ -631,32 +634,32 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
       </div>
 
       <!-- Card 3 -- slides from RIGHT -->
-      <div class="slide-right data-stream-card bg-white/[0.03] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.05] transition-all duration-500" style="transition-delay:0.3s">
+      <div class="slide-right data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500" style="transition-delay:0.3s">
         <div class="data-stream-bg" data-stream></div>
         <div class="relative z-10">
-          <div class="w-12 h-12 rounded-lg bg-purple/10 flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-purple text-2xl">functions</span>
+          <div class="w-12 h-12 rounded-lg bg-accent-teal/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-accent-teal text-2xl">functions</span>
           </div>
           <h3 class="text-xl font-bold mb-3">Matem&aacute;ticas Avanzadas</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-4">
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
             Traducimos las din&aacute;micas complejas de tu negocio en formulaciones matem&aacute;ticas robustas. Desde simulaciones Monte Carlo hasta teor&iacute;a de juegos, construimos modelos que sirven como base s&oacute;lida para la toma de decisiones bajo incertidumbre.
           </p>
-          <ul class="space-y-2 text-sm text-white/40 mb-6">
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Simulaci&oacute;n estoc&aacute;stica</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Modelado econ&oacute;mico y teor&iacute;a de juegos</li>
-            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Cuantificaci&oacute;n de riesgo</li>
+          <ul class="space-y-2 text-sm text-slate-400 mb-6">
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Simulaci&oacute;n estoc&aacute;stica</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Modelado econ&oacute;mico y teor&iacute;a de juegos</li>
+            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Cuantificaci&oacute;n de riesgo</li>
           </ul>
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">C&aacute;lculo Estoc&aacute;stico</span>
-            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Multi-Agente</span>
-            <span class="text-xs bg-purple/10 text-purple/80 px-3 py-1 rounded-full">Grafos</span>
+            <span class="text-xs bg-accent-teal/10 text-accent-teal/80 px-3 py-1 rounded-full">C&aacute;lculo Estoc&aacute;stico</span>
+            <span class="text-xs bg-accent-teal/10 text-accent-teal/80 px-3 py-1 rounded-full">Multi-Agente</span>
+            <span class="text-xs bg-accent-teal/10 text-accent-teal/80 px-3 py-1 rounded-full">Grafos</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="mt-8 md:hidden text-center">
-      <a href="servicios.html" class="inline-flex items-center gap-2 text-sm font-bold text-white/60 hover:text-white transition-colors">
+      <a href="servicios.html" class="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors">
         Ver Todos los Servicios
         <span class="material-symbols-outlined text-base">arrow_forward</span>
       </a>
@@ -673,48 +676,48 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     </div>
 
     <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <a href="soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left">
+      <a href="soluciones.html" class="industry-card fade-up bg-white border border-slate-200 shadow-sm rounded-2xl p-8 group block text-left">
         <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-500">
           <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
         </div>
         <h3 class="text-xl font-bold mb-3">Log&iacute;stica y Cadena de Suministro</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-4">
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">
           Te ayudamos a encontrar las rutas m&aacute;s r&aacute;pidas y baratas para tu flota, organizar tu inventario de forma inteligente y anticipar la demanda para que nunca te falte ni te sobre producto.
         </p>
-        <ul class="space-y-2 text-sm text-white/40">
+        <ul class="space-y-2 text-sm text-slate-400">
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Rutas &oacute;ptimas de distribuci&oacute;n</li>
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Planificaci&oacute;n de inventario</li>
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Predicci&oacute;n de demanda</li>
         </ul>
       </a>
 
-      <a href="soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left" style="transition-delay:0.15s">
+      <a href="soluciones.html" class="industry-card fade-up bg-white border border-slate-200 shadow-sm rounded-2xl p-8 group block text-left" style="transition-delay:0.15s">
         <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-all duration-500">
           <span class="material-symbols-outlined text-accent-cyan text-3xl">smart_toy</span>
         </div>
         <h3 class="text-xl font-bold mb-3">Soluciones Digitales e IA</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-4">
-          Construimos asistentes inteligentes que responden preguntas sobre tus datos internos <span class="text-white/30">(RAG)</span>, automatizamos procesos con modelos de lenguaje <span class="text-white/30">(LLMs)</span> y desarrollamos herramientas a medida que integran IA en tu operaci&oacute;n diaria.
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+          Construimos asistentes inteligentes que responden preguntas sobre tus datos internos <span class="text-slate-300">(RAG)</span>, automatizamos procesos con modelos de lenguaje <span class="text-slate-300">(LLMs)</span> y desarrollamos herramientas a medida que integran IA en tu operaci&oacute;n diaria.
         </p>
-        <ul class="space-y-2 text-sm text-white/40">
+        <ul class="space-y-2 text-sm text-slate-400">
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Asistentes con IA (LLMs y RAG)</li>
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Automatizaci&oacute;n de procesos</li>
           <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Sistemas de soporte a la decisi&oacute;n</li>
         </ul>
       </a>
 
-      <a href="soluciones.html" class="industry-card fade-up bg-white/[0.03] border border-white/10 rounded-2xl p-8 group block text-left" style="transition-delay:0.3s">
-        <div class="w-14 h-14 rounded-xl bg-purple/10 flex items-center justify-center mb-6 group-hover:bg-purple/20 transition-all duration-500">
-          <span class="material-symbols-outlined text-purple text-3xl">factory</span>
+      <a href="soluciones.html" class="industry-card fade-up bg-white border border-slate-200 shadow-sm rounded-2xl p-8 group block text-left" style="transition-delay:0.3s">
+        <div class="w-14 h-14 rounded-xl bg-accent-teal/10 flex items-center justify-center mb-6 group-hover:bg-accent-teal/20 transition-all duration-500">
+          <span class="material-symbols-outlined text-accent-teal text-3xl">factory</span>
         </div>
         <h3 class="text-xl font-bold mb-3">Manufactura</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-4">
-          Te ayudamos a planificar tu producci&oacute;n de manera eficiente, predecir cu&aacute;ndo fallar&aacute;n tus equipos antes de que ocurra <span class="text-white/30">(mantenimiento predictivo)</span> y reducir el desperdicio en cada etapa del proceso.
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+          Te ayudamos a planificar tu producci&oacute;n de manera eficiente, predecir cu&aacute;ndo fallar&aacute;n tus equipos antes de que ocurra <span class="text-slate-300">(mantenimiento predictivo)</span> y reducir el desperdicio en cada etapa del proceso.
         </p>
-        <ul class="space-y-2 text-sm text-white/40">
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Planificaci&oacute;n de producci&oacute;n</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Mantenimiento predictivo</li>
-          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-purple text-base">check_circle</span> Reducci&oacute;n de desperdicios</li>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Planificaci&oacute;n de producci&oacute;n</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Mantenimiento predictivo</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Reducci&oacute;n de desperdicios</li>
         </ul>
       </a>
     </div>
@@ -726,13 +729,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
   <div class="max-w-5xl mx-auto px-8">
     <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
       <!-- Dark overlay for readability -->
-      <div class="absolute inset-0 bg-background-dark/40 rounded-3xl"></div>
+      <div class="absolute inset-0 bg-white/10 rounded-3xl"></div>
       <div class="relative z-10">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6">&iquest;Listo para optimizar<br/>tus operaciones?</h2>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">&iquest;Listo para optimizar<br/>tus operaciones?</h2>
         <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
           Agenda una consulta gratuita y descubre c&oacute;mo nuestras soluciones pueden transformar tu empresa.
         </p>
-        <a href="contacto.html" class="inline-flex items-center gap-2 bg-white text-background-dark px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
+        <a href="contacto.html" class="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
           Solicita tu Consulta Gratuita
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
@@ -742,49 +745,46 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
 </section>
 
 <!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
-<footer class="relative z-20 border-t border-white/10 pt-12 md:pt-20 pb-10 bg-background-dark">
+<footer class="relative z-20 border-t border-slate-800 pt-12 md:pt-20 pb-10 bg-slate-900 text-white">
   <div class="max-w-7xl mx-auto px-8">
     <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
       <!-- Brand -->
       <div>
         <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
-        <p class="text-white/40 text-sm mt-4 leading-relaxed">
+        <p class="text-slate-400 text-sm mt-4 leading-relaxed">
           Consultor&iacute;a de Investigaci&oacute;n de Operaciones e Inteligencia Artificial basada en Chile.
         </p>
       </div>
       <!-- Enlaces -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Enlaces</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">Enlaces</h4>
         <ul class="space-y-3">
-          <li><a href="servicios.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
-          <li><a href="soluciones.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
+          <li><a href="servicios.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Servicios</a></li>
+          <li><a href="soluciones.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Soluciones</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Sobre Nosotros</a></li>
         </ul>
       </div>
       <!-- Empresa -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Empresa</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">Empresa</h4>
         <ul class="space-y-3">
-          <li><a href="contacto.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
-          <li><a href="sobre-nosotros.html" class="text-sm text-white/40 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
+          <li><a href="contacto.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Contacto</a></li>
+          <li><a href="sobre-nosotros.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Equipo</a></li>
         </ul>
       </div>
       <!-- Contacto -->
       <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-white/60 mb-4 md:mb-6">Contacto</h4>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">Contacto</h4>
         <ul class="space-y-3">
-          <li class="text-sm text-white/40">contacto@lontra.cl</li>
-          <li class="text-sm text-white/40">Santiago, Chile</li>
+          <li class="text-sm text-slate-400">contacto@lontra.cl</li>
+          <li class="text-sm text-slate-400">Av Vitacura 3535, Of. 1501</li>
+          <li class="text-sm text-slate-400">Santiago, Chile</li>
         </ul>
       </div>
     </div>
 
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-white/30">&copy; 2026 Lontra. Todos los derechos reservados.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">Pol&iacute;tica de Privacidad</a>
-        <a href="#" class="text-xs text-white/30 hover:text-white/60 transition-colors inline-block py-2">T&eacute;rminos</a>
-      </div>
+    <div class="border-t border-slate-700 pt-8 flex items-center justify-center gap-4">
+      <p class="text-xs text-slate-400">&copy; 2026 Lontra. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
@@ -944,6 +944,97 @@ a:focus-visible, button:focus-visible { outline: 2px solid #06B6D4; outline-offs
     observer.observe(el);
   });
 
+  // ── 7. SVG NETWORK VISUALIZATION ──
+  var vizSvg = document.getElementById('heroViz');
+  if (vizSvg) {
+    var ns = 'http://www.w3.org/2000/svg';
+    var nodes = [
+      {x:70,y:50,label:'A'}, {x:200,y:30,label:'B'}, {x:330,y:65,label:'C'},
+      {x:50,y:160,label:'D'}, {x:180,y:140,label:'E'}, {x:310,y:175,label:'F'},
+      {x:90,y:270,label:'G'}, {x:220,y:255,label:'H'}, {x:350,y:285,label:'I'},
+      {x:60,y:370,label:'J'}, {x:200,y:380,label:'K'}, {x:340,y:395,label:'L'},
+      {x:200,y:470,label:'M'}
+    ];
+    var edges = [
+      [0,1],[1,2],[0,3],[1,4],[2,5],[3,4],[4,5],
+      [3,6],[4,7],[5,8],[6,7],[7,8],
+      [6,9],[7,10],[8,11],[9,10],[10,11],[10,12],[9,12]
+    ];
+    var optimalPath = [[0,1],[1,4],[4,7],[7,10],[10,12]];
+
+    // Draw regular edges
+    edges.forEach(function(e) {
+      var line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', nodes[e[0]].x);
+      line.setAttribute('y1', nodes[e[0]].y);
+      line.setAttribute('x2', nodes[e[1]].x);
+      line.setAttribute('y2', nodes[e[1]].y);
+      line.setAttribute('class', 'viz-edge');
+      vizSvg.appendChild(line);
+    });
+
+    // Draw optimal path edges
+    optimalPath.forEach(function(e) {
+      var line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', nodes[e[0]].x);
+      line.setAttribute('y1', nodes[e[0]].y);
+      line.setAttribute('x2', nodes[e[1]].x);
+      line.setAttribute('y2', nodes[e[1]].y);
+      line.setAttribute('class', 'viz-edge optimal');
+      vizSvg.appendChild(line);
+    });
+
+    // Draw nodes
+    var optimalNodes = [0,1,4,7,10,12];
+    nodes.forEach(function(n, i) {
+      var circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', n.x);
+      circle.setAttribute('cy', n.y);
+      circle.setAttribute('r', optimalNodes.indexOf(i) !== -1 ? 7 : 5);
+      circle.setAttribute('class', 'viz-node' + (optimalNodes.indexOf(i) !== -1 ? ' active' : ''));
+      vizSvg.appendChild(circle);
+    });
+
+    // Animate traveling dot along optimal path
+    var pathSegments = optimalPath.map(function(e) {
+      return { x1: nodes[e[0]].x, y1: nodes[e[0]].y, x2: nodes[e[1]].x, y2: nodes[e[1]].y };
+    });
+    var traveler = document.createElementNS(ns, 'circle');
+    traveler.setAttribute('r', 4);
+    traveler.setAttribute('class', 'viz-traveler');
+    vizSvg.appendChild(traveler);
+
+    var segIndex = 0;
+    var segProgress = 0;
+    var segSpeed = 0.006;
+
+    function animateTraveler() {
+      var seg = pathSegments[segIndex];
+      var x = seg.x1 + (seg.x2 - seg.x1) * segProgress;
+      var y = seg.y1 + (seg.y2 - seg.y1) * segProgress;
+      traveler.setAttribute('cx', x);
+      traveler.setAttribute('cy', y);
+      segProgress += segSpeed;
+      if (segProgress >= 1) {
+        segProgress = 0;
+        segIndex = (segIndex + 1) % pathSegments.length;
+      }
+      requestAnimationFrame(animateTraveler);
+    }
+    animateTraveler();
+
+    // Subtle pulse on active nodes
+    setInterval(function() {
+      var randomActive = optimalNodes[Math.floor(Math.random() * optimalNodes.length)];
+      var allCircles = vizSvg.querySelectorAll('.viz-node.active');
+      allCircles.forEach(function(c, idx) {
+        if (idx === Math.floor(Math.random() * allCircles.length)) {
+          c.setAttribute('r', 9);
+          setTimeout(function() { c.setAttribute('r', 7); }, 600);
+        }
+      });
+    }, 1500);
+  }
 
 })();
 </script>
