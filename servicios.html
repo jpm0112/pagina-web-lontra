@@ -55,11 +55,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid #1a3fb8; outline-offs
   .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.in-view { opacity: 1; transform: translateY(0); }
   .trail-dot {
-    position: fixed; width: 4px; height: 4px; border-radius: 50%;
-    background: rgba(26, 63, 184, 0.3); pointer-events: none; z-index: 9999;
-    animation: trailFade 1s ease-out forwards;
+    position: fixed; width: 3px; height: 3px; border-radius: 50%;
+    background: rgba(26, 63, 184, 0.25); pointer-events: none; z-index: 9999;
+    animation: trailFade 0.8s ease-out forwards;
   }
-  @keyframes trailFade { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.2); } }
+  @keyframes trailFade { 0% { opacity: 0.9; transform: scale(1); } 100% { opacity: 0; transform: scale(0.15); } }
   html { scroll-behavior: smooth; overflow-x: hidden; }
 </style>
 </head>
@@ -473,7 +473,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #1a3fb8; outline-offs
   var lastTrailTime = 0;
   document.addEventListener('mousemove', function(e) {
     var now = Date.now();
-    if (now - lastTrailTime < 40) return;
+    if (now - lastTrailTime < 60) return;
     lastTrailTime = now;
     var dot = document.createElement('div');
     dot.className = 'trail-dot';
