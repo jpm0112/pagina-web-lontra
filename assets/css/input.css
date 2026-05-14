@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Site-wide base overrides from former inline <style type="text/tailwindcss"> ── */
+body { font-family: 'Inter', sans-serif; }
+* { overflow-wrap: break-word; }
+html { scroll-behavior: smooth; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #1a3fb8;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Display helpers ── */
+.hero-headline { font-size: clamp(2.25rem, 4vw + 0.5rem, 5rem); line-height: 0.95; }
+.hero-serif {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}

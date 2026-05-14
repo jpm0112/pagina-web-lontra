@@ -2,3 +2,8 @@
 Stitch Files
 .gitignore
 wrangler.toml
+package.json
+package-lock.json
+tailwind.config.js
+node_modules
+assets/css/input.css

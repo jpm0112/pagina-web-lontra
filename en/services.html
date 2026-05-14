@@ -79,42 +79,13 @@
   ]
 }
 </script>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="../assets/css/built.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../assets/css/tokens.css"/>
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "primary": "#1a3fb8",
-        "navy-brand": "#0f1f3d",
-        "accent-teal": "#0d9488",
-        "accent-cyan": "#0891b2",
-        "bright-blue": "#2563eb",
-        "warm-amber": "#d97706",
-        "background-light": "#f8f9fc",
-        "background-dark": "#0f172a",
-        "surface": "#ffffff",
-        "surface-alt": "#f1f5f9",
-        "border-light": "#e2e8f0",
-      },
-      fontFamily: { "display": ["Inter", "sans-serif"], "serif": ["Source Serif 4", "Georgia", "serif"], "mono": ["JetBrains Mono", "ui-monospace", "monospace"] },
-    },
-  },
-}
-</script>
-<style type="text/tailwindcss">
-body { font-family: 'Inter', sans-serif; }
-.glass-nav { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
-* { overflow-wrap: break-word; }
-html { scroll-behavior: smooth; }
-a:focus-visible, button:focus-visible { outline: 2px solid #1a3fb8; outline-offset: 2px; border-radius: 4px; }
-</style>
+<!-- Tailwind config moved to tailwind.config.js; styles compiled to assets/css/built.css -->
 <style>
   .grid-bg {
     --grid-size: 60px;
