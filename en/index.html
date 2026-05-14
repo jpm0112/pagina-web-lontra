@@ -220,7 +220,10 @@
     animation: travelDot 2s ease-in-out infinite;
   }
   html { scroll-behavior: smooth; overflow-x: hidden; }
-  @media (max-width: 768px) { .grid-cells { opacity: 0.5; } }
+  @media (max-width: 768px) {
+    .grid-cells { display: none; }
+    #heroViz { display: none; }
+  }
 </style>
 </head>
 <body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
@@ -310,8 +313,8 @@
         </div>
       </div>
 
-      <!-- RIGHT: Animated SVG network visualization -->
-      <div class="lg:col-span-5 relative flex items-center justify-center min-h-[250px] lg:min-h-[480px] fade-up" style="transition-delay:0.6s">
+      <!-- RIGHT: Animated SVG network visualization (hidden on mobile to reduce visual load and JS work) -->
+      <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center lg:min-h-[480px] fade-up" style="transition-delay:0.6s">
         <svg id="heroViz" class="w-full h-full" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
 
