@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lontraconsultores.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/servicios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/servicios.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/soluciones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/soluciones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/soluciones.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/sobre-nosotros.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/sobre-nosotros.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/sobre-nosotros.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/contacto.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/en/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/servicios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/servicios.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/en/solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/soluciones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/solutions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/soluciones.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/sobre-nosotros.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/sobre-nosotros.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lontraconsultores.com/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/contacto.html"/>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+</urlset>
