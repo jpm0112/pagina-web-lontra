@@ -85,6 +85,70 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es la investigación de operaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La investigación de operaciones es la disciplina que aplica modelos matemáticos, estadística y optimización para tomar mejores decisiones en problemas operacionales. Incluye programación matemática, simulación de eventos discretos, teoría de colas y métodos metaheurísticos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre optimización y machine learning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Machine learning aprende patrones a partir de datos históricos y responde la pregunta \"qué va a pasar\". Optimización busca la mejor decisión dado un objetivo y restricciones, y responde \"qué hacer\". Ambos se complementan: muchos sistemas usan ML para predecir demanda, precios o riesgos, y optimización para asignar recursos o programar operaciones sobre esas predicciones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la simulación estocástica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La simulación estocástica modela sistemas con incertidumbre mediante miles de escenarios aleatorios para estimar su comportamiento. Se usa para evaluar políticas operacionales antes de implementarlas: cuántos camiones operar, qué nivel de inventario mantener, qué turnos asignar. A diferencia de la optimización, no busca una solución óptima directamente, sino que mide el desempeño esperado y la variabilidad de distintas alternativas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es un modelo de optimización matemática?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un modelo de optimización describe formalmente una decisión: una función objetivo (qué se quiere maximizar o minimizar, como costo o utilidad), variables de decisión (qué se elige, como cantidades, rutas o asignaciones) y restricciones (límites físicos, contractuales o de capacidad). Resolverlo entrega la combinación de decisiones que respeta las restricciones y optimiza el objetivo. Las técnicas más usadas incluyen programación lineal, programación entera mixta (MIP), programación no lineal y métodos heurísticos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es business intelligence y en qué se diferencia del machine learning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Business intelligence (BI) organiza datos históricos en reportes, dashboards y KPIs para soporte de decisiones humanas. Machine learning construye modelos predictivos a partir de esos mismos datos. BI responde \"qué pasó\"; ML responde \"qué va a pasar\". Ambos se apoyan en datos limpios y bien modelados, pero BI termina en visualizaciones para personas y ML en modelos que automatizan decisiones o alimentan otros sistemas (incluida la optimización)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo toma un proyecto típico con Lontra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La duración depende del alcance, pero los proyectos se estructuran en fases acotadas: una consulta inicial de 1 a 3 semanas, una fase de modelado y validación de 4 a 12 semanas, y una implementación cuya duración depende de los sistemas del cliente. Proyectos completos suelen ubicarse entre 2 y 6 meses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué entrega Lontra al cierre de un proyecto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cada proyecto termina con un entregable concreto: un modelo de optimización funcionando, un simulador, un sistema de soporte de decisiones, o un conjunto de modelos predictivos integrados a los sistemas del cliente. La entrega incluye código documentado, validación con datos reales del cliente y una sesión de transferencia al equipo interno."
+      }
+    }
+  ]
+}
+</script>
 <link rel="stylesheet" href="assets/css/built.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,6 +200,14 @@
   @keyframes trailFade { 0% { opacity: 0.9; transform: scale(1); } 100% { opacity: 0; transform: scale(0.15); } }
   html { scroll-behavior: smooth; overflow-x: hidden; }
   @media (max-width: 768px) { .grid-cells { opacity: 0.5; } }
+  /* FAQ accordion — native <details>/<summary> styling */
+  .faq-item summary { list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item .faq-chevron { transition: transform 0.3s ease; }
+  .faq-item[open] .faq-chevron { transform: rotate(180deg); }
+  .faq-item[open] { border-color: rgba(26,63,184,0.25); }
+  .faq-item .faq-answer { animation: faqFadeIn 0.4s ease forwards; }
+  @keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
@@ -354,6 +426,89 @@
         </p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ FAQ ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24 border-t border-slate-200/50" id="faq">
+  <div class="max-w-4xl mx-auto px-8">
+    <div class="text-center mb-12 slide-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">PREGUNTAS FRECUENTES</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Conceptos &amp; Proceso</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto">Las preguntas que m&aacute;s nos hacen sobre investigaci&oacute;n de operaciones, machine learning y c&oacute;mo trabajamos.</p>
+    </div>
+
+    <div class="space-y-3 fade-up">
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Qu&eacute; es la investigaci&oacute;n de operaciones?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          La investigaci&oacute;n de operaciones es la disciplina que aplica modelos matem&aacute;ticos, estad&iacute;stica y optimizaci&oacute;n para tomar mejores decisiones en problemas operacionales. Incluye programaci&oacute;n matem&aacute;tica, simulaci&oacute;n de eventos discretos, teor&iacute;a de colas y m&eacute;todos metaheur&iacute;sticos.
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Cu&aacute;l es la diferencia entre optimizaci&oacute;n y machine learning?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          Machine learning aprende patrones a partir de datos hist&oacute;ricos y responde la pregunta &laquo;qu&eacute; va a pasar&raquo;. Optimizaci&oacute;n busca la mejor decisi&oacute;n dado un objetivo y restricciones, y responde &laquo;qu&eacute; hacer&raquo;. Ambos se complementan: muchos sistemas usan ML para predecir demanda, precios o riesgos, y optimizaci&oacute;n para asignar recursos o programar operaciones sobre esas predicciones.
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Qu&eacute; es la simulaci&oacute;n estoc&aacute;stica?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          La simulaci&oacute;n estoc&aacute;stica modela sistemas con incertidumbre mediante miles de escenarios aleatorios para estimar su comportamiento. Se usa para evaluar pol&iacute;ticas operacionales antes de implementarlas: cu&aacute;ntos camiones operar, qu&eacute; nivel de inventario mantener, qu&eacute; turnos asignar. A diferencia de la optimizaci&oacute;n, no busca una soluci&oacute;n &oacute;ptima directamente, sino que mide el desempe&ntilde;o esperado y la variabilidad de distintas alternativas.
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Qu&eacute; es un modelo de optimizaci&oacute;n matem&aacute;tica?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          Un modelo de optimizaci&oacute;n describe formalmente una decisi&oacute;n: una funci&oacute;n objetivo (qu&eacute; se quiere maximizar o minimizar, como costo o utilidad), variables de decisi&oacute;n (qu&eacute; se elige, como cantidades, rutas o asignaciones) y restricciones (l&iacute;mites f&iacute;sicos, contractuales o de capacidad). Resolverlo entrega la combinaci&oacute;n de decisiones que respeta las restricciones y optimiza el objetivo. Las t&eacute;cnicas m&aacute;s usadas incluyen programaci&oacute;n lineal, programaci&oacute;n entera mixta (MIP), programaci&oacute;n no lineal y m&eacute;todos heur&iacute;sticos.
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Qu&eacute; es business intelligence y en qu&eacute; se diferencia del machine learning?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          Business intelligence (BI) organiza datos hist&oacute;ricos en reportes, dashboards y KPIs para soporte de decisiones humanas. Machine learning construye modelos predictivos a partir de esos mismos datos. BI responde &laquo;qu&eacute; pas&oacute;&raquo;; ML responde &laquo;qu&eacute; va a pasar&raquo;. Ambos se apoyan en datos limpios y bien modelados, pero BI termina en visualizaciones para personas y ML en modelos que automatizan decisiones o alimentan otros sistemas (incluida la optimizaci&oacute;n).
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Cu&aacute;nto tiempo toma un proyecto t&iacute;pico con Lontra?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          La duraci&oacute;n depende del alcance, pero los proyectos se estructuran en fases acotadas: una consulta inicial de 1 a 3 semanas, una fase de modelado y validaci&oacute;n de 4 a 12 semanas, y una implementaci&oacute;n cuya duraci&oacute;n depende de los sistemas del cliente. Proyectos completos suelen ubicarse entre 2 y 6 meses.
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Qu&eacute; entrega Lontra al cierre de un proyecto?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+          Cada proyecto termina con un entregable concreto: un modelo de optimizaci&oacute;n funcionando, un simulador, un sistema de soporte de decisiones, o un conjunto de modelos predictivos integrados a los sistemas del cliente. La entrega incluye c&oacute;digo documentado, validaci&oacute;n con datos reales del cliente y una sesi&oacute;n de transferencia al equipo interno.
+        </div>
+      </details>
     </div>
   </div>
 </section>
