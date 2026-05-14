@@ -507,9 +507,9 @@
           <span>What is operations research?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>It's the discipline that uses mathematical models to decide how to allocate limited resources: which routes to take, what inventory to hold, what shifts to assign, what products to make and in what quantity.</p>
-          <p class="mt-3">What sets it apart from descriptive analysis is that it produces a concrete decision. Some problems can be solved to the best possible answer in seconds, when rules are stable. Others are too large to solve exactly and need approaches that deliver good solutions quickly, without a guarantee of optimality. When real uncertainty is in play (variable demand, equipment failures, irregular delivery times), the goal isn't optimality: you propose a policy and measure how it behaves before applying it.</p>
+          <p class="mt-4">What sets it apart from descriptive analysis is that it produces a concrete decision. Some problems can be solved to the best possible answer in seconds, when rules are stable. Others are too large to solve exactly and need approaches that deliver good solutions quickly, without a guarantee of optimality. When real uncertainty is in play (variable demand, equipment failures, irregular delivery times), the goal isn't optimality: you propose a policy and measure how it behaves before applying it.</p>
         </div>
       </details>
 
@@ -518,9 +518,9 @@
           <span>What is the difference between optimization and machine learning?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>Machine learning learns patterns from historical data and answers what will happen: expected demand next quarter, the probability of equipment failure, a customer's risk. Optimization finds the best decision given an objective and constraints, and answers what to do: how many trucks to operate, what inventory to send to each distribution center, which order to accept.</p>
-          <p class="mt-3">In real operations they work together. A typical pipeline: ML forecasts demand per location over the next 14 days, and optimization uses that forecast to allocate inventory across centers and plan shipments. On its own, ML leaves the decision to a human who has to interpret the forecast; optimization without ML needs someone to estimate demand by hand.</p>
+          <p class="mt-4">In real operations they work together. A typical pipeline: ML forecasts demand per location over the next 14 days, and optimization uses that forecast to allocate inventory across centers and plan shipments. On its own, ML leaves the decision to a human who has to interpret the forecast; optimization without ML needs someone to estimate demand by hand.</p>
         </div>
       </details>
 
@@ -529,9 +529,9 @@
           <span>What is stochastic simulation?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>Stochastic simulation reproduces the behavior of an operational system over thousands of random scenarios to estimate how it responds to different policies. It's useful when uncertainty dominates: variable arrival times, unpredictable failures, demand with seasonality and noise.</p>
-          <p class="mt-3">Unlike optimization, simulation doesn't return the best decision. It returns the distribution of outcomes for a policy you propose: how much it costs to run with 5 trucks vs. 6, how many hours of queueing arise if arrival frequency shifts, what happens if a machine goes down one day per month. It works where other methods fail, but it needs enough runs to be statistically reliable and depends a lot on how well the input distributions are described.</p>
+          <p class="mt-4">Unlike optimization, simulation doesn't return the best decision. It returns the distribution of outcomes for a policy you propose: how much it costs to run with 5 trucks vs. 6, how many hours of queueing arise if arrival frequency shifts, what happens if a machine goes down one day per month. It works where other methods fail, but it needs enough runs to be statistically reliable and depends a lot on how well the input distributions are described.</p>
         </div>
       </details>
 
@@ -540,10 +540,10 @@
           <span>What is a mathematical optimization model?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>An optimization model describes a decision in three parts: what you want to achieve (minimize cost, maximize profit, reduce time), what you choose (quantities, assignments, routes, schedules), and the rules you can't break (available capacity, budgets, regulations, contractual deadlines). Solving it returns the combination of decisions that respects all the rules and best achieves the objective.</p>
-          <p class="mt-3">A concrete example: assigning 30 trucks to 200 deliveries minimizing fuel, subject to each truck operating at most 9 hours and each customer receiving within their delivery window.</p>
-          <p class="mt-3">The trade-offs are practical. Some problems solve in seconds when rules are continuous and well-behaved. Others take hours or days when there are yes/no decisions (open this warehouse?, assign this driver to that route?), because the combination space grows exponentially. When the objective or rules involve products between variables, guaranteeing the best solution is the most expensive of all.</p>
+          <p class="mt-4">A concrete example: assigning 30 trucks to 200 deliveries minimizing fuel, subject to each truck operating at most 9 hours and each customer receiving within their delivery window.</p>
+          <p class="mt-4">The trade-offs are practical. Some problems solve in seconds when rules are continuous and well-behaved. Others take hours or days when there are yes/no decisions (open this warehouse?, assign this driver to that route?), because the combination space grows exponentially. When the objective or rules involve products between variables, guaranteeing the best solution is the most expensive of all.</p>
         </div>
       </details>
 
@@ -552,9 +552,9 @@
           <span>What is business intelligence and how is it different from machine learning?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>Business intelligence (BI) organizes historical data into reports, dashboards, and KPIs so people can make better decisions. Machine learning builds predictive models from that same data. BI answers what happened; ML answers what will happen.</p>
-          <p class="mt-3">In practice, BI is cheaper to build and easier to operate: SQL, data models, dashboards. ML has more reach but requires data quality, ongoing monitoring, and retraining. Most real operations use both: BI to monitor day-to-day and understand what's shifting, ML for forecasting, anomaly detection, and cases where explicit rules aren't enough.</p>
+          <p class="mt-4">In practice, BI is cheaper to build and easier to operate: SQL, data models, dashboards. ML has more reach but requires data quality, ongoing monitoring, and retraining. Most real operations use both: BI to monitor day-to-day and understand what's shifting, ML for forecasting, anomaly detection, and cases where explicit rules aren't enough.</p>
         </div>
       </details>
 
@@ -563,7 +563,7 @@
           <span>How long does a typical Lontra project take?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>A complete project usually takes between 2 and 6 months, depending on scope. We work in bounded phases so each one delivers value on its own: an initial consultation of 1 to 3 weeks to understand the problem and define scope, a modeling and validation phase of 4 to 12 weeks where the solution is built and tested with real data, and a rollout phase whose duration depends on the client's systems.</p>
         </div>
       </details>
@@ -573,7 +573,7 @@
           <span>What does Lontra deliver at the end of a project?</span>
           <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
         </summary>
-        <div class="faq-answer px-6 pb-6 text-slate-500 leading-relaxed border-t border-slate-100 pt-4">
+        <div class="faq-answer px-6 pb-8 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>Every project ends with a working deliverable: a running optimization model, a simulator, a decision-support system, or a set of predictive models integrated with the client's systems. The handover includes documented code, validation against real client data, and a transfer session with the client's internal team so they can operate and maintain the solution without depending on Lontra.</p>
         </div>
       </details>
