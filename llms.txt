@@ -1,0 +1,31 @@
+# Lontra Consultores
+
+> Consultoría chilena en investigación de operaciones, optimización e inteligencia artificial para industria privada en Chile y Latinoamérica.
+
+Lontra Consultores aplica programación matemática, simulación estocástica, machine learning y business intelligence a problemas operacionales en minería, retail, logística, manufactura y operaciones portuarias. Sede en Santiago, Chile. Fundador: Juan Pablo Morandé, candidato a PhD en Auburn University.
+
+## Idiomas
+
+- Español (canónico): https://lontraconsultores.com/
+- English: https://lontraconsultores.com/en/
+
+## Páginas principales (español)
+
+- [Inicio](https://lontraconsultores.com/): consultoría en investigación de operaciones e inteligencia artificial, posicionamiento general.
+- [Servicios](https://lontraconsultores.com/servicios.html): modelado matemático, simulación estocástica, optimización de procesos, machine learning, business intelligence.
+- [Soluciones por industria](https://lontraconsultores.com/soluciones.html): minería, retail, logística, manufactura, operaciones portuarias.
+- [Sobre Lontra](https://lontraconsultores.com/sobre-nosotros.html): metodología, equipo y fundador.
+- [Contacto](https://lontraconsultores.com/contacto.html): formulario y datos de contacto.
+
+## Main pages (English)
+
+- [Home](https://lontraconsultores.com/en/)
+- [Services](https://lontraconsultores.com/en/services.html)
+- [Solutions by industry](https://lontraconsultores.com/en/solutions.html)
+- [About Lontra](https://lontraconsultores.com/en/about.html)
+- [Contact](https://lontraconsultores.com/en/contact.html)
+
+## Contact
+
+- Email: contacto@lontraconsultores.com (español) / contact@lontraconsultores.com (English)
+- Location: Santiago, Región Metropolitana, Chile
