@@ -108,6 +108,14 @@
     },
     {
       "@type": "Question",
+      "name": "What are LLMs and when should you use them?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Large language models (LLMs) are AI models trained on huge amounts of text to understand and generate language. They're a branch of machine learning. A traditional predictive model is trained for a specific client task; LLMs come pre-trained with general knowledge of language and adapt to the business context through prompts or reference documents (RAG, retrieval-augmented generation). They work well when the problem involves unstructured text: classifying emails, summarizing long documents, extracting information from contracts, answering questions about internal manuals, drafting first versions. In those cases an LLM replaces hours of manual work with acceptable results in seconds. They don't work when the problem is numerical, structured, and has clean data. Forecasting demand, detecting fraud, optimizing inventory, or adjusting prices are better handled by classic predictive models or by operations research. Using an LLM for those cases is usually more expensive, slower, less accurate, and harder to audit."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What is stochastic simulation?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -521,6 +529,18 @@
         <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>Machine learning learns patterns from historical data and answers what will happen: expected demand next quarter, the probability of equipment failure, a customer's risk. Optimization finds the best decision given an objective and constraints, and answers what to do: how many trucks to operate, what inventory to send to each distribution center, which order to accept.</p>
           <p class="mt-4">In real operations they work together. A typical pipeline: ML forecasts demand per location over the next 14 days, and optimization uses that forecast to allocate inventory across centers and plan shipments. On its own, ML leaves the decision to a human who has to interpret the forecast; optimization without ML needs someone to estimate demand by hand.</p>
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>What are LLMs and when should you use them?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
+          <p>Large language models (LLMs) are AI models trained on huge amounts of text to understand and generate language. They're a branch of machine learning. A traditional predictive model is trained for a specific client task; LLMs come pre-trained with general knowledge of language and adapt to the business context through prompts or reference documents (RAG, retrieval-augmented generation).</p>
+          <p class="mt-4">They work well when the problem involves unstructured text: classifying emails, summarizing long documents, extracting information from contracts, answering questions about internal manuals, drafting first versions. In those cases an LLM replaces hours of manual work with acceptable results in seconds.</p>
+          <p class="mt-4">They don't work when the problem is numerical, structured, and has clean data. Forecasting demand, detecting fraud, optimizing inventory, or adjusting prices are better handled by classic predictive models or by operations research. Using an LLM for those cases is usually more expensive, slower, less accurate, and harder to audit.</p>
         </div>
       </details>
 

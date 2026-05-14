@@ -108,6 +108,14 @@
     },
     {
       "@type": "Question",
+      "name": "¿Qué son los LLMs y cuándo conviene usarlos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los large language models (LLMs) son modelos de IA entrenados con grandes cantidades de texto para entender y generar lenguaje. Son una rama del machine learning. Un modelo predictivo tradicional se entrena para una tarea específica del cliente; los LLMs vienen pre-entrenados con conocimiento general del idioma y se adaptan al contexto del negocio mediante prompts o documentos de referencia (RAG, retrieval-augmented generation). Sirven bien cuando el problema involucra texto no estructurado: clasificar correos, resumir documentos largos, extraer información de contratos, responder preguntas sobre manuales internos, redactar borradores. En esos casos un LLM reemplaza horas de trabajo manual con resultados aceptables en segundos. No sirven cuando el problema es numérico, estructurado y con datos limpios. Pronosticar demanda, detectar fraude, optimizar inventario o ajustar precios se resuelven mejor con modelos predictivos clásicos o con investigación de operaciones. Usar un LLM para esos casos suele ser más caro, más lento, menos preciso y más difícil de auditar."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "¿Qué es la simulación estocástica?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -492,6 +500,18 @@
         <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
           <p>Machine learning aprende patrones de datos hist&oacute;ricos y responde qu&eacute; va a pasar: la demanda esperada el pr&oacute;ximo trimestre, la probabilidad de falla de un equipo, el riesgo de un cliente. Optimizaci&oacute;n busca la mejor decisi&oacute;n dados un objetivo y restricciones, y responde qu&eacute; hacer: cu&aacute;ntos camiones operar, qu&eacute; inventario asignar a cada centro de distribuci&oacute;n, qu&eacute; pedido aceptar.</p>
           <p class="mt-4">En operaciones reales se combinan. Un caso t&iacute;pico: ML predice la demanda por sucursal para los pr&oacute;ximos 14 d&iacute;as y optimizaci&oacute;n usa esa predicci&oacute;n para asignar inventario entre centros y planificar despachos. Por separado, ML deja la decisi&oacute;n a una persona que tiene que interpretar el pron&oacute;stico; optimizaci&oacute;n sin ML necesita que alguien estime la demanda.</p>
+        </div>
+      </details>
+
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>&iquest;Qu&eacute; son los LLMs y cu&aacute;ndo conviene usarlos?</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
+          <p>Los large language models (LLMs) son modelos de IA entrenados con grandes cantidades de texto para entender y generar lenguaje. Son una rama del machine learning. Un modelo predictivo tradicional se entrena para una tarea espec&iacute;fica del cliente; los LLMs vienen pre-entrenados con conocimiento general del idioma y se adaptan al contexto del negocio mediante prompts o documentos de referencia (RAG, retrieval-augmented generation).</p>
+          <p class="mt-4">Sirven bien cuando el problema involucra texto no estructurado: clasificar correos, resumir documentos largos, extraer informaci&oacute;n de contratos, responder preguntas sobre manuales internos, redactar borradores. En esos casos un LLM reemplaza horas de trabajo manual con resultados aceptables en segundos.</p>
+          <p class="mt-4">No sirven cuando el problema es num&eacute;rico, estructurado y con datos limpios. Pronosticar demanda, detectar fraude, optimizar inventario o ajustar precios se resuelven mejor con modelos predictivos cl&aacute;sicos o con investigaci&oacute;n de operaciones. Usar un LLM para esos casos suele ser m&aacute;s caro, m&aacute;s lento, menos preciso y m&aacute;s dif&iacute;cil de auditar.</p>
         </div>
       </details>
 
