@@ -27,5 +27,5 @@ Lontra Consultores aplica programación matemática, simulación estocástica, m
 
 ## Contact
 
-- Email: contacto@lontraconsultores.com (español) / contact@lontraconsultores.com (English)
+- Email: contacto@lontraconsultores.com
 - Location: Santiago, Región Metropolitana, Chile
