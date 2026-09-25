@@ -123,53 +123,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../assets/css/tokens.css"/>
-<!-- Tailwind config moved to tailwind.config.js; styles compiled to assets/css/built.css -->
-<style>
-  .grid-bg {
-    --grid-size: 60px;
-    background-image:
-      linear-gradient(to right,  rgba(17,50,184,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(17,50,184,0.04) 1px, transparent 1px);
-    background-size: var(--grid-size) var(--grid-size);
-  }
-  .grid-cells {
-    position: absolute; inset: 0;
-    display: grid;
-    grid-template-columns: repeat(var(--cols, 20), 1fr);
-    grid-template-rows: repeat(var(--rows, 14), 1fr);
-    pointer-events: none; z-index: 0;
-  }
-  .grid-cell {
-    border: 1px solid transparent;
-    transition: background 1.2s ease, box-shadow 1.2s ease;
-    border-radius: 2px;
-  }
-  .grid-cell.lit {
-    background: rgba(17,50,212,0.08);
-    box-shadow: inset 0 0 12px rgba(26,63,184,0.08), 0 0 8px rgba(26,63,184,0.04);
-  }
-  .slide-left { opacity: 0; transform: translateX(-120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-  .slide-right { opacity: 0; transform: translateX(120px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-  .slide-up { opacity: 0; transform: translateY(100px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-  .slide-left.in-view, .slide-right.in-view, .slide-up.in-view { opacity: 1; transform: translate(0); }
-  .clip-reveal { clip-path: circle(0% at 50% 50%); transition: clip-path 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-  .clip-reveal.revealed { clip-path: circle(150% at 50% 50%); }
-  .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-up.in-view { opacity: 1; transform: translateY(0); }
-  .industry-card { transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
-  .industry-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 20px 60px rgba(17,50,212,0.15); border-color: rgba(59,130,246,0.3); }
-  @keyframes ctaGlow { 0%, 100% { box-shadow: 0 0 60px rgba(26,63,184,0.15), 0 0 120px rgba(13,148,136,0.08); } 50% { box-shadow: 0 0 80px rgba(26,63,184,0.25), 0 0 160px rgba(13,148,136,0.12); } }
-  .cta-shimmer { background: linear-gradient(135deg, #1a3fb8 0%, #1e4fc9 40%, #0d7a73 100%); animation: ctaGlow 6s ease-in-out infinite; }
-  input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px rgba(17, 50, 212, 0.15); }
-  .trail-dot {
-    position: fixed; width: 3px; height: 3px; border-radius: 50%;
-    background: rgba(26, 63, 184, 0.25); pointer-events: none; z-index: 9999;
-    animation: trailFade 0.8s ease-out forwards;
-  }
-  @keyframes trailFade { 0% { opacity: 0.9; transform: scale(1); } 100% { opacity: 0; transform: scale(0.15); } }
-  html { scroll-behavior: smooth; overflow-x: hidden; }
-  @media (max-width: 768px) { .grid-cells { opacity: 0.5; } }
-</style>
 </head>
 <body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
 
