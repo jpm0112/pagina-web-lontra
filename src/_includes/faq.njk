@@ -1,0 +1,14 @@
+{#- Visible FAQ from the page's `faq` front matter. The FAQPage JSON-LD is built from the same data (_data/eleventyComputed.js). -#}
+{%- for item in faq %}
+      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
+        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
+          <span>{{ item.q }}</span>
+          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
+        </summary>
+        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
+          {%- for paragraph in item.a %}
+          <p{{ ' class="mt-4"' | safe if not loop.first }}>{{ paragraph }}</p>
+          {%- endfor %}
+        </div>
+      </details>
+{%- endfor %}

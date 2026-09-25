@@ -2,6 +2,7 @@
 const { execSync } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const { readFileSync } = require('node:fs');
+const { checkSiblings } = require('./lib/sibling-structure');
 
 const INPUT = 'src';
 const CSS_IN = `${INPUT}/assets/css/input.css`;
@@ -21,6 +22,10 @@ module.exports = function (eleventyConfig) {
   // Compile Tailwind first, so templates hash the fresh CSS.
   eleventyConfig.on('eleventy.before', () => {
     execSync(`npx tailwindcss -i ${CSS_IN} -o ${CSS_OUT} --minify`, { stdio: 'inherit' });
+  });
+  // Fail the build (and so the deploy) if a Spanish/English page pair drifts apart.
+  eleventyConfig.on('eleventy.after', ({ dir }) => {
+    checkSiblings(dir.output, JSON.parse(readFileSync(`${INPUT}/_data/routes.json`, 'utf8')));
   });
   eleventyConfig.watchIgnores.add(CSS_OUT);
   eleventyConfig.addWatchTarget(CSS_IN);

@@ -3,75 +3,62 @@
   "key": "solutions",
   "title": "Soluciones de Investigación de Operaciones para Minería, Retail y Logística | Lontra",
   "description": "Soluciones de investigación de operaciones e IA para logística, manufactura, retail, minería y más. Resultados medibles para tu negocio.",
-  "schema": [
+  "faq": [
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Qué es la investigación de operaciones?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Es la disciplina que usa modelos matemáticos para decidir cómo asignar recursos limitados: qué rutas tomar, qué inventario mantener, qué turnos asignar, qué productos producir y en qué cantidad. Lo que la distingue de un análisis descriptivo es que entrega una decisión concreta. Algunos problemas se resuelven a la mejor respuesta posible en segundos, cuando las reglas son estables. Otros son tan grandes que no se pueden resolver de forma exacta y necesitan métodos que entregan buenas soluciones rápido, aunque sin garantía de óptimo. Cuando hay incertidumbre real (demanda variable, fallas de equipos, tiempos de entrega irregulares), no se busca un óptimo: se propone una política y se mide cómo se comporta antes de aplicarla."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuál es la diferencia entre optimización y machine learning?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Machine learning aprende patrones de datos históricos y responde qué va a pasar: la demanda esperada el próximo trimestre, la probabilidad de falla de un equipo, el riesgo de un cliente. Optimización busca la mejor decisión dados un objetivo y restricciones, y responde qué hacer: cuántos camiones operar, qué inventario asignar a cada centro de distribución, qué pedido aceptar. En operaciones reales se combinan. Un caso típico: ML predice la demanda por sucursal para los próximos 14 días y optimización usa esa predicción para asignar inventario entre centros y planificar despachos. Por separado, ML deja la decisión a una persona que tiene que interpretar el pronóstico; optimización sin ML necesita que alguien estime la demanda."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Machine learning, inteligencia artificial y LLMs: ¿cuándo conviene usar cada uno?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Los large language models (LLMs) son modelos de IA entrenados con grandes cantidades de texto para entender y generar lenguaje. Son una rama del machine learning. Un modelo predictivo tradicional se entrena para una tarea específica del cliente; los LLMs vienen pre-entrenados con conocimiento general del idioma y se adaptan al contexto del negocio mediante prompts o documentos de referencia (RAG, retrieval-augmented generation). Sirven bien cuando el problema involucra texto no estructurado: clasificar correos, resumir documentos largos, extraer información de contratos, responder preguntas sobre manuales internos, redactar borradores. En esos casos un LLM reemplaza horas de trabajo manual con resultados aceptables en segundos. No sirven cuando el problema es numérico, estructurado y con datos limpios. Pronosticar demanda, detectar fraude, optimizar inventario o ajustar precios se resuelven mejor con modelos predictivos clásicos o con investigación de operaciones. Usar un LLM para esos casos suele ser más caro, más lento, menos preciso y más difícil de auditar."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué es la simulación estocástica?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Simulación estocástica reproduce el comportamiento de un sistema operacional con miles de escenarios aleatorios para estimar cómo responde a distintas políticas. Sirve cuando la incertidumbre domina: tiempos de llegada variables, fallas impredecibles, demanda con estacionalidad y ruido. A diferencia de la optimización, simulación no entrega la mejor decisión. Entrega la distribución de resultados de la política que propones: cuánto cuesta operar con 5 camiones versus 6, cuántas horas de cola se generan si la frecuencia de llegada cambia, qué pasa si una máquina cae un día al mes. Funciona bien donde otros métodos fallan, pero requiere suficientes corridas para que los resultados sean estadísticamente confiables y depende mucho de qué tan bien se describan las distribuciones de entrada."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué es un modelo de optimización matemática?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un modelo de optimización describe una decisión en tres partes: qué se quiere conseguir (minimizar costos, maximizar utilidad, reducir tiempos), qué se elige (cantidades, asignaciones, rutas, horarios) y qué reglas se deben respetar (capacidad disponible, presupuestos, regulaciones, plazos contractuales). Resolverlo entrega la combinación de decisiones que respeta todas las reglas y logra mejor el objetivo. Un ejemplo: asignar 30 camiones a 200 entregas minimizando combustible, sujeto a que cada camión opere máximo 9 horas y cada cliente reciba dentro de su ventana horaria. Los trade-offs son prácticos. Algunos problemas se resuelven en segundos cuando las reglas son continuas y bien comportadas. Otros toman horas o días cuando hay decisiones del tipo sí/no (¿abrir esta bodega?, ¿asignar este conductor a esa ruta?), porque el espacio de combinaciones crece exponencialmente. Cuando el objetivo o las reglas involucran productos entre variables, garantizar la mejor solución es lo más caro."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué es business intelligence y en qué se diferencia del machine learning?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Business intelligence (BI) organiza datos históricos en reportes, dashboards y KPIs para que personas tomen mejores decisiones. Machine learning construye modelos predictivos a partir de esos mismos datos. BI responde qué pasó; ML responde qué va a pasar. En la práctica, BI es más barato de construir y más fácil de operar: SQL, modelos de datos y dashboards. ML tiene más alcance pero exige calidad de datos, monitoreo continuo y reentrenamiento. La mayoría de las operaciones reales usan ambos: BI para monitorear el día a día y entender qué está cambiando, ML para pronósticos, detección de anomalías y casos donde las reglas explícitas no alcanzan."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué datos necesita Lontra para empezar un proyecto?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Partimos con lo que el cliente tiene hoy. Cada proyecto tiene un alcance distinto, pero lo más útil al inicio suele ser el histórico operacional relevante (transacciones, órdenes, tiempos, ubicaciones, niveles de inventario), las reglas del negocio (capacidades, contratos, regulaciones, restricciones operativas) y el contexto del problema que se quiere resolver. Los formatos no son un problema: Excel, CSV, exportes de ERP, bases SQL, documentos PDF para reglas y manuales. Si los datos están desordenados o incompletos, la primera fase del proyecto incluye estructurarlos y validarlos junto al equipo interno; la falta de datos perfectos rara vez es lo que impide arrancar."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué entrega Lontra al cierre de un proyecto?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cada proyecto termina con un entregable funcionando: un modelo de optimización corriendo, un simulador, un sistema de soporte de decisiones o un conjunto de modelos predictivos integrados a los sistemas del cliente. La entrega incluye código documentado, validación con datos reales del cliente y una sesión de transferencia al equipo interno para que el cliente pueda operar y mantener la solución sin depender de Lontra."
-          }
-        }
+      "q": "¿Qué es la investigación de operaciones?",
+      "a": [
+        "Es la disciplina que usa modelos matemáticos para decidir cómo asignar recursos limitados: qué rutas tomar, qué inventario mantener, qué turnos asignar, qué productos producir y en qué cantidad.",
+        "Lo que la distingue de un análisis descriptivo es que entrega una decisión concreta. Algunos problemas se resuelven a la mejor respuesta posible en segundos, cuando las reglas son estables. Otros son tan grandes que no se pueden resolver de forma exacta y necesitan métodos que entregan buenas soluciones rápido, aunque sin garantía de óptimo. Cuando hay incertidumbre real (demanda variable, fallas de equipos, tiempos de entrega irregulares), no se busca un óptimo: se propone una política y se mide cómo se comporta antes de aplicarla."
+      ]
+    },
+    {
+      "q": "¿Cuál es la diferencia entre optimización y machine learning?",
+      "a": [
+        "Machine learning aprende patrones de datos históricos y responde qué va a pasar: la demanda esperada el próximo trimestre, la probabilidad de falla de un equipo, el riesgo de un cliente. Optimización busca la mejor decisión dados un objetivo y restricciones, y responde qué hacer: cuántos camiones operar, qué inventario asignar a cada centro de distribución, qué pedido aceptar.",
+        "En operaciones reales se combinan. Un caso típico: ML predice la demanda por sucursal para los próximos 14 días y optimización usa esa predicción para asignar inventario entre centros y planificar despachos. Por separado, ML deja la decisión a una persona que tiene que interpretar el pronóstico; optimización sin ML necesita que alguien estime la demanda."
+      ]
+    },
+    {
+      "q": "Machine learning, inteligencia artificial y LLMs: ¿cuándo conviene usar cada uno?",
+      "a": [
+        "Los large language models (LLMs) son modelos de IA entrenados con grandes cantidades de texto para entender y generar lenguaje. Son una rama del machine learning. Un modelo predictivo tradicional se entrena para una tarea específica del cliente; los LLMs vienen pre-entrenados con conocimiento general del idioma y se adaptan al contexto del negocio mediante prompts o documentos de referencia (RAG, retrieval-augmented generation).",
+        "Sirven bien cuando el problema involucra texto no estructurado: clasificar correos, resumir documentos largos, extraer información de contratos, responder preguntas sobre manuales internos, redactar borradores. En esos casos un LLM reemplaza horas de trabajo manual con resultados aceptables en segundos.",
+        "No sirven cuando el problema es numérico, estructurado y con datos limpios. Pronosticar demanda, detectar fraude, optimizar inventario o ajustar precios se resuelven mejor con modelos predictivos clásicos o con investigación de operaciones. Usar un LLM para esos casos suele ser más caro, más lento, menos preciso y más difícil de auditar."
+      ]
+    },
+    {
+      "q": "¿Qué es la simulación estocástica?",
+      "a": [
+        "Simulación estocástica reproduce el comportamiento de un sistema operacional con miles de escenarios aleatorios para estimar cómo responde a distintas políticas. Sirve cuando la incertidumbre domina: tiempos de llegada variables, fallas impredecibles, demanda con estacionalidad y ruido.",
+        "A diferencia de la optimización, simulación no entrega la mejor decisión. Entrega la distribución de resultados de la política que propones: cuánto cuesta operar con 5 camiones versus 6, cuántas horas de cola se generan si la frecuencia de llegada cambia, qué pasa si una máquina cae un día al mes. Funciona bien donde otros métodos fallan, pero requiere suficientes corridas para que los resultados sean estadísticamente confiables y depende mucho de qué tan bien se describan las distribuciones de entrada."
+      ]
+    },
+    {
+      "q": "¿Qué es un modelo de optimización matemática?",
+      "a": [
+        "Un modelo de optimización describe una decisión en tres partes: qué se quiere conseguir (minimizar costos, maximizar utilidad, reducir tiempos), qué se elige (cantidades, asignaciones, rutas, horarios) y qué reglas se deben respetar (capacidad disponible, presupuestos, regulaciones, plazos contractuales). Resolverlo entrega la combinación de decisiones que respeta todas las reglas y logra mejor el objetivo.",
+        "Un ejemplo: asignar 30 camiones a 200 entregas minimizando combustible, sujeto a que cada camión opere máximo 9 horas y cada cliente reciba dentro de su ventana horaria.",
+        "Los trade-offs son prácticos. Algunos problemas se resuelven en segundos cuando las reglas son continuas y bien comportadas. Otros toman horas o días cuando hay decisiones del tipo sí/no (¿abrir esta bodega?, ¿asignar este conductor a esa ruta?), porque el espacio de combinaciones crece exponencialmente. Cuando el objetivo o las reglas involucran productos entre variables, garantizar la mejor solución es lo más caro."
+      ]
+    },
+    {
+      "q": "¿Qué es business intelligence y en qué se diferencia del machine learning?",
+      "a": [
+        "Business intelligence (BI) organiza datos históricos en reportes, dashboards y KPIs para que personas tomen mejores decisiones. Machine learning construye modelos predictivos a partir de esos mismos datos. BI responde qué pasó; ML responde qué va a pasar.",
+        "En la práctica, BI es más barato de construir y más fácil de operar: SQL, modelos de datos y dashboards. ML tiene más alcance pero exige calidad de datos, monitoreo continuo y reentrenamiento. La mayoría de las operaciones reales usan ambos: BI para monitorear el día a día y entender qué está cambiando, ML para pronósticos, detección de anomalías y casos donde las reglas explícitas no alcanzan."
+      ]
+    },
+    {
+      "q": "¿Qué datos necesita Lontra para empezar un proyecto?",
+      "a": [
+        "Partimos con lo que el cliente tiene hoy. Cada proyecto tiene un alcance distinto, pero lo más útil al inicio suele ser el histórico operacional relevante (transacciones, órdenes, tiempos, ubicaciones, niveles de inventario), las reglas del negocio (capacidades, contratos, regulaciones, restricciones operativas) y el contexto del problema que se quiere resolver.",
+        "Los formatos no son un problema: Excel, CSV, exportes de ERP, bases SQL, documentos PDF para reglas y manuales. Si los datos están desordenados o incompletos, la primera fase del proyecto incluye estructurarlos y validarlos junto al equipo interno; la falta de datos perfectos rara vez es lo que impide arrancar."
+      ]
+    },
+    {
+      "q": "¿Qué entrega Lontra al cierre de un proyecto?",
+      "a": [
+        "Cada proyecto termina con un entregable funcionando: un modelo de optimización corriendo, un simulador, un sistema de soporte de decisiones o un conjunto de modelos predictivos integrados a los sistemas del cliente. La entrega incluye código documentado, validación con datos reales del cliente y una sesión de transferencia al equipo interno para que el cliente pueda operar y mantener la solución sin depender de Lontra."
       ]
     }
   ]
@@ -292,94 +279,7 @@
     </div>
 
     <div class="space-y-3 fade-up">
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Qu&eacute; es la investigaci&oacute;n de operaciones?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Es la disciplina que usa modelos matem&aacute;ticos para decidir c&oacute;mo asignar recursos limitados: qu&eacute; rutas tomar, qu&eacute; inventario mantener, qu&eacute; turnos asignar, qu&eacute; productos producir y en qu&eacute; cantidad.</p>
-          <p class="mt-4">Lo que la distingue de un an&aacute;lisis descriptivo es que entrega una decisi&oacute;n concreta. Algunos problemas se resuelven a la mejor respuesta posible en segundos, cuando las reglas son estables. Otros son tan grandes que no se pueden resolver de forma exacta y necesitan m&eacute;todos que entregan buenas soluciones r&aacute;pido, aunque sin garant&iacute;a de &oacute;ptimo. Cuando hay incertidumbre real (demanda variable, fallas de equipos, tiempos de entrega irregulares), no se busca un &oacute;ptimo: se propone una pol&iacute;tica y se mide c&oacute;mo se comporta antes de aplicarla.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Cu&aacute;l es la diferencia entre optimizaci&oacute;n y machine learning?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Machine learning aprende patrones de datos hist&oacute;ricos y responde qu&eacute; va a pasar: la demanda esperada el pr&oacute;ximo trimestre, la probabilidad de falla de un equipo, el riesgo de un cliente. Optimizaci&oacute;n busca la mejor decisi&oacute;n dados un objetivo y restricciones, y responde qu&eacute; hacer: cu&aacute;ntos camiones operar, qu&eacute; inventario asignar a cada centro de distribuci&oacute;n, qu&eacute; pedido aceptar.</p>
-          <p class="mt-4">En operaciones reales se combinan. Un caso t&iacute;pico: ML predice la demanda por sucursal para los pr&oacute;ximos 14 d&iacute;as y optimizaci&oacute;n usa esa predicci&oacute;n para asignar inventario entre centros y planificar despachos. Por separado, ML deja la decisi&oacute;n a una persona que tiene que interpretar el pron&oacute;stico; optimizaci&oacute;n sin ML necesita que alguien estime la demanda.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>Machine learning, inteligencia artificial y LLMs: &iquest;cu&aacute;ndo conviene usar cada uno?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Los large language models (LLMs) son modelos de IA entrenados con grandes cantidades de texto para entender y generar lenguaje. Son una rama del machine learning. Un modelo predictivo tradicional se entrena para una tarea espec&iacute;fica del cliente; los LLMs vienen pre-entrenados con conocimiento general del idioma y se adaptan al contexto del negocio mediante prompts o documentos de referencia (RAG, retrieval-augmented generation).</p>
-          <p class="mt-4">Sirven bien cuando el problema involucra texto no estructurado: clasificar correos, resumir documentos largos, extraer informaci&oacute;n de contratos, responder preguntas sobre manuales internos, redactar borradores. En esos casos un LLM reemplaza horas de trabajo manual con resultados aceptables en segundos.</p>
-          <p class="mt-4">No sirven cuando el problema es num&eacute;rico, estructurado y con datos limpios. Pronosticar demanda, detectar fraude, optimizar inventario o ajustar precios se resuelven mejor con modelos predictivos cl&aacute;sicos o con investigaci&oacute;n de operaciones. Usar un LLM para esos casos suele ser m&aacute;s caro, m&aacute;s lento, menos preciso y m&aacute;s dif&iacute;cil de auditar.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Qu&eacute; es la simulaci&oacute;n estoc&aacute;stica?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Simulaci&oacute;n estoc&aacute;stica reproduce el comportamiento de un sistema operacional con miles de escenarios aleatorios para estimar c&oacute;mo responde a distintas pol&iacute;ticas. Sirve cuando la incertidumbre domina: tiempos de llegada variables, fallas impredecibles, demanda con estacionalidad y ruido.</p>
-          <p class="mt-4">A diferencia de la optimizaci&oacute;n, simulaci&oacute;n no entrega la mejor decisi&oacute;n. Entrega la distribuci&oacute;n de resultados de la pol&iacute;tica que propones: cu&aacute;nto cuesta operar con 5 camiones versus 6, cu&aacute;ntas horas de cola se generan si la frecuencia de llegada cambia, qu&eacute; pasa si una m&aacute;quina cae un d&iacute;a al mes. Funciona bien donde otros m&eacute;todos fallan, pero requiere suficientes corridas para que los resultados sean estad&iacute;sticamente confiables y depende mucho de qu&eacute; tan bien se describan las distribuciones de entrada.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Qu&eacute; es un modelo de optimizaci&oacute;n matem&aacute;tica?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Un modelo de optimizaci&oacute;n describe una decisi&oacute;n en tres partes: qu&eacute; se quiere conseguir (minimizar costos, maximizar utilidad, reducir tiempos), qu&eacute; se elige (cantidades, asignaciones, rutas, horarios) y qu&eacute; reglas se deben respetar (capacidad disponible, presupuestos, regulaciones, plazos contractuales). Resolverlo entrega la combinaci&oacute;n de decisiones que respeta todas las reglas y logra mejor el objetivo.</p>
-          <p class="mt-4">Un ejemplo: asignar 30 camiones a 200 entregas minimizando combustible, sujeto a que cada cami&oacute;n opere m&aacute;ximo 9 horas y cada cliente reciba dentro de su ventana horaria.</p>
-          <p class="mt-4">Los trade-offs son pr&aacute;cticos. Algunos problemas se resuelven en segundos cuando las reglas son continuas y bien comportadas. Otros toman horas o d&iacute;as cuando hay decisiones del tipo s&iacute;/no (&iquest;abrir esta bodega?, &iquest;asignar este conductor a esa ruta?), porque el espacio de combinaciones crece exponencialmente. Cuando el objetivo o las reglas involucran productos entre variables, garantizar la mejor soluci&oacute;n es lo m&aacute;s caro.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Qu&eacute; es business intelligence y en qu&eacute; se diferencia del machine learning?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Business intelligence (BI) organiza datos hist&oacute;ricos en reportes, dashboards y KPIs para que personas tomen mejores decisiones. Machine learning construye modelos predictivos a partir de esos mismos datos. BI responde qu&eacute; pas&oacute;; ML responde qu&eacute; va a pasar.</p>
-          <p class="mt-4">En la pr&aacute;ctica, BI es m&aacute;s barato de construir y m&aacute;s f&aacute;cil de operar: SQL, modelos de datos y dashboards. ML tiene m&aacute;s alcance pero exige calidad de datos, monitoreo continuo y reentrenamiento. La mayor&iacute;a de las operaciones reales usan ambos: BI para monitorear el d&iacute;a a d&iacute;a y entender qu&eacute; est&aacute; cambiando, ML para pron&oacute;sticos, detecci&oacute;n de anomal&iacute;as y casos donde las reglas expl&iacute;citas no alcanzan.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Qu&eacute; datos necesita Lontra para empezar un proyecto?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Partimos con lo que el cliente tiene hoy. Cada proyecto tiene un alcance distinto, pero lo m&aacute;s &uacute;til al inicio suele ser el hist&oacute;rico operacional relevante (transacciones, &oacute;rdenes, tiempos, ubicaciones, niveles de inventario), las reglas del negocio (capacidades, contratos, regulaciones, restricciones operativas) y el contexto del problema que se quiere resolver.</p>
-          <p class="mt-4">Los formatos no son un problema: Excel, CSV, exportes de ERP, bases SQL, documentos PDF para reglas y manuales. Si los datos est&aacute;n desordenados o incompletos, la primera fase del proyecto incluye estructurarlos y validarlos junto al equipo interno; la falta de datos perfectos rara vez es lo que impide arrancar.</p>
-        </div>
-      </details>
-
-      <details class="faq-item bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden transition-all">
-        <summary class="cursor-pointer flex items-center justify-between gap-4 p-6 font-bold text-slate-900">
-          <span>&iquest;Qu&eacute; entrega Lontra al cierre de un proyecto?</span>
-          <span class="material-symbols-outlined text-primary faq-chevron flex-shrink-0">expand_more</span>
-        </summary>
-        <div class="faq-answer px-6 pb-10 text-slate-500 leading-relaxed border-t border-slate-100 pt-6">
-          <p>Cada proyecto termina con un entregable funcionando: un modelo de optimizaci&oacute;n corriendo, un simulador, un sistema de soporte de decisiones o un conjunto de modelos predictivos integrados a los sistemas del cliente. La entrega incluye c&oacute;digo documentado, validaci&oacute;n con datos reales del cliente y una sesi&oacute;n de transferencia al equipo interno para que el cliente pueda operar y mantener la soluci&oacute;n sin depender de Lontra.</p>
-        </div>
-      </details>
+{% include "faq.njk" %}
     </div>
   </div>
 </section>

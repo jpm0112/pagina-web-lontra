@@ -43,103 +43,142 @@
   ]
 }
 ---
-<!-- ====== HERO ====== -->
+<!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
 <section class="relative min-h-[480px] flex items-center justify-center overflow-hidden pt-20 grid-bg">
-<div class="grid-cells" id="gridCells"></div>
-<div class="relative z-10 max-w-7xl mx-auto px-8 text-center py-24">
-<div class="flex flex-col items-center gap-8">
-<div class="flex flex-col gap-6 max-w-4xl mx-auto">
-<span class="text-accent-cyan font-bold tracking-[0.3em] text-xs uppercase inline-block mb-2 fade-up">Est. 2014</span>
-<h1 class="text-4xl md:text-8xl font-bold leading-tight tracking-tighter text-slate-900 fade-up" style="transition-delay:0.1s">
-Where Mathematics <br/>
-<span class="relative">
-Meets <span class="text-primary">Momentum.</span>
-</span>
-</h1>
-<p class="text-xl md:text-2xl text-slate-500 leading-relaxed max-w-2xl mx-auto mt-4 fade-up" style="transition-delay:0.2s">
-Academic-grade methods, applied to real operations in mining, retail, logistics, and manufacturing.
-</p>
-</div>
-<div class="flex flex-col sm:flex-row gap-4 mt-4 fade-up" style="transition-delay:0.3s">
-<a href="/en/solutions" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
-Explore Our Work
-<span class="material-symbols-outlined text-base">arrow_forward</span>
-</a>
-<a href="#mission" class="w-full sm:w-auto text-center justify-center border border-slate-300 hover:border-slate-400 text-slate-700 px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
-Learn More
-</a>
-</div>
-</div>
-</div>
-<!-- Gradient fade at bottom -->
-<div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f8f9fc] to-transparent z-10 pointer-events-none"></div>
+  <div class="grid-cells" id="gridCells"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-[#f8f9fc] to-[#f8f9fc]"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 py-24 w-full text-center">
+    <h1 class="text-4xl md:text-7xl font-bold mb-6 fade-up" style="transition-delay:0.2s">
+      About <span class="text-primary">Lontra</span>
+    </h1>
+    <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 fade-up" style="transition-delay:0.4s">
+      Tell us your problem. We will find the math.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up" style="transition-delay:0.6s">
+      <a href="#team" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+        Meet the Team
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+      <a href="#methodology" class="w-full sm:w-auto text-center justify-center border border-slate-300 hover:border-slate-400 text-slate-700 px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+        Methodology
+      </a>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f8f9fc] to-transparent z-10 pointer-events-none"></div>
 </section>
 
-<!-- ====== MISSION ====== -->
-<section id="mission" class="bg-surface-alt py-16 md:py-24 border-y border-slate-200 relative z-10 scroll-mt-20">
-<div class="max-w-7xl mx-auto px-8">
-<div class="grid md:grid-cols-3 gap-12 items-start slide-up">
-<div class="md:col-span-1">
-<h2 class="text-3xl font-bold text-slate-900 mb-6">Our Mission</h2>
-<div class="h-1.5 w-12 bg-primary rounded-full"></div>
-</div>
-<div class="md:col-span-2">
-<p class="text-2xl leading-relaxed text-slate-700 italic mb-8 font-light">
-"To make rigorous mathematical methods usable for operations teams. Solid models, validated on real data, replacing guesswork in day-to-day decisions."
-</p>
-<p class="text-lg leading-relaxed text-slate-500">
-Lontra was founded by Juan Pablo Morandé, who saw that real operational problems &mdash; from berth allocation to freight pricing &mdash; outpace what off-the-shelf software can model. We build optimization and simulation systems tailored to each client's actual constraints.
-</p>
-</div>
-</div>
-</div>
+<!-- ══════════════════════════════════════════════════ MISSION ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24" id="mission">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px] bg-accent-cyan"></span>
+        <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">Our Approach</span>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-6 max-w-[720px]">We solve concrete problems with real mathematics.</h2>
+      <p class="text-slate-500 text-lg max-w-[800px] leading-relaxed">
+        We don't sell decorative dashboards or generic reports. We analyze your operation, build mathematical models tailored to it, and give you decisions you can put into practice the next day.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 overflow-hidden">
+      <!-- Card 1 -->
+      <div class="slide-left bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-primary/40 transition-all duration-500 group">
+        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+          <span class="material-symbols-outlined text-primary text-3xl">target</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Straight to the Problem</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">You don't need to understand the theory. You tell us what hurts, and we translate it into a model that solves it.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="slide-up bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500 group" style="transition-delay:0.15s">
+        <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-colors">
+          <span class="material-symbols-outlined text-accent-cyan text-3xl">science</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Backed by Science</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Every solution builds on methods published in leading scientific journals. We model instead of guessing.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="slide-right bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-teal/40 transition-all duration-500 group" style="transition-delay:0.3s">
+        <div class="w-14 h-14 rounded-xl bg-accent-teal/10 flex items-center justify-center mb-6 group-hover:bg-accent-teal/20 transition-colors">
+          <span class="material-symbols-outlined text-accent-teal text-3xl">speed</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Results You Can Implement</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">You get tools, code, and recommendations your team can use from the day after the project closes.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ====== METHODOLOGY ====== -->
-<section class="py-16 md:py-24 max-w-7xl mx-auto px-8">
-<div class="text-center mb-16 fade-up">
-<span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">The Lontra Method</span>
-<h2 class="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">Our Methodology</h2>
-<p class="font-serif italic text-lg text-slate-500 mt-4 max-w-2xl mx-auto">Data-driven decisions, validated in real operations.</p>
-</div>
-<div class="relative">
-<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-slate-200 -translate-y-1/2"></div>
-<div class="grid md:grid-cols-3 gap-8 relative z-10 overflow-hidden">
-<div class="slide-left bg-white border border-slate-200 shadow-sm rounded-2xl p-10 flex flex-col items-center text-center group hover:border-accent-cyan/40 transition-all duration-500">
-<div class="size-20 rounded-2xl bg-accent-cyan/10 text-accent-cyan flex items-center justify-center mb-8 group-hover:bg-accent-cyan group-hover:text-white transition-all duration-500">
-<span class="material-symbols-outlined text-4xl">database</span>
-</div>
-<h3 class="text-2xl font-bold mb-4 text-slate-900">1. Data Synthesis</h3>
-<p class="text-base text-slate-500 leading-relaxed">
-Aggregating and cleaning the client's operational data into a working model of how the system actually behaves.
-</p>
-</div>
-<div class="slide-up bg-white border border-slate-200 shadow-sm rounded-2xl p-10 flex flex-col items-center text-center group hover:border-primary/40 transition-all duration-500" style="transition-delay:0.15s">
-<div class="size-20 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-<span class="material-symbols-outlined text-4xl">functions</span>
-</div>
-<h3 class="text-2xl font-bold mb-4 text-slate-900">2. Algorithmic Rigor</h3>
-<p class="text-base text-slate-500 leading-relaxed">
-Developing custom heuristics and mixed-integer programming models designed specifically for your unique constraints.
-</p>
-</div>
-<div class="slide-right bg-white border border-slate-200 shadow-sm rounded-2xl p-10 flex flex-col items-center text-center group hover:border-accent-teal/40 transition-all duration-500" style="transition-delay:0.3s">
-<div class="size-20 rounded-2xl bg-accent-teal/10 text-accent-teal flex items-center justify-center mb-8 group-hover:bg-accent-teal group-hover:text-white transition-all duration-500">
-<span class="material-symbols-outlined text-4xl">insights</span>
-</div>
-<h3 class="text-2xl font-bold mb-4 text-slate-900">3. Decision Impact</h3>
-<p class="text-base text-slate-500 leading-relaxed">
-Translating model outputs into operational decisions your team can act on, with explicit metrics for what improves and by how much.
-</p>
-</div>
-</div>
-<p class="text-xs text-slate-400 mt-12 pt-6 border-t border-slate-100 max-w-3xl mx-auto text-center">
+<!-- ══════════════════════════════════════════════════ METHODOLOGY ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24" id="methodology">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px] bg-accent-cyan"></span>
+        <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">The Lontra Method</span>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold">How We Work: <span class="text-primary">From problem to solution</span></h2>
+      <p class="font-serif italic text-lg text-slate-500 mt-4 max-w-2xl">Data-driven decisions, validated in real operations.</p>
+    </div>
+
+    <div class="clip-reveal bg-white border border-slate-200 shadow-sm rounded-2xl p-4 md:p-8 lg:p-10" id="methodologyInner">
+      <div class="grid grid-cols-[40px_1fr] md:grid-cols-[60px_1fr] gap-x-4">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center gap-1 pt-3">
+          <div class="bg-primary/10 p-2 rounded-full border border-primary/30">
+            <span class="material-symbols-outlined text-primary !text-2xl">hearing</span>
+          </div>
+          <div class="w-[2px] bg-gradient-to-b from-primary/30 to-primary/10 h-16 grow my-2"></div>
+        </div>
+        <div class="flex flex-1 flex-col py-3">
+          <p class="text-slate-900 text-xl font-bold leading-tight">01. We Listen to Your Problem</p>
+          <p class="text-slate-500 text-base leading-relaxed mt-1">A direct conversation to understand what is failing, what you want to improve, and what data you have. No unnecessary jargon.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center gap-1">
+          <div class="bg-primary/10 p-2 rounded-full border border-primary/30">
+            <span class="material-symbols-outlined text-primary !text-2xl">function</span>
+          </div>
+          <div class="w-[2px] bg-gradient-to-b from-primary/10 to-primary/30 h-16 grow my-2"></div>
+        </div>
+        <div class="flex flex-1 flex-col py-3">
+          <p class="text-slate-900 text-xl font-bold leading-tight">02. We Build the Model</p>
+          <p class="text-slate-500 text-base leading-relaxed mt-1">We translate your operation into equations, simulations, or AI algorithms. The model adapts to your problem, rather than the other way around.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center gap-1">
+          <div class="bg-primary/10 p-2 rounded-full border border-primary/30">
+            <span class="material-symbols-outlined text-primary !text-2xl">psychology</span>
+          </div>
+          <div class="w-[2px] bg-gradient-to-b from-primary/30 to-primary/10 h-16 grow my-2"></div>
+        </div>
+        <div class="flex flex-1 flex-col py-3">
+          <p class="text-slate-900 text-xl font-bold leading-tight">03. We Solve and Validate</p>
+          <p class="text-slate-500 text-base leading-relaxed mt-1">We run the model, test multiple scenarios, and check that the results make sense in your real context.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center gap-1 pb-3">
+          <div class="bg-primary p-2 rounded-full shadow-[0_0_15px_rgba(17,50,212,0.5)]">
+            <span class="material-symbols-outlined text-white !text-2xl">rocket_launch</span>
+          </div>
+        </div>
+        <div class="flex flex-1 flex-col py-3">
+          <p class="text-slate-900 text-xl font-bold leading-tight">04. We Deliver the Solution</p>
+          <p class="text-slate-500 text-base leading-relaxed mt-1">Clear recommendations, working tools, and code you can use, instead of reports that end up in a drawer.</p>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400 mt-8 pt-6 border-t border-slate-100">
 Methodology validated in defense, port logistics, manufacturing, and supply chain projects.
 </p>
-</div>
+    </div>
+  </div>
 </section>
 
-<!-- ====== TEAM ====== -->
+<!-- ══════════════════════════════════════════════════ FOUNDER ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-16 md:py-24" id="team">
   <div class="max-w-7xl mx-auto px-8">
     <div class="text-center mb-16">
@@ -232,7 +271,7 @@ Methodology validated in defense, port logistics, manufacturing, and supply chai
         </div>
 
 
-        <!-- Collaborator Network -->
+        <!-- Red de Colaboradores -->
         <div class="fade-up bg-white border border-slate-200 shadow-sm rounded-2xl overflow-hidden" style="transition-delay:0.4s">
           <!-- Header -->
           <div class="bg-gradient-to-r from-primary/5 to-accent-teal/5 px-8 py-6 border-b border-slate-100">
@@ -283,22 +322,22 @@ Methodology validated in defense, port logistics, manufacturing, and supply chai
   </div>
 </section>
 
-<!-- ====== CTA ====== -->
+<!-- ══════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════ -->
 <section class="relative z-20 py-16 md:py-24" id="cta">
-<div class="max-w-5xl mx-auto px-8">
-<div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
-<!-- Dark overlay for readability -->
-<div class="absolute inset-0 bg-white/10 rounded-3xl"></div>
-<div class="relative z-10">
-<h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Have an operational<br/>challenge?</h2>
-<p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
+  <div class="max-w-5xl mx-auto px-8">
+    <div class="fade-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+      <!-- Dark overlay for readability -->
+      <div class="absolute inset-0 bg-white/10 rounded-3xl"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Have an operational<br/>challenge?</h2>
+        <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
 Tell us about your challenge. Initial consultation free.
 </p>
-<a href="/en/contact" class="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
+        <a href="/en/contact" class="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
 Request Free Consultation
 <span class="material-symbols-outlined text-base">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>

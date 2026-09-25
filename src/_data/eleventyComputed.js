@@ -22,6 +22,12 @@ module.exports = {
       itemListElement: ['home', ...site.nav].map((k, i) => (
         { '@type': 'SiteNavigationElement', position: i + 1, name: t.nav[k], url: abs(k) })),
     };
-    return [data.organization[lang], ...(data.schema || []), ...(key === 'home' ? [] : [breadcrumb]), navigation];
+    const faqPage = data.faq && {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: data.faq.map((item) => (
+        { '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a.join(' ') } })),
+    };
+    return [data.organization[lang], ...(data.schema || []), ...(faqPage ? [faqPage] : []), ...(key === 'home' ? [] : [breadcrumb]), navigation];
   },
 };
