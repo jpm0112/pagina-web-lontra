@@ -45,7 +45,7 @@ Every content change is bilingual: edit both siblings. Copy in both languages ha
 
 ## Headers and SEO files
 
-- `_headers` also sets HSTS and a CSP that allowlists exactly the external hosts in use: Google Fonts, `api.web3forms.com` (contact form), `google.com`/`maps.google.com` (map iframe). Any new external resource needs a CSP update or it will be blocked.
+- `_headers` also sets HSTS and a CSP that allowlists exactly the external hosts in use: Google Fonts, `api.web3forms.com` (contact form), `google.com`/`maps.google.com` (map iframe), `static.cloudflareinsights.com` + `cloudflareinsights.com` (Cloudflare Web Analytics beacon, injected on the custom domain only, not on workers.dev previews). Any new external resource needs a CSP update or it will be blocked.
 - `sitemap.xml` carries a hand-maintained `lastmod`; bump it when body copy or schema changes. `llms.txt` and `robots.txt` (explicit AI-crawler allows) are hand-maintained too.
 - `f004b54ba5db18d97e4500fc6ec3a278.txt` is the IndexNow key file. Keep it.
 
