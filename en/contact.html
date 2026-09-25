@@ -163,7 +163,7 @@ We solve operational problems with mathematical models and machine learning. Tel
 <!-- Form Container -->
 <div class="lg:col-span-7 bg-white border border-slate-200 shadow-sm rounded-2xl p-8 md:p-12 slide-left" style="transition-delay:0.1s">
 <h2 class="text-2xl font-bold mb-8">Send us a message</h2>
-<form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+<form id="contactForm" data-msg-sending="Sending..." data-msg-success="Thanks! We received your message. We will be in touch shortly." data-msg-error="We could not send your message. Please email us directly at contacto@lontraconsultores.com" data-msg-network="Connection error. Please email us directly at contacto@lontraconsultores.com" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
 <!-- Web3Forms config -->
 <input type="hidden" name="access_key" value="e2d7ca20-c930-4770-a53a-0290f4fe04c8">
 <input type="hidden" name="subject" value="New contact from lontraconsultores.com">
@@ -308,126 +308,7 @@ Send Request
 </footer>
 
 <!-- ══════════════════════════════════════════════════ JAVASCRIPT ══════════════════════════════════════════════════ -->
-<script>
-(function() {
-  'use strict';
-
-  // ── 0. MOBILE MENU TOGGLE ──
-  var menuToggle = document.getElementById('menuToggle');
-  var menuClose = document.getElementById('menuClose');
-  var mobileMenu = document.getElementById('mobileMenu');
-  menuToggle.addEventListener('click', function() {
-    mobileMenu.style.opacity = '1';
-    mobileMenu.style.pointerEvents = 'auto';
-  });
-  menuClose.addEventListener('click', function() {
-    mobileMenu.style.opacity = '0';
-    mobileMenu.style.pointerEvents = 'none';
-  });
-
-  var lastTrailTime = 0;
-  document.addEventListener('mousemove', function(e) {
-    var now = Date.now();
-    if (now - lastTrailTime < 60) return;
-    lastTrailTime = now;
-    var dot = document.createElement('div');
-    dot.className = 'trail-dot';
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-    document.body.appendChild(dot);
-    setTimeout(function() { dot.remove(); }, 1000);
-  });
-  var gridContainer = document.getElementById('gridCells');
-  if (gridContainer) {
-    var cols = 22, rows = 14;
-    gridContainer.style.setProperty('--cols', cols);
-    gridContainer.style.setProperty('--rows', rows);
-    var cells = [];
-    for (var i = 0; i < cols * rows; i++) {
-      var cell = document.createElement('div');
-      cell.className = 'grid-cell';
-      gridContainer.appendChild(cell);
-      cells.push(cell);
-    }
-    function tickGrid() {
-      cells.filter(function(c) { return c.classList.contains('lit'); }).forEach(function(c) {
-        if (Math.random() < 0.3) c.classList.remove('lit');
-      });
-      var num = 3 + Math.floor(Math.random() * 5);
-      for (var j = 0; j < num; j++) { cells[Math.floor(Math.random() * cells.length)].classList.add('lit'); }
-    }
-    setInterval(tickGrid, 400);
-    for (var k = 0; k < 12; k++) { cells[Math.floor(Math.random() * cells.length)].classList.add('lit'); }
-  }
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      if (el.classList.contains('clip-reveal')) el.classList.add('revealed');
-      if (el.classList.contains('slide-left') || el.classList.contains('slide-right') || el.classList.contains('slide-up')) el.classList.add('in-view');
-      if (el.classList.contains('fade-up')) el.classList.add('in-view');
-      observer.unobserve(el);
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up').forEach(function(el) {
-    observer.observe(el);
-  });
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      document.querySelectorAll('section:first-of-type .fade-up, section:first-of-type .slide-left, section:first-of-type .slide-right, section:first-of-type .slide-up').forEach(function(el) {
-        el.classList.add('in-view');
-      });
-    }, 100);
-  });
-
-  // ── CONTACT FORM (Web3Forms) ──
-  // Posts the form as JSON to api.web3forms.com and shows inline feedback.
-  // If JS is disabled, the form falls back to a normal POST (the page's action attribute),
-  // and the user sees Web3Forms' default thank-you page.
-  var contactForm = document.getElementById('contactForm');
-  var formStatus = document.getElementById('formStatus');
-  if (contactForm && formStatus) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      var originalHTML = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending...';
-      formStatus.className = 'hidden';
-
-      // Collect form fields into a plain object for JSON submission
-      var formData = new FormData(contactForm);
-      var payload = {};
-      formData.forEach(function(value, key) { payload[key] = value; });
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      .then(function(response) { return response.json(); })
-      .then(function(result) {
-        if (result.success) {
-          formStatus.className = 'mt-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm';
-          formStatus.textContent = 'Thanks! We received your message. We will be in touch shortly.';
-          contactForm.reset();
-        } else {
-          formStatus.className = 'mt-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm';
-          formStatus.textContent = 'We could not send your message. Please email us directly at contacto@lontraconsultores.com';
-        }
-      })
-      .catch(function() {
-        formStatus.className = 'mt-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm';
-        formStatus.textContent = 'Connection error. Please email us directly at contacto@lontraconsultores.com';
-      })
-      .then(function() {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalHTML;
-      });
-    });
-  }
-})();
-</script>
+<script src="../assets/js/site.js"></script>
 
 </body>
 </html>
