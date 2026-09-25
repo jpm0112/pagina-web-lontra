@@ -80,16 +80,21 @@
   });
 
   // Scroll reveals (one-shot)
-  var ANIMATED = '.clip-reveal, .slide-left, .slide-right, .slide-up, .fade-up';
   function reveal(el) { el.classList.add(el.classList.contains('clip-reveal') ? 'revealed' : 'in-view'); }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      reveal(entry.target);
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll(ANIMATED).forEach(function (el) { observer.observe(el); });
+  function revealOnScroll(selector, threshold) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        reveal(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: threshold });
+    document.querySelectorAll(selector).forEach(function (el) { observer.observe(el); });
+  }
+  revealOnScroll('.slide-left, .slide-right, .slide-up, .fade-up', 0.15);
+  // A clip-path circle of 0 makes the element's visible area 0, so its intersection
+  // ratio never passes 0.15. Threshold 0 fires as soon as it enters the viewport.
+  revealOnScroll('.clip-reveal', 0);
 
   // Hero entrance on load: line-by-line glitch reveal on home, fade-ins elsewhere
   window.addEventListener('load', function () {
