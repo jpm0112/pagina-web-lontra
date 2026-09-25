@@ -1,0 +1,11 @@
+---
+permalink: /_redirects
+layout: false
+eleventyExcludeFromCollections: true
+---
+# Old .html URLs -> clean URLs, permanently (Cloudflare's own html_handling redirect is a 307).
+{%- for key, route in routes %}
+{%- for code in ["es", "en"] %}
+{{ route[code] }}{{ "index.html" if (route[code] | last) == "/" else ".html" }} {{ route[code] }} 301
+{%- endfor %}
+{%- endfor %}
