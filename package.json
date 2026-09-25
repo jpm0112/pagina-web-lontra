@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/built.css --minify"
+    "build": "npm run build:css && node scripts/stamp-assets.js",
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/built.css --minify",
+    "test": "node --test scripts/stamp-assets.test.js"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
