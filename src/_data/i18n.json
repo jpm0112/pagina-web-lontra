@@ -1,0 +1,50 @@
+{
+  "es": {
+    "htmlLang": "es-CL",
+    "ogLocale": "es_CL",
+    "code": "ES",
+    "nav": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "solutions": "Soluciones",
+      "about": "Sobre Nosotros",
+      "contact": "Contacto"
+    },
+    "navListName": "Navegación principal",
+    "cta": "Solicitar Consulta",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "footer": {
+      "tagline": "Consultoría de Investigación de Operaciones e Inteligencia Artificial basada en Chile.",
+      "links": "Enlaces",
+      "company": "Empresa",
+      "contact": "Contacto",
+      "team": "Equipo",
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "en": {
+    "htmlLang": "en",
+    "ogLocale": "en_US",
+    "code": "EN",
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "solutions": "Solutions",
+      "about": "About Us",
+      "contact": "Contact"
+    },
+    "navListName": "Primary navigation",
+    "cta": "Request Consultation",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "footer": {
+      "tagline": "Operations Research and Artificial Intelligence Consultancy based in Chile.",
+      "links": "Links",
+      "company": "Company",
+      "contact": "Contact",
+      "team": "Team",
+      "rights": "All rights reserved."
+    }
+  }
+}

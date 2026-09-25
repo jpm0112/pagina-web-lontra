@@ -1,216 +1,82 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description" content="Operations research and AI solutions for logistics, manufacturing, retail, mining, and more. Measurable results for your business.">
-<meta name="theme-color" content="#ffffff">
-<title>Operations Research Solutions for Mining, Retail & Logistics | Lontra</title>
-<link rel="canonical" href="https://lontraconsultores.com/en/solutions.html">
-<link rel="alternate" hreflang="es-CL" href="https://lontraconsultores.com/soluciones.html">
-<link rel="alternate" hreflang="en" href="https://lontraconsultores.com/en/solutions.html">
-<link rel="alternate" hreflang="x-default" href="https://lontraconsultores.com/soluciones.html">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:title" content="Operations Research Solutions for Mining, Retail & Logistics | Lontra">
-<meta property="og:description" content="Operations research and AI solutions for logistics, manufacturing, retail, mining, and more. Measurable results for your business.">
-<meta property="og:url" content="https://lontraconsultores.com/en/solutions.html">
-<meta property="og:image" content="https://lontraconsultores.com/assets/img/og-default.png">
-<meta property="og:site_name" content="Lontra">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Operations Research Solutions for Mining, Retail & Logistics | Lontra">
-<meta name="twitter:description" content="Operations research and AI solutions for logistics, manufacturing, retail, mining, and more. Measurable results for your business.">
-<meta name="twitter:image" content="https://lontraconsultores.com/assets/img/og-default.png">
-<script type="application/ld+json">
+---json
 {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Lontra",
-  "alternateName": "Lontra Consultores",
-  "description": "Operations research, optimization, and artificial intelligence consulting for businesses in Chile and Latin America.",
-  "url": "https://lontraconsultores.com",
-  "logo": "https://lontraconsultores.com/assets/img/lontra-wordmark.svg",
-  "email": "contacto@lontraconsultores.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Santiago",
-    "addressRegion": "Región Metropolitana",
-    "addressCountry": "CL"
-  },
-  "areaServed": [
-    {"@type": "Country", "name": "Chile"},
-    {"@type": "AdministrativeArea", "name": "LATAM"}
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "contacto@lontraconsultores.com",
-    "contactType": "Sales",
-    "availableLanguage": ["es", "en"],
-    "areaServed": "CL"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Juan Pablo Morandé",
-    "jobTitle": "PhD Candidate, Auburn University"
-  },
-  "knowsAbout": [
-    "Operations Research",
-    "Mathematical Optimization",
-    "Machine Learning",
-    "Stochastic Simulation",
-    "Business Intelligence"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://lontraconsultores.com/en/"},
-    {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://lontraconsultores.com/en/solutions.html"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Primary navigation",
-  "itemListElement": [
-    {"@type": "SiteNavigationElement", "position": 1, "name": "Home", "url": "https://lontraconsultores.com/en/"},
-    {"@type": "SiteNavigationElement", "position": 2, "name": "Services", "url": "https://lontraconsultores.com/en/services.html"},
-    {"@type": "SiteNavigationElement", "position": 3, "name": "Solutions", "url": "https://lontraconsultores.com/en/solutions.html"},
-    {"@type": "SiteNavigationElement", "position": 4, "name": "About Us", "url": "https://lontraconsultores.com/en/about.html"},
-    {"@type": "SiteNavigationElement", "position": 5, "name": "Contact", "url": "https://lontraconsultores.com/en/contact.html"}
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "key": "solutions",
+  "title": "Operations Research Solutions for Mining, Retail & Logistics | Lontra",
+  "description": "Operations research and AI solutions for logistics, manufacturing, retail, mining, and more. Measurable results for your business.",
+  "schema": [
     {
-      "@type": "Question",
-      "name": "What is operations research?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It's the discipline that uses mathematical models to decide how to allocate limited resources: which routes to take, what inventory to hold, what shifts to assign, what products to make and in what quantity. What sets it apart from descriptive analysis is that it produces a concrete decision. Some problems can be solved to the best possible answer in seconds, when rules are stable. Others are too large to solve exactly and need approaches that deliver good solutions quickly, without a guarantee of optimality. When real uncertainty is in play (variable demand, equipment failures, irregular delivery times), the goal isn't optimality: you propose a policy and measure how it behaves before applying it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between optimization and machine learning?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Machine learning learns patterns from historical data and answers what will happen: expected demand next quarter, the probability of equipment failure, a customer's risk. Optimization finds the best decision given an objective and constraints, and answers what to do: how many trucks to operate, what inventory to send to each distribution center, which order to accept. In real operations they work together. A typical pipeline: ML forecasts demand per location over the next 14 days, and optimization uses that forecast to allocate inventory across centers and plan shipments. On its own, ML leaves the decision to a human who has to interpret the forecast; optimization without ML needs someone to estimate demand by hand."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Machine learning, artificial intelligence, and LLMs: when should you use each?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Large language models (LLMs) are AI models trained on huge amounts of text to understand and generate language. They're a branch of machine learning. A traditional predictive model is trained for a specific client task; LLMs come pre-trained with general knowledge of language and adapt to the business context through prompts or reference documents (RAG, retrieval-augmented generation). They work well when the problem involves unstructured text: classifying emails, summarizing long documents, extracting information from contracts, answering questions about internal manuals, drafting first versions. In those cases an LLM replaces hours of manual work with acceptable results in seconds. They don't work when the problem is numerical, structured, and has clean data. Forecasting demand, detecting fraud, optimizing inventory, or adjusting prices are better handled by classic predictive models or by operations research. Using an LLM for those cases is usually more expensive, slower, less accurate, and harder to audit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is stochastic simulation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Stochastic simulation reproduces the behavior of an operational system over thousands of random scenarios to estimate how it responds to different policies. It's useful when uncertainty dominates: variable arrival times, unpredictable failures, demand with seasonality and noise. Unlike optimization, simulation doesn't return the best decision. It returns the distribution of outcomes for a policy you propose: how much it costs to run with 5 trucks vs. 6, how many hours of queueing arise if arrival frequency shifts, what happens if a machine goes down one day per month. It works where other methods fail, but it needs enough runs to be statistically reliable and depends a lot on how well the input distributions are described."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is a mathematical optimization model?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An optimization model describes a decision in three parts: what you want to achieve (minimize cost, maximize profit, reduce time), what you choose (quantities, assignments, routes, schedules), and the rules you can't break (available capacity, budgets, regulations, contractual deadlines). Solving it returns the combination of decisions that respects all the rules and best achieves the objective. A concrete example: assigning 30 trucks to 200 deliveries minimizing fuel, subject to each truck operating at most 9 hours and each customer receiving within their delivery window. The trade-offs are practical. Some problems solve in seconds when rules are continuous and well-behaved. Others take hours or days when there are yes/no decisions (open this warehouse?, assign this driver to that route?), because the combination space grows exponentially. When the objective or rules involve products between variables, guaranteeing the best solution is the most expensive of all."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is business intelligence and how is it different from machine learning?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Business intelligence (BI) organizes historical data into reports, dashboards, and KPIs so people can make better decisions. Machine learning builds predictive models from that same data. BI answers what happened; ML answers what will happen. In practice, BI is cheaper to build and easier to operate: SQL, data models, dashboards. ML has more reach but requires data quality, ongoing monitoring, and retraining. Most real operations use both: BI to monitor day-to-day and understand what's shifting, ML for forecasting, anomaly detection, and cases where explicit rules aren't enough."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What data does Lontra need to start a project?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We start with whatever the client has today. Each project has a different scope, but the most useful inputs at the start are usually the relevant operational history (transactions, orders, times, locations, inventory levels), the business rules (capacities, contracts, regulations, operational constraints), and the context of the problem you want to solve. Formats are not a blocker: Excel, CSV, ERP exports, SQL databases, PDFs for rules and manuals. If the data is messy or incomplete, the first phase of the project includes structuring and validating it alongside the internal team; missing perfect data is rarely what prevents the work from starting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What does Lontra deliver at the end of a project?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Every project ends with a working deliverable: a running optimization model, a simulator, a decision-support system, or a set of predictive models integrated with the client's systems. The handover includes documented code, validation against real client data, and a transfer session with the client's internal team so they can operate and maintain the solution without depending on Lontra."
-      }
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is operations research?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's the discipline that uses mathematical models to decide how to allocate limited resources: which routes to take, what inventory to hold, what shifts to assign, what products to make and in what quantity. What sets it apart from descriptive analysis is that it produces a concrete decision. Some problems can be solved to the best possible answer in seconds, when rules are stable. Others are too large to solve exactly and need approaches that deliver good solutions quickly, without a guarantee of optimality. When real uncertainty is in play (variable demand, equipment failures, irregular delivery times), the goal isn't optimality: you propose a policy and measure how it behaves before applying it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between optimization and machine learning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Machine learning learns patterns from historical data and answers what will happen: expected demand next quarter, the probability of equipment failure, a customer's risk. Optimization finds the best decision given an objective and constraints, and answers what to do: how many trucks to operate, what inventory to send to each distribution center, which order to accept. In real operations they work together. A typical pipeline: ML forecasts demand per location over the next 14 days, and optimization uses that forecast to allocate inventory across centers and plan shipments. On its own, ML leaves the decision to a human who has to interpret the forecast; optimization without ML needs someone to estimate demand by hand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Machine learning, artificial intelligence, and LLMs: when should you use each?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Large language models (LLMs) are AI models trained on huge amounts of text to understand and generate language. They're a branch of machine learning. A traditional predictive model is trained for a specific client task; LLMs come pre-trained with general knowledge of language and adapt to the business context through prompts or reference documents (RAG, retrieval-augmented generation). They work well when the problem involves unstructured text: classifying emails, summarizing long documents, extracting information from contracts, answering questions about internal manuals, drafting first versions. In those cases an LLM replaces hours of manual work with acceptable results in seconds. They don't work when the problem is numerical, structured, and has clean data. Forecasting demand, detecting fraud, optimizing inventory, or adjusting prices are better handled by classic predictive models or by operations research. Using an LLM for those cases is usually more expensive, slower, less accurate, and harder to audit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is stochastic simulation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stochastic simulation reproduces the behavior of an operational system over thousands of random scenarios to estimate how it responds to different policies. It's useful when uncertainty dominates: variable arrival times, unpredictable failures, demand with seasonality and noise. Unlike optimization, simulation doesn't return the best decision. It returns the distribution of outcomes for a policy you propose: how much it costs to run with 5 trucks vs. 6, how many hours of queueing arise if arrival frequency shifts, what happens if a machine goes down one day per month. It works where other methods fail, but it needs enough runs to be statistically reliable and depends a lot on how well the input distributions are described."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a mathematical optimization model?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An optimization model describes a decision in three parts: what you want to achieve (minimize cost, maximize profit, reduce time), what you choose (quantities, assignments, routes, schedules), and the rules you can't break (available capacity, budgets, regulations, contractual deadlines). Solving it returns the combination of decisions that respects all the rules and best achieves the objective. A concrete example: assigning 30 trucks to 200 deliveries minimizing fuel, subject to each truck operating at most 9 hours and each customer receiving within their delivery window. The trade-offs are practical. Some problems solve in seconds when rules are continuous and well-behaved. Others take hours or days when there are yes/no decisions (open this warehouse?, assign this driver to that route?), because the combination space grows exponentially. When the objective or rules involve products between variables, guaranteeing the best solution is the most expensive of all."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is business intelligence and how is it different from machine learning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Business intelligence (BI) organizes historical data into reports, dashboards, and KPIs so people can make better decisions. Machine learning builds predictive models from that same data. BI answers what happened; ML answers what will happen. In practice, BI is cheaper to build and easier to operate: SQL, data models, dashboards. ML has more reach but requires data quality, ongoing monitoring, and retraining. Most real operations use both: BI to monitor day-to-day and understand what's shifting, ML for forecasting, anomaly detection, and cases where explicit rules aren't enough."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What data does Lontra need to start a project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We start with whatever the client has today. Each project has a different scope, but the most useful inputs at the start are usually the relevant operational history (transactions, orders, times, locations, inventory levels), the business rules (capacities, contracts, regulations, operational constraints), and the context of the problem you want to solve. Formats are not a blocker: Excel, CSV, ERP exports, SQL databases, PDFs for rules and manuals. If the data is messy or incomplete, the first phase of the project includes structuring and validating it alongside the internal team; missing perfect data is rarely what prevents the work from starting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Lontra deliver at the end of a project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every project ends with a working deliverable: a running optimization model, a simulator, a decision-support system, or a set of predictive models integrated with the client's systems. The handover includes documented code, validation against real client data, and a transfer session with the client's internal team so they can operate and maintain the solution without depending on Lontra."
+          }
+        }
+      ]
     }
   ]
 }
-</script>
-<link rel="stylesheet" href="{{ '/assets/css/built.css' | hashed }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-</head>
-<body class="bg-[#f8f9fc] text-slate-900 overflow-x-hidden">
-
-<!-- ══════════════════════════════════════════════════ NAV ══════════════════════════════════════════════════ -->
-<nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/80">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<div class="flex items-center">
-<a class="flex items-center" href="index.html">
-<span class="text-2xl font-bold tracking-tight text-slate-900">Lontra<span class="text-primary font-black">.</span></span>
-</a>
-</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="services.html">Services</a>
-<a class="text-sm font-bold text-slate-900 transition-colors" href="solutions.html" aria-current="page">Solutions</a>
-<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="about.html">About Us</a>
-<a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="contact.html">Contact</a>
-<div class="flex items-center border-l border-slate-200 pl-8 gap-6">
-<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
-<a class="hover:text-slate-900 transition-colors px-2 py-1" href="../soluciones.html">ES</a>
-<span class="text-slate-300">|</span>
-<span class="text-slate-900 px-2 py-1">EN</span>
-</div>
-<a href="contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">Request Consultation</a>
-</div>
-</div>
-<!-- Mobile hamburger button -->
-<button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="Open menu">
-<span class="material-symbols-outlined text-slate-900 text-2xl">menu</span>
-</button>
-</div>
-</nav>
-
-<!-- Mobile menu overlay -->
-<div class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
-<button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="Close menu">
-<span class="material-symbols-outlined text-slate-900 text-2xl">close</span>
-</button>
-<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="services.html">Services</a>
-<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="solutions.html" aria-current="page">Solutions</a>
-<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="about.html">About Us</a>
-<a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="contact.html">Contact</a>
-<div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
-<a class="hover:text-slate-900 transition-colors" href="../soluciones.html">ES</a>
-<span class="text-slate-300">|</span>
-<span class="text-slate-900">EN</span>
-</div>
-<a href="contact.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">Request Consultation</a>
-</div>
-
+---
 <!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
 <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden grid-bg">
   <div class="grid-cells" id="gridCells"></div>
@@ -225,11 +91,11 @@
     </p>
 
     <div class="flex flex-col sm:flex-row justify-center gap-4 fade-up" style="transition-delay:0.7s">
-      <a href="contact.html" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
+      <a href="/en/contact" class="w-full sm:w-auto text-center justify-center bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 inline-flex items-center gap-2">
         Request Consultation
         <span class="material-symbols-outlined text-base">arrow_forward</span>
       </a>
-      <a href="services.html" class="w-full sm:w-auto text-center justify-center border border-slate-300 hover:border-slate-400 text-slate-700 px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
+      <a href="/en/services" class="w-full sm:w-auto text-center justify-center border border-slate-300 hover:border-slate-400 text-slate-700 px-8 py-3.5 rounded-lg text-sm font-bold transition-all inline-flex items-center gap-2">
         View Services
       </a>
     </div>
@@ -546,7 +412,7 @@
         <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
           Tell us about your business problem and we'll show you how mathematics can help.
         </p>
-        <a href="contact.html" class="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
+        <a href="/en/contact" class="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
           Request a Free Consultation
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
@@ -554,54 +420,3 @@
     </div>
   </div>
 </section>
-
-<!-- ══════════════════════════════════════════════════ FOOTER ══════════════════════════════════════════════════ -->
-<footer class="relative z-20 border-t border-slate-800 pt-12 md:pt-20 pb-10 bg-slate-900 text-white">
-  <div class="max-w-7xl mx-auto px-8">
-    <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
-      <!-- Brand -->
-      <div>
-        <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
-        <p class="text-slate-400 text-sm mt-4 leading-relaxed">
-          Operations Research and Artificial Intelligence Consultancy based in Chile.
-        </p>
-      </div>
-      <!-- Links -->
-      <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">Links</h4>
-        <ul class="space-y-3">
-          <li><a href="services.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Services</a></li>
-          <li><a href="solutions.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Solutions</a></li>
-          <li><a href="about.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">About Us</a></li>
-        </ul>
-      </div>
-      <!-- Company -->
-      <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">Company</h4>
-        <ul class="space-y-3">
-          <li><a href="contact.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Contact</a></li>
-          <li><a href="about.html" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">Team</a></li>
-        </ul>
-      </div>
-      <!-- Contact -->
-      <div>
-        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">Contact</h4>
-        <ul class="space-y-3">
-          <li class="text-sm text-slate-400">contacto@lontraconsultores.com</li>
-          <li class="text-sm text-slate-400">Av Vitacura 3535, Of. 1501</li>
-          <li class="text-sm text-slate-400">Santiago, Chile</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-t border-slate-700 pt-8 flex items-center justify-center gap-4">
-      <p class="text-xs text-slate-400">&copy; 2026 Lontra. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ══════════════════════════════════════════════════ JAVASCRIPT ══════════════════════════════════════════════════ -->
-<script src="{{ '/assets/js/site.js' | hashed }}"></script>
-
-</body>
-</html>

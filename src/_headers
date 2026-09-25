@@ -14,9 +14,6 @@
 /assets/img/*
   Cache-Control: public, max-age=31536000, immutable
 
-/*.html
-  Cache-Control: public, max-age=300, must-revalidate
-
 /robots.txt
   Cache-Control: public, max-age=3600
 

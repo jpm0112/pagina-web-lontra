@@ -1,0 +1,48 @@
+{#- Language toggle: ES | EN, current language as plain text, the other links to this page's sibling. -#}
+{%- macro langToggle(currentClass) -%}
+{%- for code in ["es", "en"] %}
+  {%- if not loop.first %}<span class="text-slate-300">|</span>{% endif -%}
+  {%- if code == lang -%}<span class="{{ currentClass }}">{{ i18n[code].code }}</span>
+  {%- else -%}<a class="hover:text-slate-900 transition-colors{{ ' px-2 py-1' if 'px-2' in currentClass }}" href="{{ routes[key][code] }}">{{ i18n[code].code }}</a>{%- endif -%}
+{% endfor -%}
+{%- endmacro -%}
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/80">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="flex items-center">
+      <a class="flex items-center" href="{{ routes.home[lang] }}">
+        <span class="text-2xl font-bold tracking-tight text-slate-900">Lontra<span class="text-primary font-black">.</span></span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      {%- for k in site.nav %}
+      {%- if k == key %}
+      <a class="text-sm font-bold text-slate-900 transition-colors" href="{{ routes[k][lang] }}" aria-current="page">{{ t.nav[k] }}</a>
+      {%- else %}
+      <a class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors" href="{{ routes[k][lang] }}">{{ t.nav[k] }}</a>
+      {%- endif %}
+      {%- endfor %}
+      <div class="flex items-center border-l border-slate-200 pl-8 gap-6">
+        <div class="flex items-center gap-2 text-xs font-bold tracking-widest text-slate-400">
+          {{ langToggle("text-slate-900 px-2 py-1") }}
+        </div>
+        <a href="{{ routes.contact[lang] }}" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">{{ t.cta }}</a>
+      </div>
+    </div>
+    <button class="md:hidden flex items-center justify-center w-11 h-11" id="menuToggle" aria-label="{{ t.menuOpen }}">
+      <span class="material-symbols-outlined text-slate-900 text-2xl">menu</span>
+    </button>
+  </div>
+</nav>
+
+<div class="fixed inset-0 z-[60] bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-6 transition-all duration-300 opacity-0 pointer-events-none md:hidden" id="mobileMenu">
+  <button class="absolute top-6 right-6 w-11 h-11 flex items-center justify-center" id="menuClose" aria-label="{{ t.menuClose }}">
+    <span class="material-symbols-outlined text-slate-900 text-2xl">close</span>
+  </button>
+  {%- for k in site.nav %}
+  <a class="text-xl font-medium text-slate-600 hover:text-slate-900 transition-colors py-2" href="{{ routes[k][lang] }}"{{ ' aria-current="page"' | safe if k == key }}>{{ t.nav[k] }}</a>
+  {%- endfor %}
+  <div class="flex items-center gap-3 mt-4 text-sm font-bold tracking-widest text-slate-400">
+    {{ langToggle("text-slate-900") }}
+  </div>
+  <a href="{{ routes.contact[lang] }}" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 mt-4">{{ t.cta }}</a>
+</div>

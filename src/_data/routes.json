@@ -1,0 +1,22 @@
+{
+  "home": {
+    "es": "/",
+    "en": "/en/"
+  },
+  "services": {
+    "es": "/servicios",
+    "en": "/en/services"
+  },
+  "solutions": {
+    "es": "/soluciones",
+    "en": "/en/solutions"
+  },
+  "about": {
+    "es": "/sobre-nosotros",
+    "en": "/en/about"
+  },
+  "contact": {
+    "es": "/contacto",
+    "en": "/en/contact"
+  }
+}

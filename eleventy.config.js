@@ -28,12 +28,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget(`${INPUT}/assets/js/`);
 
   eleventyConfig.addFilter('hashed', hashed);
+  eleventyConfig.addFilter('isoDate', (date) => date.toISOString().slice(0, 10));
 
   eleventyConfig.addPassthroughCopy({ [CSS_OUT]: 'assets/css/built.css' });
   eleventyConfig.addPassthroughCopy(`${INPUT}/assets/img`);
   eleventyConfig.addPassthroughCopy(`${INPUT}/assets/js`);
   eleventyConfig.addPassthroughCopy(`${INPUT}/*.{txt,xml}`);
   eleventyConfig.addPassthroughCopy(`${INPUT}/_headers`);
+
+  // Pages are Spanish unless their directory data says otherwise (src/en/en.json).
+  eleventyConfig.addGlobalData('lang', 'es');
+  eleventyConfig.addGlobalData('layout', 'base.njk');
+  // Page dates (sitemap lastmod) come from each source file's last git commit.
+  eleventyConfig.addGlobalData('date', 'git Last Modified');
 
   // Keep the .html file names: Cloudflare serves /servicios from servicios.html,
   // and old /servicios.html links keep redirecting there.

@@ -1,0 +1,37 @@
+<footer class="relative z-20 border-t border-slate-800 pt-12 md:pt-20 pb-10 bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
+      <div>
+        <span class="text-2xl font-bold tracking-tight text-white">Lontra<span class="text-primary font-black">.</span></span>
+        <p class="text-slate-400 text-sm mt-4 leading-relaxed">{{ t.footer.tagline }}</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">{{ t.footer.links }}</h4>
+        <ul class="space-y-3">
+          {%- for k in ["services", "solutions", "about"] %}
+          <li><a href="{{ routes[k][lang] }}" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">{{ t.nav[k] }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">{{ t.footer.company }}</h4>
+        <ul class="space-y-3">
+          <li><a href="{{ routes.contact[lang] }}" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">{{ t.nav.contact }}</a></li>
+          <li><a href="{{ routes.about[lang] }}" class="text-sm text-slate-400 hover:text-white transition-colors inline-block py-1">{{ t.footer.team }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 md:mb-6">{{ t.footer.contact }}</h4>
+        <ul class="space-y-3">
+          <li class="text-sm text-slate-400">{{ organization[lang].email }}</li>
+          <li class="text-sm text-slate-400">Av Vitacura 3535, Of. 1501</li>
+          <li class="text-sm text-slate-400">Santiago, Chile</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-700 pt-8 flex items-center justify-center gap-4">
+      <p class="text-xs text-slate-400">&copy; {{ site.year }} Lontra. {{ t.footer.rights }}</p>
+    </div>
+  </div>
+</footer>
