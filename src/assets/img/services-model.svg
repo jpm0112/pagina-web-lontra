@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <rect width="640" height="360" fill="#f3f6fa"/>
+  <g stroke="#d8e1ed" stroke-width="1"><path d="M48 80h544M48 160h544M48 240h544M48 320h544M112 32v296M208 32v296M304 32v296M400 32v296M496 32v296"/></g>
+  <rect x="45" y="75" width="165" height="210" rx="10" fill="#fff" stroke="#cbd5e1"/>
+  <text x="65" y="110" fill="#0f1f3d" font-family="Georgia,serif" font-size="26" font-style="italic">x₁, x₂, x₃</text>
+  <path d="M65 132h125M65 160h110M65 188h125M65 216h92" stroke="#b5c4d6" stroke-width="3" stroke-linecap="round"/>
+  <text x="65" y="254" fill="#52627a" font-family="Arial,sans-serif" font-size="15">x ≥ 0</text>
+  <path d="M210 180h55" stroke="#1a3fb8" stroke-width="3"/><path d="m258 173 11 7-11 7" fill="none" stroke="#1a3fb8" stroke-width="3"/>
+  <rect x="270" y="105" width="190" height="150" rx="10" fill="#fff" stroke="#1a3fb8" stroke-width="2"/>
+  <text x="290" y="150" fill="#0f1f3d" font-family="Georgia,serif" font-size="28" font-style="italic">min f(x)</text>
+  <path d="M290 172h150" stroke="#d8e1ed"/>
+  <text x="290" y="202" fill="#52627a" font-family="Georgia,serif" font-size="19">Ax ≤ b</text>
+  <text x="290" y="232" fill="#52627a" font-family="Georgia,serif" font-size="19">x ∈ ℤ⁺</text>
+  <path d="M460 180h48" stroke="#1a3fb8" stroke-width="3"/><path d="m501 173 11 7-11 7" fill="none" stroke="#1a3fb8" stroke-width="3"/>
+  <rect x="518" y="145" width="76" height="70" rx="10" fill="#1a3fb8"/>
+  <path d="m537 181 13 12 24-27" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

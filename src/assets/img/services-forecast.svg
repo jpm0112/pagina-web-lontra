@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <rect width="640" height="360" fill="#f3f6fa"/>
+  <rect x="48" y="36" width="544" height="280" rx="10" fill="#fff" stroke="#d8e1ed"/>
+  <g stroke="#e5ebf2"><path d="M90 85h465M90 145h465M90 205h465M90 265h465M180 65v220M270 65v220M360 65v220M450 65v220M540 65v220"/></g>
+  <path d="M90 285V65M90 285h465" fill="none" stroke="#52627a" stroke-width="2"/>
+  <path d="M95 250 145 221 195 230 245 175 295 185 345 140 395 160" fill="none" stroke="#0f1f3d" stroke-width="3"/>
+  <g fill="#fff" stroke="#0f1f3d" stroke-width="3"><circle cx="95" cy="250" r="5"/><circle cx="145" cy="221" r="5"/><circle cx="195" cy="230" r="5"/><circle cx="245" cy="175" r="5"/><circle cx="295" cy="185" r="5"/><circle cx="345" cy="140" r="5"/><circle cx="395" cy="160" r="5"/></g>
+  <path d="M395 160 Q455 127 550 97 L550 193 Q478 160 395 160" fill="#1a3fb8" opacity=".14"/>
+  <path d="M395 160 Q465 150 550 145" fill="none" stroke="#1a3fb8" stroke-width="4" stroke-dasharray="8 6"/>
+  <path d="M395 65v220" stroke="#52627a" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="463" y="125" fill="#1a3fb8" font-family="Georgia,serif" font-size="22" font-style="italic">ŷ</text>
+  <text x="557" y="297" fill="#52627a" font-family="Georgia,serif" font-size="21" font-style="italic">t</text>
+</svg>

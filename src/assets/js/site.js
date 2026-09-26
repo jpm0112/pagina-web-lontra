@@ -1,6 +1,7 @@
 // Site behaviour for every page. Each block runs only if its elements exist.
 (function () {
   'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Mobile menu
   var menuToggle = document.getElementById('menuToggle');
@@ -9,37 +10,19 @@
   function setMenu(open) {
     mobileMenu.style.opacity = open ? '1' : '0';
     mobileMenu.style.pointerEvents = open ? 'auto' : 'none';
+    mobileMenu.inert = !open;
     menuToggle.setAttribute('aria-expanded', String(open));
+    (open ? menuClose : menuToggle).focus();
   }
   if (menuToggle && menuClose && mobileMenu) {
     menuToggle.setAttribute('aria-controls', 'mobileMenu');
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.addEventListener('click', function () { setMenu(true); });
     menuClose.addEventListener('click', function () { setMenu(false); });
-  }
-
-  // Mouse spotlight (home)
-  var spotlight = document.getElementById('spotlight');
-  if (spotlight) {
-    document.addEventListener('mousemove', function (e) {
-      spotlight.style.setProperty('--mx', e.clientX + 'px');
-      spotlight.style.setProperty('--my', e.clientY + 'px');
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') setMenu(false);
     });
   }
-
-  // Mouse trail dots
-  var lastTrailTime = 0;
-  document.addEventListener('mousemove', function (e) {
-    var now = Date.now();
-    if (now - lastTrailTime < 60) return;
-    lastTrailTime = now;
-    var dot = document.createElement('div');
-    dot.className = 'trail-dot';
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-    document.body.appendChild(dot);
-    setTimeout(function () { dot.remove(); }, 1000);
-  });
 
   // Animated grid cells
   var gridContainer = document.getElementById('gridCells');
@@ -54,69 +37,12 @@
       cells.push(cell);
     }
     var lightRandomCell = function () { cells[Math.floor(Math.random() * cells.length)].classList.add('lit'); };
-    setInterval(function () {
+    if (!reduceMotion) setInterval(function () {
       cells.forEach(function (c) { if (c.classList.contains('lit') && Math.random() < 0.3) c.classList.remove('lit'); });
       for (var n = 3 + Math.floor(Math.random() * 5); n > 0; n--) lightRandomCell();
     }, 400);
     for (var k = 0; k < 12; k++) lightRandomCell();
   }
-
-  // Data streams on expertise cards (home)
-  document.querySelectorAll('[data-stream]').forEach(function (streamBg) {
-    var numCols = 12;
-    for (var c = 0; c < numCols; c++) {
-      var streamCol = document.createElement('div');
-      streamCol.className = 'data-stream-col';
-      streamCol.style.left = (c * (100 / numCols)) + '%';
-      streamCol.style.setProperty('--stream-dur', (3 + Math.random() * 4) + 's');
-      streamCol.style.setProperty('--stream-delay', (Math.random() * 3) + 's');
-      var chars = '';
-      for (var n = 30 + Math.floor(Math.random() * 20); n > 0; n--) {
-        chars += (Math.random() > 0.5 ? (Math.random() > 0.5 ? '1' : '0') : Math.floor(Math.random() * 10)) + '\n';
-      }
-      streamCol.textContent = chars;
-      streamBg.appendChild(streamCol);
-    }
-  });
-
-  // Scroll reveals (one-shot)
-  function reveal(el) { el.classList.add(el.classList.contains('clip-reveal') ? 'revealed' : 'in-view'); }
-  function revealOnScroll(selector, threshold) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        reveal(entry.target);
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: threshold });
-    document.querySelectorAll(selector).forEach(function (el) { observer.observe(el); });
-  }
-  revealOnScroll('.slide-left, .slide-right, .slide-up, .fade-up', 0.15);
-  // A clip-path circle of 0 makes the element's visible area 0, so its intersection
-  // ratio never passes 0.15. Threshold 0 fires as soon as it enters the viewport.
-  revealOnScroll('.clip-reveal', 0);
-
-  // Hero entrance on load: line-by-line glitch reveal on home, fade-ins elsewhere
-  window.addEventListener('load', function () {
-    var lines = document.querySelectorAll('.hero-line-inner');
-    if (lines.length) {
-      lines.forEach(function (line) {
-        var delay = parseInt(line.getAttribute('data-delay'), 10) || 0;
-        setTimeout(function () {
-          line.classList.add('visible');
-          line.querySelectorAll('.glitch-word').forEach(function (word, w) {
-            setTimeout(function () { word.classList.add('glitching'); }, w * 120);
-          });
-        }, 300 + delay);
-      });
-      setTimeout(function () { document.querySelectorAll('#hero .fade-up').forEach(reveal); }, 800);
-      return;
-    }
-    setTimeout(function () {
-      var hero = document.querySelector('section');
-      if (hero) hero.querySelectorAll('.fade-up, .slide-left, .slide-right, .slide-up').forEach(reveal);
-    }, 100);
-  });
 
   // Network visualization (home hero)
   var vizSvg = document.getElementById('heroViz');
@@ -160,18 +86,21 @@
     var traveler = document.createElementNS(ns, 'circle');
     traveler.setAttribute('r', 4);
     traveler.setAttribute('class', 'viz-traveler');
+    traveler.setAttribute('cx', nodes[0].x);
+    traveler.setAttribute('cy', nodes[0].y);
     vizSvg.appendChild(traveler);
     var segIndex = 0, segProgress = 0;
-    (function animateTraveler() {
+    function animateTraveler() {
       var e = optimalPath[segIndex], a = nodes[e[0]], b = nodes[e[1]];
       traveler.setAttribute('cx', a.x + (b.x - a.x) * segProgress);
       traveler.setAttribute('cy', a.y + (b.y - a.y) * segProgress);
       segProgress += 0.006;
       if (segProgress >= 1) { segProgress = 0; segIndex = (segIndex + 1) % optimalPath.length; }
       requestAnimationFrame(animateTraveler);
-    })();
+    }
+    if (!reduceMotion) animateTraveler();
 
-    setInterval(function () {
+    if (!reduceMotion) setInterval(function () {
       var activeCircles = vizSvg.querySelectorAll('.viz-node.active');
       var pick = activeCircles[Math.floor(Math.random() * activeCircles.length)];
       pick.setAttribute('r', 9);

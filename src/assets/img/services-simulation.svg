@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <rect width="640" height="360" fill="#f3f6fa"/>
+  <rect x="48" y="36" width="544" height="280" rx="10" fill="#fff" stroke="#d8e1ed"/>
+  <g stroke="#e5ebf2" stroke-width="1"><path d="M92 80h460M92 135h460M92 190h460M92 245h460M170 65v220M260 65v220M350 65v220M440 65v220M530 65v220"/></g>
+  <path d="M92 285V65M92 285h460" fill="none" stroke="#52627a" stroke-width="2"/>
+  <path d="M92 245 C165 224 205 222 260 203 S381 180 440 150 S520 115 552 93 L552 251 C510 236 485 230 440 226 S330 235 260 238 S170 251 92 245Z" fill="#1a3fb8" opacity=".12"/>
+  <path d="M92 245 C167 233 206 231 260 220 S378 210 440 190 S520 176 552 170" fill="none" stroke="#1a3fb8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M92 245 C170 229 200 209 260 204 S368 168 440 151 S516 117 552 94M92 245 C160 249 201 251 260 238 S370 240 440 226 S513 239 552 251" fill="none" stroke="#0f766e" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="104" y="92" fill="#52627a" font-family="Arial,sans-serif" font-size="15">P90</text>
+  <text x="480" y="164" fill="#1a3fb8" font-family="Arial,sans-serif" font-size="15" font-weight="700">P50</text>
+  <text x="480" y="265" fill="#52627a" font-family="Arial,sans-serif" font-size="15">P10</text>
+  <text x="557" y="296" fill="#52627a" font-family="Georgia,serif" font-size="21" font-style="italic">t</text>
+</svg>

@@ -54,9 +54,9 @@ npm test        # node:test for lib/
 ## Front-end
 
 - `src/assets/js/site.js` is the only script (end of `<body>`); every feature runs only if its elements exist. The CSP is `script-src 'self' https://static.cloudflareinsights.com`, so no inline scripts or `on*=` handlers.
-- `src/assets/css/input.css`: Tailwind layers, then plain CSS for the custom effects (grid, reveals, hero lines, marquee, data streams, FAQ, `.glow-sweep`). Plain CSS is never purged and comes after the utilities. `tailwind.config.js` holds the palette and fonts and scans `src/**/*.{html,njk}` and `src/assets/js/*.js`.
-- Reveal animations: `.fade-up`/`.slide-*` get `in-view`, `.clip-reveal` gets `revealed`. Clip reveals must be observed at IntersectionObserver threshold 0, because a zero-size clip-path makes the visible ratio 0.
-- `_headers` caches `/assets/css|js|img/*` for a year as immutable. CSS/JS links use the `hashed` filter (`?v=<content hash>`); images are not hashed, so a changed image needs a new filename. HTML gets Cloudflare's default always-revalidate.
+- `src/assets/css/input.css`: Tailwind layers, then plain CSS for the grid, network, marquee, FAQ, and shared design overrides. Plain CSS is never purged and comes after the utilities. `tailwind.config.js` holds the palette and fonts and scans `src/**/*.{html,njk}` and `src/assets/js/*.js`.
+- Page content renders immediately; it does not depend on a scroll animation to become visible. Motion respects `prefers-reduced-motion`.
+- `_headers` caches `/assets/css|js|img/*` for a year as immutable. CSS/JS links use the `hashed` filter (`?v=<content hash>`); images are not hashed, so a changed image needs a new filename. The six services illustrations are SVGs with language-specific alt text in the page templates. HTML gets Cloudflare's default always-revalidate.
 - CSP allowlists: Google Fonts, `api.web3forms.com` (contact form), Google Maps (iframe), Cloudflare Insights. New external resources need a CSP update in `src/_headers`.
 
 ## Contact form

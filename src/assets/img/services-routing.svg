@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <rect width="640" height="360" fill="#f3f6fa"/>
+  <g fill="none" stroke="#cbd5e1" stroke-width="2"><path d="M92 180 215 85 365 100 510 65M92 180 225 270 385 255 540 200M215 85 225 270M365 100 385 255M215 85 385 255M225 270 365 100M365 100 540 200M385 255 510 65"/></g>
+  <path d="M92 180 215 85 365 100 385 255 540 200" fill="none" stroke="#1a3fb8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#fff" stroke="#52627a" stroke-width="3"><circle cx="92" cy="180" r="18"/><circle cx="215" cy="85" r="18"/><circle cx="225" cy="270" r="18"/><circle cx="365" cy="100" r="18"/><circle cx="385" cy="255" r="18"/><circle cx="510" cy="65" r="18"/><circle cx="540" cy="200" r="18"/></g>
+  <g fill="#1a3fb8" stroke="#fff" stroke-width="3"><circle cx="92" cy="180" r="13"/><circle cx="215" cy="85" r="13"/><circle cx="365" cy="100" r="13"/><circle cx="385" cy="255" r="13"/><circle cx="540" cy="200" r="13"/></g>
+  <g fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle"><text x="92" y="185">A</text><text x="215" y="90">B</text><text x="365" y="105">C</text><text x="385" y="260">D</text><text x="540" y="205">E</text></g>
+  <rect x="38" y="28" width="151" height="34" rx="6" fill="#fff" stroke="#d8e1ed"/>
+  <path d="M53 45h27" stroke="#1a3fb8" stroke-width="5"/>
+  <text x="90" y="50" fill="#0f1f3d" font-family="Arial,sans-serif" font-size="14">A → E</text>
+</svg>

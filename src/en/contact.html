@@ -9,7 +9,7 @@
 <section class="relative pt-32 pb-16 grid-bg overflow-hidden">
   <div class="grid-cells" id="gridCells"></div>
   <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f8f9fc] to-transparent z-10 pointer-events-none"></div>
-  <div class="max-w-7xl mx-auto px-8 w-full relative z-10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 w-full relative z-10">
     <!-- Badge -->
     <div class="mb-10 fade-up" style="transition-delay:0.1s">
       <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan">Contact</span>
@@ -28,11 +28,11 @@ We solve operational problems with mathematical models and machine learning. Tel
 
 <!-- ══════════════════════════════════════════════════ FORM + SIDEBAR ══════════════════════════════════════════════════ -->
 <section class="relative pb-24">
-  <div class="max-w-7xl mx-auto px-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 overflow-hidden">
 
       <!-- Form Container -->
-      <div class="lg:col-span-7 bg-white border border-slate-200 shadow-sm rounded-2xl p-8 md:p-12 slide-left data-stream-card glow-sweep" style="transition-delay:0.1s">
+      <div class="lg:col-span-7 bg-white border border-slate-200 shadow-sm rounded-2xl p-5 md:p-12 slide-left data-stream-card" style="transition-delay:0.1s">
         <h2 class="text-2xl font-bold mb-8">Send us a message</h2>
         <form id="contactForm" data-msg-sending="Sending..." data-msg-success="Thanks! We received your message. We will be in touch shortly." data-msg-error="We could not send your message. Please email us directly at contacto@lontraconsultores.com" data-msg-network="Connection error. Please email us directly at contacto@lontraconsultores.com" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
           <!-- Web3Forms config -->
@@ -57,7 +57,7 @@ We solve operational problems with mathematical models and machine learning. Tel
               <input id="email" name="email" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400" placeholder="john.smith@company.com" type="email" required/>
             </div>
             <div class="space-y-2">
-              <label for="whatsapp" class="text-sm font-semibold text-slate-700">WhatsApp <span class="text-slate-300 font-normal">(optional)</span></label>
+              <label for="whatsapp" class="text-sm font-semibold text-slate-700">WhatsApp <span class="text-slate-500 font-normal">(optional)</span></label>
               <input id="whatsapp" name="whatsapp" class="w-full bg-white border border-slate-200 shadow-sm rounded-lg h-12 px-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-slate-900 placeholder-slate-400" placeholder="+569 66699427" type="tel"/>
             </div>
           </div>
@@ -97,7 +97,7 @@ Send Request
               </div>
               <div>
                 <p class="text-sm font-medium text-slate-400">Email</p>
-                <p class="text-lg font-semibold">contacto@lontraconsultores.com</p>
+                <a href="mailto:contacto@lontraconsultores.com" class="text-sm md:text-base font-semibold hover:text-primary">contacto@<wbr>lontraconsultores.com</a>
               </div>
             </div>
             <div class="flex items-start gap-4">
@@ -116,7 +116,7 @@ Send Request
               </div>
               <div>
                 <p class="text-sm font-medium text-slate-400">LinkedIn</p>
-                <a href="https://www.linkedin.com/in/jpmorande/" target="_blank" class="text-lg font-semibold hover:text-primary transition-colors break-all">linkedin.com/in/jpmorande</a>
+                <a href="https://www.linkedin.com/in/jpmorande/" target="_blank" class="text-sm md:text-base font-semibold hover:text-primary transition-colors break-all">linkedin.com/in/jpmorande</a>
               </div>
             </div>
           </div>

@@ -43,10 +43,10 @@
 
         <!-- Headline: mixed serif/sans typography -->
         <h1 class="mb-10">
-          <span class="hero-line block"><span class="hero-line-inner hero-headline font-bold text-slate-900" data-delay="0"><span class="glitch-word" data-text="Transforming">Transforming</span></span></span>
-          <span class="hero-line block mt-1"><span class="hero-line-inner hero-headline hero-serif text-slate-400" data-delay="200"><span class="glitch-word" data-text="data">data</span> <span class="glitch-word" data-text="into">into</span></span></span>
-          <span class="hero-line block mt-1"><span class="hero-line-inner hero-headline font-bold text-slate-900" data-delay="400"><span class="glitch-word" data-text="optimal">optimal</span></span></span>
-          <span class="hero-line block mt-1"><span class="hero-line-inner hero-headline font-bold" data-delay="600"><span class="glitch-word text-primary" data-text="decisions">decisions</span></span></span>
+          <span class="hero-line block"><span class="hero-headline font-bold text-slate-900">Transforming</span></span>
+          <span class="hero-line block mt-1"><span class="hero-headline hero-serif text-slate-600">data into</span></span>
+          <span class="hero-line block mt-1"><span class="hero-headline font-bold text-slate-900">optimal</span></span>
+          <span class="hero-line block mt-1"><span class="hero-headline font-bold text-primary">decisions</span></span>
         </h1>
 
         <p class="text-lg md:text-xl text-slate-500 max-w-lg mb-12 leading-relaxed fade-up" style="transition-delay:1s">
@@ -66,7 +66,7 @@
 
       <!-- RIGHT: Animated SVG network visualization (hidden on mobile to reduce visual load and JS work) -->
       <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center lg:min-h-[480px] fade-up" style="transition-delay:0.6s">
-        <svg id="heroViz" class="w-full h-full" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="heroViz" class="w-full h-full" viewBox="0 0 400 500" fill="none" role="img" aria-label="Illustrative example of an optimized route through a network" xmlns="http://www.w3.org/2000/svg"></svg>
       </div>
 
     </div>
@@ -115,7 +115,7 @@
 
     <div class="grid md:grid-cols-[1fr_auto_1fr] gap-8 max-w-4xl mx-auto">
       <!-- Card 1 -->
-      <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-primary/40 transition-all duration-500 group">
+      <div class="border-l-2 border-primary/30 pl-6 py-2 group">
         <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-3xl font-bold text-primary mb-6 group-hover:bg-primary/20 transition-colors">Σ</div>
         <h3 class="text-xl font-bold mb-3">Mathematical Rigor</h3>
         <p class="text-slate-500 text-sm leading-relaxed">
@@ -129,7 +129,7 @@
         <div class="w-px h-16 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
       </div>
       <!-- Card 2 -->
-      <div class="bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500 group">
+      <div class="border-l-2 border-accent-cyan/30 pl-6 py-2 group">
         <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-3xl font-bold text-accent-cyan mb-6 group-hover:bg-accent-cyan/20 transition-colors">→</div>
         <h3 class="text-xl font-bold mb-3">Strategic Precision</h3>
         <p class="text-slate-500 text-sm leading-relaxed">
@@ -156,7 +156,7 @@
 
     <div class="grid md:grid-cols-3 gap-8 overflow-hidden">
       <!-- Card 1 -- slides from LEFT -->
-      <div class="slide-left data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500">
+      <div class="slide-left data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8">
         <!-- Data stream background -->
         <div class="data-stream-bg" data-stream></div>
         <div class="relative z-10">
@@ -181,7 +181,7 @@
       </div>
 
       <!-- Card 2 -- slides from BOTTOM -->
-      <div class="slide-up data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500" style="transition-delay:0.15s">
+      <div class="slide-up data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8" style="transition-delay:0.15s">
         <div class="data-stream-bg" data-stream></div>
         <div class="relative z-10">
           <div class="w-12 h-12 rounded-lg bg-accent-cyan/10 flex items-center justify-center mb-6">
@@ -205,7 +205,7 @@
       </div>
 
       <!-- Card 3 -- slides from RIGHT -->
-      <div class="slide-right data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500" style="transition-delay:0.3s">
+      <div class="slide-right data-stream-card bg-white border border-slate-200 shadow-sm rounded-2xl p-8" style="transition-delay:0.3s">
         <div class="data-stream-bg" data-stream></div>
         <div class="relative z-10">
           <div class="w-12 h-12 rounded-lg bg-accent-teal/10 flex items-center justify-center mb-6">
