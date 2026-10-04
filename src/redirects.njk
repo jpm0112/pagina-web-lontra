@@ -9,3 +9,8 @@ eleventyExcludeFromCollections: true
 {{ route[code] }}{{ "index.html" if (route[code] | last) == "/" else ".html" }} {{ route[code] }} 301
 {%- endfor %}
 {%- endfor %}
+# The solutions page was merged into services.
+/soluciones /servicios 301
+/soluciones.html /servicios 301
+/en/solutions /en/services 301
+/en/solutions.html /en/services 301

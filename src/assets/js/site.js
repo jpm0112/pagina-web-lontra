@@ -125,7 +125,10 @@
         sidebarLinks.forEach(function (link) { setLink(link, link.getAttribute('href') === id); });
       });
     }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
-    document.querySelectorAll('section[id]').forEach(function (s) { sectionObserver.observe(s); });
+    sidebarLinks.forEach(function (link) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) sectionObserver.observe(target);
+    });
   }
 
   // Contact form: post JSON to Web3Forms, show inline status.

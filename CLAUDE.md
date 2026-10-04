@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing site for Lontra Consultores (operations research / AI consultancy, Santiago, Chile), live at https://lontraconsultores.com. Ten pages, Spanish (canonical) and English, built with Eleventy 3 + Tailwind 3 from `src/` into `_site/`, deployed as Cloudflare Workers static assets. GitHub remote: `jpm0112/pagina-web-lontra` (public).
+Marketing site for Lontra Consultores (operations research / AI consultancy, Santiago, Chile), live at https://lontraconsultores.com. Eight pages, Spanish (canonical) and English, built with Eleventy 3 + Tailwind 3 from `src/` into `_site/`, deployed as Cloudflare Workers static assets. GitHub remote: `jpm0112/pagina-web-lontra` (public).
 
 ## Commands
 
@@ -26,7 +26,7 @@ npm test        # node:test for lib/
 ## URLs
 
 - Pages are written to `_site/<name>.html`. Cloudflare serves them at clean URLs (`/servicios`) and 307-redirects `/servicios.html` there.
-- Every generated URL (canonical, hreflang, og:url, JSON-LD, sitemap, nav, footer) comes from `src/_data/routes.json`. Links inside page bodies are hand-written root-relative clean URLs (`/contacto`, `/en/solutions#faq`). Never link `.html` URLs.
+- Every generated URL (canonical, hreflang, og:url, JSON-LD, sitemap, nav, footer) comes from `src/_data/routes.json`. Links inside page bodies are hand-written root-relative clean URLs (`/contacto`, `/en/services#faq`). Never link `.html` URLs.
 - `llms.txt` is hand-written; update its URLs if routes change.
 
 ## Page structure
@@ -35,14 +35,14 @@ npm test        # node:test for lib/
 |---|---|---|
 | home | `index.html` | `index.html` |
 | services | `servicios.html` | `services.html` |
-| solutions | `soluciones.html` | `solutions.html` |
 | about | `sobre-nosotros.html` | `about.html` |
 | contact | `contacto.html` | `contact.html` |
 
 - Each page is `---json` front matter plus body content only. Front matter: `key` (route key), `title`, `description`, optional `schema` (page-specific JSON-LD objects), optional `faq`, optional `spotlight`.
 - `src/_includes/base.njk` (the default layout, set in `eleventy.config.js`) renders the whole `<head>` and wraps the body with `nav.njk` and `footer.njk`. Language comes from global data (`es`) overridden by `src/en/en.json`.
 - `src/_data/`: `routes.json` (URL per key and language), `i18n.json` (nav labels, CTA, footer strings, locale codes), `organization.json` (ProfessionalService JSON-LD per language), `site.js` (base URL, nav order, build-time year), `eleventyComputed.js` (per-page `t` strings and the `ld` JSON-LD list: organization + page `schema` + FAQPage + breadcrumb + site navigation).
-- The solutions FAQ lives in front matter (`faq: [{ q, a: [paragraphs] }]`). `_includes/faq.njk` renders it and `eleventyComputed.js` builds the FAQPage schema from the same data. Edit FAQ text only there.
+- The services FAQ lives in front matter (`faq: [{ q, a: [paragraphs] }]`). `_includes/faq.njk` renders it and `eleventyComputed.js` builds the FAQPage schema from the same data. Edit FAQ text only there.
+- The services page also holds the former solutions page (sectors, problem cards, FAQ); `/soluciones` and `/en/solutions` 301 to it via `src/redirects.njk`.
 - `src/sitemap.njk` generates `sitemap.xml` from the pages; `lastmod` is each source file's last git commit date.
 
 ## Spanish/English parity (enforced)

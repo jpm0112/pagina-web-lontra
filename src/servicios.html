@@ -2,7 +2,7 @@
 {
   "key": "services",
   "title": "Servicios de Optimización, IA y Machine Learning | Lontra",
-  "description": "Servicios de modelado matemático, simulación estocástica, optimización de procesos, machine learning y business intelligence para empresas.",
+  "description": "Servicios de modelado matemático, simulación estocástica, optimización de procesos, machine learning y business intelligence para logística, manufactura y otras industrias.",
   "schema": [
     {
       "@context": "https://schema.org",
@@ -37,12 +37,238 @@
         }
       ]
     }
+  ],
+  "faq": [
+    {
+      "q": "¿Qué es la investigación de operaciones?",
+      "a": [
+        "Es la disciplina que usa modelos matemáticos para decidir cómo asignar recursos limitados: qué rutas tomar, qué inventario mantener, qué turnos asignar, qué productos producir y en qué cantidad.",
+        "Lo que la distingue de un análisis descriptivo es que entrega una decisión concreta. Algunos problemas se resuelven a la mejor respuesta posible en segundos, cuando las reglas son estables. Otros son tan grandes que no se pueden resolver de forma exacta y necesitan métodos que entregan buenas soluciones rápido, aunque sin garantía de óptimo. Cuando hay incertidumbre real (demanda variable, fallas de equipos, tiempos de entrega irregulares), no se busca un óptimo: se propone una política y se mide cómo se comporta antes de aplicarla."
+      ]
+    },
+    {
+      "q": "¿Cuál es la diferencia entre optimización y machine learning?",
+      "a": [
+        "Machine learning aprende patrones de datos históricos y responde qué va a pasar: la demanda esperada el próximo trimestre, la probabilidad de falla de un equipo, el riesgo de un cliente. Optimización busca la mejor decisión dados un objetivo y restricciones, y responde qué hacer: cuántos camiones operar, qué inventario asignar a cada centro de distribución, qué pedido aceptar.",
+        "En operaciones reales se combinan. Un caso típico: ML predice la demanda por sucursal para los próximos 14 días y optimización usa esa predicción para asignar inventario entre centros y planificar despachos. Por separado, ML deja la decisión a una persona que tiene que interpretar el pronóstico; optimización sin ML necesita que alguien estime la demanda."
+      ]
+    },
+    {
+      "q": "Machine learning, inteligencia artificial y LLMs: ¿cuándo conviene usar cada uno?",
+      "a": [
+        "Los large language models (LLMs) son modelos de IA entrenados con grandes cantidades de texto para entender y generar lenguaje. Son una rama del machine learning. Un modelo predictivo tradicional se entrena para una tarea específica del cliente; los LLMs vienen pre-entrenados con conocimiento general del idioma y se adaptan al contexto del negocio mediante prompts o documentos de referencia (RAG, retrieval-augmented generation).",
+        "Sirven bien cuando el problema involucra texto no estructurado: clasificar correos, resumir documentos largos, extraer información de contratos, responder preguntas sobre manuales internos, redactar borradores. En esos casos un LLM reemplaza horas de trabajo manual con resultados aceptables en segundos.",
+        "No sirven cuando el problema es numérico, estructurado y con datos limpios. Pronosticar demanda, detectar fraude, optimizar inventario o ajustar precios se resuelven mejor con modelos predictivos clásicos o con investigación de operaciones. Usar un LLM para esos casos suele ser más caro, más lento, menos preciso y más difícil de auditar."
+      ]
+    },
+    {
+      "q": "¿Qué es la simulación estocástica?",
+      "a": [
+        "Simulación estocástica reproduce el comportamiento de un sistema operacional con miles de escenarios aleatorios para estimar cómo responde a distintas políticas. Sirve cuando la incertidumbre domina: tiempos de llegada variables, fallas impredecibles, demanda con estacionalidad y ruido.",
+        "A diferencia de la optimización, simulación no entrega la mejor decisión. Entrega la distribución de resultados de la política que propones: cuánto cuesta operar con 5 camiones versus 6, cuántas horas de cola se generan si la frecuencia de llegada cambia, qué pasa si una máquina cae un día al mes. Funciona bien donde otros métodos fallan, pero requiere suficientes corridas para que los resultados sean estadísticamente confiables y depende mucho de qué tan bien se describan las distribuciones de entrada."
+      ]
+    },
+    {
+      "q": "¿Qué es un modelo de optimización matemática?",
+      "a": [
+        "Un modelo de optimización describe una decisión en tres partes: qué se quiere conseguir (minimizar costos, maximizar utilidad, reducir tiempos), qué se elige (cantidades, asignaciones, rutas, horarios) y qué reglas se deben respetar (capacidad disponible, presupuestos, regulaciones, plazos contractuales). Resolverlo entrega la combinación de decisiones que respeta todas las reglas y logra mejor el objetivo.",
+        "Un ejemplo: asignar 30 camiones a 200 entregas minimizando combustible, sujeto a que cada camión opere máximo 9 horas y cada cliente reciba dentro de su ventana horaria.",
+        "Los trade-offs son prácticos. Algunos problemas se resuelven en segundos cuando las reglas son continuas y bien comportadas. Otros toman horas o días cuando hay decisiones del tipo sí/no (¿abrir esta bodega?, ¿asignar este conductor a esa ruta?), porque el espacio de combinaciones crece exponencialmente. Cuando el objetivo o las reglas involucran productos entre variables, garantizar la mejor solución es lo más caro."
+      ]
+    },
+    {
+      "q": "¿Qué es business intelligence y en qué se diferencia del machine learning?",
+      "a": [
+        "Business intelligence (BI) organiza datos históricos en reportes, dashboards y KPIs para que personas tomen mejores decisiones. Machine learning construye modelos predictivos a partir de esos mismos datos. BI responde qué pasó; ML responde qué va a pasar.",
+        "En la práctica, BI es más barato de construir y más fácil de operar: SQL, modelos de datos y dashboards. ML tiene más alcance pero exige calidad de datos, monitoreo continuo y reentrenamiento. La mayoría de las operaciones reales usan ambos: BI para monitorear el día a día y entender qué está cambiando, ML para pronósticos, detección de anomalías y casos donde las reglas explícitas no alcanzan."
+      ]
+    },
+    {
+      "q": "¿Qué datos necesita Lontra para empezar un proyecto?",
+      "a": [
+        "Partimos con lo que el cliente tiene hoy. Cada proyecto tiene un alcance distinto, pero lo más útil al inicio suele ser el histórico operacional relevante (transacciones, órdenes, tiempos, ubicaciones, niveles de inventario), las reglas del negocio (capacidades, contratos, regulaciones, restricciones operativas) y el contexto del problema que se quiere resolver.",
+        "Los formatos no son un problema: Excel, CSV, exportes de ERP, bases SQL, documentos PDF para reglas y manuales. Si los datos están desordenados o incompletos, la primera fase del proyecto incluye estructurarlos y validarlos junto al equipo interno; la falta de datos perfectos rara vez es lo que impide arrancar."
+      ]
+    },
+    {
+      "q": "¿Qué entrega Lontra al cierre de un proyecto?",
+      "a": [
+        "Cada proyecto termina con un entregable funcionando: un modelo de optimización corriendo, un simulador, un sistema de soporte de decisiones o un conjunto de modelos predictivos integrados a los sistemas del cliente. La entrega incluye código documentado, validación con datos reales del cliente y una sesión de transferencia al equipo interno para que el cliente pueda operar y mantener la solución sin depender de Lontra."
+      ]
+    }
   ]
 }
 ---
-<!-- ══════════════════════════════════════════════════ MAIN CONTENT ══════════════════════════════════════════════════ -->
-<main class="mx-auto flex w-full max-w-7xl flex-1 px-8 py-8 lg:px-10 pt-28 grid-bg">
+<main>
+<!-- ══════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════ -->
+<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden grid-bg">
+  <div class="grid-cells" id="gridCells"></div>
+  <!-- Gradient fade at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#f8f9fc] to-transparent z-10 pointer-events-none"></div>
 
+  <div class="relative z-10 max-w-4xl mx-auto px-8 text-center pt-32 pb-24">
+    <h1 class="text-3xl md:text-6xl font-bold leading-tight tracking-tight text-slate-900 mb-6 fade-up" style="transition-delay:0.3s">
+      Soluciones para <br class="hidden md:block"/>tu Negocio
+    </h1>
+    <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed fade-up" style="transition-delay:0.5s">
+      Usamos investigación de operaciones e inteligencia artificial para reducir costos operacionales y mejorar la calidad de las decisiones.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ INDUSTRY SECTORS ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24" id="sectors">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-16 slide-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">SECTORES</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Sectores donde Generamos Impacto</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto">Trabajamos con empresas de distintos sectores, adaptando nuestras soluciones a los desafíos específicos de cada industria.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden">
+
+      <!-- Logistics -->
+      <div class="industry-card slide-left bg-white border border-slate-200 shadow-sm rounded-2xl p-8 group">
+        <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+          <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
+        </div>
+        <h3 class="text-xl font-bold mb-4">Logística y Cadena de Suministro</h3>
+        <p class="text-slate-500 leading-relaxed mb-6">
+          Optimizamos rutas y costos de flota <span class="italic text-slate-500">(optimización de ruteo vehicular)</span>, calibramos niveles de inventario <span class="italic text-slate-500">(gestión dinámica de inventario)</span> y pronosticamos demanda para reducir quiebres de stock y excedentes.
+        </p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Rutas óptimas de distribución</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Planificación de inventario</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> Predicción de demanda</li>
+        </ul>
+      </div>
+
+      <!-- Digital Solutions & AI -->
+      <div class="industry-card slide-up bg-white border border-slate-200 shadow-sm rounded-2xl p-8 group" style="transition-delay:0.15s">
+        <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-colors">
+          <span class="material-symbols-outlined text-accent-cyan text-3xl">smart_toy</span>
+        </div>
+        <h3 class="text-xl font-bold mb-4">Soluciones Digitales e IA</h3>
+        <p class="text-slate-500 leading-relaxed mb-6">
+          Construimos asistentes inteligentes que responden preguntas sobre tus documentos y datos internos <span class="italic text-slate-500">(RAG — Retrieval-Augmented Generation)</span>, automatizamos procesos con modelos de lenguaje <span class="italic text-slate-500">(LLMs)</span> y desarrollamos herramientas a medida que integran IA en tu operación diaria.
+        </p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Asistentes con IA (LLMs y RAG)</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Automatización de procesos</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-cyan text-base">check_circle</span> Sistemas de soporte a la decisión</li>
+        </ul>
+      </div>
+
+      <!-- Manufacturing -->
+      <div class="industry-card slide-right bg-white border border-slate-200 shadow-sm rounded-2xl p-8 group" style="transition-delay:0.3s">
+        <div class="w-14 h-14 rounded-xl bg-accent-teal/10 flex items-center justify-center mb-6 group-hover:bg-accent-teal/20 transition-colors">
+          <span class="material-symbols-outlined text-accent-teal text-3xl">factory</span>
+        </div>
+        <h3 class="text-xl font-bold mb-4">Manufactura</h3>
+        <p class="text-slate-500 leading-relaxed mb-6">
+          Planificamos producción para reducir cuellos de botella <span class="italic text-slate-500">(programación de producción)</span>, predecimos fallas de equipos antes de que ocurran <span class="italic text-slate-500">(mantenimiento predictivo)</span> y reducimos desperdicios en cada etapa del proceso.
+        </p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Planificación de producción</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Mantenimiento predictivo</li>
+          <li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-teal text-base">check_circle</span> Reducción de desperdicios</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ HOW WE HELP ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24 border-t border-slate-200/50" id="how-we-help">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-16 slide-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">CAPACIDADES</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Cómo te Ayudamos</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto">Cada negocio tiene desafíos únicos. Estas son algunas formas en que resolvemos problemas complejos.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden">
+
+      <!-- Supply Chain Optimization -->
+      <div class="slide-left bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-primary/40 transition-all duration-500">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">route</span>
+          </div>
+          <h3 class="text-lg font-bold">Optimización de Cadena de Suministro</h3>
+        </div>
+        <p class="text-slate-500 leading-relaxed">
+          Analizamos tu cadena de extremo a extremo, de proveedores a clientes finales. Construimos modelos matemáticos que evalúan millones de combinaciones de ruteo, asignación e inventario para encontrar la solución más eficiente.
+        </p>
+      </div>
+
+      <!-- Predictive Maintenance -->
+      <div class="slide-left bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-teal/40 transition-all duration-500" style="transition-delay:0.15s">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-accent-teal/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-accent-teal text-2xl">build</span>
+          </div>
+          <h3 class="text-lg font-bold">Mantenimiento Predictivo</h3>
+        </div>
+        <p class="text-slate-500 leading-relaxed">
+          Analizamos los datos de tus equipos para predecir cuándo necesitarán mantenimiento. Anticipar las fallas reduce paradas no planificadas y los costos asociados.
+        </p>
+      </div>
+
+      <!-- Process Automation -->
+      <div class="slide-right bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-primary/40 transition-all duration-500" style="transition-delay:0.2s">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-2xl">settings_suggest</span>
+          </div>
+          <h3 class="text-lg font-bold">Automatización Inteligente</h3>
+        </div>
+        <p class="text-slate-500 leading-relaxed">
+          Hay tareas que tu equipo hace todos los días de forma manual: clasificar documentos, extraer datos de planillas, generar reportes. Construimos sistemas que automatizan estos procesos usando IA, para que tu equipo se enfoque en lo que realmente importa.
+        </p>
+      </div>
+
+      <!-- Demand Forecasting -->
+      <div class="slide-left bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-cyan/40 transition-all duration-500" style="transition-delay:0.25s">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-accent-cyan text-2xl">trending_up</span>
+          </div>
+          <h3 class="text-lg font-bold">Predicción de Demanda</h3>
+        </div>
+        <p class="text-slate-500 leading-relaxed">
+          Nuestros modelos analizan patrones históricos, estacionalidad y tendencias del mercado para pronosticar ventas y producción con precisión cuantificada, reduciendo quiebres de stock y excedentes.
+        </p>
+      </div>
+
+      <!-- Generative AI & Intelligent Assistants -->
+      <div class="md:col-span-2 slide-up bg-white border border-slate-200 shadow-sm rounded-2xl p-8 hover:border-accent-teal/40 transition-all duration-500" style="transition-delay:0.3s">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-accent-teal/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-accent-teal text-2xl">smart_toy</span>
+          </div>
+          <h3 class="text-lg font-bold">IA Generativa y Asistentes Inteligentes</h3>
+        </div>
+        <p class="text-slate-500 leading-relaxed">
+          Construimos asistentes de IA que entienden y responden preguntas sobre tus documentos, manuales y bases de datos internas <span class="italic text-slate-500">(RAG — Retrieval-Augmented Generation)</span>. Usando modelos de lenguaje avanzados <span class="italic text-slate-500">(LLMs)</span>, automatizamos tareas como clasificar correos, generar reportes, resumir documentos y extraer información clave de textos no estructurados.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ METHODS ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24 border-t border-slate-200/50 grid-bg" id="methods">
+  <div class="max-w-7xl mx-auto px-8 lg:px-10">
+    <div class="text-center mb-16 slide-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">MÉTODOS</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Nuestras Especialidades</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto">Aplicamos investigación de operaciones e inteligencia artificial para resolver problemas operacionales concretos. Menos incertidumbre en las decisiones del día a día.</p>
+    </div>
+
+    <div class="flex">
 <!-- ── Sidebar ── -->
 <aside class="hidden w-64 flex-col lg:flex">
 <div class="sticky top-28 flex flex-col gap-8">
@@ -87,21 +313,6 @@
 
 <!-- ── Content Area ── -->
 <div class="flex-1 lg:pl-16">
-
-<!-- Breadcrumb -->
-<nav class="mb-8 flex flex-wrap items-center gap-2 text-sm">
-<a class="text-slate-400 hover:text-primary transition-colors" href="/">Inicio</a>
-<span class="material-symbols-outlined text-sm text-slate-300">chevron_right</span>
-<span class="font-medium text-primary">Servicios</span>
-</nav>
-
-<!-- Page Header -->
-<div class="mb-24 fade-up">
-<h1 class="mb-4 text-4xl font-bold tracking-tight lg:text-6xl text-slate-900">Resumen de Servicios</h1>
-<p class="max-w-2xl text-lg leading-relaxed text-slate-500">
-                        Aplicamos investigación de operaciones e inteligencia artificial para resolver problemas operacionales concretos. Menos incertidumbre en las decisiones del día a día.
-                    </p>
-</div>
 
 <!-- ── Service Sections ── -->
 <div class="flex flex-col gap-24 overflow-hidden">
@@ -290,7 +501,7 @@
 <hr class="border-slate-200"/>
 
 <!-- Soluciones Digitales a Medida -->
-<section class="group mb-20 scroll-mt-32 slide-right" id="digital">
+<section class="group scroll-mt-32 slide-right" id="digital">
 <div class="mb-6 flex items-center gap-4">
 <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
 <span class="material-symbols-outlined text-3xl">terminal</span>
@@ -328,4 +539,42 @@
 
 </div>
 </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ FAQ ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24 border-t border-slate-200/50" id="faq">
+  <div class="max-w-3xl mx-auto px-6 md:px-8">
+    <div class="text-center mb-12 slide-up">
+      <span class="text-xs font-bold tracking-[0.3em] uppercase text-accent-cyan mb-4 block">PREGUNTAS FRECUENTES</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Conceptos &amp; Proceso</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto">Las preguntas que más nos hacen sobre investigación de operaciones, machine learning y cómo trabajamos.</p>
+    </div>
+
+    <div class="space-y-3 fade-up">
+{% include "faq.njk" %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════ -->
+<section class="relative z-20 py-16 md:py-24" id="cta">
+  <div class="max-w-5xl mx-auto px-8">
+    <div class="slide-up cta-shimmer rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+      <!-- Dark overlay for readability -->
+      <div class="absolute inset-0 bg-white/10 rounded-3xl"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">¿Listo para resolver tu<br/>próximo desafío?</h2>
+        <p class="text-white/70 text-lg mb-10 max-w-xl mx-auto">
+          Cuéntanos sobre tu problema de negocio y te mostraremos cómo las matemáticas pueden ayudarte.
+        </p>
+        <a href="/contacto" class="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg text-sm font-bold hover:bg-white/90 transition-all shadow-2xl">
+          Solicitar Consulta Gratuita
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>

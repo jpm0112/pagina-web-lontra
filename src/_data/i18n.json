@@ -6,7 +6,6 @@
     "nav": {
       "home": "Inicio",
       "services": "Servicios",
-      "solutions": "Soluciones",
       "about": "Sobre Nosotros",
       "contact": "Contacto"
     },
@@ -30,7 +29,6 @@
     "nav": {
       "home": "Home",
       "services": "Services",
-      "solutions": "Solutions",
       "about": "About Us",
       "contact": "Contact"
     },
