@@ -111,27 +111,67 @@
     }, 1500);
   }
 
-  // Services sidebar: highlight the link of the section in view
-  var sidebarLinks = document.querySelectorAll('aside nav a');
-  if (sidebarLinks.length) {
+  // Services methods carousel: sidebar links and prev/next buttons slide the track (CSS scroll-snap);
+  // the slide in view drives the sidebar highlight and the "n / total" counter.
+  var track = document.getElementById('methodTrack');
+  var controls = document.getElementById('methodControls');
+  if (track && controls) {
+    var slides = track.children;
+    var sidebarLinks = document.querySelectorAll('aside nav a');
+    var counter = controls.querySelector('.method-count');
+    var current = -1, target = null, targetTimer;
     var setLink = function (link, active) {
       link.classList.toggle('text-slate-500', !active);
       link.classList.toggle('bg-primary/10', active);
       link.classList.toggle('text-primary', active);
       var span = link.querySelector('.text-sm');
       if (span) { span.classList.toggle('font-medium', !active); span.classList.toggle('font-bold', active); }
+      if (active) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');
     };
-    var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var id = '#' + entry.target.id;
-        sidebarLinks.forEach(function (link) { setLink(link, link.getAttribute('href') === id); });
+    var setActive = function (i) {
+      if (i === current) return;
+      current = i;
+      counter.textContent = (i + 1) + ' / ' + slides.length;
+      sidebarLinks.forEach(function (link) { setLink(link, link.getAttribute('href') === '#' + slides[i].id); });
+    };
+    var slideInView = function () {
+      var step = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : 1;
+      return Math.min(slides.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
+    };
+    var show = function (i) {
+      i = (i + slides.length) % slides.length;
+      // While the track glides to the target, ignore the slides it passes on the way.
+      target = i;
+      clearTimeout(targetTimer);
+      targetTimer = setTimeout(function () { target = null; }, 1000);
+      track.scrollTo({ left: slides[i].offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+      setActive(i);
+      // Bring the controls back into view if the reader had scrolled past them (80px fixed nav).
+      var top = controls.getBoundingClientRect().top;
+      if (top < 80) window.scrollBy({ top: top - 112, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var i = slideInView();
+        if (target !== null) { if (i !== target) return; target = null; }
+        setActive(i);
       });
-    }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
-    sidebarLinks.forEach(function (link) {
-      var target = document.querySelector(link.getAttribute('href'));
-      if (target) sectionObserver.observe(target);
     });
+    sidebarLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        for (var i = 0; i < slides.length; i++) {
+          if ('#' + slides[i].id === link.getAttribute('href')) { e.preventDefault(); show(i); return; }
+        }
+      });
+    });
+    controls.querySelector('.method-prev').addEventListener('click', function () { show(current - 1); });
+    controls.querySelector('.method-next').addEventListener('click', function () { show(current + 1); });
+    controls.hidden = false;
+    setActive(slideInView());
   }
 
   // Contact form: post JSON to Web3Forms, show inline status.

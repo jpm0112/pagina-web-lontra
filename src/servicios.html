@@ -222,10 +222,18 @@
 </aside>
 
 <!-- ── Content Area ── -->
-<div class="flex-1 lg:pl-16">
+<div class="min-w-0 flex-1 lg:pl-16">
 
 <!-- ── Service Sections ── -->
-<div class="flex flex-col gap-24 overflow-hidden">
+<!-- Carousel controls: site.js shows them and wires them up -->
+<div id="methodControls" hidden>
+<div class="mb-8 flex items-center justify-end gap-3">
+<button type="button" class="method-prev flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm hover:border-primary/40 hover:text-primary transition-colors" aria-label="Especialidad anterior" aria-controls="methodTrack"><span class="material-symbols-outlined text-xl">arrow_back</span></button>
+<span class="method-count min-w-[3.5rem] text-center text-sm font-medium tabular-nums text-slate-400">1 / 6</span>
+<button type="button" class="method-next flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm hover:border-primary/40 hover:text-primary transition-colors" aria-label="Siguiente especialidad" aria-controls="methodTrack"><span class="material-symbols-outlined text-xl">arrow_forward</span></button>
+</div>
+</div>
+<div class="method-track" id="methodTrack">
 
 <!-- Modelado Matematico -->
 <section class="group scroll-mt-32 slide-left" id="math-modeling">
@@ -264,8 +272,6 @@
 </div>
 </section>
 
-<hr class="border-slate-200"/>
-
 <!-- Simulacion Estocastica -->
 <section class="group scroll-mt-32 slide-right" id="stochastic">
 <div class="mb-6 flex items-center gap-4">
@@ -303,8 +309,6 @@
 </div>
 </section>
 
-<hr class="border-slate-200"/>
-
 <!-- Optimizacion de Procesos -->
 <section class="group scroll-mt-32 slide-left" id="optimization">
 <div class="mb-6 flex items-center gap-4">
@@ -337,8 +341,6 @@
 </div>
 </div>
 </section>
-
-<hr class="border-slate-200"/>
 
 <!-- Machine Learning e IA -->
 <section class="group scroll-mt-32 slide-right" id="ml-ai">
@@ -377,8 +379,6 @@
 </div>
 </section>
 
-<hr class="border-slate-200"/>
-
 <!-- Business Intelligence y Analitica -->
 <section class="group scroll-mt-32 slide-left" id="bi">
 <div class="mb-6 flex items-center gap-4">
@@ -415,8 +415,6 @@
 </div>
 </div>
 </section>
-
-<hr class="border-slate-200"/>
 
 <!-- Soluciones Digitales a Medida -->
 <section class="group scroll-mt-32 slide-right" id="digital">
