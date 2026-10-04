@@ -42,7 +42,7 @@ npm test        # node:test for lib/
 - `src/_includes/base.njk` (the default layout, set in `eleventy.config.js`) renders the whole `<head>` and wraps the body with `nav.njk` and `footer.njk`. Language comes from global data (`es`) overridden by `src/en/en.json`.
 - `src/_data/`: `routes.json` (URL per key and language), `i18n.json` (nav labels, CTA, footer strings, locale codes), `organization.json` (ProfessionalService JSON-LD per language), `site.js` (base URL, nav order, build-time year), `eleventyComputed.js` (per-page `t` strings and the `ld` JSON-LD list: organization + page `schema` + FAQPage + breadcrumb + site navigation).
 - The services FAQ lives in front matter (`faq: [{ q, a: [paragraphs] }]`). `_includes/faq.njk` renders it and `eleventyComputed.js` builds the FAQPage schema from the same data. Edit FAQ text only there.
-- The services page also holds the former solutions page (sectors, problem cards, FAQ); `/soluciones` and `/en/solutions` 301 to it via `src/redirects.njk`.
+- The services page also holds the former solutions page (sectors, FAQ); `/soluciones` and `/en/solutions` 301 to it via `src/redirects.njk`.
 - `src/sitemap.njk` generates `sitemap.xml` from the pages; `lastmod` is each source file's last git commit date.
 
 ## Spanish/English parity (enforced)
