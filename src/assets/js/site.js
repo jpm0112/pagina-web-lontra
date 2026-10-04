@@ -27,7 +27,10 @@
   // Animated grid cells
   var gridContainer = document.getElementById('gridCells');
   if (gridContainer) {
-    var cols = 22, rows = 14, cells = [];
+    // About 60px cells (the .grid-bg size), so cells stay square however tall the section is.
+    var cols = Math.max(1, Math.round(gridContainer.offsetWidth / 60));
+    var rows = Math.max(1, Math.round(gridContainer.offsetHeight / 60));
+    var cells = [];
     gridContainer.style.setProperty('--cols', cols);
     gridContainer.style.setProperty('--rows', rows);
     for (var i = 0; i < cols * rows; i++) {
