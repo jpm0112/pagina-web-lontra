@@ -96,7 +96,7 @@ footer a:hover::after { width: 100%; }
   }
 @keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 /* Services methods: one section per slide, scroll-snapped. Works without JS (swipe, sidebar anchors). */
-.method-track { position: relative; display: flex; align-items: flex-start; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; scrollbar-width: none; }
+.method-track { position: relative; display: flex; align-items: flex-start; gap: 2rem; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; scrollbar-width: none; }
 .method-track::-webkit-scrollbar { display: none; }
 .method-track > section { flex: 0 0 100%; scroll-snap-align: start; }
 @media (prefers-reduced-motion: reduce) {
